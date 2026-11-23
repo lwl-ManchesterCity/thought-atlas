@@ -1,0 +1,18 @@
+{
+  "synthetic": true,
+  "session": "qoder-synth-live",
+  "pollIntervalMs": 250,
+  "modelStub": {
+    "latencyMs": 5,
+    "ops": "ADD_NODE"
+  },
+  "initialSteps": 1,
+  "initialNodes": 1,
+  "finalNodes": 2,
+  "finalTurn": 2,
+  "latencyMs": 213,
+  "within8s": true,
+  "consoleErrors": [],
+  "pageErrors": [],
+  "elapsedMs": 858
+}

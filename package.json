@@ -8,11 +8,12 @@
     "packages/daemon",
     "packages/adapters/codex",
     "packages/adapters/watcher",
+    "packages/adapters/qoder",
     "packages/web"
   ],
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p packages/web/tsconfig.json",
-    "test": "node --test packages/core/test/*.test.ts packages/adapters/codex/test/*.test.ts packages/adapters/watcher/test/*.test.ts packages/daemon/test/*.test.ts packages/web/test/*.test.ts",
+    "test": "node --test packages/core/test/*.test.ts packages/adapters/codex/test/*.test.ts packages/adapters/watcher/test/*.test.ts packages/adapters/qoder/test/*.test.ts packages/daemon/test/*.test.ts packages/web/test/*.test.ts",
     "d1:synthetic": "node scripts/d1-synthetic.ts",
     "build:web": "npm run build --workspace packages/web"
   },

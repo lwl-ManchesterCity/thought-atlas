@@ -21,6 +21,8 @@
     "packages/adapters/codex/test/**/*.ts",
     "packages/adapters/watcher/src/**/*.ts",
     "packages/adapters/watcher/test/**/*.ts",
+    "packages/adapters/qoder/src/**/*.ts",
+    "packages/adapters/qoder/test/**/*.ts",
     "scripts/**/*.ts"
   ]
 }

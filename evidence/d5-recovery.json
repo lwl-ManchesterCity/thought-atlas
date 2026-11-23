@@ -1,0 +1,18 @@
+{
+  "synthetic": true,
+  "session": "qoder-recovery-live",
+  "cursorOffset": 687,
+  "turnSequenceAfterRestart": [
+    1,
+    2
+  ],
+  "duplicateDeliveriesAfterRestart": 0,
+  "truncationTurnSequence": [
+    1,
+    2,
+    3
+  ],
+  "persistedTurns": 3,
+  "noDuplicates": true,
+  "pass": true
+}

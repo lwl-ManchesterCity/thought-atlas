@@ -1,0 +1,50 @@
+{
+  "real": true,
+  "synthetic": false,
+  "transcript": {
+    "lines": 4172,
+    "humanRows": 8,
+    "sizeBytes": 8726334
+  },
+  "adapter": {
+    "source": "qoder",
+    "mappedSession": true,
+    "steps": 7,
+    "turnIndexes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "opsPerStep": [
+      5,
+      5,
+      3,
+      1,
+      5,
+      1,
+      5
+    ]
+  },
+  "graph": {
+    "nodes": 23,
+    "edges": 0,
+    "lastTurn": 7,
+    "typeCounts": {
+      "fact": 12,
+      "claim": 10,
+      "question": 1
+    }
+  },
+  "replay": {
+    "lastTurn": 7,
+    "finalMapMatchesLive": true,
+    "signatureHash": "2cb3e556493a"
+  },
+  "inProgressTurnExcluded": 1,
+  "codexMapsUnchanged": true,
+  "codexSessionsChecked": 3
+}

@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## v0.5.0 — D5（2026-11-23，开发会话模型 DeepSeek-Flash）
+
+### 新增
+- watcher 通用化：新增 `TranscriptParser` / `ParserModule` 注册接口、`JsonlWatcher`（每文件字节游标 + 解析器快照、重启恢复、截断/换 inode 重放、投递失败重试、全部投递成功后才持久化）与 `CursorStore`（`~/.thought-atlas/watcher-cursors/`，0700/0600 原子写）；CodexWatcher 改为包装通用 watcher，`CodexWatcher` 构造/发现/tail 行为不变，`postTurn` 仅增可选超时
+- `packages/adapters/qoder`：零配置侵入 watcher。白名单仅读 `~/.thought-atlas/config.json` 的 `qoderWatch`（绝对路径或 sessionId，sessionId 只查 projects 直接子目录）；不配不监听，绝不枚举整个 projects
+- Qoder 解析器：`origin.kind==="human"` 开轮、同 message.id 流式折叠、`end_turn` 立即投递、被下一人类轮打断时兜底、排除 tool_use/tool_result/thinking/attachment/sidechain/压缩摘要、剥离 system-reminder/environment/user_instructions/qoder_delegated_input_sources、时间戳归一、稳定人类 id 与单调 turnIndex、游标快照/重放
+- 会话映射 `qoder-<sessionId>`；默认从文件头回填历史，轮询 1s
+- 脚本：d5-latency.ts（合成 transcript + stub 模型 + headless Chrome 端到端延迟）、d5-recovery.ts（停机追加/截断重放）、d5-real-stats.ts（真实回填只读聚合）
+- 单测 104 个全绿（core 46 / codex 12 / watcher 3 / qoder 12 / daemon 19 / web 12）
+
+### 验证
+- 真实开发会话回填 7 个完成轮（复跑采样 8 人类轮/4172 行），23 节点/0 边，回放末态与实时图签名一致；3 个 Codex 会话图不变
+- 合成实时：新轮写入→浏览器节点增长 213ms（≤8s），Console 零错误
+- 合成恢复：重启按 [1,2] 无重复；截断重放 [1,2,3]，pass
+- 第 8 轮（D5 任务）采样时未 end_turn，按设计保留 pending；真实图 0 边为分析器真实输出，未改 analyzer
+
+### 安全
+- `~/.qoder-cn` / `~/.codex` 只读：hooks.json 78922a78…38cbb9、config.toml d931ef92…553062 与基线一致；未装 hook
+- Key：仓库与 git 全历史精确 Key / sk- 模式 0 命中；真实 164 个中文 24 字片段对仓库与历史 0 命中
+- 真实 transcript 不入仓库/夹具/证据，真实图不截图；证据仅聚合数值；黄金 fixture 未入库
+- 未实现 D6、未发布、未使用 Sites
+
 ## v0.4.0 — D4（2026-11-23，开发会话模型 DeepSeek-Flash）
 
 ### 新增
