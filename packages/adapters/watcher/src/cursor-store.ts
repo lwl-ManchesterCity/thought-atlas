@@ -39,6 +39,7 @@ export class CursorStore {
 
   async save(path: string, cursor: FileCursor): Promise<void> {
     await mkdir(this.dir, { recursive: true, mode: 0o700 });
+    await chmod(this.dir, 0o700);
     const target = join(this.dir, this.keyFor(path));
     const tmp = `${target}.${process.pid}.tmp`;
     await writeFile(tmp, JSON.stringify(cursor) + '\n', { mode: 0o600 });

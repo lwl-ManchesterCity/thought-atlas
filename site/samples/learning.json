@@ -1,0 +1,519 @@
+{
+  "synthetic": true,
+  "notice": "合成演示数据：由脚本生成，不含任何真实用户会话内容。",
+  "session": {
+    "id": "sample-learning",
+    "title": "学习场景：从「JS 的 bug」到 IEEE754 精度取舍",
+    "summary": "概念讨论由浅入深，包含一次立场转折、AI 关键发言与其 influence 边，最后转向面试表达。",
+    "turns": [
+      {
+        "turnIndex": 1,
+        "timestamp": "2026-11-20T09:00:00.000Z",
+        "userText": "0.1 + 0.2 为什么不等于 0.3？我一直以为这是 JS 的 bug。",
+        "assistantText": "这是二进制浮点数的表示限制，不是 JavaScript 独有。0.1 在二进制里是无限循环小数，只能存近似值。"
+      },
+      {
+        "turnIndex": 2,
+        "timestamp": "2026-11-20T09:01:35.000Z",
+        "userText": "听懂了，所以这是 IEEE754 的精度取舍，不是 bug？我之前的判断反了。",
+        "assistantText": "对。IEEE754 定义了二进制浮点的存储与舍入规则，误差是标准取舍；需要精确十进制时应改用 decimal 或整数分。"
+      },
+      {
+        "turnIndex": 3,
+        "timestamp": "2026-11-20T09:03:10.000Z",
+        "userText": "那为什么银行系统不用浮点数存钱？",
+        "assistantText": "金额通常用整数最小货币单位或十进制定点类型，避免二进制舍入在累计与对账时产生偏差。"
+      },
+      {
+        "turnIndex": 4,
+        "timestamp": "2026-11-20T09:04:45.000Z",
+        "userText": "我下周要参加算法考试，本来还打算用浮点数处理金额题。",
+        "assistantText": "考试里处理金额可以用整数分或明确说明使用十进制类型；关键是不要用浮点直接比较相等。"
+      },
+      {
+        "turnIndex": 5,
+        "timestamp": "2026-11-20T09:06:20.000Z",
+        "userText": "如果面试官问十进制精度，我该怎么回答？",
+        "assistantText": "先说明二进制浮点的表示限制，再给出业务选型：金额用整数分或 decimal，并指出相等比较要带容差。"
+      },
+      {
+        "turnIndex": 6,
+        "timestamp": "2026-11-20T09:07:55.000Z",
+        "userText": "比起 JS 的 bug，我现在更关心面试怎么把这件事讲清楚。",
+        "assistantText": "可以把回答压缩成三步：现象、原因、选型。用一个金额例子收尾，比背定义更有说服力。"
+      },
+      {
+        "turnIndex": 7,
+        "timestamp": "2026-11-20T09:09:30.000Z",
+        "userText": "我打算试一下 decimal.js，看看它和整数分在金额场景的差别。",
+        "assistantText": "可以各写一个小例子：累加、除法和相等比较，观察 decimal 的精度配置与整数分的取整策略。"
+      },
+      {
+        "turnIndex": 8,
+        "timestamp": "2026-11-20T09:11:05.000Z",
+        "userText": "明白了，谢谢，我先去准备考试。",
+        "assistantText": "祝考试顺利。需要时可以把金额例子发来一起检查。"
+      }
+    ],
+    "events": [
+      {
+        "turnIndex": 1,
+        "timestamp": "2026-11-20T09:00:00.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0001",
+              "type": "claim",
+              "owner": "user",
+              "label": "浮点误差是JS bug",
+              "summary": "用户最初认为 0.1+0.2 不等于 0.3 是 JavaScript 的缺陷",
+              "bornTurn": 1,
+              "lastTurn": 1,
+              "rings": [
+                1
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                1
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 2,
+        "timestamp": "2026-11-20T09:01:35.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0002",
+              "type": "ai-voice",
+              "owner": "ai",
+              "label": "IEEE754精度取舍",
+              "summary": "AI 解释二进制无法精确表示 0.1，误差是标准取舍而非缺陷",
+              "bornTurn": 2,
+              "lastTurn": 2,
+              "rings": [
+                2
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                2
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          },
+          {
+            "op": "MARK_SHIFT",
+            "nodeId": "n_0003",
+            "shift": {
+              "fromNodeId": "n_0001",
+              "toSummary": "浮点误差是IEEE754精度取舍，不是JS的bug",
+              "triggerNodeId": "n_0002",
+              "triggerTurn": 2,
+              "retro": false
+            }
+          }
+        ]
+      },
+      {
+        "turnIndex": 3,
+        "timestamp": "2026-11-20T09:03:10.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0004",
+              "type": "question",
+              "owner": "user",
+              "label": "银行为何不用浮点",
+              "summary": "用户好奇银行系统如何避免浮点误差来存钱",
+              "bornTurn": 3,
+              "lastTurn": 3,
+              "rings": [
+                3
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                3
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 4,
+        "timestamp": "2026-11-20T09:04:45.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0005",
+              "type": "fact",
+              "owner": "user",
+              "label": "下周算法考试",
+              "summary": "用户下周参加算法考试，原本计划用浮点数处理金额题",
+              "bornTurn": 4,
+              "lastTurn": 4,
+              "rings": [
+                4
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                4
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 5,
+        "timestamp": "2026-11-20T09:06:20.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0006",
+              "type": "question",
+              "owner": "user",
+              "label": "面试如何解释精度",
+              "summary": "用户想知道面试中如何解释十进制精度问题",
+              "bornTurn": 5,
+              "lastTurn": 5,
+              "rings": [
+                5
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                5
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 6,
+        "timestamp": "2026-11-20T09:07:55.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0007",
+              "type": "claim",
+              "owner": "user",
+              "label": "面试表达更重要",
+              "summary": "用户把关注点从定位 bug 转向面试中的表达方式",
+              "bornTurn": 6,
+              "lastTurn": 6,
+              "rings": [
+                6
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                6
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": [
+              {
+                "from": "n_0004",
+                "to": "n_0007",
+                "kind": "related",
+                "bornTurn": 6
+              }
+            ]
+          },
+          {
+            "op": "REINFORCE",
+            "nodeId": "n_0006",
+            "turn": 6
+          }
+        ]
+      },
+      {
+        "turnIndex": 7,
+        "timestamp": "2026-11-20T09:09:30.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0008",
+              "type": "fact",
+              "owner": "user",
+              "label": "试用decimal.js",
+              "summary": "用户计划用 decimal.js 对比整数分处理金额的差别",
+              "bornTurn": 7,
+              "lastTurn": 7,
+              "rings": [
+                7
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                7
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          },
+          {
+            "op": "REINFORCE",
+            "nodeId": "n_0004",
+            "turn": 7
+          }
+        ]
+      },
+      {
+        "turnIndex": 8,
+        "timestamp": "2026-11-20T09:11:05.000Z",
+        "ops": [
+          {
+            "op": "SKIP"
+          }
+        ]
+      }
+    ],
+    "map": {
+      "sessionId": "sample-learning",
+      "nodes": [
+        {
+          "id": "n_0001",
+          "type": "claim",
+          "owner": "user",
+          "label": "浮点误差是JS bug",
+          "summary": "用户最初认为 0.1+0.2 不等于 0.3 是 JavaScript 的缺陷",
+          "bornTurn": 1,
+          "lastTurn": 1,
+          "rings": [
+            1
+          ],
+          "status": "superseded",
+          "supersededBy": "n_0003",
+          "mergedInto": null,
+          "anchorTurns": [
+            1
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0002",
+          "type": "ai-voice",
+          "owner": "ai",
+          "label": "IEEE754精度取舍",
+          "summary": "AI 解释二进制无法精确表示 0.1，误差是标准取舍而非缺陷",
+          "bornTurn": 2,
+          "lastTurn": 2,
+          "rings": [
+            2
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            2
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0003",
+          "type": "shift",
+          "owner": "user",
+          "label": "浮点误差是IEEE754精度取舍",
+          "summary": "浮点误差是IEEE754精度取舍，不是JS的bug",
+          "bornTurn": 2,
+          "lastTurn": 2,
+          "rings": [
+            2
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            2
+          ],
+          "clusterId": null,
+          "manual": false,
+          "shift": {
+            "fromNodeId": "n_0001",
+            "toSummary": "浮点误差是IEEE754精度取舍，不是JS的bug",
+            "triggerNodeId": "n_0002",
+            "triggerTurn": 2,
+            "retro": false
+          }
+        },
+        {
+          "id": "n_0004",
+          "type": "question",
+          "owner": "user",
+          "label": "银行为何不用浮点",
+          "summary": "用户好奇银行系统如何避免浮点误差来存钱",
+          "bornTurn": 3,
+          "lastTurn": 7,
+          "rings": [
+            3,
+            7
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            3,
+            7
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0005",
+          "type": "fact",
+          "owner": "user",
+          "label": "下周算法考试",
+          "summary": "用户下周参加算法考试，原本计划用浮点数处理金额题",
+          "bornTurn": 4,
+          "lastTurn": 4,
+          "rings": [
+            4
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            4
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0006",
+          "type": "question",
+          "owner": "user",
+          "label": "面试如何解释精度",
+          "summary": "用户想知道面试中如何解释十进制精度问题",
+          "bornTurn": 5,
+          "lastTurn": 6,
+          "rings": [
+            5,
+            6
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            5,
+            6
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0007",
+          "type": "claim",
+          "owner": "user",
+          "label": "面试表达更重要",
+          "summary": "用户把关注点从定位 bug 转向面试中的表达方式",
+          "bornTurn": 6,
+          "lastTurn": 6,
+          "rings": [
+            6
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            6
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0008",
+          "type": "fact",
+          "owner": "user",
+          "label": "试用decimal.js",
+          "summary": "用户计划用 decimal.js 对比整数分处理金额的差别",
+          "bornTurn": 7,
+          "lastTurn": 7,
+          "rings": [
+            7
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            7
+          ],
+          "clusterId": null,
+          "manual": false
+        }
+      ],
+      "edges": [
+        {
+          "from": "n_0002",
+          "to": "n_0003",
+          "kind": "influence",
+          "bornTurn": 2
+        },
+        {
+          "from": "n_0001",
+          "to": "n_0003",
+          "kind": "supersede",
+          "bornTurn": 2
+        },
+        {
+          "from": "n_0004",
+          "to": "n_0007",
+          "kind": "related",
+          "bornTurn": 6
+        }
+      ],
+      "lastTurn": 8
+    },
+    "stats": {
+      "turns": 8,
+      "nodes": 8,
+      "edges": 3,
+      "shifts": 1,
+      "influences": 1,
+      "types": {
+        "claim": 2,
+        "ai-voice": 1,
+        "shift": 1,
+        "question": 2,
+        "fact": 2
+      }
+    }
+  }
+}

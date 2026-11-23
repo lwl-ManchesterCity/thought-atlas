@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>安装 · 思维星图</title>
+    <meta name="description" content="一条命令把思维星图接到 Codex 与 Qoder：本地读取会话、边聊边长图、原文不出本机。" />
+    <link rel="stylesheet" href="/site.css" />
+  </head>
+  <body data-page="install">
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="/"><span class="brand-mark"></span>思维星图<small>Thought Atlas</small></a>
+        <nav class="site-nav" aria-label="主导航">
+          <a href="/" data-nav="home">首屏</a>
+          <a href="/demo.html" data-nav="demo">回放样例</a>
+          <a href="/sandbox.html" data-nav="sandbox">实时沙箱</a>
+          <a href="/install.html" data-nav="install">安装</a>
+          <a href="/boundary.html" data-nav="boundary">边界与隐私</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="page-head">
+        <span class="kicker">本地插件 · 原文不出本机</span>
+        <h1>一条命令，把星图接到你的 agent</h1>
+        <p>
+          安装后，思维星图只读本机会话日志，逐轮分析并生成本地星图。它不会接管你的对话，
+          也不会把原文上传到作者服务器。
+        </p>
+      </div>
+
+      <div class="prose">
+        <div class="command-block">
+          <span class="tag">发布版命令</span>
+          <code>npx thought-atlas@latest setup --codex --qoder</code>
+        </div>
+        <p class="note">
+          这是随发布包提供的安装命令。当前仓库阶段以源码方式运行；D7 会用真实 agent 对话录制安装与“边聊边长图”的完整过程。
+          如果你在评审当前仓库，请直接打开 <a href="/demo.html">回放样例</a> 与 <a href="/sandbox.html">实时沙箱</a>，它们使用同一份分析引擎。
+        </p>
+
+        <h2>安装后会发生什么</h2>
+        <ol class="steps">
+          <li>
+            <strong>写入本地配置。</strong>
+            配置位于 <code>~/.thought-atlas/config.json</code>，文件权限 600。BYOK Key 只存在这里，不进入 git、日志或前端。
+          </li>
+          <li>
+            <strong>注册只读适配器。</strong>
+            Codex 与 Qoder 的会话文件只读接入；守护进程在本地轮询，不修改 agent 的任何文件。
+          </li>
+          <li>
+            <strong>逐轮增量分析。</strong>
+            每轮只把当轮文本与导图骨架（label / summary 级）发给模型，不发送历史原文。
+          </li>
+          <li>
+            <strong>本机看星图。</strong>
+            浏览器打开 <code>http://127.0.0.1:7788</code>，节点随对话增长；断网不影响聊天，恢复后补跑。
+          </li>
+        </ol>
+
+        <h2>源码方式（当前阶段）</h2>
+        <div class="command-block">
+          <code>npm ci
+npm run build:web
+node packages/daemon/src/main.ts</code>
+        </div>
+        <p class="note">
+          需要 Node.js 24+ 与本机模型 Key。守护进程默认监听 <code>127.0.0.1:7788</code>，只绑定回环地址，不对局域网开放。
+        </p>
+
+        <h2>可选：手动标记与删除</h2>
+        <p>
+          自动分析不是终局。你可以手动把某个节点标为转变、删除误记节点；这些操作以隔离的事件序号写入日志，
+          同样可以回放与审计，不会污染真实对话轮次。
+        </p>
+
+        <div class="callout">
+          <strong>边界提醒：</strong>本地插件读取的原文只在本机。公开站点的回放样例当前全部为合成数据；
+          真实样例必须经作者逐段批准并通过敏感扫描后才会替换。详见 <a href="/boundary.html">边界与隐私</a>。
+        </div>
+
+        <h2>常见问题</h2>
+        <h3>需要登录或上传对话吗？</h3>
+        <p>不需要。本地插件不提供账号体系，也不上传会话原文；在线沙箱是独立的限量体验，且不持久化原文。</p>
+        <h3>模型 Key 存在哪里？</h3>
+        <p>本地使用 <code>~/.thought-atlas/config.json</code>（权限 600）。托管演示使用 Sites 应用 Secret，只声明名称 <code>DEEPSEEK_API_KEY</code>，值由作者在站点设置界面亲手录入，前端代码不包含 Key。</p>
+        <h3>分析失败了怎么办？</h3>
+        <p>失败不会丢轮次：聊天不受影响，UI 会标记本轮分析失败；错过的轮次可以补跑。越界的模型输出会整包丢弃，不会写入星图。</p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <span>思维星图 · 安装</span>
+        <span><a href="/demo.html">先看回放</a> · <a href="/boundary.html">边界与隐私</a></span>
+      </div>
+    </footer>
+    <script type="module" src="/assets/home.js"></script>
+  </body>
+</html>

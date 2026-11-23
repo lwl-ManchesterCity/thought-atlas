@@ -1,0 +1,166 @@
+{
+  "runAt": "2026-11-23T04:36:48.196Z",
+  "base": "http://127.0.0.1:7790",
+  "chrome": "headless=new",
+  "screenshots": "evidence/d6-screenshots",
+  "demo": {
+    "navMs": 35,
+    "readyMs": 86,
+    "coldWallMs": 2495,
+    "perf": {
+      "readyAt": 46,
+      "domEnd": 31,
+      "loadEnd": 31
+    },
+    "focusState": {
+      "title": "长对话：从通用导图工具到评委三分钟演示",
+      "nodes": 12,
+      "shifts": 2,
+      "label": "第 12 / 12 轮",
+      "stats": "12 节点5 边2 次转折1 条影响",
+      "banner": "合成演示数据 · 公开样例当前全部为合成生成，不含真实会话 · 全部公开样例均为合成演示数据；真实样例等待作者逐段批准。",
+      "tabs": 2
+    },
+    "shiftPanel": {
+      "text": "认知转变×产品重心从通用插件转向评委三分钟活跃 · 第 5 轮出现 · 年轮 3 层产品重心从通用插件转向评委三分钟演示转变立场产品重心从通用插件转向评委三分钟演示触发于第 5 轮锚点原文第 5 轮 · 你朋友说评委只看三分钟，插件安装太慢了。我改主意了，应该先保证三分钟能看懂。AI评委时间有限，首屏就要给出定义和一条可回放的样例，插件演示可以后置。第 10 轮 · 你所以还是先把本地验收跑完再谈发布，对吧？AI对，本地全量测试与浏览器验收通过后再申请发布，避免把未验收的版本推上去。第 12 轮 · 你好，那演示就先讲评委路线，插件安装放后面。AI演示顺序可以是：一句话定义、三分钟路线、回放样例、沙箱，最后才是安装。",
+      "images": 0,
+      "markup": false,
+      "title": "产品重心从通用插件转向评委三分钟"
+    },
+    "learningState": {
+      "nodes": 8,
+      "shifts": 1,
+      "stats": "8 节点3 边1 次转折1 条影响"
+    },
+    "demoShot": "evidence/d6-screenshots/demo-focus-desktop.png",
+    "learningShot": "evidence/d6-screenshots/demo-learning-desktop.png"
+  },
+  "pages": {
+    "home": {
+      "title": "思维星图 · 把对话长成一张会复盘的星图",
+      "marker": "把对话，长成一张会复盘的星图。",
+      "ms": 11
+    },
+    "demo": {
+      "title": "回放样例 · 思维星图",
+      "marker": "回放：星图如何一轮一轮长出来",
+      "ms": 11
+    },
+    "sandbox": {
+      "title": "实时沙箱 · 思维星图",
+      "marker": "实时沙箱：边聊，边看星图生长",
+      "ms": 15
+    },
+    "install": {
+      "title": "安装 · 思维星图",
+      "marker": "一条命令，把星图接到你的 agent",
+      "ms": 9
+    },
+    "boundary": {
+      "title": "边界与隐私 · 思维星图",
+      "marker": "边界与隐私",
+      "ms": 9
+    }
+  },
+  "sandbox": {
+    "health": {
+      "ok": true,
+      "configured": true,
+      "model": "deepseek-flash"
+    },
+    "sessionId": "f1108f28-31a9-4d93-b841-567ee4670204",
+    "turns": [
+      {
+        "turnIndex": 1,
+        "status": "第 1 轮已写入星图。",
+        "nodes": 1
+      },
+      {
+        "turnIndex": 2,
+        "status": "第 2 轮已写入星图。",
+        "nodes": 2
+      }
+    ],
+    "xssState": {
+      "images": 0,
+      "markupNodes": 0,
+      "literal": true,
+      "status": "第 3 轮已写入星图。",
+      "limits": "本会话剩余 17 / 20 轮今日全站剩余分析 97 / 100 轮"
+    },
+    "panelHasMarker": true,
+    "db": {
+      "turnRows": 3,
+      "cacheRows": 3,
+      "sessionRows": 1,
+      "lastTurn": 3,
+      "hashesValid": true,
+      "originalTextStored": false
+    },
+    "sandboxShot": "evidence/d6-screenshots/sandbox-3turns-desktop.png",
+    "sandboxFull": {
+      "path": "evidence/d6-screenshots/sandbox-3turns-full.png",
+      "height": 1253
+    }
+  },
+  "responsive": {
+    "home-390": {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": false
+    },
+    "homeShot-390": "evidence/d6-screenshots/mobile-390-home.png",
+    "demo-390": {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": false
+    },
+    "demoShot-390": "evidence/d6-screenshots/mobile-390-demo.png",
+    "sandbox-390": {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": false
+    },
+    "sandboxShot-390": "evidence/d6-screenshots/mobile-390-sandbox.png",
+    "install-390": {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": false
+    },
+    "boundary-390": {
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": false
+    },
+    "home-320": {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": false
+    },
+    "homeShot-320": "evidence/d6-screenshots/mobile-320-home.png",
+    "demo-320": {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": false
+    },
+    "demoShot-320": "evidence/d6-screenshots/mobile-320-demo.png",
+    "sandbox-320": {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": false
+    },
+    "sandboxShot-320": "evidence/d6-screenshots/mobile-320-sandbox.png",
+    "install-320": {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": false
+    },
+    "boundary-320": {
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": false
+    }
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}

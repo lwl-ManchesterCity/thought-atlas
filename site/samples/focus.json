@@ -1,0 +1,760 @@
+{
+  "synthetic": true,
+  "notice": "合成演示数据：由脚本生成，不含任何真实用户会话内容。",
+  "session": {
+    "id": "sample-focus",
+    "title": "长对话：从通用导图工具到评委三分钟演示",
+    "summary": "十二轮对话中产品重心两次迁移，展示长对话里观点被取代、重述加年轮与焦点漂移。",
+    "turns": [
+      {
+        "turnIndex": 1,
+        "timestamp": "2026-11-19T14:00:00.000Z",
+        "userText": "我想做一个把对话自动整理成思维导图的工具。",
+        "assistantText": "可以先确定输入来源和分析粒度，再决定导图的交互方式。"
+      },
+      {
+        "turnIndex": 2,
+        "timestamp": "2026-11-19T14:01:35.000Z",
+        "userText": "自动抽取观点是不是得靠大模型？怎么保证不出错？",
+        "assistantText": "可以让模型只输出结构化操作，再由本地规则校验与折叠，出错时整包丢弃。"
+      },
+      {
+        "turnIndex": 3,
+        "timestamp": "2026-11-19T14:03:10.000Z",
+        "userText": "比赛 11 月底截止，我只有两周时间。",
+        "assistantText": "时间有限时先做一条能演示的端到端链路，再补细节。"
+      },
+      {
+        "turnIndex": 4,
+        "timestamp": "2026-11-19T14:04:45.000Z",
+        "userText": "那我先做本地插件，不做网站，插件更容易演示。",
+        "assistantText": "本地插件能直接读会话，但要考虑安装门槛与隐私边界。"
+      },
+      {
+        "turnIndex": 5,
+        "timestamp": "2026-11-19T14:06:20.000Z",
+        "userText": "朋友说评委只看三分钟，插件安装太慢了。我改主意了，应该先保证三分钟能看懂。",
+        "assistantText": "评委时间有限，首屏就要给出定义和一条可回放的样例，插件演示可以后置。"
+      },
+      {
+        "turnIndex": 6,
+        "timestamp": "2026-11-19T14:07:55.000Z",
+        "userText": "那在线沙箱怎么做才不会被刷？",
+        "assistantText": "按 IP 限制每日会话数，全站每日分析轮次设上限，相同输入走缓存，超限就给回放入口。"
+      },
+      {
+        "turnIndex": 7,
+        "timestamp": "2026-11-19T14:09:30.000Z",
+        "userText": "公开样例用合成的就行，真实对话太敏感。",
+        "assistantText": "合成样例可以完整演示转变与长对话，但页面要明确标注合成，不能暗示是真实会话。"
+      },
+      {
+        "turnIndex": 8,
+        "timestamp": "2026-11-19T14:11:05.000Z",
+        "userText": "但作者要求真实样例必须逐段批准才能用。",
+        "assistantText": "那就把批准做成硬闸：批准文件缺失或敏感扫描有命中时，只发布合成样例。"
+      },
+      {
+        "turnIndex": 9,
+        "timestamp": "2026-11-19T14:12:40.000Z",
+        "userText": "公网发布前还要验什么？",
+        "assistantText": "至少验出网、Secret 不泄露、限流计数、冷打开时间和移动端布局，发布后再复测一次。"
+      },
+      {
+        "turnIndex": 10,
+        "timestamp": "2026-11-19T14:14:15.000Z",
+        "userText": "所以还是先把本地验收跑完再谈发布，对吧？",
+        "assistantText": "对，本地全量测试与浏览器验收通过后再申请发布，避免把未验收的版本推上去。"
+      },
+      {
+        "turnIndex": 11,
+        "timestamp": "2026-11-19T14:15:50.000Z",
+        "userText": "公开样例的结论也改一下：先用合成数据，真实样例以后补。",
+        "assistantText": "这会把之前「合成就够」修正为可替换的流程：合成先行，真实样例经批准后替换。"
+      },
+      {
+        "turnIndex": 12,
+        "timestamp": "2026-11-19T14:17:25.000Z",
+        "userText": "好，那演示就先讲评委路线，插件安装放后面。",
+        "assistantText": "演示顺序可以是：一句话定义、三分钟路线、回放样例、沙箱，最后才是安装。"
+      }
+    ],
+    "events": [
+      {
+        "turnIndex": 1,
+        "timestamp": "2026-11-19T14:00:00.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0001",
+              "type": "claim",
+              "owner": "user",
+              "label": "做思维导图工具",
+              "summary": "用户想自动把对话整理成思维导图",
+              "bornTurn": 1,
+              "lastTurn": 1,
+              "rings": [
+                1
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                1
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 2,
+        "timestamp": "2026-11-19T14:01:35.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0002",
+              "type": "question",
+              "owner": "user",
+              "label": "如何自动抽取观点",
+              "summary": "用户关心自动抽取观点的可靠性与校验方式",
+              "bornTurn": 2,
+              "lastTurn": 2,
+              "rings": [
+                2
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                2
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 3,
+        "timestamp": "2026-11-19T14:03:10.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0003",
+              "type": "fact",
+              "owner": "user",
+              "label": "比赛11月底截止",
+              "summary": "用户距离比赛截止只剩约两周",
+              "bornTurn": 3,
+              "lastTurn": 3,
+              "rings": [
+                3
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                3
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 4,
+        "timestamp": "2026-11-19T14:04:45.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0004",
+              "type": "claim",
+              "owner": "user",
+              "label": "先做本地插件",
+              "summary": "用户决定优先做本地插件而不是网站",
+              "bornTurn": 4,
+              "lastTurn": 4,
+              "rings": [
+                4
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                4
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 5,
+        "timestamp": "2026-11-19T14:06:20.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0005",
+              "type": "ai-voice",
+              "owner": "ai",
+              "label": "评委只看三分钟",
+              "summary": "AI 指出评委时间有限，首屏必须快速说明价值",
+              "bornTurn": 5,
+              "lastTurn": 5,
+              "rings": [
+                5
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                5
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          },
+          {
+            "op": "MARK_SHIFT",
+            "nodeId": "n_0006",
+            "shift": {
+              "fromNodeId": "n_0004",
+              "toSummary": "产品重心从通用插件转向评委三分钟演示",
+              "triggerNodeId": "n_0005",
+              "triggerTurn": 5,
+              "retro": false
+            }
+          }
+        ]
+      },
+      {
+        "turnIndex": 6,
+        "timestamp": "2026-11-19T14:07:55.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0007",
+              "type": "question",
+              "owner": "user",
+              "label": "沙箱怎么限流",
+              "summary": "用户关心在线沙箱如何防止滥用",
+              "bornTurn": 6,
+              "lastTurn": 6,
+              "rings": [
+                6
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                6
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": [
+              {
+                "from": "n_0005",
+                "to": "n_0007",
+                "kind": "related",
+                "bornTurn": 6
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "turnIndex": 7,
+        "timestamp": "2026-11-19T14:09:30.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0008",
+              "type": "claim",
+              "owner": "user",
+              "label": "合成样例就够",
+              "summary": "用户倾向公开样例只用合成数据",
+              "bornTurn": 7,
+              "lastTurn": 7,
+              "rings": [
+                7
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                7
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 8,
+        "timestamp": "2026-11-19T14:11:05.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0009",
+              "type": "fact",
+              "owner": "user",
+              "label": "真实样例需逐段批准",
+              "summary": "真实会话样例必须经作者逐段批准后才能替换",
+              "bornTurn": 8,
+              "lastTurn": 8,
+              "rings": [
+                8
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                8
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 9,
+        "timestamp": "2026-11-19T14:12:40.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0010",
+              "type": "question",
+              "owner": "user",
+              "label": "公网发布前验什么",
+              "summary": "用户询问发布前必须验证的项目",
+              "bornTurn": 9,
+              "lastTurn": 9,
+              "rings": [
+                9
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                9
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 10,
+        "timestamp": "2026-11-19T14:14:15.000Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0011",
+              "type": "claim",
+              "owner": "user",
+              "label": "先本地验收再发布",
+              "summary": "用户确认发布前必须先完成本地验收",
+              "bornTurn": 10,
+              "lastTurn": 10,
+              "rings": [
+                10
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                10
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": [
+              {
+                "from": "n_0009",
+                "to": "n_0011",
+                "kind": "related",
+                "bornTurn": 10
+              }
+            ]
+          },
+          {
+            "op": "REINFORCE",
+            "nodeId": "n_0006",
+            "turn": 10
+          }
+        ]
+      },
+      {
+        "turnIndex": 11,
+        "timestamp": "2026-11-19T14:15:50.000Z",
+        "ops": [
+          {
+            "op": "MARK_SHIFT",
+            "nodeId": "n_0012",
+            "shift": {
+              "fromNodeId": "n_0008",
+              "toSummary": "公开样例先用合成数据，真实样例经批准后替换",
+              "triggerNodeId": null,
+              "triggerTurn": 11,
+              "retro": false
+            }
+          }
+        ]
+      },
+      {
+        "turnIndex": 12,
+        "timestamp": "2026-11-19T14:17:25.000Z",
+        "ops": [
+          {
+            "op": "REINFORCE",
+            "nodeId": "n_0006",
+            "turn": 12
+          },
+          {
+            "op": "REINFORCE",
+            "nodeId": "n_0010",
+            "turn": 12
+          }
+        ]
+      }
+    ],
+    "map": {
+      "sessionId": "sample-focus",
+      "nodes": [
+        {
+          "id": "n_0001",
+          "type": "claim",
+          "owner": "user",
+          "label": "做思维导图工具",
+          "summary": "用户想自动把对话整理成思维导图",
+          "bornTurn": 1,
+          "lastTurn": 1,
+          "rings": [
+            1
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            1
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0002",
+          "type": "question",
+          "owner": "user",
+          "label": "如何自动抽取观点",
+          "summary": "用户关心自动抽取观点的可靠性与校验方式",
+          "bornTurn": 2,
+          "lastTurn": 2,
+          "rings": [
+            2
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            2
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0003",
+          "type": "fact",
+          "owner": "user",
+          "label": "比赛11月底截止",
+          "summary": "用户距离比赛截止只剩约两周",
+          "bornTurn": 3,
+          "lastTurn": 3,
+          "rings": [
+            3
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            3
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0004",
+          "type": "claim",
+          "owner": "user",
+          "label": "先做本地插件",
+          "summary": "用户决定优先做本地插件而不是网站",
+          "bornTurn": 4,
+          "lastTurn": 4,
+          "rings": [
+            4
+          ],
+          "status": "superseded",
+          "supersededBy": "n_0006",
+          "mergedInto": null,
+          "anchorTurns": [
+            4
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0005",
+          "type": "ai-voice",
+          "owner": "ai",
+          "label": "评委只看三分钟",
+          "summary": "AI 指出评委时间有限，首屏必须快速说明价值",
+          "bornTurn": 5,
+          "lastTurn": 5,
+          "rings": [
+            5
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            5
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0006",
+          "type": "shift",
+          "owner": "user",
+          "label": "产品重心从通用插件转向评委三分钟",
+          "summary": "产品重心从通用插件转向评委三分钟演示",
+          "bornTurn": 5,
+          "lastTurn": 12,
+          "rings": [
+            5,
+            10,
+            12
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            5,
+            10,
+            12
+          ],
+          "clusterId": null,
+          "manual": false,
+          "shift": {
+            "fromNodeId": "n_0004",
+            "toSummary": "产品重心从通用插件转向评委三分钟演示",
+            "triggerNodeId": "n_0005",
+            "triggerTurn": 5,
+            "retro": false
+          }
+        },
+        {
+          "id": "n_0007",
+          "type": "question",
+          "owner": "user",
+          "label": "沙箱怎么限流",
+          "summary": "用户关心在线沙箱如何防止滥用",
+          "bornTurn": 6,
+          "lastTurn": 6,
+          "rings": [
+            6
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            6
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0008",
+          "type": "claim",
+          "owner": "user",
+          "label": "合成样例就够",
+          "summary": "用户倾向公开样例只用合成数据",
+          "bornTurn": 7,
+          "lastTurn": 7,
+          "rings": [
+            7
+          ],
+          "status": "superseded",
+          "supersededBy": "n_0012",
+          "mergedInto": null,
+          "anchorTurns": [
+            7
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0009",
+          "type": "fact",
+          "owner": "user",
+          "label": "真实样例需逐段批准",
+          "summary": "真实会话样例必须经作者逐段批准后才能替换",
+          "bornTurn": 8,
+          "lastTurn": 8,
+          "rings": [
+            8
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            8
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0010",
+          "type": "question",
+          "owner": "user",
+          "label": "公网发布前验什么",
+          "summary": "用户询问发布前必须验证的项目",
+          "bornTurn": 9,
+          "lastTurn": 12,
+          "rings": [
+            9,
+            12
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            9,
+            12
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0011",
+          "type": "claim",
+          "owner": "user",
+          "label": "先本地验收再发布",
+          "summary": "用户确认发布前必须先完成本地验收",
+          "bornTurn": 10,
+          "lastTurn": 10,
+          "rings": [
+            10
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            10
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0012",
+          "type": "shift",
+          "owner": "user",
+          "label": "公开样例先用合成数据，真实样例经",
+          "summary": "公开样例先用合成数据，真实样例经批准后替换",
+          "bornTurn": 11,
+          "lastTurn": 11,
+          "rings": [
+            11
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            11
+          ],
+          "clusterId": null,
+          "manual": false,
+          "shift": {
+            "fromNodeId": "n_0008",
+            "toSummary": "公开样例先用合成数据，真实样例经批准后替换",
+            "triggerNodeId": null,
+            "triggerTurn": 11,
+            "retro": false
+          }
+        }
+      ],
+      "edges": [
+        {
+          "from": "n_0005",
+          "to": "n_0006",
+          "kind": "influence",
+          "bornTurn": 5
+        },
+        {
+          "from": "n_0004",
+          "to": "n_0006",
+          "kind": "supersede",
+          "bornTurn": 5
+        },
+        {
+          "from": "n_0005",
+          "to": "n_0007",
+          "kind": "related",
+          "bornTurn": 6
+        },
+        {
+          "from": "n_0009",
+          "to": "n_0011",
+          "kind": "related",
+          "bornTurn": 10
+        },
+        {
+          "from": "n_0008",
+          "to": "n_0012",
+          "kind": "supersede",
+          "bornTurn": 11
+        }
+      ],
+      "lastTurn": 12
+    },
+    "stats": {
+      "turns": 12,
+      "nodes": 12,
+      "edges": 5,
+      "shifts": 2,
+      "influences": 1,
+      "types": {
+        "claim": 4,
+        "question": 3,
+        "fact": 2,
+        "ai-voice": 1,
+        "shift": 2
+      }
+    }
+  }
+}

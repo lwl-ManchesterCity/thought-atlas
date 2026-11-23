@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { appendFile, mkdir, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { appendFile, chmod, mkdir, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { TurnPayload } from '@thought-atlas/core';
@@ -300,6 +300,8 @@ test('cursor file is written with restrictive permissions and stores parser stat
   const cursorDir = join(root, 'cursors');
   try {
     await writeFile(file, lines(turn1()));
+    await mkdir(cursorDir, { recursive: true, mode: 0o755 });
+    await chmod(cursorDir, 0o755);
     const watcher = new QoderWatcher({
       targets: [file],
       cursorDir,
@@ -310,6 +312,8 @@ test('cursor file is written with restrictive permissions and stores parser stat
     await new Promise((r) => setTimeout(r, 80));
     watcher.stop();
     const { readdir } = await import('node:fs/promises');
+    const dirInfo = await stat(cursorDir);
+    assert.equal(dirInfo.mode & 0o777, 0o700);
     const files = await readdir(cursorDir);
     assert.equal(files.length, 1);
     const cursorPath = join(cursorDir, files[0]);

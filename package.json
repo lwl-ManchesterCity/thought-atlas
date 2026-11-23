@@ -12,10 +12,16 @@
     "packages/web"
   ],
   "scripts": {
-    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p packages/web/tsconfig.json",
-    "test": "node --test packages/core/test/*.test.ts packages/adapters/codex/test/*.test.ts packages/adapters/watcher/test/*.test.ts packages/adapters/qoder/test/*.test.ts packages/daemon/test/*.test.ts packages/web/test/*.test.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p packages/web/tsconfig.json && tsc --noEmit -p site/tsconfig.json",
+    "test": "node --test packages/core/test/*.test.ts packages/adapters/codex/test/*.test.ts packages/adapters/watcher/test/*.test.ts packages/adapters/qoder/test/*.test.ts packages/daemon/test/*.test.ts packages/web/test/*.test.ts site/test/*.test.ts",
     "d1:synthetic": "node scripts/d1-synthetic.ts",
-    "build:web": "npm run build --workspace packages/web"
+    "build:web": "npm run build --workspace packages/web",
+    "sync:core": "node scripts/d6-sync-core.ts",
+    "check:core": "node scripts/d6-sync-core.ts --check",
+    "samples:d6": "node scripts/d6-samples.ts",
+    "build:site": "node scripts/d6-build-site.ts",
+    "dev:site": "node site/dev/server.ts",
+    "check:site": "node scripts/d6-site-check.ts"
   },
   "devDependencies": {
     "@types/d3-force": "^3.0.10",

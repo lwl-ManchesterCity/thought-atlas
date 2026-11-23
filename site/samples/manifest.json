@@ -1,0 +1,48 @@
+{
+  "synthetic": true,
+  "notice": "合成演示数据：由脚本生成，不含任何真实用户会话内容。",
+  "generatedAt": "2026-11-23T04:25:34.088Z",
+  "realSamplesApproved": false,
+  "sessions": [
+    {
+      "file": "learning.json",
+      "id": "sample-learning",
+      "title": "学习场景：从「JS 的 bug」到 IEEE754 精度取舍",
+      "summary": "概念讨论由浅入深，包含一次立场转折、AI 关键发言与其 influence 边，最后转向面试表达。",
+      "stats": {
+        "turns": 8,
+        "nodes": 8,
+        "edges": 3,
+        "shifts": 1,
+        "influences": 1,
+        "types": {
+          "claim": 2,
+          "ai-voice": 1,
+          "shift": 1,
+          "question": 2,
+          "fact": 2
+        }
+      }
+    },
+    {
+      "file": "focus.json",
+      "id": "sample-focus",
+      "title": "长对话：从通用导图工具到评委三分钟演示",
+      "summary": "十二轮对话中产品重心两次迁移，展示长对话里观点被取代、重述加年轮与焦点漂移。",
+      "stats": {
+        "turns": 12,
+        "nodes": 12,
+        "edges": 5,
+        "shifts": 2,
+        "influences": 1,
+        "types": {
+          "claim": 4,
+          "question": 3,
+          "fact": 2,
+          "ai-voice": 1,
+          "shift": 2
+        }
+      }
+    }
+  ]
+}

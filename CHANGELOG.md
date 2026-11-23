@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v0.6.0 — D6（2026-11-23，开发会话模型 DeepSeek-Flash）
+
+### 新增
+- 托管核心：`scripts/d6-sync-core.ts` 把零 Node import 的 core 逐字节同步进 `site/functions/lib/core/`；Deno 入口读 `DEEPSEEK_API_KEY`（缺失 fail closed）；数据库版 `Storage` 只写事件/图/失败/会话元数据；BYOK `DeepSeekModel` 直调 `api.deepseek.com`（`deepseek-flash`、思考关、JSON 模式、超时），`/api/selfcheck` 只回布尔与耗时
+- 沙箱防滥用：每 IP 每日 ≤3 会话、单会话 ≤20 轮、全站每日 ≤100 轮分析（CAS 预占）、单轮 ≤2000 字、输入+骨架哈希缓存（只存 ops、不耗分析额度）、越界分析整包丢弃；`site/migrations/0001_sandbox.sql` 8 表 + 索引
+- 五块站点：首屏 + 评委 3 分钟路线；回放样例（时间轴 0–末轮、shift 快捷入口、锚点原文）；实时沙箱分屏；安装一条命令；边界与隐私全文（原文不留存、限流、注入防护、授权流程）
+- 合成样例：学习场景 8 轮（8 节点/3 边/1 转折/1 influence）与长对话 12 轮（12/5/2/1），页面明确标注合成；真实样例管线 `sample-approvals.json` + 敏感扫描硬闸就绪，缺批准只用合成
+- 构建/本地验收：`scripts/d6-build-site.ts`（core 别名、样例闸门、静态产物）；`site/dev/server.ts`（MemoryDb + StubModel 同源 API）；`scripts/d6-site-check.ts`（headless Chrome：冷打开、回放、3 轮沙箱、限流、数据库无原文、XSS、390/320）
+- D5 遗留：`CursorStore.save` 对已存在目录补 `chmod 0o700`，单测先造 755 再断言 700
+- 单测新增 20 个（托管 14 + 样例闸门 6），全量 124 个
+
+### 验证
+- 类型：根 + web + site 三个 tsconfig 全绿；`check:core` 8 文件一致
+- 冷打开：导航→首图可交互 86ms；含布局收敛严格测量 2495ms（<3s）
+- 回放：长对话 12 节点/5 边/2 转折/1 影响，学习 8/3/1/1；时间轴 0↔12、shift 面板“锚点原文”正常
+- 沙箱：3 轮节点 1→2→3，17/20 轮、97/100 分析；数据库 3 条轮次仅 64 位哈希、原文 0 命中、缓存仅 ops；XSS 载荷字面显示且不执行
+- 五页 × 390/320 无横向溢出；Console 0、页面异常 0
+
+### 安全与边界
+- 未发布、未读写 Secret 值、未创建真实样例/黄金 fixture；发布样例全合成
+- Key/私钥模式：工作区、git 全历史、`site/dist` 均 0；真实对话 217 个 24 字片段对仓库与历史 0 命中
+- `~/.codex` / `~/.qoder-cn` 只读，hooks/config 指纹与基线一致；7788 daemon 与 Qoder watcher 保持运行
+- **云草稿/后端/迁移未创建**：Sites 要求当前会话工作区，本仓库在另一会话目录，`open_design_workbench` 返回 `design_forbidden`、`prepare_site` 返回 `sites_current_session_required`；未产生任何云资源，需在仓库所属会话重跑，仍无 publish
+- 本地出网未验真：E2E 用 StubModel，部署后先跑 `/api/selfcheck`
+
 ## v0.5.0 — D5（2026-11-23，开发会话模型 DeepSeek-Flash）
 
 ### 新增

@@ -1,0 +1,35 @@
+{
+  "runAt": "2026-11-23T04:45:00Z",
+  "scope": "repo working tree + full git history + site/dist publish directory",
+  "secrets": {
+    "workingTreeSkPattern": 0,
+    "historySkPattern": 0,
+    "historySecretAssignment": 0,
+    "historyPrivateKeyBlock": 0,
+    "publishHomePath": 0,
+    "publishSkPattern": 0
+  },
+  "realConversationFragments": {
+    "sourceFiles": 44,
+    "sampledFragments": 217,
+    "windowsScanned": 1041,
+    "repoMatches": 0,
+    "historyMatches": 0,
+    "method": "从 ~/.codex/sessions 与 ~/.thought-atlas/golden-drafts 抽样 24 字纯汉字片段，对仓库（含 site/dist）与 git 全历史做精确匹配；只记录计数"
+  },
+  "readonlyFingerprints": {
+    "~/.codex/hooks.json": "78922a784ee78e9e50587e93628cd3b9d4dfbe49087adc4514e6781cea38cbb9",
+    "~/.codex/config.toml": "d931ef927426e41afb45708153f67cfcf922b9bfbafc9d501e7c08f0fa553062"
+  },
+  "samples": {
+    "public": ["learning.json", "focus.json"],
+    "synthetic": true,
+    "realSessionsApproved": false,
+    "approvalFilePresent": false,
+    "gateReason": "approval-invalid"
+  },
+  "notes": [
+    "未读取任何 Secret 值；只扫描 sk- 与赋值/私钥模式",
+    "真实 transcript 与黄金草稿仅只读抽样，内容未写入仓库、证据或截图"
+  ]
+}
