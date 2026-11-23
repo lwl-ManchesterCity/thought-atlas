@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, rm, access } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, rm, access, writeFile, utimes } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
@@ -45,7 +45,7 @@ interface Harness {
   cleanup: () => Promise<void>;
 }
 
-async function setup(): Promise<Harness> {
+async function setup(options: { webDir?: string } = {}): Promise<Harness> {
   const home = await mkdtemp(join(tmpdir(), 'atlas-daemon-test-'));
   const model = new FakeModel();
   const daemon = new AtlasDaemon({
@@ -54,6 +54,7 @@ async function setup(): Promise<Harness> {
     port: 0,
     retryIntervalMs: 3_600_000,
     storageFactory: (sessionId) => new FsStorage(sessionId, home),
+    webDir: options.webDir,
   });
   const port = await daemon.start();
   const base = `http://127.0.0.1:${port}`;
@@ -229,6 +230,88 @@ test('invalid payload and unknown routes are rejected without crashing', async (
     assert.equal(unknown.status, 404);
     const health = await fetch(`${h.base}/health`);
     assert.equal(health.status, 200);
+  } finally {
+    await h.cleanup();
+  }
+});
+test('GET / serves web build only from whitelist and blocks traversal', async () => {
+  const webDir = await mkdtemp(join(tmpdir(), 'atlas-web-test-'));
+  await writeFile(join(webDir, 'index.html'), '<!doctype html><title>atlas-fixture</title>');
+  await writeFile(join(webDir, 'app.js'), 'console.log(1);');
+  await writeFile(join(webDir, 'styles.css'), 'body{}');
+  const h = await setup({ webDir });
+  try {
+    const index = await fetch(`${h.base}/`);
+    assert.equal(index.status, 200);
+    assert.match(index.headers.get('content-type') ?? '', /text\/html/);
+    assert.match(await index.text(), /atlas-fixture/);
+
+    const script = await fetch(`${h.base}/app.js`);
+    assert.equal(script.status, 200);
+    assert.match(script.headers.get('content-type') ?? '', /javascript/);
+
+    const style = await fetch(`${h.base}/styles.css`);
+    assert.equal(style.status, 200);
+
+    const traversal = await fetch(`${h.base}/%2e%2e%2fpackage.json`);
+    assert.equal(traversal.status, 404);
+    const missing = await fetch(`${h.base}/missing.js`);
+    assert.equal(missing.status, 404);
+  } finally {
+    await h.cleanup();
+    await rm(webDir, { recursive: true, force: true });
+  }
+});
+
+test('static routes 404 when webDir is not configured', async () => {
+  const h = await setup();
+  try {
+    const res = await fetch(`${h.base}/`);
+    assert.equal(res.status, 404);
+  } finally {
+    await h.cleanup();
+  }
+});
+
+test('GET /sessions lists maps newest first with counts', async () => {
+  const h = await setup();
+  try {
+    const older = {
+      sessionId: 'session-older',
+      lastTurn: 3,
+      nodes: [],
+      edges: [],
+    };
+    const newer = {
+      sessionId: 'session-newer',
+      lastTurn: 5,
+      nodes: [{ id: 'n_0001' }],
+      edges: [],
+    };
+    await mkdir(join(h.home, 'sessions', 'session-older'), { recursive: true });
+    await mkdir(join(h.home, 'sessions', 'session-newer'), { recursive: true });
+    const olderPath = join(h.home, 'sessions', 'session-older', 'map.json');
+    const newerPath = join(h.home, 'sessions', 'session-newer', 'map.json');
+    await writeFile(olderPath, JSON.stringify(older));
+    await writeFile(newerPath, JSON.stringify(newer));
+    await utimes(olderPath, new Date('2026-11-20T00:00:00Z'), new Date('2026-11-20T00:00:00Z'));
+    await utimes(newerPath, new Date('2026-11-22T00:00:00Z'), new Date('2026-11-22T00:00:00Z'));
+
+    const res = await fetch(`${h.base}/sessions`);
+    assert.equal(res.status, 200);
+    const list = (await res.json()) as {
+      sessionId: string;
+      lastTurn: number;
+      nodes: number;
+      edges: number;
+      updatedAt: string;
+    }[];
+    assert.deepEqual(
+      list.map((s) => s.sessionId),
+      ['session-newer', 'session-older'],
+    );
+    assert.equal(list[0].nodes, 1);
+    assert.equal(list[1].lastTurn, 3);
   } finally {
     await h.cleanup();
   }

@@ -2,5 +2,11 @@
   "name": "@thought-atlas/web",
   "version": "0.1.0",
   "type": "module",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --format=esm --target=es2022 --minify --outfile=dist/app.js && cp index.html styles.css dist/"
+  },
+  "dependencies": {
+    "d3-force": "^3.0.1"
+  }
 }

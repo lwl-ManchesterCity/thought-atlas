@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>思维星图 · Thought Atlas</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        <span class="brand-name">思维星图</span>
+      </div>
+      <label class="session-picker">
+        <span>会话</span>
+        <select id="session"></select>
+      </label>
+      <div class="stats" id="stats">加载中</div>
+      <div class="live" id="live-state" data-live="off">连接中</div>
+    </header>
+    <main class="stage">
+      <canvas id="map"></canvas>
+      <div class="legend">
+        <span class="legend-item"><i class="dot dot-user"></i>论点/问题/事实</span>
+        <span class="legend-item"><i class="dot dot-ai"></i>AI 观点</span>
+        <span class="legend-item"><i class="dot dot-shift"></i>认知转变</span>
+        <span class="legend-item"><i class="line line-influence"></i>影响</span>
+        <span class="legend-item"><i class="line line-related"></i>相关</span>
+        <span class="legend-item"><i class="dot dot-muted"></i>已被取代</span>
+      </div>
+      <div class="empty-hint" id="empty-hint" hidden>暂无星图数据 · 等待对话流入</div>
+      <aside class="panel" id="panel" hidden></aside>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

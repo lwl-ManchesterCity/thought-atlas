@@ -1,5 +1,5 @@
 import { createServer, type Server, type ServerResponse } from 'node:http';
-import { readFile, writeFile, readdir, rm } from 'node:fs/promises';
+import { readFile, writeFile, readdir, rm, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 import {
   ThoughtGraph,
@@ -11,6 +11,7 @@ import type {
   ModelClient,
   Storage,
   GraphUpdate,
+  GraphMap,
   RecentSummary,
   SourcePlatform,
   MapOp,
@@ -24,6 +25,7 @@ export interface DaemonOptions {
   storageFactory?: (sessionId: string) => Storage;
   retryIntervalMs?: number;
   maxRetryAttempts?: number;
+  webDir?: string;
 }
 
 export interface IngestResult {
@@ -41,6 +43,13 @@ export interface RetryEntry {
 
 const SOURCES = new Set<SourcePlatform>(['qoder', 'claude-code', 'zcode', 'codex', 'watcher', 'sandbox']);
 const MAX_BODY = 1024 * 1024;
+
+const STATIC_FILES: Record<string, { file: string; type: string }> = {
+  '/': { file: 'index.html', type: 'text/html; charset=utf-8' },
+  '/index.html': { file: 'index.html', type: 'text/html; charset=utf-8' },
+  '/app.js': { file: 'app.js', type: 'text/javascript; charset=utf-8' },
+  '/styles.css': { file: 'styles.css', type: 'text/css; charset=utf-8' },
+};
 
 function validatePayload(input: unknown): TurnPayload | null {
   if (typeof input !== 'object' || input === null) return null;
@@ -66,6 +75,7 @@ export class AtlasDaemon {
   private port: number;
   private storageFactory: (sessionId: string) => Storage;
   private maxRetryAttempts: number;
+  private webDir: string | null;
   private graphs = new Map<string, ThoughtGraph>();
   private queues = new Map<string, Promise<unknown>>();
   private previous = new Map<string, TurnPayload>();
@@ -81,6 +91,7 @@ export class AtlasDaemon {
     this.port = options.port ?? 7788;
     this.storageFactory = options.storageFactory ?? ((id) => new FsStorage(id, this.home));
     this.maxRetryAttempts = options.maxRetryAttempts ?? 5;
+    this.webDir = options.webDir ?? null;
     if (options.retryIntervalMs !== undefined && options.retryIntervalMs > 0) {
       this.retryTimer = setInterval(() => {
         if (this.activeIngests === 0) void this.runRetryOnce();
@@ -325,6 +336,31 @@ export class AtlasDaemon {
       return;
     }
 
+    const staticEntry = STATIC_FILES[url.pathname];
+    if (req.method === 'GET' && staticEntry) {
+      if (!this.webDir) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'web build not available' }));
+        return;
+      }
+      try {
+        const content = await readFile(join(this.webDir, staticEntry.file));
+        res.writeHead(200, { 'Content-Type': staticEntry.type, 'Cache-Control': 'no-cache' });
+        res.end(content);
+      } catch {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'not found' }));
+      }
+      return;
+    }
+
+    if (req.method === 'GET' && url.pathname === '/sessions') {
+      const sessions = await this.listSessions();
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(sessions));
+      return;
+    }
+
     if (req.method === 'GET' && url.pathname === '/health') {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ ok: true }));
@@ -333,6 +369,44 @@ export class AtlasDaemon {
 
     res.writeHead(404, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: 'not found' }));
+  }
+
+  private async listSessions(): Promise<
+    { sessionId: string; lastTurn: number; nodes: number; edges: number; updatedAt: string }[]
+  > {
+    const dir = join(this.home, 'sessions');
+    let ids: string[] = [];
+    try {
+      ids = await readdir(dir);
+    } catch {
+      return [];
+    }
+    const sessions: {
+      sessionId: string;
+      lastTurn: number;
+      nodes: number;
+      edges: number;
+      updatedAt: string;
+    }[] = [];
+    for (const id of ids) {
+      if (!/^[A-Za-z0-9._-]+$/.test(id)) continue;
+      try {
+        const path = join(dir, id, 'map.json');
+        const [raw, info] = await Promise.all([readFile(path, 'utf8'), stat(path)]);
+        const map = JSON.parse(raw) as GraphMap;
+        sessions.push({
+          sessionId: id,
+          lastTurn: map.lastTurn ?? 0,
+          nodes: map.nodes?.length ?? 0,
+          edges: map.edges?.length ?? 0,
+          updatedAt: info.mtime.toISOString(),
+        });
+      } catch {
+        continue;
+      }
+    }
+    sessions.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    return sessions;
   }
 
   async stop(): Promise<void> {
