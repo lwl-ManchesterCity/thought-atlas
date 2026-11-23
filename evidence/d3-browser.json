@@ -1,0 +1,98 @@
+{
+  "runAt": "2026-11-23T02:47:36.642Z",
+  "chrome": "headless=new",
+  "perfBase": "http://127.0.0.1:7802",
+  "liveBase": "http://127.0.0.1:7788",
+  "coldOpen": {
+    "readyAt": 54,
+    "domEnd": 30,
+    "loadEnd": 31,
+    "stats": {
+      "fps": 2,
+      "frames": 2,
+      "nodes": 300,
+      "edges": 600,
+      "converged": false,
+      "zoom": 1,
+      "focused": false,
+      "selected": null,
+      "lastDrawAt": 30
+    }
+  },
+  "fps": {
+    "samples": [
+      {
+        "fps": 60,
+        "frames": 82,
+        "converged": false
+      },
+      {
+        "fps": 59,
+        "frames": 154,
+        "converged": false
+      },
+      {
+        "fps": 60,
+        "frames": 227,
+        "converged": false
+      }
+    ],
+    "min": 59,
+    "median": 60,
+    "note": "headless Chrome (SwiftShader) 下 300 节点/600 边，rAF 实测；多窗口取样"
+  },
+  "focusMode": {
+    "beforeClick": {
+      "focused": false,
+      "panelHidden": true
+    },
+    "afterClick": {
+      "focused": true,
+      "selected": "n_0002",
+      "panelHidden": false,
+      "panelTitle": "问题-002",
+      "panelSummary": "合成压测节点 2，用于验证 300 节点规模下的布局与渲染性能。"
+    },
+    "afterBlank": {
+      "focused": false,
+      "panelHidden": true
+    },
+    "focusShot": "evidence/d3-screenshots/perf-focus-mode.png"
+  },
+  "xss": {
+    "fired": null,
+    "images": 0,
+    "scripts": 1,
+    "iframes": 0,
+    "title": "<script>window.__xssFired=1</script>",
+    "summary": "<img src=x onerror=\"window.__xssFired=1\">",
+    "panelHtmlContainsImgTag": false,
+    "xssShot": "evidence/d3-screenshots/xss-fixture-inert.png"
+  },
+  "mobile": {
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "overflow": false,
+    "topbarWidth": 390,
+    "mobileShot": "evidence/d3-screenshots/mobile-390.png",
+    "mobilePanel": {
+      "hidden": false,
+      "width": 374,
+      "bottom": 836,
+      "innerHeight": 844
+    },
+    "mobilePanelShot": "evidence/d3-screenshots/mobile-390-panel.png"
+  },
+  "liveGrowth": {
+    "sessionId": "d3-live-1795402067030",
+    "readyAt": 20,
+    "beforeNodes": 1,
+    "visibleMs": 1,
+    "postRoundTripMs": 673,
+    "sawAnimating": true,
+    "nodesAfter": 2,
+    "shot": "evidence/d3-screenshots/live-growth.png"
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}

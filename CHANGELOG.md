@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v0.3.0 — D3（2026-11-23，开发会话模型 DeepSeek-Flash）
+
+### 新增
+- packages/web：d3-force + Canvas 星图渲染器——§8.2 视觉编码全集（用户节点大亮 / AI 观点小淡 / shift 菱形暖色描边 / superseded 置灰删除线 / influence 高亮虚线 / related 细灰线 / 年轮半径微增）；增量布局（新节点按邻居落点、alpha 0.3 局部扰动、不复算首屏）；收敛冻结（手动 tick，alpha<0.02 停止，仅交互/增量/resize 重绘）；结构按 GraphMap 快照解耦，为 D4 回放预留
+- 聚焦模式：点击节点非邻居透明度 0.1、邻居保留标签，点击空白恢复；节点拖拽、空白平移、滚轮缩放
+- SSE 实时增长：/events 按 sessionId 过滤，新节点 450ms 生长动画，会话下拉节点数同步刷新；基础详情面板（label/type/summary/rings/status，纯 textContent）
+- daemon：静态页白名单（index.html / app.js / styles.css，防目录穿越）、GET /sessions（按 map.json mtime 倒序，含节点/连线/轮数）；webDir 默认 packages/web/dist，可用 ATLAS_WEB_DIR 覆盖
+- 构建：esbuild 单文件 bundle（28KB），`npm run build:web`；dist 保持不入库
+- 脚本：d3-perf-daemon.ts（300 节点/600 边与 XSS 夹具）、d3-browser-check.ts（headless Chrome + CDP：冷启动、帧率、点击聚焦、XSS、390px、真实 SSE 增长）、d3-annotations.ts（三样本逐轮标注草稿）
+- 黄金样本标注：新增 2026-10-19（42 轮，线程 01a15219）候选；三份 `<fileId>.annotation.md`（600，本机）含每轮应记/应合并重述/转变点与一行理由
+- 单测 73 个全绿（core 36 / codex 12 / watcher 3 / daemon 15 / web 7）
+
+### 验证与返工
+- 300 节点/600 边 rAF 实测 60/59/60 fps（初版 38fps：600 条边逐条 stroke + 每帧字体状态重建 → 按样式批量 Path2D + 状态缓存后达标）；冷打开 54ms；390px 无横向溢出、面板底部抽屉
+- 真实 daemon + DeepSeek-Flash 直播：合成轮 POST 返回后 1ms 节点可见（SSE 先于响应），观测到生长动画；XSS 五类载荷在 Canvas 与面板均惰性；Console 零错误
+- 返工1：`.empty-hint` 的 display:flex 覆盖 hidden 属性导致空态提示叠加 → 全局 `[hidden]{display:none!important}`
+- 返工2：首轮 headless 验收连接失败（守护进程随父 shell 退出被回收）→ 改长驻后台任务；Qoder 内置浏览器页面 hidden 时 rAF 挂起无法测帧率 → 验收改用 headless Chrome + CDP，交互与截图仍为真实浏览器路径
+- 返工3：移动端/直播态首次点击发生在布局收敛前导致漏点 → 验收脚本等待 converged 后再点击；移动端面板与聚焦截图复测通过
+
+### 安全
+- 只读指纹：hooks.json 78922a78…38cbb9 与基线一致；config.toml d931ef92…553062 与 D2 归因一致
+- Key：仓库 89 文本文件、git 全历史精确 Key 与 sk- 模式均 0 命中；真实对话 226 个片段对仓库扫描 0 命中
+- 黄金标注与全文草稿仅存 ~/.thought-atlas/golden-drafts（目录 700 / 文件 600）；evidence 仅聚合统计与合成数据截图；未做 fixture 入库（待作者逐段授权）
+- 未实现任何 D4 功能（回放 / shift 脉冲 / 簇命名 / LOD / 原文锚点 / 搜索 / 手动标记删除）
+
 ## v0.2.0 — D2（2026-11-23）
 
 ### 新增

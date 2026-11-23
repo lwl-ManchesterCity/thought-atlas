@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-23T02:42:49.521Z",
+  "model": "deepseek-flash",
+  "note": "黄金样本标注聚合统计；标注文件与全文草稿只存 ~/.thought-atlas/golden-drafts（本机 600），不进仓库",
+  "samples": [
+    {
+      "fileId": "2026-11-19T19-35-57-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1f397-8b60-7503-9286-8979f9fbfae0",
+      "turns": 44,
+      "statusCounts": {},
+      "addNode": 17,
+      "reinforce": 8,
+      "shifts": 1,
+      "skips": 23,
+      "nodes": 18,
+      "edges": 6,
+      "retryRecovered": 0,
+      "annotationFile": "2026-11-19T19-35-57-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1f397-8b60-7503-9286-8979f9fbfae0.annotation.md"
+    },
+    {
+      "fileId": "2026-11-17T11-18-01-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1e782-f5c4-79e1-ad81-7e71f6e45585",
+      "turns": 16,
+      "statusCounts": {},
+      "addNode": 4,
+      "reinforce": 0,
+      "shifts": 1,
+      "skips": 12,
+      "nodes": 5,
+      "edges": 3,
+      "retryRecovered": 0,
+      "annotationFile": "2026-11-17T11-18-01-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1e782-f5c4-79e1-ad81-7e71f6e45585.annotation.md"
+    },
+    {
+      "fileId": "2026-10-19T10-59-52-01a15219-e9be-78a0-912b-106544f45649",
+      "turns": 42,
+      "statusCounts": {
+        "applied": 40,
+        "retry_queued": 1,
+        "skipped": 1
+      },
+      "addNode": 16,
+      "reinforce": 3,
+      "shifts": 0,
+      "skips": 31,
+      "nodes": 16,
+      "edges": 2,
+      "retryRecovered": 1,
+      "annotationFile": "2026-10-19T10-59-52-01a15219-e9be-78a0-912b-106544f45649.annotation.md"
+    }
+  ]
+}
