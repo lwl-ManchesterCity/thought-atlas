@@ -111,6 +111,8 @@ export class StarMapRenderer {
   private frames = 0;
   private lastStatsAt = 0;
   private dotPattern: CanvasPattern | null = null;
+  private layoutGroups = new Map<number, SimNode[][]>();
+  private groupReps = new Set<string>();
   private dragging: SimNode | null = null;
   private panning = false;
   private pointerMoved = false;
@@ -259,6 +261,45 @@ export class StarMapRenderer {
     return [...nodes].sort((a, b) => a.node.bornTurn - b.node.bornTurn || a.id.localeCompare(b.id));
   }
 
+  private relatedGroups(nodes: SimNode[]): SimNode[][] {
+    const ids = new Set(nodes.map((sn) => sn.id));
+    const parent = new Map<string, string>();
+    const find = (id: string): string => {
+      const p = parent.get(id) ?? id;
+      if (p === id) return id;
+      const root = find(p);
+      parent.set(id, root);
+      return root;
+    };
+    const union = (a: string, b: string): void => {
+      const ra = find(a);
+      const rb = find(b);
+      if (ra !== rb) parent.set(ra, rb);
+    };
+    const ordered = this.turnOrder(nodes);
+    const firstOfTurn = new Map<number, string>();
+    for (const sn of ordered) {
+      const first = firstOfTurn.get(sn.node.bornTurn);
+      if (first === undefined) firstOfTurn.set(sn.node.bornTurn, sn.id);
+      else union(sn.id, first);
+    }
+    for (const edge of this.map.edges) {
+      if (ids.has(edge.from) && ids.has(edge.to)) union(edge.from, edge.to);
+    }
+    const buckets = new Map<string, SimNode[]>();
+    for (const sn of ordered) {
+      const root = find(sn.id);
+      const bucket = buckets.get(root);
+      if (bucket) bucket.push(sn);
+      else buckets.set(root, [sn]);
+    }
+    return [...buckets.values()].sort((a, b) => {
+      const ta = Math.min(...a.map((sn) => sn.node.bornTurn));
+      const tb = Math.min(...b.map((sn) => sn.node.bornTurn));
+      return ta - tb || a[0].id.localeCompare(b[0].id);
+    });
+  }
+
   private recomputeClusters(): void {
     const snapshot = computeClusters(this.map);
     this.clusterShapes = snapshot.clusters
@@ -275,6 +316,8 @@ export class StarMapRenderer {
       sn.cy = 0;
       sn.ci = -1;
     }
+    this.layoutGroups = new Map();
+    this.groupReps = new Set();
     const count = this.clusterShapes.length;
     const radius = count > 1 ? 280 + Math.min(count, 16) * 52 : 0;
     const halfChord = count > 1 ? radius * Math.sin(Math.PI / count) : Number.POSITIVE_INFINITY;
@@ -282,16 +325,61 @@ export class StarMapRenderer {
       const angle = (index / count) * Math.PI * 2 - Math.PI / 2;
       const cx = Math.cos(angle) * radius;
       const cy = Math.sin(angle) * radius;
-      const ordered = this.turnOrder(shape.nodes);
-      const spread = Math.max(70, Math.min(90 + Math.min(ordered.length, 20) * 12, halfChord - 60));
-      ordered.forEach((sn, slot) => {
-        const spiral = slot * 2.399963229728653;
-        const rr = spread * Math.sqrt((slot + 0.5) / ordered.length);
-        sn.cx = cx + Math.cos(spiral) * rr;
-        sn.cy = cy + Math.sin(spiral) * rr;
-        sn.ci = index;
+      const groups = this.relatedGroups(shape.nodes);
+      this.layoutGroups.set(index, groups);
+      const spread = Math.max(70, Math.min(90 + Math.min(shape.nodes.length, 20) * 12, halfChord - 110));
+      groups.forEach((group, gi) => {
+        const gr = spread * Math.sqrt((gi + 0.5) / groups.length);
+        const ga = gi * 2.399963229728653;
+        const gx = cx + Math.cos(ga) * gr;
+        const gy = cy + Math.sin(ga) * gr;
+        const inner = 30 + Math.min(group.length, 6) * 9;
+        group.forEach((sn, slot) => {
+          const rr = inner * Math.sqrt((slot + 0.5) / group.length);
+          const sa = slot * 2.399963229728653;
+          sn.cx = gx + Math.cos(sa) * rr;
+          sn.cy = gy + Math.sin(sa) * rr;
+          sn.ci = index;
+        });
+        const rep = [...group].sort(
+          (a, b) =>
+            b.node.rings.length - a.node.rings.length ||
+            a.node.bornTurn - b.node.bornTurn ||
+            a.id.localeCompare(b.id),
+        )[0];
+        this.groupReps.add(rep.id);
       });
     });
+    const anchored = new Set<string>();
+    for (const shape of this.clusterShapes) for (const sn of shape.nodes) anchored.add(sn.id);
+    let maxR = 0;
+    for (const sn of this.simNodes) if (sn.ci >= 0) maxR = Math.max(maxR, Math.hypot(sn.cx, sn.cy));
+    const loose = this.simNodes.filter((sn) => !anchored.has(sn.id));
+    if (loose.length > 0) {
+      const groups = this.relatedGroups(loose);
+      const ringR = maxR > 0 ? maxR + 70 : 200;
+      groups.forEach((group, gi) => {
+        const ga = gi * 2.399963229728653 - Math.PI / 2;
+        const ring = ringR + (gi % 3) * 45;
+        const gx = Math.cos(ga) * ring;
+        const gy = Math.sin(ga) * ring;
+        const inner = 32 + Math.min(group.length, 8) * 11;
+        group.forEach((sn, slot) => {
+          const rr = inner * Math.sqrt((slot + 0.5) / group.length);
+          const sa = slot * 2.399963229728653;
+          sn.cx = gx + Math.cos(sa) * rr;
+          sn.cy = gy + Math.sin(sa) * rr;
+          sn.ci = -1;
+        });
+        const rep = [...group].sort(
+          (a, b) =>
+            b.node.rings.length - a.node.rings.length ||
+            a.node.bornTurn - b.node.bornTurn ||
+            a.id.localeCompare(b.id),
+        )[0];
+        this.groupReps.add(rep.id);
+      });
+    }
   }
 
   setClusterLabels(labels: Map<string, string>): void {
@@ -527,21 +615,60 @@ export class StarMapRenderer {
     }
 
     if (overview) {
-      ctx.globalAlpha = 0.35;
       ctx.strokeStyle = '#94a3b8';
       ctx.lineWidth = 1 / this.k;
-      for (const shape of this.clusterShapes) {
-        const ordered = this.turnOrder(shape.nodes);
-        if (ordered.length < 2) continue;
+      ctx.globalAlpha = 0.25;
+      ctx.setLineDash([4 / this.k, 4 / this.k]);
+      for (const groups of this.layoutGroups.values()) {
+        if (groups.length < 2) continue;
         ctx.beginPath();
-        ordered.forEach((sn, i) => {
-          const x = sn.x ?? 0;
-          const y = sn.y ?? 0;
-          if (i === 0) ctx.moveTo(x, y);
+        groups.forEach((group, gi) => {
+          let sx = 0;
+          let sy = 0;
+          for (const sn of group) {
+            sx += sn.x ?? 0;
+            sy += sn.y ?? 0;
+          }
+          const x = sx / group.length;
+          const y = sy / group.length;
+          if (gi === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         });
         ctx.stroke();
       }
+      ctx.setLineDash([]);
+      ctx.globalAlpha = 0.3;
+      const turnNodes = new Map<number, SimNode[]>();
+      for (const sn of this.simNodes) {
+        const list = turnNodes.get(sn.node.bornTurn);
+        if (list) list.push(sn);
+        else turnNodes.set(sn.node.bornTurn, [sn]);
+      }
+      ctx.beginPath();
+      for (const list of turnNodes.values()) {
+        if (list.length < 2) continue;
+        list.sort((a, b) => a.id.localeCompare(b.id));
+        if (list.length <= 8) {
+          for (let i = 0; i < list.length; i++) {
+            for (let j = i + 1; j < list.length; j++) {
+              const a = list[i];
+              const b = list[j];
+              if (a.ci !== b.ci) continue;
+              ctx.moveTo(a.x ?? 0, a.y ?? 0);
+              ctx.lineTo(b.x ?? 0, b.y ?? 0);
+            }
+          }
+        } else {
+          const hub = list[0];
+          for (let i = 1; i < list.length; i++) {
+            const b = list[i];
+            if (hub.ci !== b.ci) continue;
+            ctx.moveTo(hub.x ?? 0, hub.y ?? 0);
+            ctx.lineTo(b.x ?? 0, b.y ?? 0);
+          }
+        }
+      }
+      ctx.stroke();
     }
 
     const groups = new Map<string, { visual: ReturnType<typeof edgeVisual>; alpha: number; path: Path2D }>();
@@ -680,7 +807,8 @@ export class StarMapRenderer {
         ctx.fillStyle = fill;
         currentFill = fill;
       }
-      const text = truncate(sn.node.label, overview ? 8 : 14);
+      const text =
+        overview && this.groupReps.has(sn.id) ? sn.node.label : truncate(sn.node.label, overview ? 8 : 14);
       ctx.fillText(text, sx, sy);
       if (visual.strike) {
         const width = ctx.measureText(text).width;
