@@ -274,28 +274,29 @@ export class StarMapRenderer {
       const rb = find(b);
       if (ra !== rb) parent.set(ra, rb);
     };
-    const ordered = this.turnOrder(nodes);
-    const firstOfTurn = new Map<number, string>();
-    for (const sn of ordered) {
-      const first = firstOfTurn.get(sn.node.bornTurn);
-      if (first === undefined) firstOfTurn.set(sn.node.bornTurn, sn.id);
-      else union(sn.id, first);
-    }
+    // membership comes from semantic edges only: sharing a turn is context,
+    // not relatedness, since one thread can drift into other topics
     for (const edge of this.map.edges) {
       if (ids.has(edge.from) && ids.has(edge.to)) union(edge.from, edge.to);
     }
     const buckets = new Map<string, SimNode[]>();
-    for (const sn of ordered) {
+    for (const sn of this.turnOrder(nodes)) {
       const root = find(sn.id);
       const bucket = buckets.get(root);
       if (bucket) bucket.push(sn);
       else buckets.set(root, [sn]);
     }
     return [...buckets.values()].sort((a, b) => {
-      const ta = Math.min(...a.map((sn) => sn.node.bornTurn));
-      const tb = Math.min(...b.map((sn) => sn.node.bornTurn));
-      return ta - tb || a[0].id.localeCompare(b[0].id);
+      const ca = this.activityCenter(a);
+      const cb = this.activityCenter(b);
+      return ca - cb || a[0].id.localeCompare(b[0].id);
     });
+  }
+
+  private activityCenter(group: SimNode[]): number {
+    let sum = 0;
+    for (const sn of group) sum += (sn.node.bornTurn + sn.node.lastTurn) / 2;
+    return sum / group.length;
   }
 
   private recomputeClusters(): void {
