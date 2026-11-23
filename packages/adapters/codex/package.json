@@ -1,0 +1,9 @@
+{
+  "name": "@thought-atlas/adapter-codex",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@thought-atlas/core": "0.1.0"
+  }
+}

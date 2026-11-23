@@ -16,6 +16,11 @@
     "packages/core/src/**/*.ts",
     "packages/core/test/**/*.ts",
     "packages/daemon/src/**/*.ts",
+    "packages/daemon/test/**/*.ts",
+    "packages/adapters/codex/src/**/*.ts",
+    "packages/adapters/codex/test/**/*.ts",
+    "packages/adapters/watcher/src/**/*.ts",
+    "packages/adapters/watcher/test/**/*.ts",
     "scripts/**/*.ts"
   ]
 }

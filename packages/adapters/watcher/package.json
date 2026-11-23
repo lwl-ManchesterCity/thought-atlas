@@ -1,0 +1,10 @@
+{
+  "name": "@thought-atlas/adapter-watcher",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "@thought-atlas/core": "0.1.0",
+    "@thought-atlas/adapter-codex": "0.1.0"
+  }
+}
