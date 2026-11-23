@@ -50,6 +50,8 @@ export class DeepSeekClient implements ModelClient {
           ],
           temperature: Math.min(request.temperature, 0.3),
           ...(request.jsonMode ? { response_format: { type: 'json_object' } } : {}),
+          // flash 默认开思考且思考模式下 temperature 失效；分析任务要低延迟稳定 JSON，显式关闭
+          ...(this.config.model.startsWith('deepseek') ? { thinking: { type: 'disabled' } } : {}),
           max_tokens: 2000,
           stream: false,
         }),
@@ -64,6 +66,8 @@ export class DeepSeekClient implements ModelClient {
       };
       const text = data.choices?.[0]?.message?.content;
       if (typeof text !== 'string') throw new Error('model response missing content');
+      // JSON output 模式下无法识别为 JSON 时 API 会把内容替换为空格（官方文档），按调用失败触发重试
+      if (request.jsonMode && text.trim().length === 0) throw new Error('model returned blank json content');
       return {
         text,
         usage: {

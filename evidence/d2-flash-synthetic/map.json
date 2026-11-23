@@ -1,0 +1,109 @@
+{
+  "sessionId": "d2-synthetic-flash-001",
+  "nodes": [
+    {
+      "id": "n_0001",
+      "type": "claim",
+      "owner": "user",
+      "label": "浮点误差是JS的bug",
+      "summary": "用户认为0.1+0.2≠0.3是JS写得烂、随机出现的bug，别的语言不会有",
+      "bornTurn": 1,
+      "lastTurn": 1,
+      "rings": [
+        1
+      ],
+      "status": "superseded",
+      "supersededBy": "n_0004",
+      "mergedInto": null,
+      "anchorTurns": [
+        1
+      ],
+      "clusterId": null,
+      "manual": false
+    },
+    {
+      "id": "n_0002",
+      "type": "question",
+      "owner": "user",
+      "label": "为何0.1+0.2≠0.3",
+      "summary": "用户追问浮点加法结果不等于0.3的原因",
+      "bornTurn": 1,
+      "lastTurn": 1,
+      "rings": [
+        1
+      ],
+      "status": "active",
+      "supersededBy": null,
+      "mergedInto": null,
+      "anchorTurns": [
+        1
+      ],
+      "clusterId": null,
+      "manual": false
+    },
+    {
+      "id": "n_0003",
+      "type": "ai-voice",
+      "owner": "ai",
+      "label": "IEEE754是语言共性",
+      "summary": "AI指出Python/Java同样受IEEE754限制，二进制无法精确表示多数十进制小数，是表示法固有限制而非某语言写得",
+      "bornTurn": 3,
+      "lastTurn": 3,
+      "rings": [
+        3
+      ],
+      "status": "active",
+      "supersededBy": null,
+      "mergedInto": null,
+      "anchorTurns": [
+        3
+      ],
+      "clusterId": null,
+      "manual": false
+    },
+    {
+      "id": "n_0004",
+      "type": "shift",
+      "owner": "user",
+      "label": "浮点误差是IEEE754表示法的",
+      "summary": "浮点误差是IEEE754表示法的固有限制，所有语言共有，不是JS独有的bug",
+      "bornTurn": 3,
+      "lastTurn": 4,
+      "rings": [
+        3,
+        4
+      ],
+      "status": "active",
+      "supersededBy": null,
+      "mergedInto": null,
+      "anchorTurns": [
+        3,
+        4
+      ],
+      "clusterId": null,
+      "manual": false,
+      "shift": {
+        "fromNodeId": "n_0001",
+        "toSummary": "浮点误差是IEEE754表示法的固有限制，所有语言共有，不是JS独有的bug",
+        "triggerNodeId": "n_0003",
+        "triggerTurn": 3,
+        "retro": false
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "n_0003",
+      "to": "n_0004",
+      "kind": "influence",
+      "bornTurn": 3
+    },
+    {
+      "from": "n_0001",
+      "to": "n_0004",
+      "kind": "supersede",
+      "bornTurn": 3
+    }
+  ],
+  "lastTurn": 4
+}

@@ -11,6 +11,7 @@ import { FsStorage, DeepSeekClient, atlasHome } from '@thought-atlas/daemon';
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const sessionId = process.argv[2] ?? `d1-synthetic-${Date.now().toString(36)}`;
+const evidenceTag = process.argv[3] ?? 'd1';
 
 const turns: Omit<TurnPayload, 'sessionId' | 'timestamp' | 'source'>[] = [
   {
@@ -153,17 +154,17 @@ const evidence = {
 };
 
 const evidenceDir = join(repoRoot, 'evidence');
-await mkdir(join(evidenceDir, 'd1-synthetic'), { recursive: true });
-await writeFile(join(evidenceDir, 'd1-deepseek-run.json'), JSON.stringify(evidence, null, 2));
+await mkdir(join(evidenceDir, `${evidenceTag}-synthetic`), { recursive: true });
+await writeFile(join(evidenceDir, `${evidenceTag}-deepseek-run.json`), JSON.stringify(evidence, null, 2));
 const sessionDir = join(atlasHome(), 'sessions', sessionId);
 for (const file of ['map.json', 'events.jsonl', 'turns.jsonl', 'meta.json']) {
-  await copyFile(join(sessionDir, file), join(evidenceDir, 'd1-synthetic', file));
+  await copyFile(join(sessionDir, file), join(evidenceDir, `${evidenceTag}-synthetic`, file));
 }
 
 console.log('\n=== D1 synthetic run summary ===');
 console.log(JSON.stringify(evidence.mapStats));
 console.log(`total tokens: ${totalPrompt} prompt + ${totalCompletion} completion`);
-console.log(`evidence: evidence/d1-deepseek-run.json, evidence/d1-synthetic/`);
+console.log(`evidence: evidence/${evidenceTag}-deepseek-run.json, evidence/${evidenceTag}-synthetic/`);
 const allOk = reports.every((r) => r.filtered || r.analyzeOk);
 if (!allOk) {
   console.error('some turns failed analysis');

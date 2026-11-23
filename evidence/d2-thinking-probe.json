@@ -1,0 +1,30 @@
+{
+  "runAt": "2026-11-23T02:05:37.789Z",
+  "model": "deepseek-flash",
+  "enabled": {
+    "thinking": "enabled",
+    "latencyMs": 2201,
+    "promptTokens": 1627,
+    "completionTokens": 173,
+    "reasoningChars": 113,
+    "finishReason": "stop",
+    "jsonValid": true,
+    "ops": [
+      "ADD_NODE",
+      "MARK_SHIFT"
+    ]
+  },
+  "disabled": {
+    "thinking": "disabled",
+    "latencyMs": 1722,
+    "promptTokens": 1602,
+    "completionTokens": 124,
+    "reasoningChars": 0,
+    "finishReason": "stop",
+    "jsonValid": true,
+    "ops": [
+      "ADD_NODE",
+      "MARK_SHIFT"
+    ]
+  }
+}

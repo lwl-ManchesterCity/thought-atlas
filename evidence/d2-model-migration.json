@@ -1,0 +1,260 @@
+{
+  "runAt": "2026-11-23T02:05:53.838Z",
+  "migration": "deepseek-chat (deprecated alias) -> deepseek-flash (V4.1-Flash)",
+  "configChange": "~/.thought-atlas/config.json model field only; key untouched; mode 600 preserved",
+  "clientChange": "thinking:{type:disabled} for deepseek models (official param); blank-json-content guard triggers retry",
+  "docs": {
+    "thinkingDefault": "enabled, effort high; temperature ignored in thinking mode",
+    "toggle": "body thinking.type enabled/disabled",
+    "jsonOutput": "response_format json_object; prompt must contain json; content may be blanked to spaces -> guard added",
+    "sources": [
+      "https://api-docs.deepseek.com/zh-cn/guides/thinking_mode",
+      "https://api-docs.deepseek.com/zh-cn/guides/json_mode"
+    ]
+  },
+  "before": {
+    "model": "deepseek-chat(alias->flash, thinking default)",
+    "turns": [
+      {
+        "turnIndex": 1,
+        "filtered": false,
+        "attempts": 1,
+        "latencyMs": 1367,
+        "promptTokens": 1562,
+        "completionTokens": 137,
+        "analyzeOk": true,
+        "opsApplied": 3
+      },
+      {
+        "turnIndex": 2,
+        "filtered": true,
+        "filterReason": "ack-only"
+      },
+      {
+        "turnIndex": 3,
+        "filtered": false,
+        "attempts": 1,
+        "latencyMs": 1315,
+        "promptTokens": 1676,
+        "completionTokens": 120,
+        "analyzeOk": true,
+        "opsApplied": 2
+      },
+      {
+        "turnIndex": 4,
+        "filtered": false,
+        "attempts": 1,
+        "latencyMs": 1466,
+        "promptTokens": 1690,
+        "completionTokens": 24,
+        "analyzeOk": true,
+        "opsApplied": 1
+      }
+    ],
+    "totalLatencyMs": 4148,
+    "totalPromptTokens": 4928,
+    "totalCompletionTokens": 281,
+    "mapStats": {
+      "nodes": 5,
+      "edges": 2,
+      "shifts": 1,
+      "influenceEdges": 1
+    }
+  },
+  "after": {
+    "model": "deepseek-flash + thinking disabled",
+    "turns": [
+      {
+        "turnIndex": 1,
+        "filtered": false,
+        "attempts": 1,
+        "latencyMs": 1977,
+        "promptTokens": 1562,
+        "completionTokens": 106,
+        "analyzeOk": true,
+        "opsApplied": 2
+      },
+      {
+        "turnIndex": 2,
+        "filtered": true,
+        "filterReason": "ack-only"
+      },
+      {
+        "turnIndex": 3,
+        "filtered": false,
+        "attempts": 1,
+        "latencyMs": 1776,
+        "promptTokens": 1646,
+        "completionTokens": 128,
+        "analyzeOk": true,
+        "opsApplied": 2
+      },
+      {
+        "turnIndex": 4,
+        "filtered": false,
+        "attempts": 1,
+        "latencyMs": 1427,
+        "promptTokens": 1665,
+        "completionTokens": 24,
+        "analyzeOk": true,
+        "opsApplied": 1
+      }
+    ],
+    "totalLatencyMs": 5180,
+    "totalPromptTokens": 4873,
+    "totalCompletionTokens": 258,
+    "mapStats": {
+      "nodes": 4,
+      "edges": 2,
+      "shifts": 1,
+      "influenceEdges": 1
+    }
+  },
+  "thinkingAB": {
+    "runAt": "2026-11-23T02:05:37.789Z",
+    "model": "deepseek-flash",
+    "enabled": {
+      "thinking": "enabled",
+      "latencyMs": 2201,
+      "promptTokens": 1627,
+      "completionTokens": 173,
+      "reasoningChars": 113,
+      "finishReason": "stop",
+      "jsonValid": true,
+      "ops": [
+        "ADD_NODE",
+        "MARK_SHIFT"
+      ]
+    },
+    "disabled": {
+      "thinking": "disabled",
+      "latencyMs": 1722,
+      "promptTokens": 1602,
+      "completionTokens": 124,
+      "reasoningChars": 0,
+      "finishReason": "stop",
+      "jsonValid": true,
+      "ops": [
+        "ADD_NODE",
+        "MARK_SHIFT"
+      ]
+    }
+  },
+  "semanticComparison": {
+    "beforeNodes": [
+      {
+        "type": "claim",
+        "status": "superseded",
+        "label": "浮点误差是JS的bug",
+        "rings": [
+          1
+        ]
+      },
+      {
+        "type": "question",
+        "status": "active",
+        "label": "为何0.1+0.2不等于0.3",
+        "rings": [
+          1
+        ]
+      },
+      {
+        "type": "fact",
+        "status": "active",
+        "label": "正在学JavaScript",
+        "rings": [
+          1
+        ]
+      },
+      {
+        "type": "ai-voice",
+        "status": "active",
+        "label": "IEEE754是语言共性",
+        "rings": [
+          3
+        ]
+      },
+      {
+        "type": "shift",
+        "status": "active",
+        "label": "浮点误差是IEEE754精度取舍",
+        "rings": [
+          3,
+          4
+        ],
+        "shift": {
+          "from": "n_0001",
+          "trigger": "n_0004"
+        }
+      }
+    ],
+    "afterNodes": [
+      {
+        "type": "claim",
+        "status": "superseded",
+        "label": "浮点误差是JS的bug",
+        "rings": [
+          1
+        ]
+      },
+      {
+        "type": "question",
+        "status": "active",
+        "label": "为何0.1+0.2≠0.3",
+        "rings": [
+          1
+        ]
+      },
+      {
+        "type": "ai-voice",
+        "status": "active",
+        "label": "IEEE754是语言共性",
+        "rings": [
+          3
+        ]
+      },
+      {
+        "type": "shift",
+        "status": "active",
+        "label": "浮点误差是IEEE754表示法的",
+        "rings": [
+          3,
+          4
+        ],
+        "shift": {
+          "from": "n_0001",
+          "trigger": "n_0003"
+        }
+      }
+    ],
+    "beforeEdges": [
+      {
+        "from": "n_0004",
+        "to": "n_0005",
+        "kind": "influence",
+        "bornTurn": 3
+      },
+      {
+        "from": "n_0001",
+        "to": "n_0005",
+        "kind": "supersede",
+        "bornTurn": 3
+      }
+    ],
+    "afterEdges": [
+      {
+        "from": "n_0003",
+        "to": "n_0004",
+        "kind": "influence",
+        "bornTurn": 3
+      },
+      {
+        "from": "n_0001",
+        "to": "n_0004",
+        "kind": "supersede",
+        "bornTurn": 3
+      }
+    ]
+  },
+  "conclusion": "质量无劣化：shift/influence/supersede/REINFORCE 语义一致；flash 少建 1 个 fact 节点（正在学JavaScript，边缘信息，符合宁少新建原则）。延迟同量级（+25% 波动范围内），token 相当。思考关闭较开启省 ~22% 延迟 ~28% completion tokens，输出 ops 一致。"
+}
