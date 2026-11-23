@@ -1,0 +1,101 @@
+{
+  "sessionId": "d1-synthetic-002",
+  "nodes": [
+    {
+      "id": "n_0001",
+      "type": "claim",
+      "owner": "user",
+      "label": "浮点误差是JS的bug",
+      "summary": "用户认为0.1+0.2≠0.3是JS写得烂、随机出现的bug，别的语言不会有",
+      "bornTurn": 1,
+      "lastTurn": 1,
+      "rings": [
+        1
+      ],
+      "status": "superseded",
+      "supersededBy": "n_0004",
+      "mergedInto": null,
+      "anchorTurns": [
+        1
+      ],
+      "clusterId": null,
+      "manual": false
+    },
+    {
+      "id": "n_0002",
+      "type": "question",
+      "owner": "user",
+      "label": "为何0.1+0.2≠0.3",
+      "summary": "用户好奇浮点加法结果不等于0.3的原因",
+      "bornTurn": 1,
+      "lastTurn": 1,
+      "rings": [
+        1
+      ],
+      "status": "active",
+      "supersededBy": null,
+      "mergedInto": null,
+      "anchorTurns": [
+        1
+      ],
+      "clusterId": null,
+      "manual": false
+    },
+    {
+      "id": "n_0003",
+      "type": "fact",
+      "owner": "user",
+      "label": "正在学JavaScript",
+      "summary": "用户正在学习JavaScript",
+      "bornTurn": 1,
+      "lastTurn": 1,
+      "rings": [
+        1
+      ],
+      "status": "active",
+      "supersededBy": null,
+      "mergedInto": null,
+      "anchorTurns": [
+        1
+      ],
+      "clusterId": null,
+      "manual": false
+    },
+    {
+      "id": "n_0004",
+      "type": "shift",
+      "owner": "user",
+      "label": "0.1+0.2≠0.3是IEEE",
+      "summary": "0.1+0.2≠0.3是IEEE754精度问题，不是JS语言缺陷，之前怪错了",
+      "bornTurn": 4,
+      "lastTurn": 4,
+      "rings": [
+        4
+      ],
+      "status": "active",
+      "supersededBy": null,
+      "mergedInto": null,
+      "anchorTurns": [
+        4
+      ],
+      "clusterId": null,
+      "manual": false,
+      "shift": {
+        "fromNodeId": "n_0001",
+        "toSummary": "0.1+0.2≠0.3是IEEE754精度问题，不是JS语言缺陷，之前怪错了",
+        "triggerNodeId": null,
+        "triggerTurn": 4,
+        "retro": false
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "n_0001",
+      "to": "n_0004",
+      "kind": "supersede",
+      "bornTurn": 4
+    }
+  ],
+  "lastTurn": 4
+}

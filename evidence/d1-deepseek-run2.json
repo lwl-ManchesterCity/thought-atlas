@@ -1,0 +1,54 @@
+{
+  "runAt": "2026-11-23T01:39:56.158Z",
+  "sessionId": "d1-synthetic-002",
+  "model": "deepseek-chat",
+  "baseUrl": "https://api.deepseek.com",
+  "synthetic": true,
+  "turns": [
+    {
+      "turnIndex": 1,
+      "filtered": false,
+      "attempts": 1,
+      "latencyMs": 1673,
+      "promptTokens": 1498,
+      "completionTokens": 136,
+      "analyzeOk": true,
+      "opsApplied": 3
+    },
+    {
+      "turnIndex": 2,
+      "filtered": true,
+      "filterReason": "ack-only"
+    },
+    {
+      "turnIndex": 3,
+      "filtered": false,
+      "attempts": 1,
+      "latencyMs": 1327,
+      "promptTokens": 1611,
+      "completionTokens": 148,
+      "analyzeOk": false,
+      "opsApplied": 0,
+      "analyzeReason": "graph rejected: node n_0001 is not active (superseded)"
+    },
+    {
+      "turnIndex": 4,
+      "filtered": false,
+      "attempts": 1,
+      "latencyMs": 712,
+      "promptTokens": 1588,
+      "completionTokens": 72,
+      "analyzeOk": true,
+      "opsApplied": 1
+    }
+  ],
+  "totalPromptTokens": 4697,
+  "totalCompletionTokens": 356,
+  "totalLatencyMs": 3712,
+  "mapStats": {
+    "nodes": 4,
+    "edges": 1,
+    "shifts": 1,
+    "influenceEdges": 0
+  }
+}

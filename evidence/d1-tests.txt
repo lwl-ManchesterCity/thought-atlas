@@ -1,0 +1,222 @@
+(node:23007) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+TAP version 13
+# (node:23009) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: parseAnalyzerOutput rejects non-JSON
+ok 1 - parseAnalyzerOutput rejects non-JSON
+  ---
+  duration_ms: 0.407667
+  type: 'test'
+  ...
+# Subtest: parseAnalyzerOutput rejects code-fenced or prose-wrapped JSON
+ok 2 - parseAnalyzerOutput rejects code-fenced or prose-wrapped JSON
+  ---
+  duration_ms: 0.100209
+  type: 'test'
+  ...
+# Subtest: parseAnalyzerOutput rejects wrong shapes
+ok 3 - parseAnalyzerOutput rejects wrong shapes
+  ---
+  duration_ms: 0.153792
+  type: 'test'
+  ...
+# Subtest: parseAnalyzerOutput rejects more than 5 ops
+ok 4 - parseAnalyzerOutput rejects more than 5 ops
+  ---
+  duration_ms: 0.056833
+  type: 'test'
+  ...
+# Subtest: parseAnalyzerOutput accepts valid ops
+ok 5 - parseAnalyzerOutput accepts valid ops
+  ---
+  duration_ms: 0.141458
+  type: 'test'
+  ...
+# Subtest: validateOpsShape rejects UPDATE_NODE patch outside allowlist
+ok 6 - validateOpsShape rejects UPDATE_NODE patch outside allowlist
+  ---
+  duration_ms: 0.044708
+  type: 'test'
+  ...
+# Subtest: analyzeTurn discards invalid output as a whole, no retry
+ok 7 - analyzeTurn discards invalid output as a whole, no retry
+  ---
+  duration_ms: 0.210458
+  type: 'test'
+  ...
+# Subtest: analyzeTurn retries once on model call failure then succeeds
+ok 8 - analyzeTurn retries once on model call failure then succeeds
+  ---
+  duration_ms: 0.081833
+  type: 'test'
+  ...
+# Subtest: analyzeTurn fails after two call failures
+ok 9 - analyzeTurn fails after two call failures
+  ---
+  duration_ms: 0.272209
+  type: 'test'
+  ...
+# Subtest: analyzeTurn requests json mode and low temperature
+ok 10 - analyzeTurn requests json mode and low temperature
+  ---
+  duration_ms: 0.290666
+  type: 'test'
+  ...
+# Subtest: truncateMiddle keeps head and tail with marker
+ok 11 - truncateMiddle keeps head and tail with marker
+  ---
+  duration_ms: 0.094
+  type: 'test'
+  ...
+# Subtest: buildUserMessage wraps turn data in delimiters and applies budgets
+ok 12 - buildUserMessage wraps turn data in delimiters and applies budgets
+  ---
+  duration_ms: 3.577792
+  type: 'test'
+  ...
+# (node:23010) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: combined text under 20 chars is skipped
+ok 13 - combined text under 20 chars is skipped
+  ---
+  duration_ms: 0.36825
+  type: 'test'
+  ...
+# Subtest: pure acknowledgment is skipped
+ok 14 - pure acknowledgment is skipped
+  ---
+  duration_ms: 0.108708
+  type: 'test'
+  ...
+# Subtest: near-duplicate of previous turn is skipped
+ok 15 - near-duplicate of previous turn is skipped
+  ---
+  duration_ms: 0.150458
+  type: 'test'
+  ...
+# Subtest: substantive turn passes
+ok 16 - substantive turn passes
+  ---
+  duration_ms: 0.045791
+  type: 'test'
+  ...
+# Subtest: similarity basics
+ok 17 - similarity basics
+  ---
+  duration_ms: 0.067833
+  type: 'test'
+  ...
+# (node:23011) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: ADD_NODE assigns id, initializes rings/anchors, materializes map and event
+ok 18 - ADD_NODE assigns id, initializes rings/anchors, materializes map and event
+  ---
+  duration_ms: 1.08325
+  type: 'test'
+  ...
+# Subtest: label and summary are truncated to spec limits
+ok 19 - label and summary are truncated to spec limits
+  ---
+  duration_ms: 0.099875
+  type: 'test'
+  ...
+# Subtest: REINFORCE adds ring without new node
+ok 20 - REINFORCE adds ring without new node
+  ---
+  duration_ms: 0.13425
+  type: 'test'
+  ...
+# Subtest: duplicate turn delivery is idempotent
+ok 21 - duplicate turn delivery is idempotent
+  ---
+  duration_ms: 0.131542
+  type: 'test'
+  ...
+# Subtest: dangling reference rejects whole batch atomically
+ok 22 - dangling reference rejects whole batch atomically
+  ---
+  duration_ms: 0.147209
+  type: 'test'
+  ...
+# Subtest: failed turn can be retried successfully
+ok 23 - failed turn can be retried successfully
+  ---
+  duration_ms: 0.146459
+  type: 'test'
+  ...
+# Subtest: more than 5 ops rejected
+ok 24 - more than 5 ops rejected
+  ---
+  duration_ms: 0.063917
+  type: 'test'
+  ...
+# Subtest: SKIP mixed with other ops rejected
+ok 25 - SKIP mixed with other ops rejected
+  ---
+  duration_ms: 0.043791
+  type: 'test'
+  ...
+# Subtest: MARK_SHIFT with @prev ai-voice creates shift and influence edge
+ok 26 - MARK_SHIFT with @prev ai-voice creates shift and influence edge
+  ---
+  duration_ms: 2.645083
+  type: 'test'
+  ...
+# Subtest: MARK_SHIFT on existing node converts it to shift
+ok 27 - MARK_SHIFT on existing node converts it to shift
+  ---
+  duration_ms: 1.055083
+  type: 'test'
+  ...
+# Subtest: influence edge must go ai-voice -> shift
+ok 28 - influence edge must go ai-voice -> shift
+  ---
+  duration_ms: 0.467667
+  type: 'test'
+  ...
+# Subtest: triggerNodeId must reference ai-voice
+ok 29 - triggerNodeId must reference ai-voice
+  ---
+  duration_ms: 0.187833
+  type: 'test'
+  ...
+# Subtest: SUPERSEDE requires active nodes
+ok 30 - SUPERSEDE requires active nodes
+  ---
+  duration_ms: 0.239083
+  type: 'test'
+  ...
+# Subtest: MERGE unions rings and redirects edges
+ok 31 - MERGE unions rings and redirects edges
+  ---
+  duration_ms: 0.422916
+  type: 'test'
+  ...
+# Subtest: DELETE removes node and touching edges
+ok 32 - DELETE removes node and touching edges
+  ---
+  duration_ms: 0.658083
+  type: 'test'
+  ...
+# Subtest: reload restores state, processed turns, and id counter
+ok 33 - reload restores state, processed turns, and id counter
+  ---
+  duration_ms: 0.820083
+  type: 'test'
+  ...
+# Subtest: skeleton only contains active nodes
+ok 34 - skeleton only contains active nodes
+  ---
+  duration_ms: 0.278625
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 93.850583

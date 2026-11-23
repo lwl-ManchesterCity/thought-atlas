@@ -1,0 +1,53 @@
+{
+  "runAt": "2026-11-23T01:40:39.455Z",
+  "sessionId": "d1-synthetic-003",
+  "model": "deepseek-chat",
+  "baseUrl": "https://api.deepseek.com",
+  "synthetic": true,
+  "turns": [
+    {
+      "turnIndex": 1,
+      "filtered": false,
+      "attempts": 1,
+      "latencyMs": 1367,
+      "promptTokens": 1562,
+      "completionTokens": 137,
+      "analyzeOk": true,
+      "opsApplied": 3
+    },
+    {
+      "turnIndex": 2,
+      "filtered": true,
+      "filterReason": "ack-only"
+    },
+    {
+      "turnIndex": 3,
+      "filtered": false,
+      "attempts": 1,
+      "latencyMs": 1315,
+      "promptTokens": 1676,
+      "completionTokens": 120,
+      "analyzeOk": true,
+      "opsApplied": 2
+    },
+    {
+      "turnIndex": 4,
+      "filtered": false,
+      "attempts": 1,
+      "latencyMs": 1466,
+      "promptTokens": 1690,
+      "completionTokens": 24,
+      "analyzeOk": true,
+      "opsApplied": 1
+    }
+  ],
+  "totalPromptTokens": 4928,
+  "totalCompletionTokens": 281,
+  "totalLatencyMs": 4148,
+  "mapStats": {
+    "nodes": 5,
+    "edges": 2,
+    "shifts": 1,
+    "influenceEdges": 1
+  }
+}
