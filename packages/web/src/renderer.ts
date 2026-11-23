@@ -309,75 +309,78 @@ export class StarMapRenderer {
           .filter((sn): sn is SimNode => sn !== undefined),
       }))
       .filter((shape) => shape.nodes.length >= 2);
+    const clusterIndex = new Map<string, number>();
+    for (const shape of this.clusterShapes) {
+      for (const sn of shape.nodes) clusterIndex.set(sn.id, shape.index);
+    }
     for (const sn of this.simNodes) {
       sn.cx = 0;
       sn.cy = 0;
-      sn.ci = -1;
+      sn.ci = clusterIndex.get(sn.id) ?? -1;
     }
+
     this.layoutGroups = new Map();
     this.groupReps = new Set();
-    const count = this.clusterShapes.length;
-    const radius = count > 1 ? 280 + Math.min(count, 16) * 52 : 0;
-    const halfChord = count > 1 ? radius * Math.sin(Math.PI / count) : Number.POSITIVE_INFINITY;
-    this.clusterShapes.forEach((shape, index) => {
-      const angle = (index / count) * Math.PI * 2 - Math.PI / 2;
-      const cx = Math.cos(angle) * radius;
-      const cy = Math.sin(angle) * radius;
-      const groups = this.relatedGroups(shape.nodes);
-      this.layoutGroups.set(index, groups);
-      const spread = Math.max(70, Math.min(90 + Math.min(shape.nodes.length, 20) * 12, halfChord - 110));
-      groups.forEach((group, gi) => {
-        const gr = spread * Math.sqrt((gi + 0.5) / groups.length);
-        const ga = gi * 2.399963229728653;
-        const gx = cx + Math.cos(ga) * gr;
-        const gy = cy + Math.sin(ga) * gr;
-        const inner = 30 + Math.min(group.length, 6) * 9;
-        group.forEach((sn, slot) => {
-          const rr = inner * Math.sqrt((slot + 0.5) / group.length);
-          const sa = slot * 2.399963229728653;
-          sn.cx = gx + Math.cos(sa) * rr;
-          sn.cy = gy + Math.sin(sa) * rr;
-          sn.ci = index;
-        });
-        const rep = [...group].sort(
-          (a, b) =>
-            b.node.rings.length - a.node.rings.length ||
-            a.node.bornTurn - b.node.bornTurn ||
-            a.id.localeCompare(b.id),
-        )[0];
-        this.groupReps.add(rep.id);
-      });
+    // one chronological chain: relational groups placed as stations on a
+    // serpentine spine so the project's stage progression reads as a single path
+    const groups = this.relatedGroups(this.simNodes);
+    this.layoutGroups.set(0, groups);
+    const ROW_WIDTH = 1000;
+    const GROUP_GAP = 130;
+    const ROW_GAP = 120;
+    const innerOf = (n: number): number => (n === 1 ? 0 : 22 + Math.min(n, 10) * 9);
+    const extents = groups.map((group) => innerOf(group.length) + 30);
+    const rowOf: number[] = [];
+    const offsetOf: number[] = [];
+    const rowEnds: number[] = [];
+    let cursor = 0;
+    let row = 0;
+    groups.forEach((_, gi) => {
+      const e = extents[gi];
+      const advance = cursor === 0 ? e : GROUP_GAP + e;
+      if (cursor > 0 && cursor + advance + e > ROW_WIDTH) {
+        rowEnds.push(cursor);
+        row += 1;
+        cursor = 0;
+      }
+      const center = cursor === 0 ? e : cursor + GROUP_GAP + e;
+      rowOf[gi] = row;
+      offsetOf[gi] = center;
+      cursor = center + e;
     });
-    const anchored = new Set<string>();
-    for (const shape of this.clusterShapes) for (const sn of shape.nodes) anchored.add(sn.id);
-    let maxR = 0;
-    for (const sn of this.simNodes) if (sn.ci >= 0) maxR = Math.max(maxR, Math.hypot(sn.cx, sn.cy));
-    const loose = this.simNodes.filter((sn) => !anchored.has(sn.id));
-    if (loose.length > 0) {
-      const groups = this.relatedGroups(loose);
-      const ringR = maxR > 0 ? maxR + 70 : 200;
-      groups.forEach((group, gi) => {
-        const ga = gi * 2.399963229728653 - Math.PI / 2;
-        const ring = ringR + (gi % 3) * 45;
-        const gx = Math.cos(ga) * ring;
-        const gy = Math.sin(ga) * ring;
-        const inner = 32 + Math.min(group.length, 8) * 11;
-        group.forEach((sn, slot) => {
-          const rr = inner * Math.sqrt((slot + 0.5) / group.length);
-          const sa = slot * 2.399963229728653;
-          sn.cx = gx + Math.cos(sa) * rr;
-          sn.cy = gy + Math.sin(sa) * rr;
-          sn.ci = -1;
-        });
-        const rep = [...group].sort(
-          (a, b) =>
-            b.node.rings.length - a.node.rings.length ||
-            a.node.bornTurn - b.node.bornTurn ||
-            a.id.localeCompare(b.id),
-        )[0];
-        this.groupReps.add(rep.id);
-      });
+    rowEnds.push(cursor);
+    const rowMax = new Array<number>(rowEnds.length).fill(0);
+    groups.forEach((_, gi) => {
+      rowMax[rowOf[gi]] = Math.max(rowMax[rowOf[gi]], extents[gi]);
+    });
+    const rowY: number[] = [];
+    let y = 0;
+    for (let r = 0; r < rowEnds.length; r++) {
+      rowY[r] = y + rowMax[r];
+      y += rowMax[r] * 2 + ROW_GAP;
     }
+    const totalH = y - ROW_GAP;
+    groups.forEach((group, gi) => {
+      const r = rowOf[gi];
+      const width = rowEnds[r];
+      const leftToRight = r % 2 === 0;
+      const gx = (leftToRight ? offsetOf[gi] : width - offsetOf[gi]) - width / 2;
+      const gy = rowY[r] - totalH / 2;
+      const inner = innerOf(group.length);
+      group.forEach((sn, slot) => {
+        const rr = inner * Math.sqrt((slot + 0.5) / group.length);
+        const sa = slot * 2.399963229728653;
+        sn.cx = gx + Math.cos(sa) * rr;
+        sn.cy = gy + Math.sin(sa) * rr;
+      });
+      const rep = [...group].sort(
+        (a, b) =>
+          b.node.rings.length - a.node.rings.length ||
+          a.node.bornTurn - b.node.bornTurn ||
+          a.id.localeCompare(b.id),
+      )[0];
+      this.groupReps.add(rep.id);
+    });
   }
 
   setClusterLabels(labels: Map<string, string>): void {
@@ -450,7 +453,26 @@ export class StarMapRenderer {
     }
     const extentW = Math.max(maxX - minX, 80);
     const extentH = Math.max(maxY - minY, 80);
-    this.k = Math.min(Math.max(Math.min(this.w / (extentW + 160), this.h / (extentH + 160)), 0.18), 1.4);
+    const k0 = Math.min(this.w / (extentW + 160), this.h / (extentH + 160));
+    // labels render in screen space, so fit must reserve their width or edge
+    // labels clip against the canvas
+    this.ctx.font = '12px ui-sans-serif, system-ui, sans-serif';
+    const labelLimit = tierForZoom(Math.min(Math.max(k0, 0.18), 1.4)) === 'near' ? 14 : 8;
+    let labelHalf = 0;
+    for (const sn of this.simNodes) {
+      const text = this.groupReps.has(sn.id) ? sn.node.label : truncate(sn.node.label, labelLimit);
+      const half = this.ctx.measureText(text).width / 2;
+      if (half > labelHalf) labelHalf = half;
+    }
+    const padX = Math.max(28, labelHalf + 10);
+    const padY = 30;
+    this.k = Math.min(
+      Math.max(
+        Math.min((this.w - 2 * padX) / extentW, (this.h - padY - 24) / extentH),
+        0.18,
+      ),
+      1.4,
+    );
     this.tier = tierForZoom(this.k);
     this.tx = this.w / 2 - ((minX + maxX) / 2) * this.k;
     this.ty = this.h / 2 - ((minY + maxY) / 2) * this.k;
@@ -586,9 +608,10 @@ export class StarMapRenderer {
 
     {
       ctx.strokeStyle = '#94a3b8';
-      ctx.lineWidth = 1 / this.k;
-      ctx.globalAlpha = overview ? 0.25 : 0.16;
-      ctx.setLineDash([4 / this.k, 4 / this.k]);
+      ctx.lineWidth = 1.2 / this.k;
+      ctx.globalAlpha = overview ? 0.38 : 0.22;
+      ctx.setLineDash([5 / this.k, 4 / this.k]);
+      const centroids: { x: number; y: number }[] = [];
       for (const groups of this.layoutGroups.values()) {
         if (groups.length < 2) continue;
         ctx.beginPath();
@@ -601,12 +624,20 @@ export class StarMapRenderer {
           }
           const x = sx / group.length;
           const y = sy / group.length;
+          centroids.push({ x, y });
           if (gi === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         });
         ctx.stroke();
       }
       ctx.setLineDash([]);
+      ctx.globalAlpha = overview ? 0.55 : 0.35;
+      ctx.fillStyle = '#94a3b8';
+      for (const c of centroids) {
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, 2.4 / this.k, 0, Math.PI * 2);
+        ctx.fill();
+      }
       ctx.globalAlpha = overview ? 0.3 : 0.2;
       const turnNodes = new Map<number, SimNode[]>();
       for (const sn of this.simNodes) {

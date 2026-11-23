@@ -1,0 +1,238 @@
+{
+  "runAt": "2026-11-23T09:54:38.703Z",
+  "screenshots": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/stage-spine",
+  "daemon": "http://127.0.0.1:7788",
+  "site": "http://127.0.0.1:7790",
+  "chromeDebugPort": 9355,
+  "daemon390Settling": [
+    {
+      "t": 120,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemon390Final": {
+    "nodes": 57,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemon390Ink": {
+    "ink": 1338,
+    "dx": -1,
+    "dy": 0,
+    "pads": [
+      68,
+      70,
+      178,
+      179
+    ],
+    "corner": [
+      244,
+      247,
+      252
+    ]
+  },
+  "daemon390Stats": {
+    "fps": 39,
+    "frames": 140,
+    "nodes": 57,
+    "edges": 9,
+    "converged": true,
+    "zoom": 0.28,
+    "focused": false,
+    "selected": null,
+    "lastDrawAt": 354,
+    "tier": "far",
+    "clusters": 5,
+    "namedClusters": 5,
+    "pulsing": 0,
+    "searchMatches": 0
+  },
+  "daemon390SettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/stage-spine/daemon-7788-390-settling.png",
+  "daemon390RestShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/stage-spine/daemon-7788-390-rest.png",
+  "daemonCold1280Settling": [
+    {
+      "t": 120,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemonCold1280Final": {
+    "nodes": 57,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemonCold1280Ink": {
+    "ink": 2188,
+    "dx": -8,
+    "dy": 5,
+    "pads": [
+      360,
+      376,
+      24,
+      14
+    ],
+    "corner": [
+      244,
+      247,
+      252
+    ]
+  },
+  "daemonCold1280Stats": {
+    "fps": 42,
+    "frames": 140,
+    "nodes": 57,
+    "edges": 9,
+    "converged": true,
+    "zoom": 0.51,
+    "focused": false,
+    "selected": null,
+    "lastDrawAt": 310,
+    "tier": "far",
+    "clusters": 5,
+    "namedClusters": 5,
+    "pulsing": 0,
+    "searchMatches": 0
+  },
+  "daemonCold1280SettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/stage-spine/daemon-7788-1280-settling.png",
+  "daemonCold1280RestShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/stage-spine/daemon-7788-1280-rest.png",
+  "daemonRefresh1280Settling": [
+    {
+      "t": 120,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 57,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemonRefresh1280Final": {
+    "nodes": 57,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemonPanDuringSettling": {
+    "pannedDx": 120,
+    "preConvergeDx": 120,
+    "afterConvergeDx": 120
+  },
+  "siteDemoSettling": [
+    {
+      "t": 120,
+      "nodes": 1,
+      "converged": false,
+      "dx": -4,
+      "dy": 6
+    },
+    {
+      "t": 400,
+      "nodes": 1,
+      "converged": false,
+      "dx": -4,
+      "dy": 6
+    },
+    {
+      "t": 900,
+      "nodes": 1,
+      "converged": false,
+      "dx": -4,
+      "dy": 6
+    },
+    {
+      "t": 1600,
+      "nodes": 1,
+      "converged": false,
+      "dx": -4,
+      "dy": 6
+    }
+  ],
+  "siteDemoFinal": {
+    "ink": 689,
+    "dx": -4,
+    "dy": 6,
+    "pads": [
+      24,
+      32,
+      56,
+      44
+    ],
+    "corner": [
+      244,
+      247,
+      252
+    ]
+  },
+  "siteDemoSettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/stage-spine/site-7790-demo-settling.png",
+  "siteDemoRestShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/stage-spine/site-7790-demo-rest.png",
+  "consoleErrors": [],
+  "pageErrors": []
+}
