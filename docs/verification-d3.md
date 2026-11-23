@@ -105,7 +105,7 @@ fixture 入库未执行：按计划需作者按 §10.5 逐段授权后另行安�
 
 | 项 | 结果 |
 | --- | --- |
-| 旧 63 测 + 新增全绿 | 73/73 ✅（core 36 / codex 12 / watcher 3 / daemon 15 / web 7） |
+| 旧 63 测 + 新增全绿 | 76/76 ✅（core 36 / codex 12 / watcher 3 / daemon 15 / web 10，含转义防回归） |
 | typecheck | 根 tsconfig + web tsconfig 均无错误 ✅ |
 | localhost:7788 星图页可打开 | ✅（真实 daemon + 真实会话列表；证据截图来自该服务与 7802 夹具服务） |
 | 300 节点 fps ≥50 | 60/59/60 ✅ |

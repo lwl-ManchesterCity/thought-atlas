@@ -10,7 +10,7 @@
 - 构建：esbuild 单文件 bundle（28KB），`npm run build:web`；dist 保持不入库
 - 脚本：d3-perf-daemon.ts（300 节点/600 边与 XSS 夹具）、d3-browser-check.ts（headless Chrome + CDP：冷启动、帧率、点击聚焦、XSS、390px、真实 SSE 增长）、d3-annotations.ts（三样本逐轮标注草稿）
 - 黄金样本标注：新增 2026-10-19（42 轮，线程 01a15219）候选；三份 `<fileId>.annotation.md`（600，本机）含每轮应记/应合并重述/转变点与一行理由
-- 单测 73 个全绿（core 36 / codex 12 / watcher 3 / daemon 15 / web 7）
+- 单测 76 个全绿（core 36 / codex 12 / watcher 3 / daemon 15 / web 10，含转义防回归）
 
 ### 验证与返工
 - 300 节点/600 边 rAF 实测 60/59/60 fps（初版 38fps：600 条边逐条 stroke + 每帧字体状态重建 → 按样式批量 Path2D + 状态缓存后达标）；冷打开 54ms；390px 无横向溢出、面板底部抽屉
