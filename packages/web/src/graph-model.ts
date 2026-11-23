@@ -17,14 +17,14 @@ export interface EdgeVisual {
   dash: number[];
 }
 
-const USER_FILL = '#4c8dff';
-const USER_STROKE = '#9cc0ff';
-const AI_FILL = '#586079';
-const AI_STROKE = '#7b849c';
-const SHIFT_FILL = '#f0a24a';
-const SHIFT_STROKE = '#ffd08a';
-const MUTED_FILL = '#454c5e';
-const MUTED_STROKE = '#5f677b';
+const USER_FILL = '#3b82f6';
+const USER_STROKE = '#1d4ed8';
+const AI_FILL = '#cbd5e1';
+const AI_STROKE = '#64748b';
+const SHIFT_FILL = '#f59e0b';
+const SHIFT_STROKE = '#b45309';
+const MUTED_FILL = '#e2e8f0';
+const MUTED_STROKE = '#94a3b8';
 
 const BASE_RADIUS = 9;
 
@@ -68,9 +68,9 @@ export function nodeVisual(node: ThoughtNode): NodeVisual {
 }
 
 export function edgeVisual(kind: EdgeKind): EdgeVisual {
-  if (kind === 'influence') return { stroke: '#ffb45e', width: 1.8, dash: [6, 4] };
-  if (kind === 'supersede') return { stroke: '#8b93a7', width: 1.3, dash: [3, 5] };
-  return { stroke: '#39415a', width: 1.1, dash: [] };
+  if (kind === 'influence') return { stroke: '#d97706', width: 1.8, dash: [6, 4] };
+  if (kind === 'supersede') return { stroke: '#64748b', width: 1.3, dash: [3, 5] };
+  return { stroke: '#94a3b8', width: 1.1, dash: [] };
 }
 
 export function computeNeighborhood(map: GraphMap, id: string): Set<string> {

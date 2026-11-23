@@ -59,7 +59,7 @@ export interface RendererOptions {
 
 const GROW_MS = 450;
 const PULSE_MS = 1300;
-const CLUSTER_COLORS = ['#4c8dff', '#f0a24a', '#5fd09a', '#c78bff', '#ff7b8a', '#59c7e8', '#d7c56a', '#8fa0ff'];
+const CLUSTER_COLORS = ['#2563eb', '#c2410c', '#047857', '#7c3aed', '#be123c', '#0e7490', '#a16207', '#4338ca'];
 
 interface ClusterShape {
   key: string;
@@ -103,6 +103,7 @@ export class StarMapRenderer {
   private animating = false;
   private converged = true;
   private hasFit = false;
+  private userAdjusted = false;
   private needsDraw = true;
   private raf = 0;
   private frameTimes: number[] = [];
@@ -298,6 +299,7 @@ export class StarMapRenderer {
   centerOn(id: string): boolean {
     const sn = this.byId.get(id);
     if (!sn) return false;
+    this.userAdjusted = true;
     if (this.k < 0.95) this.k = 1.0;
     this.tier = tierForZoom(this.k);
     this.tx = this.w / 2 - (sn.x ?? 0) * this.k;
@@ -307,6 +309,7 @@ export class StarMapRenderer {
   }
 
   setZoom(k: number): number {
+    this.userAdjusted = true;
     const next = Math.min(Math.max(k, 0.25), 3);
     const cx = (this.w / 2 - this.tx) / this.k;
     const cy = (this.h / 2 - this.ty) / this.k;
@@ -403,6 +406,7 @@ export class StarMapRenderer {
     this.dpr = window.devicePixelRatio || 1;
     this.canvas.width = Math.floor(this.w * this.dpr);
     this.canvas.height = Math.floor(this.h * this.dpr);
+    if (this.hasFit && !this.userAdjusted) this.fitView();
     this.needsDraw = true;
   }
 
@@ -453,11 +457,11 @@ export class StarMapRenderer {
     const ctx = this.ctx;
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.clearRect(0, 0, this.w, this.h);
-    ctx.fillStyle = '#0a0e18';
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, this.w, this.h);
 
     if (this.simNodes.length === 0) {
-      ctx.fillStyle = '#5d6a86';
+      ctx.fillStyle = '#64748b';
       ctx.font = '14px ui-sans-serif, system-ui, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('暂无星图数据 · 等待对话流入', this.w / 2, this.h / 2);
@@ -552,7 +556,7 @@ export class StarMapRenderer {
       ctx.stroke();
       if (sn.id === this.selectedId) {
         ctx.globalAlpha = 1;
-        ctx.strokeStyle = '#ffffff';
+        ctx.strokeStyle = '#1b2434';
         ctx.lineWidth = 1.5 / this.k;
         ctx.beginPath();
         ctx.arc(x, y, r + 5 / this.k, 0, Math.PI * 2);
@@ -560,7 +564,7 @@ export class StarMapRenderer {
       }
       if (this.searchIds.has(sn.id)) {
         ctx.globalAlpha = 1;
-        ctx.strokeStyle = '#ffd66b';
+        ctx.strokeStyle = '#d97706';
         ctx.lineWidth = 1.8 / this.k;
         ctx.beginPath();
         ctx.arc(x, y, r + 4.5 / this.k, 0, Math.PI * 2);
@@ -568,7 +572,7 @@ export class StarMapRenderer {
       }
       if (visual.strike) {
         ctx.globalAlpha = alpha * 0.9;
-        ctx.strokeStyle = '#aab2c5';
+        ctx.strokeStyle = '#64748b';
         ctx.lineWidth = 1.2 / this.k;
         ctx.beginPath();
         ctx.moveTo(x - r * 0.8, y + r * 0.8);
@@ -579,7 +583,7 @@ export class StarMapRenderer {
       if (pulseStart !== undefined && now - pulseStart <= PULSE_MS) {
         const t = Math.max(0, (now - pulseStart) / PULSE_MS);
         ctx.globalAlpha = (1 - t) * 0.9;
-        ctx.strokeStyle = '#ffd08a';
+        ctx.strokeStyle = '#d97706';
         ctx.lineWidth = 2.2 / this.k;
         ctx.beginPath();
         ctx.arc(x, y, r + (6 + t * 30) / this.k, 0, Math.PI * 2);
@@ -607,7 +611,7 @@ export class StarMapRenderer {
         const cy = (sy / shape.nodes.length) * this.k + this.ty;
         const label = truncate(this.clusterLabels.get(shape.key) ?? `簇 #${shape.index}`, 16);
         ctx.globalAlpha = 0.95;
-        ctx.strokeStyle = 'rgba(10, 14, 24, 0.85)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
         ctx.lineWidth = 3;
         ctx.strokeText(label, cx, cy);
         ctx.fillStyle = CLUSTER_COLORS[shape.index % CLUSTER_COLORS.length];
@@ -632,7 +636,7 @@ export class StarMapRenderer {
         ctx.globalAlpha = alpha;
         currentAlpha = alpha;
       }
-      const fill = visual.strike ? '#98a0b3' : sn.node.type === 'shift' ? '#ffd08a' : '#dbe4f5';
+      const fill = visual.strike ? '#6b7280' : sn.node.type === 'shift' ? '#92400e' : '#1f2937';
       if (fill !== currentFill) {
         ctx.fillStyle = fill;
         currentFill = fill;
@@ -641,7 +645,7 @@ export class StarMapRenderer {
       ctx.fillText(text, sx, sy);
       if (visual.strike) {
         const width = ctx.measureText(text).width;
-        ctx.strokeStyle = '#98a0b3';
+        ctx.strokeStyle = '#6b7280';
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(sx - width / 2, sy - 4);
@@ -724,6 +728,7 @@ export class StarMapRenderer {
       this.dragging.fy = world.y;
       this.reheat(0.3);
     } else if (this.panning) {
+      this.userAdjusted = true;
       this.tx = this.panStart.tx + dx;
       this.ty = this.panStart.ty + dy;
       this.needsDraw = true;
@@ -748,6 +753,7 @@ export class StarMapRenderer {
 
   private onWheel = (event: WheelEvent): void => {
     event.preventDefault();
+    this.userAdjusted = true;
     const rect = this.canvas.getBoundingClientRect();
     const px = event.clientX - rect.left;
     const py = event.clientY - rect.top;

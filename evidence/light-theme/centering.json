@@ -1,0 +1,110 @@
+{
+  "runAt": "2026-11-23T07:05:09.684Z",
+  "screenshots": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme",
+  "daemon390": {
+    "ink": 1113,
+    "dx": 0,
+    "dy": 1,
+    "left": 42,
+    "right": 42,
+    "top": 222,
+    "bottom": 221,
+    "corner": [
+      255,
+      255,
+      255
+    ],
+    "bodyBg": "rgb(246, 248, 251)"
+  },
+  "daemon390Nodes": {
+    "nodes": 34,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemon390Shot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme/daemon-390.png",
+  "daemonCold1280Nodes": {
+    "nodes": 34,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemonCold1280": {
+    "ink": 2304,
+    "dx": 2,
+    "dy": 7,
+    "left": 324,
+    "right": 320,
+    "top": 84,
+    "bottom": 70,
+    "corner": [
+      255,
+      255,
+      255
+    ],
+    "bodyBg": "rgb(246, 248, 251)"
+  },
+  "daemonCold1280Shot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme/daemon-1280.png",
+  "daemonRefresh1280": {
+    "ink": 2331,
+    "dx": 0,
+    "dy": 5,
+    "left": 308,
+    "right": 308,
+    "top": 84,
+    "bottom": 74,
+    "corner": [
+      255,
+      255,
+      255
+    ],
+    "bodyBg": "rgb(246, 248, 251)"
+  },
+  "daemonRefresh1280Nodes": {
+    "nodes": 34,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemonManualPan": {
+    "pannedDx": 120,
+    "afterResizeDx": 120
+  },
+  "siteDemoCenter": {
+    "ink": 136,
+    "dx": 0,
+    "dy": 0,
+    "left": 324,
+    "right": 324,
+    "top": 48,
+    "bottom": 48,
+    "corner": [
+      255,
+      255,
+      255
+    ],
+    "bodyBg": "rgb(246, 248, 251)"
+  },
+  "siteShots": {
+    "site-home": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme/site-home.png",
+    "site-demo": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme/site-demo.png",
+    "site-sandbox": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme/site-sandbox.png",
+    "site-install": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme/site-install.png",
+    "site-boundary": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme/site-boundary.png"
+  },
+  "siteLearningCenter": {
+    "ink": 547,
+    "dx": 2,
+    "dy": 8,
+    "left": 252,
+    "right": 248,
+    "top": 92,
+    "bottom": 76,
+    "corner": [
+      255,
+      255,
+      255
+    ],
+    "bodyBg": "rgb(246, 248, 251)"
+  },
+  "siteLearningShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/light-theme/site-demo-learning.png",
+  "consoleErrors": [],
+  "pageErrors": []
+}

@@ -56,9 +56,9 @@ test('nodeVisual: AI 观点小而淡，shift 为菱形暖色，superseded 置灰
   const dead = nodeVisual(node('old', { status: 'superseded', supersededBy: 'x' }));
   assert.equal(ai.dim, true);
   assert.equal(shift.shape, 'diamond');
-  assert.equal(shift.fill, '#f0a24a');
+  assert.equal(shift.fill, '#f59e0b');
   assert.equal(dead.strike, true);
-  assert.notEqual(dead.fill, '#4c8dff');
+  assert.notEqual(dead.fill, '#3b82f6');
   assert.equal(nodeVisual(node('user')).dim, false);
 });
 
