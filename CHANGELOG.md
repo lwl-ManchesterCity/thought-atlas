@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v0.2.0 — D2（2026-11-23）
+
+### 新增
+- 模型迁移：deepseek-chat（弃用别名）→ deepseek-flash 正名；DeepSeekClient 对 deepseek 系显式关闭思考模式（官方 thinking 参数），JSON 空白内容守卫触发重试
+- adapters/codex：rollout 解析器（task_complete 轮界、user/assistant 正文、排除 developer/reasoning/工具记录、turn_id 幂等、环境包裹剥离）+ 字节游标增量读取器（只消费完整行、截断归零）
+- adapters/watcher：只读轮询监听 ~/.codex/sessions/ 增长，tail 模式静默 seeding 历史保证轮次连续，投递失败静默重试；对 watched 目录零写入
+- daemon：AtlasDaemon HTTP 服务（POST /turn 每会话串行+幂等、GET /events SSE、GET /map、GET /health，127.0.0.1:7788）；retry.jsonl 持久重试队列（空闲补跑、attempts 上限 5、耗尽转 failures.jsonl）
+- 可运行入口：daemon src/main.ts（读 config 端口）、watcher src/main.ts（tail 模式）
+- 状态机硬规则：shift.fromNodeId 不得指向 ai-voice（MARK_SHIFT 与 ADD_NODE 双路径，整批原子拒绝）
+- scripts/d2-real-dryrun.ts（真实会话干跑，证据仅聚合统计）、scripts/d2-e2e-latency.ts（/tmp 副本追加合成轮测端到端延迟）
+- 单测 57 个全绿（core 36 / codex 12 / watcher 3 / daemon 6）
+- docs/verification-d2.md：迁移数据、解析器结论、端到端延迟、干跑统计、只读证明
+
+### 验证与返工
+- 模型迁移 A/B：思考关 vs 开输出 ops 一致，延迟 -22%、completion -28%；合成场景语义无劣化（evidence/d2-model-migration.json、d2-thinking-probe.json）
+- 真实干跑 2 会话 60 轮：59 applied + 1 skipped，23 节点 3 shift 2 influence，平均 837ms/轮，成本上界 ¥0.25；1 次网络波动 retry 自动恢复（evidence/d2-real-dryrun.json）
+- 端到端：追加轮 → 节点可见 2479ms ≤ 8s；重复投递图不变（evidence/d2-e2e-latency.json）
+- 返工1：续写 rollout 共享 thread session_id 导致轮次冲突 → sessionId 按文件映射（文件名唯一稳定），单测覆盖
+- 返工2：previous-turn 相似度跟踪在分析前更新，失败轮补跑被误判复读而 SKIP → 改为轮次真正处理后更新，单测覆盖
+
+### 安全
+- Key 仅存 ~/.thought-atlas/config.json（600）；仓库精确 Key / sk- 模式 / git 全历史扫描均 0 命中
+- ~/.codex 全程只读（不写文件、不装 hooks、不碰 notify）；hooks.json 哈希与基线一致；config.toml 哈希偏差归因为作者 Codex 客户端活跃使用自行重写（mtime 10:04，详见 verification-d2.md §5）
+- 真实对话正文只存 ~/.thought-atlas/（本机）；黄金草稿目录 700 文件 600，待作者 §10.5 逐段授权；evidence 仅聚合统计
+
 ## v0.1.0 — D1（2026-11-23）
 
 ### 新增

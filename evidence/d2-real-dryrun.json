@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-23T02:25:35.643Z",
+  "model": "deepseek-flash",
+  "note": "聚合统计证据；真实对话正文只存 ~/.thought-atlas/（本机），不进仓库",
+  "costRateUpperBound": {
+    "promptYuanPerMToken": 2,
+    "completionYuanPerMToken": 8
+  },
+  "sessions": [
+    {
+      "sessionId": "2026-11-19T19-35-57-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1f397-8b60-7503-9286-8979f9fbfae0",
+      "rolloutFile": "rollout-2026-11-19T19-35-57-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1f397-8b60-7503-9286-8979f9fbfae0.jsonl",
+      "turnsParsed": 44,
+      "statusCounts": {
+        "applied": 43,
+        "skipped": 1
+      },
+      "skipRate": 0.02,
+      "opsDistribution": {
+        "ADD_NODE": 17,
+        "SKIP": 23,
+        "REINFORCE": 8,
+        "MARK_SHIFT": 1
+      },
+      "nodesByType": {
+        "claim": 8,
+        "fact": 3,
+        "question": 5,
+        "ai-voice": 1,
+        "shift": 1
+      },
+      "edgesByKind": {
+        "related": 4,
+        "influence": 1,
+        "supersede": 1
+      },
+      "shiftCount": 1,
+      "turnLatencyMs": {
+        "avg": 834,
+        "max": 1299
+      },
+      "modelCalls": 43,
+      "tokens": {
+        "prompt": 88874,
+        "completion": 1473
+      },
+      "estimatedCostUpperBoundYuan": 0.1895,
+      "retryRecovered": 0,
+      "typeGuess": "学习/讨论型（观点问题转变为主）"
+    },
+    {
+      "sessionId": "2026-11-17T11-18-01-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1e782-f5c4-79e1-ad81-7e71f6e45585",
+      "rolloutFile": "rollout-2026-11-17T11-18-01-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1e782-f5c4-79e1-ad81-7e71f6e45585.jsonl",
+      "turnsParsed": 16,
+      "statusCounts": {
+        "applied": 16
+      },
+      "skipRate": 0,
+      "opsDistribution": {
+        "SKIP": 12,
+        "ADD_NODE": 4,
+        "MARK_SHIFT": 1
+      },
+      "nodesByType": {
+        "question": 1,
+        "ai-voice": 1,
+        "shift": 2,
+        "claim": 1
+      },
+      "edgesByKind": {
+        "influence": 1,
+        "supersede": 1,
+        "related": 1
+      },
+      "shiftCount": 2,
+      "turnLatencyMs": {
+        "avg": 841,
+        "max": 1551
+      },
+      "modelCalls": 16,
+      "tokens": {
+        "prompt": 28573,
+        "completion": 404
+      },
+      "estimatedCostUpperBoundYuan": 0.0604,
+      "retryRecovered": 0,
+      "typeGuess": "学习/讨论型（观点问题转变为主）"
+    }
+  ],
+  "goldenCandidates": [
+    {
+      "sessionId": "2026-11-19T19-35-57-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1f397-8b60-7503-9286-8979f9fbfae0",
+      "turns": 44,
+      "typeGuess": "学习/讨论型（观点问题转变为主）"
+    },
+    {
+      "sessionId": "2026-11-17T11-18-01-01a175c9-8f74-7052-a1b7-1b9cc7ef1360_01a1e782-f5c4-79e1-ad81-7e71f6e45585",
+      "turns": 16,
+      "typeGuess": "学习/讨论型（观点问题转变为主）"
+    }
+  ]
+}

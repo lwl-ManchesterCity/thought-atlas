@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-23T02:25:12.811Z",
+  "method": "真实 rollout 复制到 /tmp，向副本追加合成轮；绝不修改真实文件",
+  "sessionId": "e2e-copy",
+  "historyTurns": 6,
+  "appendToNodeVisibleMs": 2479,
+  "budgetMs": 8000,
+  "pass": true,
+  "nodesVisible": 2,
+  "duplicateDeliveryIdempotent": true
+}
