@@ -153,6 +153,41 @@ test('triggerNodeId must reference ai-voice', async () => {
   assert.equal(result.ok, false);
 });
 
+test('MARK_SHIFT fromNodeId must not reference ai-voice, batch stays atomic', async () => {
+  const storage = new MemoryStorage();
+  const graph = new ThoughtGraph('s1', storage);
+  await graph.applyTurn(1, [
+    addClaim('旧观点'),
+    { op: 'ADD_NODE', node: { type: 'ai-voice', label: 'AI解释', summary: 'AI 的关键发言' } },
+  ], TS);
+  const before = structuredClone(graph.getMap());
+  const result = await graph.applyTurn(2, [
+    addClaim('本轮新观点'),
+    { op: 'MARK_SHIFT', nodeId: null, shift: { fromNodeId: 'n_0002', toSummary: '新立场' } },
+  ], TS);
+  assert.equal(result.ok, false);
+  assert.deepEqual(graph.getMap(), before);
+  assert.equal(storage.events.length, 1);
+});
+
+test('ADD_NODE shift.fromNodeId must not reference ai-voice', async () => {
+  const graph = new ThoughtGraph('s1', new MemoryStorage());
+  await graph.applyTurn(1, [
+    { op: 'ADD_NODE', node: { type: 'ai-voice', label: 'AI解释', summary: 'AI 的关键发言' } },
+  ], TS);
+  const result = await graph.applyTurn(2, [
+    {
+      op: 'ADD_NODE',
+      node: {
+        type: 'shift', label: '想通了', summary: '新立场',
+        shift: { fromNodeId: 'n_0001', toSummary: '新立场' },
+      },
+    },
+  ], TS);
+  assert.equal(result.ok, false);
+  assert.equal(graph.getMap().nodes.length, 1);
+});
+
 test('SUPERSEDE requires active nodes', async () => {
   const graph = new ThoughtGraph('s1', new MemoryStorage());
   await graph.applyTurn(1, [addClaim('旧'), addClaim('新')], TS);

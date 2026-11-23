@@ -107,7 +107,10 @@ function applyOp(
       const id = allocId(sim);
       const n = op.node;
       const shift = n.shift ? resolveShift(n.shift, lastCreated) : undefined;
-      if (shift?.fromNodeId) requireActive(sim, shift.fromNodeId);
+      if (shift?.fromNodeId) {
+        const from = requireActive(sim, shift.fromNodeId);
+        if (from.type === 'ai-voice') throw new OpError('shift.fromNodeId must not reference an ai-voice node');
+      }
       if (shift?.triggerNodeId) {
         const trigger = requireActive(sim, shift.triggerNodeId);
         if (trigger.type !== 'ai-voice') throw new OpError('shift.triggerNodeId must reference an ai-voice node');
@@ -163,7 +166,10 @@ function applyOp(
     }
     case 'MARK_SHIFT': {
       const shift = resolveShift(op.shift, lastCreated);
-      if (shift.fromNodeId) requireActive(sim, shift.fromNodeId);
+      if (shift.fromNodeId) {
+        const from = requireActive(sim, shift.fromNodeId);
+        if (from.type === 'ai-voice') throw new OpError('shift.fromNodeId must not reference an ai-voice node');
+      }
       let trigger: ThoughtNode | null = null;
       if (shift.triggerNodeId) {
         trigger = requireActive(sim, shift.triggerNodeId);
