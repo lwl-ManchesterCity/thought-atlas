@@ -12,7 +12,6 @@ import {
 import type { GraphMap, ThoughtNode, ThoughtEdge } from '@thought-atlas/core';
 import {
   computeNeighborhood,
-  convexHull,
   diffMap,
   edgeVisual,
   mapSignature,
@@ -585,34 +584,6 @@ export class StarMapRenderer {
     ctx.save();
     ctx.translate(this.tx, this.ty);
     ctx.scale(this.k, this.k);
-
-    if (overview) {
-      for (const shape of this.clusterShapes) {
-        const color = CLUSTER_COLORS[shape.index % CLUSTER_COLORS.length];
-        const pts: { x: number; y: number }[] = [];
-        for (const sn of shape.nodes) {
-          const x = sn.x ?? 0;
-          const y = sn.y ?? 0;
-          const r = sn.r + 12;
-          pts.push({ x: x - r, y: y - r }, { x: x + r, y: y - r }, { x: x + r, y: y + r }, { x: x - r, y: y + r });
-        }
-        const hull = convexHull(pts);
-        if (hull.length < 3) continue;
-        ctx.globalAlpha = 0.2;
-        ctx.fillStyle = color;
-        ctx.beginPath();
-        ctx.moveTo(hull[0].x, hull[0].y);
-        for (let i = 1; i < hull.length; i++) ctx.lineTo(hull[i].x, hull[i].y);
-        ctx.closePath();
-        ctx.fill();
-        ctx.globalAlpha = 0.55;
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 1.4 / this.k;
-        ctx.setLineDash([6 / this.k, 5 / this.k]);
-        ctx.stroke();
-        ctx.setLineDash([]);
-      }
-    }
 
     {
       ctx.strokeStyle = '#94a3b8';
