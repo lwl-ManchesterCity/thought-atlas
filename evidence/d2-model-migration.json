@@ -1,6 +1,8 @@
 {
   "runAt": "2026-11-23T02:05:53.838Z",
   "migration": "deepseek-chat (deprecated alias) -> deepseek-flash (V4.1-Flash)",
+  "provenance": "thinking-disabled 与空白 JSON 守卫原为被叫停并行会话的未提交残稿；中枢评审 diff 后交 D2 会话接管：对照官方文档核实参数形状与空白行为（见 docs）、补单测（deepseek-client.test.ts 6 例，含空白→失败→分析器重试链路），数据均由 D2 会话生成",
+  "docsReverifiedAt": "2026-11-23T02:28:00.000Z",
   "configChange": "~/.thought-atlas/config.json model field only; key untouched; mode 600 preserved",
   "clientChange": "thinking:{type:disabled} for deepseek models (official param); blank-json-content guard triggers retry",
   "docs": {

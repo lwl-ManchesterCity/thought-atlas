@@ -5,6 +5,8 @@
 
 ## 1. 模型别名迁移（D2 首任务）
 
+> 来源说明：thinking 关闭与空白 JSON 守卫原为被叫停并行会话留下的未提交残稿；中枢评审后由 D2 会话接管——对照官方文档核实（2026-11-23 复核：开关形状 `{"thinking":{"type":"enabled/disabled"}}`、默认开启且思考下 temperature 不生效；JSON 模式非 JSON 内容被替换为空格、finish_reason 可能仍为 stop、文档建议代码侧兜底重试），方向正确予以保留，并补单测（deepseek-client.test.ts：参数形状、空白→失败→分析器重试链路、HTTP 错误）。
+
 - `~/.thought-atlas/config.json` model：`deepseek-chat`（弃用别名）→ `deepseek-flash`（V4.1-Flash 正名）。仅改 model 字段，Key 未动，文件权限 600 保持。
 - 官方文档确认（api-docs.deepseek.com）：
   - flash 思考模式**默认开启**（effort high），思考模式下 temperature 失效；请求体 `thinking: { type: "disabled" }` 可关闭

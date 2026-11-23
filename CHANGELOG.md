@@ -3,7 +3,7 @@
 ## v0.2.0 — D2（2026-11-23）
 
 ### 新增
-- 模型迁移：deepseek-chat（弃用别名）→ deepseek-flash 正名；DeepSeekClient 对 deepseek 系显式关闭思考模式（官方 thinking 参数），JSON 空白内容守卫触发重试
+- 模型迁移：deepseek-chat（弃用别名）→ deepseek-flash 正名；DeepSeekClient 对 deepseek 系显式关闭思考模式（官方 thinking 参数），JSON 空白内容守卫触发重试。thinking-off 与空白守卫源自被叫停并行会话的未提交残稿，中枢评审后由 D2 接管：对照官方文档核实并补单测（含空白→失败→分析器重试链路）
 - adapters/codex：rollout 解析器（task_complete 轮界、user/assistant 正文、排除 developer/reasoning/工具记录、turn_id 幂等、环境包裹剥离）+ 字节游标增量读取器（只消费完整行、截断归零）
 - adapters/watcher：只读轮询监听 ~/.codex/sessions/ 增长，tail 模式静默 seeding 历史保证轮次连续，投递失败静默重试；对 watched 目录零写入
 - daemon：AtlasDaemon HTTP 服务（POST /turn 每会话串行+幂等、GET /events SSE、GET /map、GET /health，127.0.0.1:7788）；retry.jsonl 持久重试队列（空闲补跑、attempts 上限 5、耗尽转 failures.jsonl）
