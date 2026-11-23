@@ -31,6 +31,7 @@ interface SimNode extends SimulationNodeDatum {
   bornAt: number;
   cx: number;
   cy: number;
+  ci: number;
 }
 
 type SimLink = SimulationLinkDatum<SimNode> & { edge: ThoughtEdge };
@@ -109,6 +110,7 @@ export class StarMapRenderer {
   private frameTimes: number[] = [];
   private frames = 0;
   private lastStatsAt = 0;
+  private dotPattern: CanvasPattern | null = null;
   private dragging: SimNode | null = null;
   private panning = false;
   private pointerMoved = false;
@@ -165,6 +167,7 @@ export class StarMapRenderer {
           bornAt: performance.now(),
           cx: 0,
           cy: 0,
+          ci: -1,
           x: anchor ? anchor.x! + (Math.random() - 0.5) * 40 : (Math.random() - 0.5) * 120,
           y: anchor ? anchor.y! + (Math.random() - 0.5) * 40 : (Math.random() - 0.5) * 120,
         };
@@ -214,12 +217,12 @@ export class StarMapRenderer {
         'link',
         forceLink<SimNode, SimLink>(this.simLinks)
           .id((d) => d.id)
-          .distance(52)
-          .strength(0.45),
+          .distance((l) => ((l.source as SimNode).ci === (l.target as SimNode).ci ? 94 : 200))
+          .strength((l) => ((l.source as SimNode).ci === (l.target as SimNode).ci ? 0.45 : 0.18)),
       )
       .force('charge', forceManyBody<SimNode>().strength(-180).distanceMax(420))
-      .force('clusterX', forceX<SimNode>((d) => d.cx).strength(0.08))
-      .force('clusterY', forceY<SimNode>((d) => d.cy).strength(0.08))
+      .force('clusterX', forceX<SimNode>((d) => d.cx).strength(0.3))
+      .force('clusterY', forceY<SimNode>((d) => d.cy).strength(0.3))
       .force('collide', forceCollide<SimNode>((d) => d.r + 4).iterations(1));
     sim.alpha(alpha);
     this.sim = sim;
@@ -266,9 +269,10 @@ export class StarMapRenderer {
     for (const sn of this.simNodes) {
       sn.cx = 0;
       sn.cy = 0;
+      sn.ci = -1;
     }
     const count = this.clusterShapes.length;
-    const radius = count > 1 ? 140 + Math.min(count, 16) * 26 : 0;
+    const radius = count > 1 ? 280 + Math.min(count, 16) * 52 : 0;
     this.clusterShapes.forEach((shape, index) => {
       const angle = (index / count) * Math.PI * 2 - Math.PI / 2;
       const cx = Math.cos(angle) * radius;
@@ -276,6 +280,7 @@ export class StarMapRenderer {
       for (const sn of shape.nodes) {
         sn.cx = cx;
         sn.cy = cy;
+        sn.ci = index;
       }
     });
   }
@@ -350,7 +355,7 @@ export class StarMapRenderer {
     }
     const extentW = Math.max(maxX - minX, 80);
     const extentH = Math.max(maxY - minY, 80);
-    this.k = Math.min(Math.max(Math.min(this.w / (extentW + 160), this.h / (extentH + 160)), 0.35), 1.4);
+    this.k = Math.min(Math.max(Math.min(this.w / (extentW + 160), this.h / (extentH + 160)), 0.18), 1.4);
     this.tier = tierForZoom(this.k);
     this.tx = this.w / 2 - ((minX + maxX) / 2) * this.k;
     this.ty = this.h / 2 - ((minY + maxY) / 2) * this.k;
@@ -406,6 +411,7 @@ export class StarMapRenderer {
     this.dpr = window.devicePixelRatio || 1;
     this.canvas.width = Math.floor(this.w * this.dpr);
     this.canvas.height = Math.floor(this.h * this.dpr);
+    this.dotPattern = null;
     if (this.hasFit && !this.userAdjusted) this.fitView();
     this.needsDraw = true;
   }
@@ -459,8 +465,13 @@ export class StarMapRenderer {
     const ctx = this.ctx;
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.clearRect(0, 0, this.w, this.h);
-    ctx.fillStyle = '#ffffff';
+    ctx.fillStyle = '#f4f7fc';
     ctx.fillRect(0, 0, this.w, this.h);
+    const dots = this.ensureDotPattern();
+    if (dots) {
+      ctx.fillStyle = dots;
+      ctx.fillRect(0, 0, this.w, this.h);
+    }
 
     if (this.simNodes.length === 0) {
       ctx.fillStyle = '#64748b';
@@ -472,13 +483,13 @@ export class StarMapRenderer {
     }
 
     this.tier = tierForZoom(this.k);
-    const far = this.tier === 'far' && this.focus === null;
+    const overview = this.tier !== 'near' && this.focus === null;
 
     ctx.save();
     ctx.translate(this.tx, this.ty);
     ctx.scale(this.k, this.k);
 
-    if (far) {
+    if (overview) {
       for (const shape of this.clusterShapes) {
         const color = CLUSTER_COLORS[shape.index % CLUSTER_COLORS.length];
         const pts: { x: number; y: number }[] = [];
@@ -490,7 +501,7 @@ export class StarMapRenderer {
         }
         const hull = convexHull(pts);
         if (hull.length < 3) continue;
-        ctx.globalAlpha = 0.16;
+        ctx.globalAlpha = 0.2;
         ctx.fillStyle = color;
         ctx.beginPath();
         ctx.moveTo(hull[0].x, hull[0].y);
@@ -511,7 +522,6 @@ export class StarMapRenderer {
       const source = link.source as SimNode;
       const target = link.target as SimNode;
       if (typeof source !== 'object' || typeof target !== 'object') continue;
-      if (far) continue;
       const outside = this.focus !== null && (!this.focus.has(source.id) || !this.focus.has(target.id));
       const alpha = outside ? 0.08 : link.edge.kind === 'related' ? 0.55 : 0.9;
       const key = `${link.edge.kind}:${alpha}`;
@@ -533,7 +543,6 @@ export class StarMapRenderer {
     ctx.setLineDash([]);
 
     for (const sn of this.simNodes) {
-      if (far && sn.node.type !== 'shift' && sn.id !== this.selectedId) continue;
       const visual = nodeVisual(sn.node);
       const outside = this.focus !== null && !this.focus.has(sn.id);
       const alpha = outside ? 0.1 : visual.dim ? 0.75 : 1;
@@ -600,7 +609,7 @@ export class StarMapRenderer {
     let currentFill = '';
     let currentAlpha = -1;
 
-    if (far) {
+    if (overview) {
       ctx.font = '600 13px ui-sans-serif, system-ui, sans-serif';
       for (const shape of this.clusterShapes) {
         let sx = 0;
@@ -624,8 +633,8 @@ export class StarMapRenderer {
 
     for (const sn of this.simNodes) {
       if (sn.grow < 0.6) continue;
-      if (far) {
-        if (sn.id !== this.selectedId) continue;
+      if (overview) {
+        if (!this.overviewLabel(sn)) continue;
       } else if (!this.showLabel(sn)) {
         continue;
       }
@@ -643,7 +652,7 @@ export class StarMapRenderer {
         ctx.fillStyle = fill;
         currentFill = fill;
       }
-      const text = truncate(sn.node.label);
+      const text = truncate(sn.node.label, overview ? 8 : 14);
       ctx.fillText(text, sx, sy);
       if (visual.strike) {
         const width = ctx.measureText(text).width;
@@ -657,6 +666,31 @@ export class StarMapRenderer {
     }
     ctx.globalAlpha = 1;
     this.emitStats(now);
+  }
+
+  private ensureDotPattern(): CanvasPattern | null {
+    if (this.dotPattern) return this.dotPattern;
+    const tilePx = Math.max(1, Math.round(24 * this.dpr));
+    const tile = document.createElement('canvas');
+    tile.width = tilePx;
+    tile.height = tilePx;
+    const tctx = tile.getContext('2d');
+    if (!tctx) return null;
+    tctx.fillStyle = '#e6ecf5';
+    tctx.beginPath();
+    tctx.arc(tilePx / 2, tilePx / 2, Math.max(1, Math.round(this.dpr)), 0, Math.PI * 2);
+    tctx.fill();
+    const pattern = this.ctx.createPattern(tile, 'repeat');
+    if (!pattern) return null;
+    pattern.setTransform(new DOMMatrix().scale(24 / tilePx));
+    this.dotPattern = pattern;
+    return pattern;
+  }
+
+  private overviewLabel(sn: SimNode): boolean {
+    if (sn.id === this.selectedId || this.searchIds.has(sn.id)) return true;
+    if (this.k < 0.3) return sn.node.type === 'shift';
+    return sn.node.type !== 'ai-voice';
   }
 
   private showLabel(sn: SimNode): boolean {
@@ -690,10 +724,8 @@ export class StarMapRenderer {
   }
 
   private hitTest(point: { x: number; y: number }): SimNode | null {
-    const farOnlyShift = this.focus === null && tierForZoom(this.k) === 'far';
     for (let i = this.simNodes.length - 1; i >= 0; i--) {
       const sn = this.simNodes[i];
-      if (farOnlyShift && sn.node.type !== 'shift' && sn.id !== this.selectedId) continue;
       const dx = (sn.x ?? 0) - point.x;
       const dy = (sn.y ?? 0) - point.y;
       const r = sn.r + 5 / this.k;

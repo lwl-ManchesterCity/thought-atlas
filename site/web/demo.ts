@@ -42,10 +42,10 @@ function updateStats(map: GraphMap): void {
   const influences = map.edges.filter((edge) => edge.kind === 'influence').length;
   clear(stats);
   stats.append(
-    text('span', `${map.nodes.length} 节点`),
-    text('span', `${map.edges.length} 边`),
-    text('span', `${shifts} 次转折`),
-    text('span', `${influences} 条影响`),
+    text('span', `${map.nodes.length} 节点`, 'stat-nodes'),
+    text('span', `${map.edges.length} 边`, 'stat-edges'),
+    text('span', `${shifts} 次转折`, 'stat-shifts'),
+    text('span', `${influences} 条影响`, 'stat-influences'),
   );
   shiftList.replaceChildren();
   for (const node of map.nodes.filter((entry) => entry.type === 'shift')) {

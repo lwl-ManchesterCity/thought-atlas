@@ -100,14 +100,21 @@ let clusterTimer = 0;
 
 function updateStats(stats: RendererStats): void {
   const tierName = stats.tier === 'far' ? '远景' : stats.tier === 'mid' ? '中景' : '近景';
-  const parts = [
-    `${stats.nodes} 节点`,
-    `${stats.edges} 连线`,
-    `${tierName} · ${stats.converged ? '已稳定' : '布局中'}`,
-    `${stats.fps} fps`,
+  const parts: [string, string][] = [
+    [`${stats.nodes} 节点`, 'stat-nodes'],
+    [`${stats.edges} 连线`, 'stat-edges'],
+    [`${tierName} · ${stats.converged ? '已稳定' : '布局中'}`, 'stat-state'],
+    [`${stats.fps} fps`, 'stat-fps'],
   ];
-  if (stats.searchMatches > 0) parts.push(`命中 ${stats.searchMatches}`);
-  statsEl.textContent = parts.join(' · ');
+  if (stats.searchMatches > 0) parts.push([`命中 ${stats.searchMatches}`, 'stat-search']);
+  statsEl.replaceChildren();
+  parts.forEach(([label, className], index) => {
+    if (index > 0) statsEl.append(' · ');
+    const span = document.createElement('span');
+    span.className = className;
+    span.textContent = label;
+    statsEl.append(span);
+  });
 }
 
 function setState(text: string, live: boolean): void {
