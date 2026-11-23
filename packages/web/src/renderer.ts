@@ -422,12 +422,14 @@ export class StarMapRenderer {
         }
       }
       this.animating = growing;
+      // center from the first paint: re-fit each settling frame until first fit or user takeover
+      if (!this.hasFit && !this.userAdjusted) this.fitView();
       if (this.sim.alpha() < 0.02 && !growing) {
         this.active = false;
         this.converged = true;
         if (!this.hasFit) {
           this.hasFit = true;
-          this.fitView();
+          if (!this.userAdjusted) this.fitView();
         }
       }
       this.draw(now);

@@ -1,0 +1,162 @@
+{
+  "runAt": "2026-11-23T07:24:32.431Z",
+  "screenshots": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/refresh-centering",
+  "daemon390Settling": [
+    {
+      "t": 120,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemon390Final": {
+    "nodes": 38,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemon390SettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/refresh-centering/daemon-settling-390.png",
+  "daemonCold1280Settling": [
+    {
+      "t": 120,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemonCold1280Final": {
+    "nodes": 38,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemonCold1280SettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/refresh-centering/daemon-settling-1280.png",
+  "daemonRefresh1280Settling": [
+    {
+      "t": 120,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 38,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemonRefresh1280Final": {
+    "nodes": 38,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemonPanDuringSettling": {
+    "pannedDx": 122,
+    "preConvergeDx": 123,
+    "afterConvergeDx": 123
+  },
+  "siteDemoSettling": [
+    {
+      "t": 120,
+      "nodes": 1,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 1,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 1,
+      "converged": false,
+      "dx": -2,
+      "dy": -2
+    },
+    {
+      "t": 1600,
+      "nodes": 1,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "siteDemoFinal": {
+    "ink": 146,
+    "dx": 0,
+    "dy": 0,
+    "corner": [
+      255,
+      255,
+      255
+    ]
+  },
+  "siteDemoSettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/refresh-centering/site-demo-settling.png",
+  "consoleErrors": [],
+  "pageErrors": []
+}
