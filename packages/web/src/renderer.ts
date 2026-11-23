@@ -223,7 +223,7 @@ export class StarMapRenderer {
       .force('charge', forceManyBody<SimNode>().strength(-180).distanceMax(420))
       .force('clusterX', forceX<SimNode>((d) => d.cx).strength(0.3))
       .force('clusterY', forceY<SimNode>((d) => d.cy).strength(0.3))
-      .force('collide', forceCollide<SimNode>((d) => d.r + 4).iterations(1));
+      .force('collide', forceCollide<SimNode>((d) => d.r + 10).iterations(1));
     sim.alpha(alpha);
     this.sim = sim;
     this.active = true;
@@ -255,6 +255,10 @@ export class StarMapRenderer {
     this.options.onSelect?.(null);
   }
 
+  private turnOrder(nodes: SimNode[]): SimNode[] {
+    return [...nodes].sort((a, b) => a.node.bornTurn - b.node.bornTurn || a.id.localeCompare(b.id));
+  }
+
   private recomputeClusters(): void {
     const snapshot = computeClusters(this.map);
     this.clusterShapes = snapshot.clusters
@@ -273,15 +277,20 @@ export class StarMapRenderer {
     }
     const count = this.clusterShapes.length;
     const radius = count > 1 ? 280 + Math.min(count, 16) * 52 : 0;
+    const halfChord = count > 1 ? radius * Math.sin(Math.PI / count) : Number.POSITIVE_INFINITY;
     this.clusterShapes.forEach((shape, index) => {
       const angle = (index / count) * Math.PI * 2 - Math.PI / 2;
       const cx = Math.cos(angle) * radius;
       const cy = Math.sin(angle) * radius;
-      for (const sn of shape.nodes) {
-        sn.cx = cx;
-        sn.cy = cy;
+      const ordered = this.turnOrder(shape.nodes);
+      const spread = Math.max(70, Math.min(90 + Math.min(ordered.length, 20) * 12, halfChord - 60));
+      ordered.forEach((sn, slot) => {
+        const spiral = slot * 2.399963229728653;
+        const rr = spread * Math.sqrt((slot + 0.5) / ordered.length);
+        sn.cx = cx + Math.cos(spiral) * rr;
+        sn.cy = cy + Math.sin(spiral) * rr;
         sn.ci = index;
-      }
+      });
     });
   }
 
@@ -517,13 +526,32 @@ export class StarMapRenderer {
       }
     }
 
+    if (overview) {
+      ctx.globalAlpha = 0.35;
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1 / this.k;
+      for (const shape of this.clusterShapes) {
+        const ordered = this.turnOrder(shape.nodes);
+        if (ordered.length < 2) continue;
+        ctx.beginPath();
+        ordered.forEach((sn, i) => {
+          const x = sn.x ?? 0;
+          const y = sn.y ?? 0;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+      }
+    }
+
     const groups = new Map<string, { visual: ReturnType<typeof edgeVisual>; alpha: number; path: Path2D }>();
     for (const link of this.simLinks) {
       const source = link.source as SimNode;
       const target = link.target as SimNode;
       if (typeof source !== 'object' || typeof target !== 'object') continue;
       const outside = this.focus !== null && (!this.focus.has(source.id) || !this.focus.has(target.id));
-      const alpha = outside ? 0.08 : link.edge.kind === 'related' ? 0.55 : 0.9;
+      let alpha = outside ? 0.08 : link.edge.kind === 'related' ? 0.55 : 0.9;
+      if (overview && !outside) alpha = link.edge.kind === 'related' ? 0.72 : 1;
       const key = `${link.edge.kind}:${alpha}`;
       let group = groups.get(key);
       if (!group) {
@@ -536,7 +564,7 @@ export class StarMapRenderer {
     for (const group of groups.values()) {
       ctx.globalAlpha = group.alpha;
       ctx.strokeStyle = group.visual.stroke;
-      ctx.lineWidth = group.visual.width / this.k;
+      ctx.lineWidth = (group.visual.width + (overview ? 0.5 : 0)) / this.k;
       ctx.setLineDash(group.visual.dash.map((d) => d / this.k));
       ctx.stroke(group.path);
     }

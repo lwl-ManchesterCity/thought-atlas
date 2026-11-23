@@ -254,6 +254,11 @@ body {
   border-top: 1px solid #94a3b8;
 }
 
+.line-turn {
+  border-top: 1px solid #94a3b8;
+  opacity: 0.7;
+}
+
 .empty-hint {
   position: absolute;
   inset: 0;

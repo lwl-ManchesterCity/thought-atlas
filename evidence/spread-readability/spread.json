@@ -1,0 +1,242 @@
+{
+  "runAt": "2026-11-23T08:40:59.829Z",
+  "screenshots": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability",
+  "daemon": "http://127.0.0.1:7788",
+  "site": "http://127.0.0.1:7790",
+  "chromeDebugPort": 9346,
+  "daemon390Settling": [
+    {
+      "t": 120,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemon390Final": {
+    "nodes": 44,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemon390Ink": {
+    "ink": 7459,
+    "dx": -6,
+    "dy": 3,
+    "pads": [
+      58,
+      70,
+      40,
+      35
+    ],
+    "corner": [
+      244,
+      247,
+      252
+    ]
+  },
+  "daemon390Stats": {
+    "fps": 38,
+    "frames": 140,
+    "nodes": 44,
+    "edges": 3,
+    "converged": true,
+    "zoom": 0.66,
+    "focused": false,
+    "selected": null,
+    "lastDrawAt": 372,
+    "tier": "mid",
+    "clusters": 2,
+    "namedClusters": 2,
+    "pulsing": 0,
+    "searchMatches": 0
+  },
+  "daemon390SettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/daemon-7788-390-settling.png",
+  "daemon390RestShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/daemon-7788-390-rest.png",
+  "daemonCold1280Settling": [
+    {
+      "t": 120,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemonCold1280Final": {
+    "nodes": 44,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemonCold1280Ink": {
+    "ink": 2198,
+    "dx": 2,
+    "dy": 1,
+    "pads": [
+      508,
+      504,
+      40,
+      38
+    ],
+    "corner": [
+      244,
+      247,
+      252
+    ]
+  },
+  "daemonCold1280Stats": {
+    "fps": 40,
+    "frames": 139,
+    "nodes": 44,
+    "edges": 3,
+    "converged": true,
+    "zoom": 0.68,
+    "focused": false,
+    "selected": null,
+    "lastDrawAt": 345,
+    "tier": "mid",
+    "clusters": 2,
+    "namedClusters": 2,
+    "pulsing": 0,
+    "searchMatches": 0
+  },
+  "daemonCold1280SettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/daemon-7788-1280-settling.png",
+  "daemonCold1280RestShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/daemon-7788-1280-rest.png",
+  "daemonRefresh1280Settling": [
+    {
+      "t": 120,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 400,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 900,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    },
+    {
+      "t": 1600,
+      "nodes": 44,
+      "converged": false,
+      "dx": 0,
+      "dy": 0
+    }
+  ],
+  "daemonRefresh1280Final": {
+    "nodes": 44,
+    "converged": true,
+    "dx": 0,
+    "dy": 0
+  },
+  "daemonPanDuringSettling": {
+    "pannedDx": 119,
+    "preConvergeDx": 118,
+    "afterConvergeDx": 118
+  },
+  "siteDemoSettling": [
+    {
+      "t": 120,
+      "nodes": 1,
+      "converged": false,
+      "dx": -2,
+      "dy": 4
+    },
+    {
+      "t": 400,
+      "nodes": 1,
+      "converged": false,
+      "dx": 0,
+      "dy": 4
+    },
+    {
+      "t": 900,
+      "nodes": 1,
+      "converged": false,
+      "dx": 0,
+      "dy": 4
+    },
+    {
+      "t": 1600,
+      "nodes": 1,
+      "converged": false,
+      "dx": 2,
+      "dy": 4
+    }
+  ],
+  "siteDemoFinal": {
+    "ink": 586,
+    "dx": 2,
+    "dy": 4,
+    "pads": [
+      332,
+      328,
+      28,
+      20
+    ],
+    "corner": [
+      244,
+      247,
+      252
+    ]
+  },
+  "siteDemoSettlingShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/site-7790-demo-settling.png",
+  "siteDemoRestShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/site-7790-demo-rest.png",
+  "site_home_shot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/site-7790-home.png",
+  "site_sandbox_shot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/site-7790-sandbox.png",
+  "site_install_shot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/site-7790-install.png",
+  "site_boundary_shot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/spread-readability/site-7790-boundary.png",
+  "consoleErrors": [],
+  "pageErrors": []
+}
