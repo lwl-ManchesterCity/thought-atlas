@@ -59,7 +59,6 @@ export interface RendererOptions {
 
 const GROW_MS = 450;
 const PULSE_MS = 1300;
-const CLUSTER_COLORS = ['#2563eb', '#c2410c', '#047857', '#7c3aed', '#be123c', '#0e7490', '#a16207', '#4338ca'];
 
 interface ClusterShape {
   key: string;
@@ -734,28 +733,6 @@ export class StarMapRenderer {
     ctx.textAlign = 'center';
     let currentFill = '';
     let currentAlpha = -1;
-
-    if (overview) {
-      ctx.font = '600 13px ui-sans-serif, system-ui, sans-serif';
-      for (const shape of this.clusterShapes) {
-        let sx = 0;
-        let sy = 0;
-        for (const sn of shape.nodes) {
-          sx += sn.x ?? 0;
-          sy += sn.y ?? 0;
-        }
-        const cx = (sx / shape.nodes.length) * this.k + this.tx;
-        const cy = (sy / shape.nodes.length) * this.k + this.ty;
-        const label = truncate(this.clusterLabels.get(shape.key) ?? `簇 #${shape.index}`, 16);
-        ctx.globalAlpha = 0.95;
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
-        ctx.lineWidth = 3;
-        ctx.strokeText(label, cx, cy);
-        ctx.fillStyle = CLUSTER_COLORS[shape.index % CLUSTER_COLORS.length];
-        ctx.fillText(label, cx, cy);
-      }
-      ctx.font = '12px ui-sans-serif, system-ui, sans-serif';
-    }
 
     const placedRects: { x1: number; y1: number; x2: number; y2: number }[] = [];
     const labelNodes = overview
