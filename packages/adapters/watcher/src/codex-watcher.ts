@@ -2,7 +2,7 @@ import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { homedir } from 'node:os';
 import type { TurnPayload } from '@thought-atlas/core';
-import { RolloutParser, RolloutCursorReader } from '@thought-atlas/adapter-codex';
+import { RolloutParser, RolloutCursorReader, sessionIdFromRolloutPath } from '@thought-atlas/adapter-codex';
 
 export interface WatcherOptions {
   sessionsDir?: string;
@@ -54,7 +54,8 @@ export class CodexWatcher {
         let entry = this.files.get(path);
         if (!entry) {
           const reader = new RolloutCursorReader(path, 0);
-          const parser = new RolloutParser();
+          // 续写 rollout 共享 thread session_id，按文件映射独立会话避免轮次冲突
+          const parser = new RolloutParser({ sessionId: sessionIdFromRolloutPath(path) });
           if (this.mode === 'tail') {
             // 静默消费历史：建立 sessionId/轮次计数/turn_id 去重，保证后续 turnIndex 连续且不重复投递
             for (const line of await reader.readNewLines()) parser.feedLine(line);

@@ -28,12 +28,23 @@ function extractText(content: unknown): string {
   return parts.join('\n');
 }
 
+export function sessionIdFromRolloutPath(path: string): string {
+  const base = path.split('/').pop() ?? path;
+  return base.replace(/^rollout-/, '').replace(/\.jsonl$/, '');
+}
+
 export class RolloutParser {
-  private sessionId: string | null = null;
+  private sessionId: string | null;
+  private sessionIdLocked: boolean;
   private turnIndex = 0;
   private userTexts: string[] = [];
   private assistantTexts: string[] = [];
   private seenTurnIds = new Set<string>();
+
+  constructor(options: { sessionId?: string } = {}) {
+    this.sessionId = options.sessionId ?? null;
+    this.sessionIdLocked = options.sessionId !== undefined;
+  }
 
   feedLine(line: string): TurnPayload | null {
     const trimmed = line.trim();
@@ -53,7 +64,7 @@ export class RolloutParser {
 
     if (record.type === 'session_meta') {
       const id = payload.session_id ?? payload.id;
-      if (typeof id === 'string' && id.length > 0) this.sessionId = id;
+      if (!this.sessionIdLocked && typeof id === 'string' && id.length > 0) this.sessionId = id;
       return null;
     }
 

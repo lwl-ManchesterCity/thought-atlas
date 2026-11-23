@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { mkdtemp, writeFile, appendFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { RolloutParser, RolloutCursorReader } from '../src/index.ts';
+import { RolloutParser, RolloutCursorReader, sessionIdFromRolloutPath } from '../src/index.ts';
+import type { TurnPayload } from '@thought-atlas/core';
 import { SESSION_ID, fullFixture, meta, turn1, turn2, taskComplete } from './fixtures.ts';
 
 function parseAll(records: ReturnType<typeof fullFixture>) {
@@ -151,4 +152,22 @@ test('truncated file resets cursor and turn dedup prevents double delivery', asy
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
+});
+test('sessionId override wins over session_meta (continuation rollouts share thread id)', () => {
+  const parser = new RolloutParser({ sessionId: 'per-file-session' });
+  const turns: TurnPayload[] = [];
+  for (const record of fullFixture()) {
+    const turn = parser.feed(record);
+    if (turn) turns.push(turn);
+  }
+  assert.equal(turns.length, 2);
+  assert.ok(turns.every((t) => t.sessionId === 'per-file-session'));
+});
+
+test('sessionIdFromRolloutPath derives stable unique id from filename', () => {
+  assert.equal(
+    sessionIdFromRolloutPath('/x/sessions/2026/11/19/rollout-2026-11-19T19-35-57-aaaa_bbbb.jsonl'),
+    '2026-11-19T19-35-57-aaaa_bbbb',
+  );
+  assert.equal(sessionIdFromRolloutPath('/x/rollout-plain.jsonl'), 'plain');
 });
