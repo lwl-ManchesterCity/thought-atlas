@@ -614,10 +614,10 @@ export class StarMapRenderer {
       }
     }
 
-    if (overview) {
+    {
       ctx.strokeStyle = '#94a3b8';
       ctx.lineWidth = 1 / this.k;
-      ctx.globalAlpha = 0.25;
+      ctx.globalAlpha = overview ? 0.25 : 0.16;
       ctx.setLineDash([4 / this.k, 4 / this.k]);
       for (const groups of this.layoutGroups.values()) {
         if (groups.length < 2) continue;
@@ -637,7 +637,7 @@ export class StarMapRenderer {
         ctx.stroke();
       }
       ctx.setLineDash([]);
-      ctx.globalAlpha = 0.3;
+      ctx.globalAlpha = overview ? 0.3 : 0.2;
       const turnNodes = new Map<number, SimNode[]>();
       for (const sn of this.simNodes) {
         const list = turnNodes.get(sn.node.bornTurn);
@@ -786,13 +786,15 @@ export class StarMapRenderer {
       ctx.font = '12px ui-sans-serif, system-ui, sans-serif';
     }
 
-    for (const sn of this.simNodes) {
+    const placedRects: { x1: number; y1: number; x2: number; y2: number }[] = [];
+    const labelNodes = overview
+      ? this.simNodes
+          .filter((sn) => sn.grow >= 0.6 && this.overviewLabel(sn))
+          .sort((a, b) => this.labelPriority(a) - this.labelPriority(b) || a.id.localeCompare(b.id))
+      : this.simNodes;
+    for (const sn of labelNodes) {
       if (sn.grow < 0.6) continue;
-      if (overview) {
-        if (!this.overviewLabel(sn)) continue;
-      } else if (!this.showLabel(sn)) {
-        continue;
-      }
+      if (!overview && !this.showLabel(sn)) continue;
       const visual = nodeVisual(sn.node);
       const outside = this.focus !== null && !this.focus.has(sn.id);
       const sx = (sn.x ?? 0) * this.k + this.tx;
@@ -809,9 +811,17 @@ export class StarMapRenderer {
       }
       const text =
         overview && this.groupReps.has(sn.id) ? sn.node.label : truncate(sn.node.label, overview ? 8 : 14);
+      const width = ctx.measureText(text).width;
+      if (overview) {
+        const x1 = sx - width / 2 - 2;
+        const y1 = sy - 11;
+        const x2 = sx + width / 2 + 2;
+        const y2 = sy + 3;
+        if (placedRects.some((r) => x1 < r.x2 && x2 > r.x1 && y1 < r.y2 && y2 > r.y1)) continue;
+        placedRects.push({ x1, y1, x2, y2 });
+      }
       ctx.fillText(text, sx, sy);
       if (visual.strike) {
-        const width = ctx.measureText(text).width;
         ctx.strokeStyle = '#6b7280';
         ctx.lineWidth = 1;
         ctx.beginPath();
@@ -847,6 +857,13 @@ export class StarMapRenderer {
     if (sn.id === this.selectedId || this.searchIds.has(sn.id)) return true;
     if (this.k < 0.3) return sn.node.type === 'shift';
     return sn.node.type !== 'ai-voice';
+  }
+
+  private labelPriority(sn: SimNode): number {
+    if (sn.id === this.selectedId || this.searchIds.has(sn.id)) return 0;
+    if (sn.node.type === 'shift') return 1;
+    if (this.groupReps.has(sn.id)) return 2;
+    return 3;
   }
 
   private showLabel(sn: SimNode): boolean {
