@@ -208,7 +208,7 @@ test('stored events replay to the same map', async () => {
   const events = db
     .dump('graph_events')
     .filter((row) => row.session_id === sessionId)
-    .map((row) => ({ turnIndex: row.turn_index, timestamp: row.timestamp, ops: row.ops })) as EventRecord[];
+    .map((row) => ({ turnIndex: row.turn_index, timestamp: row.event_ts, ops: row.ops })) as EventRecord[];
   const replayed = foldEvents(sessionId, events);
   assert.deepEqual(replayed.nodes.map((n) => n.id).sort(), live.nodes.map((n) => n.id).sort());
   assert.equal(replayed.lastTurn, live.lastTurn);

@@ -26,7 +26,7 @@ export class DbStorage implements Storage {
       id: crypto.randomUUID(),
       session_id: this.sessionId,
       turn_index: record.turnIndex,
-      timestamp: record.timestamp,
+      event_ts: record.timestamp,
       ops: record.ops,
     });
   }
@@ -61,15 +61,15 @@ export class DbStorage implements Storage {
   }
 
   async loadEvents(): Promise<EventRecord[]> {
-    const found = await rows<{ turn_index: number; timestamp: string; ops: EventRecord['ops'] }>(
+    const found = await rows<{ turn_index: number; event_ts: string; ops: EventRecord['ops'] }>(
       this.db
         .from('graph_events')
-        .select('turn_index,timestamp,ops')
+        .select('turn_index,event_ts,ops')
         .eq('session_id', this.sessionId)
         .order('turn_index', { ascending: true })
         .limit(5000),
     );
-    return found.map((row) => ({ turnIndex: row.turn_index, timestamp: row.timestamp, ops: row.ops }));
+    return found.map((row) => ({ turnIndex: row.turn_index, timestamp: row.event_ts, ops: row.ops }));
   }
 
   async saveMeta(meta: SessionMeta): Promise<void> {

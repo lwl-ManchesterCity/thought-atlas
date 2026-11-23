@@ -37,7 +37,7 @@ CREATE TABLE app.graph_events (
   id uuid PRIMARY KEY,
   session_id uuid NOT NULL,
   turn_index integer NOT NULL,
-  timestamp timestamptz NOT NULL,
+  event_ts timestamptz NOT NULL,
   ops jsonb NOT NULL,
   UNIQUE (session_id, turn_index)
 );
