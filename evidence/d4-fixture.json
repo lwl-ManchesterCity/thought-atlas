@@ -1,0 +1,26 @@
+{
+  "home": "/Users/lwl/.thought-atlas-d4",
+  "port": 7803,
+  "webDir": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/packages/web/dist",
+  "sessions": [
+    {
+      "sessionId": "d4-replay-300",
+      "nodes": 300,
+      "edges": 600,
+      "turns": 122,
+      "firstShiftTurn": 1
+    },
+    {
+      "sessionId": "d4-anchor-xss",
+      "nodes": 3,
+      "edges": 0,
+      "turns": 1
+    },
+    {
+      "sessionId": "d4-manual-3",
+      "nodes": 5,
+      "edges": 0,
+      "turns": 3
+    }
+  ]
+}

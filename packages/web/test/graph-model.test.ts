@@ -3,12 +3,16 @@ import assert from 'node:assert/strict';
 import type { GraphMap, ThoughtNode, ThoughtEdge } from '@thought-atlas/core';
 import {
   computeNeighborhood,
+  convexHull,
   diffMap,
   edgeVisual,
   mapSignature,
   nodeRadius,
   nodeTypeLabel,
   nodeVisual,
+  tierForZoom,
+  FAR_ZOOM,
+  NEAR_ZOOM,
 } from '../src/graph-model.ts';
 
 function node(id: string, patch: Partial<ThoughtNode> = {}): ThoughtNode {
@@ -103,4 +107,38 @@ test('nodeTypeLabel 覆盖全部类型', () => {
   assert.equal(nodeTypeLabel('fact'), '事实');
   assert.equal(nodeTypeLabel('ai-voice'), 'AI 观点');
   assert.equal(nodeTypeLabel('shift'), '认知转变');
+});
+
+test('tierForZoom: 远/中/近三档按阈值切换', () => {
+  assert.equal(tierForZoom(0.3), 'far');
+  assert.equal(tierForZoom(FAR_ZOOM - 0.01), 'far');
+  assert.equal(tierForZoom(FAR_ZOOM), 'mid');
+  assert.equal(tierForZoom(NEAR_ZOOM - 0.01), 'mid');
+  assert.equal(tierForZoom(NEAR_ZOOM), 'near');
+  assert.equal(tierForZoom(2.4), 'near');
+});
+
+test('convexHull: 返回逆时针凸包并剔除内部点，退化输入安全', () => {
+  const hull = convexHull([
+    { x: 0, y: 0 },
+    { x: 10, y: 0 },
+    { x: 10, y: 10 },
+    { x: 0, y: 10 },
+    { x: 5, y: 5 },
+    { x: 2, y: 2 },
+  ]);
+  assert.equal(hull.length, 4);
+  assert.deepEqual(
+    hull.map((p) => `${p.x},${p.y}`).sort(),
+    ['0,0', '0,10', '10,0', '10,10'],
+  );
+  assert.deepEqual(convexHull([]), []);
+  assert.equal(convexHull([{ x: 1, y: 2 }]).length, 1);
+  assert.equal(convexHull([{ x: 0, y: 0 }, { x: 1, y: 1 }]).length, 2);
+  const collinear = convexHull([
+    { x: 0, y: 0 },
+    { x: 1, y: 1 },
+    { x: 2, y: 2 },
+  ]);
+  assert.equal(collinear.length, 2);
 });

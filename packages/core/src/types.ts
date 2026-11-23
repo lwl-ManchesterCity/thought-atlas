@@ -67,7 +67,7 @@ export type MapOp =
   | { op: 'ADD_NODE'; node: NewNode; edges?: ThoughtEdge[] }
   | { op: 'REINFORCE'; nodeId: string; turn: number }
   | { op: 'UPDATE_NODE'; nodeId: string; patch: { label?: string; summary?: string } }
-  | { op: 'MARK_SHIFT'; nodeId: string | null; shift: ShiftFields }
+  | { op: 'MARK_SHIFT'; nodeId: string | null; shift: ShiftFields; manual?: boolean }
   | { op: 'SUPERSEDE'; oldId: string; newId: string }
   | { op: 'MERGE'; fromId: string; intoId: string }
   | { op: 'ADD_EDGE'; edge: ThoughtEdge }
@@ -111,3 +111,5 @@ export interface SessionMeta {
 export const MAX_OPS_PER_TURN = 5;
 export const LABEL_MAX = 16;
 export const SUMMARY_MAX = 60;
+/** 手动操作以该序号为起点写入事件日志，与真实对话轮次隔离 */
+export const MANUAL_TURN_BASE = 1_000_000;

@@ -1,0 +1,90 @@
+{
+  "date": "2026-11-23T03:28:34.246Z",
+  "method": "合成会话 d4-replay-300 → 临时 AtlasDaemon（port 0）+ 真实 DeepSeekClient → POST /clusters/refresh",
+  "model": "deepseek-flash",
+  "thinking": "disabled",
+  "sessionId": "d4-replay-300",
+  "activeCount": 300,
+  "beforeNamed": 10,
+  "clusters": [
+    {
+      "index": 1,
+      "key": "k5078c9c1",
+      "label": "论点簇1",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 2,
+      "key": "kca42accd",
+      "label": "论点簇2",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 3,
+      "key": "k5afd2021",
+      "label": "论点簇3",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 4,
+      "key": "kcfa80d1c",
+      "label": "论点簇4",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 5,
+      "key": "ke56b989b",
+      "label": "论点簇5",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 6,
+      "key": "k6280eee7",
+      "label": "论点簇6",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 7,
+      "key": "k90ee6cd2",
+      "label": "论点簇7",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 8,
+      "key": "k20ed7935",
+      "label": "论点簇8",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 9,
+      "key": "kb6add669",
+      "label": "论点簇9",
+      "named": true,
+      "nodes": 30
+    },
+    {
+      "index": 10,
+      "key": "ka3985bac",
+      "label": "论点簇10",
+      "named": true,
+      "nodes": 30
+    }
+  ],
+  "isolated": 0,
+  "namedCount": 10,
+  "usage": {
+    "promptTokens": 1031,
+    "completionTokens": 158
+  },
+  "latencyMs": 1940,
+  "httpStatus": 200,
+  "pass": true
+}

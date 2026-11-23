@@ -1,5 +1,34 @@
 # CHANGELOG
 
+## v0.4.0 — D4（2026-11-23，开发会话模型 DeepSeek-Flash）
+
+### 新增
+- core 回放：`createReplayState` / `replayApply` / `replayMap` / `foldEvents` 纯函数折叠事件日志；沿用事件内已解析节点 id，支持 DELETE、supersede、手动事件；核心零平台依赖
+- core 手动操作：`MANUAL_TURN_BASE=1e6` 独立轮次空间、`applyManual` 整批原子追加、`MARK_SHIFT.manual` 标记；对 ai-voice 执行转变直接拒绝；删除保持事件日志软删除语义，回放可见
+- core 簇计算：related 边并查集连通分量、孤立散点、稳定 key（FNV-1a）与排序
+- daemon：`GET /replay`（时间轴步骤+事件）、`GET /replay/snapshot?turn`（服务端折叠）、`GET /anchors`（本地 turns.jsonl 只读，8000 字截断）、`GET/POST /clusters`（缓存、标签哈希失效、`簇 #n` 降级、刷新互斥）、`POST /manual`（mark-shift/delete，409/404/400 校验，追加事件并 SSE 广播）；新增 +10 active 自动命名
+- daemon 簇命名器：合成标签交现有 DeepSeekClient（deepseek 系思考关），严格 JSON 解析、8 字截断、未知 key 丢弃、提示注入防护、20s 超时与失败降级
+- web 时间回放：底部时间轴播放/暂停/拖动/0.5–3×；core 折叠喂给 D3 同一渲染器；回放中 SSE 仅提示不打断，点「实时」恢复；shift 新出现时 1300ms 脉冲
+- web LOD 三档：远=簇大陆凸包+簇名+shift 节点；中=全部节点圆点；近=标签；远档命中仅 shift 节点
+- web 锚点原文面板（逐轮用户/助手原话，本地闭环提示，纯 textContent）、手动「标记为转变」「删除节点」、label/summary 搜索命中金环并居中
+- 多端：≤640px 面板底部抽屉、时间轴窄屏换行、320px 无溢出
+- 脚本：d4-daemon.ts（合成 300/600 回放夹具、XSS 锚点、手动会话）、d4-browser-check.ts（headless Chrome + CDP 全链路验收）、d4-cluster-real.ts（合成标签→真实 DeepSeek 命名）
+- 单测 92 个全绿（core 46 / codex 12 / watcher 3 / daemon 19 / web 12）
+
+### 验证与返工
+- 回放：初始 122/122；拖到 30 → 150 节点/145 边；60 → 300/290；末轮 300/600；3× 播放推进、暂停生效；末态 rAF 60/60/60 fps（headless SwiftShader）
+- 冷打开 236ms；LOD 0.4/0.75/1.2 三档截图；远档 10 簇带名；搜索 6 命中且首个居中；shift 脉冲 pulsing=1；Console 零错误
+- 锚点面板展示合成原文；XSS 五类载荷惰性（images/iframes 0，script 仅页面自身）；手动标记/删除追加事件且回放反映
+- 真实命名：合成夹具 10/10 簇成功，1930ms，1031/158 tokens，HTTP 200
+- 返工1：MARK_SHIFT 既有路径允许把 ai-voice 转成 shift → 补硬校验并加回放/手动双路径单测
+- 返工2：手动会话夹具仅有 map.json 导致回放折叠悬空 DELETE → 改由 ThoughtGraph.applyTurn 写入事件后重测
+
+### 安全
+- 只读指纹：hooks.json 78922a78…38cbb9、config.toml d931ef92…553062 与基线一致
+- Key：仓库 97 文本文件与 git 全历史精确 Key / sk- 模式均 0 命中
+- 真实对话：522 个中文 24 字片段对仓库 0 命中；证据与截图仅合成夹具；锚点原文经本地 daemon 只读，不上传；黄金 fixture 未入库
+- 未实现 D5 功能（Qoder 适配器、通用 watcher、真实会话接入）
+
 ## v0.3.0 — D3（2026-11-23，开发会话模型 DeepSeek-Flash）
 
 ### 新增

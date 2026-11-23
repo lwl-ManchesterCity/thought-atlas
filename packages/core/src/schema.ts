@@ -88,6 +88,7 @@ function checkOp(op: unknown): string | null {
     }
     case 'MARK_SHIFT':
       if (op.nodeId !== null && !isStr(op.nodeId)) return 'MARK_SHIFT.nodeId must be string or null';
+      if (op.manual !== undefined && typeof op.manual !== 'boolean') return 'MARK_SHIFT.manual must be boolean';
       return checkShift(op.shift);
     case 'SUPERSEDE':
       if (!isStr(op.oldId) || !isStr(op.newId)) return 'SUPERSEDE.oldId/newId must be non-empty strings';

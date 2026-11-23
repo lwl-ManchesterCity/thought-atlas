@@ -1,0 +1,4358 @@
+{
+  "runAt": "2026-11-23T03:24:53.632Z",
+  "chrome": "headless=new",
+  "base": "http://127.0.0.1:7803",
+  "coldOpen": {
+    "coldWallMs": 236,
+    "waitMs": 131,
+    "readyAt": 140,
+    "domEnd": 92,
+    "loadEnd": 93,
+    "stats": {
+      "fps": 9,
+      "frames": 9,
+      "nodes": 300,
+      "edges": 600,
+      "converged": false,
+      "zoom": 1,
+      "focused": false,
+      "selected": null,
+      "lastDrawAt": 14,
+      "tier": "near",
+      "clusters": 10,
+      "namedClusters": 0,
+      "pulsing": 0,
+      "searchMatches": 0
+    }
+  },
+  "timelineInitial": {
+    "index": 122,
+    "total": 122,
+    "playing": false,
+    "speed": 1,
+    "mode": "live",
+    "pendingLive": false,
+    "label": "实时 · 第 122 轮 · 5 op · 122/122"
+  },
+  "clusters": {
+    "labels": {
+      "k5078c9c1": "主题k507",
+      "kca42accd": "主题kca4",
+      "k5afd2021": "主题k5af",
+      "kcfa80d1c": "主题kcfa",
+      "ke56b989b": "主题ke56",
+      "k6280eee7": "主题k628",
+      "k90ee6cd2": "主题k90e",
+      "k20ed7935": "主题k20e",
+      "kb6add669": "主题kb6a",
+      "ka3985bac": "主题ka39"
+    },
+    "stats": {
+      "fps": 51,
+      "frames": 142,
+      "nodes": 300,
+      "edges": 600,
+      "converged": true,
+      "zoom": 0.49,
+      "focused": false,
+      "selected": null,
+      "lastDrawAt": 50,
+      "tier": "far",
+      "clusters": 10,
+      "namedClusters": 10,
+      "pulsing": 0,
+      "searchMatches": 0
+    }
+  },
+  "lod": {
+    "farStats": {
+      "fps": 28,
+      "frames": 143,
+      "nodes": 300,
+      "edges": 600,
+      "converged": true,
+      "zoom": 0.4,
+      "focused": false,
+      "selected": null,
+      "lastDrawAt": 403,
+      "tier": "far",
+      "clusters": 10,
+      "namedClusters": 10,
+      "pulsing": 0,
+      "searchMatches": 0
+    },
+    "midStats": {
+      "fps": 5,
+      "frames": 144,
+      "nodes": 300,
+      "edges": 600,
+      "converged": true,
+      "zoom": 0.75,
+      "focused": false,
+      "selected": null,
+      "lastDrawAt": 292,
+      "tier": "mid",
+      "clusters": 10,
+      "namedClusters": 10,
+      "pulsing": 0,
+      "searchMatches": 0
+    },
+    "nearStats": {
+      "fps": 2,
+      "frames": 145,
+      "nodes": 300,
+      "edges": 600,
+      "converged": true,
+      "zoom": 1.2,
+      "focused": false,
+      "selected": null,
+      "lastDrawAt": 301,
+      "tier": "near",
+      "clusters": 10,
+      "namedClusters": 10,
+      "pulsing": 0,
+      "searchMatches": 0
+    },
+    "farShot": "evidence/d4-screenshots/lod-far-continents.png",
+    "midShot": "evidence/d4-screenshots/lod-mid-dots.png",
+    "nearShot": "evidence/d4-screenshots/lod-near-labels.png"
+  },
+  "shiftPulse": {
+    "stats": {
+      "fps": 2,
+      "frames": 145,
+      "nodes": 5,
+      "edges": 4,
+      "converged": false,
+      "zoom": 1.2,
+      "focused": false,
+      "selected": null,
+      "lastDrawAt": 446,
+      "tier": "near",
+      "clusters": 1,
+      "namedClusters": 0,
+      "pulsing": 1,
+      "searchMatches": 0
+    },
+    "map": {
+      "sessionId": "d4-replay-300",
+      "nodes": [
+        {
+          "id": "n_0001",
+          "type": "claim",
+          "owner": "user",
+          "label": "论点-1-00",
+          "summary": "合成第 1 大陆节点 论点-1-00：用于 D4 回放与大陆轮廓验收。",
+          "bornTurn": 1,
+          "lastTurn": 1,
+          "rings": [
+            1
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            1
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0002",
+          "type": "ai-voice",
+          "owner": "ai",
+          "label": "AI观点-1-01",
+          "summary": "合成第 1 大陆节点 AI观点-1-01：用于 D4 回放与大陆轮廓验收。",
+          "bornTurn": 1,
+          "lastTurn": 1,
+          "rings": [
+            1
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            1
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0003",
+          "type": "fact",
+          "owner": "user",
+          "label": "事实-1-02",
+          "summary": "合成第 1 大陆节点 事实-1-02：用于 D4 回放与大陆轮廓验收。",
+          "bornTurn": 1,
+          "lastTurn": 1,
+          "rings": [
+            1
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            1
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0004",
+          "type": "question",
+          "owner": "user",
+          "label": "问题-1-03",
+          "summary": "合成第 1 大陆节点 问题-1-03：用于 D4 回放与大陆轮廓验收。",
+          "bornTurn": 1,
+          "lastTurn": 1,
+          "rings": [
+            1
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            1
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0005",
+          "type": "shift",
+          "owner": "user",
+          "label": "转变-1-04",
+          "summary": "合成第 1 大陆节点 转变-1-04：用于 D4 回放与大陆轮廓验收。",
+          "bornTurn": 1,
+          "lastTurn": 1,
+          "rings": [
+            1
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            1
+          ],
+          "clusterId": null,
+          "manual": false
+        }
+      ],
+      "edges": [
+        {
+          "from": "n_0001",
+          "to": "n_0002",
+          "kind": "related",
+          "bornTurn": 1
+        },
+        {
+          "from": "n_0002",
+          "to": "n_0003",
+          "kind": "related",
+          "bornTurn": 1
+        },
+        {
+          "from": "n_0003",
+          "to": "n_0004",
+          "kind": "related",
+          "bornTurn": 1
+        },
+        {
+          "from": "n_0004",
+          "to": "n_0005",
+          "kind": "related",
+          "bornTurn": 1
+        }
+      ],
+      "lastTurn": 1
+    },
+    "pulseShot": "evidence/d4-screenshots/replay-shift-pulse.png"
+  },
+  "drag": {
+    "drag30": {
+      "nodes": 150,
+      "edges": 145,
+      "timeline": {
+        "index": 30,
+        "total": 122,
+        "playing": false,
+        "speed": 1,
+        "mode": "replay",
+        "pendingLive": false,
+        "label": "回放 · 第 30 轮 · 5 op · 30/122"
+      },
+      "map": {
+        "sessionId": "d4-replay-300",
+        "nodes": [
+          {
+            "id": "n_0001",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-1-00",
+            "summary": "合成第 1 大陆节点 论点-1-00：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 1,
+            "lastTurn": 1,
+            "rings": [
+              1
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              1
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0002",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-1-01",
+            "summary": "合成第 1 大陆节点 AI观点-1-01：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 1,
+            "lastTurn": 1,
+            "rings": [
+              1
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              1
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0003",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-1-02",
+            "summary": "合成第 1 大陆节点 事实-1-02：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 1,
+            "lastTurn": 1,
+            "rings": [
+              1
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              1
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0004",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-1-03",
+            "summary": "合成第 1 大陆节点 问题-1-03：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 1,
+            "lastTurn": 1,
+            "rings": [
+              1
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              1
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0005",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-1-04",
+            "summary": "合成第 1 大陆节点 转变-1-04：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 1,
+            "lastTurn": 1,
+            "rings": [
+              1
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              1
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0006",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-1-10",
+            "summary": "合成第 1 大陆节点 论点-1-10：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 2,
+            "lastTurn": 2,
+            "rings": [
+              2
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              2
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0007",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-1-11",
+            "summary": "合成第 1 大陆节点 AI观点-1-11：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 2,
+            "lastTurn": 2,
+            "rings": [
+              2
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              2
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0008",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-1-12",
+            "summary": "合成第 1 大陆节点 事实-1-12：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 2,
+            "lastTurn": 2,
+            "rings": [
+              2
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              2
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0009",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-1-13",
+            "summary": "合成第 1 大陆节点 问题-1-13：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 2,
+            "lastTurn": 2,
+            "rings": [
+              2
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              2
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0010",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-1-14",
+            "summary": "合成第 1 大陆节点 转变-1-14：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 2,
+            "lastTurn": 2,
+            "rings": [
+              2
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              2
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0011",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-1-20",
+            "summary": "合成第 1 大陆节点 论点-1-20：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 3,
+            "lastTurn": 3,
+            "rings": [
+              3
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              3
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0012",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-1-21",
+            "summary": "合成第 1 大陆节点 AI观点-1-21：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 3,
+            "lastTurn": 3,
+            "rings": [
+              3
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              3
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0013",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-1-22",
+            "summary": "合成第 1 大陆节点 事实-1-22：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 3,
+            "lastTurn": 3,
+            "rings": [
+              3
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              3
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0014",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-1-23",
+            "summary": "合成第 1 大陆节点 问题-1-23：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 3,
+            "lastTurn": 3,
+            "rings": [
+              3
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              3
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0015",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-1-24",
+            "summary": "合成第 1 大陆节点 转变-1-24：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 3,
+            "lastTurn": 3,
+            "rings": [
+              3
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              3
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0016",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-1-30",
+            "summary": "合成第 1 大陆节点 论点-1-30：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 4,
+            "lastTurn": 4,
+            "rings": [
+              4
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              4
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0017",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-1-31",
+            "summary": "合成第 1 大陆节点 AI观点-1-31：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 4,
+            "lastTurn": 4,
+            "rings": [
+              4
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              4
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0018",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-1-32",
+            "summary": "合成第 1 大陆节点 事实-1-32：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 4,
+            "lastTurn": 4,
+            "rings": [
+              4
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              4
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0019",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-1-33",
+            "summary": "合成第 1 大陆节点 问题-1-33：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 4,
+            "lastTurn": 4,
+            "rings": [
+              4
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              4
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0020",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-1-34",
+            "summary": "合成第 1 大陆节点 转变-1-34：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 4,
+            "lastTurn": 4,
+            "rings": [
+              4
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              4
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0021",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-1-40",
+            "summary": "合成第 1 大陆节点 论点-1-40：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 5,
+            "lastTurn": 5,
+            "rings": [
+              5
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              5
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0022",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-1-41",
+            "summary": "合成第 1 大陆节点 AI观点-1-41：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 5,
+            "lastTurn": 5,
+            "rings": [
+              5
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              5
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0023",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-1-42",
+            "summary": "合成第 1 大陆节点 事实-1-42：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 5,
+            "lastTurn": 5,
+            "rings": [
+              5
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              5
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0024",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-1-43",
+            "summary": "合成第 1 大陆节点 问题-1-43：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 5,
+            "lastTurn": 5,
+            "rings": [
+              5
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              5
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0025",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-1-44",
+            "summary": "合成第 1 大陆节点 转变-1-44：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 5,
+            "lastTurn": 5,
+            "rings": [
+              5
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              5
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0026",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-1-50",
+            "summary": "合成第 1 大陆节点 论点-1-50：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 6,
+            "lastTurn": 6,
+            "rings": [
+              6
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              6
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0027",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-1-51",
+            "summary": "合成第 1 大陆节点 AI观点-1-51：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 6,
+            "lastTurn": 6,
+            "rings": [
+              6
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              6
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0028",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-1-52",
+            "summary": "合成第 1 大陆节点 事实-1-52：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 6,
+            "lastTurn": 6,
+            "rings": [
+              6
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              6
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0029",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-1-53",
+            "summary": "合成第 1 大陆节点 问题-1-53：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 6,
+            "lastTurn": 6,
+            "rings": [
+              6
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              6
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0030",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-1-54",
+            "summary": "合成第 1 大陆节点 转变-1-54：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 6,
+            "lastTurn": 6,
+            "rings": [
+              6
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              6
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0031",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-2-00",
+            "summary": "合成第 2 大陆节点 论点-2-00：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 7,
+            "lastTurn": 7,
+            "rings": [
+              7
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              7
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0032",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-2-01",
+            "summary": "合成第 2 大陆节点 AI观点-2-01：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 7,
+            "lastTurn": 7,
+            "rings": [
+              7
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              7
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0033",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-2-02",
+            "summary": "合成第 2 大陆节点 事实-2-02：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 7,
+            "lastTurn": 7,
+            "rings": [
+              7
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              7
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0034",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-2-03",
+            "summary": "合成第 2 大陆节点 问题-2-03：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 7,
+            "lastTurn": 7,
+            "rings": [
+              7
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              7
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0035",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-2-04",
+            "summary": "合成第 2 大陆节点 转变-2-04：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 7,
+            "lastTurn": 7,
+            "rings": [
+              7
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              7
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0036",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-2-10",
+            "summary": "合成第 2 大陆节点 论点-2-10：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 8,
+            "lastTurn": 8,
+            "rings": [
+              8
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              8
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0037",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-2-11",
+            "summary": "合成第 2 大陆节点 AI观点-2-11：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 8,
+            "lastTurn": 8,
+            "rings": [
+              8
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              8
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0038",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-2-12",
+            "summary": "合成第 2 大陆节点 事实-2-12：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 8,
+            "lastTurn": 8,
+            "rings": [
+              8
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              8
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0039",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-2-13",
+            "summary": "合成第 2 大陆节点 问题-2-13：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 8,
+            "lastTurn": 8,
+            "rings": [
+              8
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              8
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0040",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-2-14",
+            "summary": "合成第 2 大陆节点 转变-2-14：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 8,
+            "lastTurn": 8,
+            "rings": [
+              8
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              8
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0041",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-2-20",
+            "summary": "合成第 2 大陆节点 论点-2-20：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 9,
+            "lastTurn": 9,
+            "rings": [
+              9
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              9
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0042",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-2-21",
+            "summary": "合成第 2 大陆节点 AI观点-2-21：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 9,
+            "lastTurn": 9,
+            "rings": [
+              9
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              9
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0043",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-2-22",
+            "summary": "合成第 2 大陆节点 事实-2-22：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 9,
+            "lastTurn": 9,
+            "rings": [
+              9
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              9
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0044",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-2-23",
+            "summary": "合成第 2 大陆节点 问题-2-23：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 9,
+            "lastTurn": 9,
+            "rings": [
+              9
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              9
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0045",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-2-24",
+            "summary": "合成第 2 大陆节点 转变-2-24：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 9,
+            "lastTurn": 9,
+            "rings": [
+              9
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              9
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0046",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-2-30",
+            "summary": "合成第 2 大陆节点 论点-2-30：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 10,
+            "lastTurn": 10,
+            "rings": [
+              10
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              10
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0047",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-2-31",
+            "summary": "合成第 2 大陆节点 AI观点-2-31：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 10,
+            "lastTurn": 10,
+            "rings": [
+              10
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              10
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0048",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-2-32",
+            "summary": "合成第 2 大陆节点 事实-2-32：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 10,
+            "lastTurn": 10,
+            "rings": [
+              10
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              10
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0049",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-2-33",
+            "summary": "合成第 2 大陆节点 问题-2-33：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 10,
+            "lastTurn": 10,
+            "rings": [
+              10
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              10
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0050",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-2-34",
+            "summary": "合成第 2 大陆节点 转变-2-34：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 10,
+            "lastTurn": 10,
+            "rings": [
+              10
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              10
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0051",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-2-40",
+            "summary": "合成第 2 大陆节点 论点-2-40：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 11,
+            "lastTurn": 11,
+            "rings": [
+              11
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              11
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0052",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-2-41",
+            "summary": "合成第 2 大陆节点 AI观点-2-41：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 11,
+            "lastTurn": 11,
+            "rings": [
+              11
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              11
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0053",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-2-42",
+            "summary": "合成第 2 大陆节点 事实-2-42：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 11,
+            "lastTurn": 11,
+            "rings": [
+              11
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              11
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0054",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-2-43",
+            "summary": "合成第 2 大陆节点 问题-2-43：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 11,
+            "lastTurn": 11,
+            "rings": [
+              11
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              11
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0055",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-2-44",
+            "summary": "合成第 2 大陆节点 转变-2-44：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 11,
+            "lastTurn": 11,
+            "rings": [
+              11
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              11
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0056",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-2-50",
+            "summary": "合成第 2 大陆节点 论点-2-50：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 12,
+            "lastTurn": 12,
+            "rings": [
+              12
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              12
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0057",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-2-51",
+            "summary": "合成第 2 大陆节点 AI观点-2-51：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 12,
+            "lastTurn": 12,
+            "rings": [
+              12
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              12
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0058",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-2-52",
+            "summary": "合成第 2 大陆节点 事实-2-52：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 12,
+            "lastTurn": 12,
+            "rings": [
+              12
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              12
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0059",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-2-53",
+            "summary": "合成第 2 大陆节点 问题-2-53：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 12,
+            "lastTurn": 12,
+            "rings": [
+              12
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              12
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0060",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-2-54",
+            "summary": "合成第 2 大陆节点 转变-2-54：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 12,
+            "lastTurn": 12,
+            "rings": [
+              12
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              12
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0061",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-3-00",
+            "summary": "合成第 3 大陆节点 论点-3-00：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 13,
+            "lastTurn": 13,
+            "rings": [
+              13
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              13
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0062",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-3-01",
+            "summary": "合成第 3 大陆节点 AI观点-3-01：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 13,
+            "lastTurn": 13,
+            "rings": [
+              13
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              13
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0063",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-3-02",
+            "summary": "合成第 3 大陆节点 事实-3-02：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 13,
+            "lastTurn": 13,
+            "rings": [
+              13
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              13
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0064",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-3-03",
+            "summary": "合成第 3 大陆节点 问题-3-03：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 13,
+            "lastTurn": 13,
+            "rings": [
+              13
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              13
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0065",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-3-04",
+            "summary": "合成第 3 大陆节点 转变-3-04：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 13,
+            "lastTurn": 13,
+            "rings": [
+              13
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              13
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0066",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-3-10",
+            "summary": "合成第 3 大陆节点 论点-3-10：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 14,
+            "lastTurn": 14,
+            "rings": [
+              14
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              14
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0067",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-3-11",
+            "summary": "合成第 3 大陆节点 AI观点-3-11：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 14,
+            "lastTurn": 14,
+            "rings": [
+              14
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              14
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0068",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-3-12",
+            "summary": "合成第 3 大陆节点 事实-3-12：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 14,
+            "lastTurn": 14,
+            "rings": [
+              14
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              14
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0069",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-3-13",
+            "summary": "合成第 3 大陆节点 问题-3-13：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 14,
+            "lastTurn": 14,
+            "rings": [
+              14
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              14
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0070",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-3-14",
+            "summary": "合成第 3 大陆节点 转变-3-14：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 14,
+            "lastTurn": 14,
+            "rings": [
+              14
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              14
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0071",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-3-20",
+            "summary": "合成第 3 大陆节点 论点-3-20：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 15,
+            "lastTurn": 15,
+            "rings": [
+              15
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              15
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0072",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-3-21",
+            "summary": "合成第 3 大陆节点 AI观点-3-21：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 15,
+            "lastTurn": 15,
+            "rings": [
+              15
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              15
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0073",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-3-22",
+            "summary": "合成第 3 大陆节点 事实-3-22：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 15,
+            "lastTurn": 15,
+            "rings": [
+              15
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              15
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0074",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-3-23",
+            "summary": "合成第 3 大陆节点 问题-3-23：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 15,
+            "lastTurn": 15,
+            "rings": [
+              15
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              15
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0075",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-3-24",
+            "summary": "合成第 3 大陆节点 转变-3-24：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 15,
+            "lastTurn": 15,
+            "rings": [
+              15
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              15
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0076",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-3-30",
+            "summary": "合成第 3 大陆节点 论点-3-30：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 16,
+            "lastTurn": 16,
+            "rings": [
+              16
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              16
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0077",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-3-31",
+            "summary": "合成第 3 大陆节点 AI观点-3-31：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 16,
+            "lastTurn": 16,
+            "rings": [
+              16
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              16
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0078",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-3-32",
+            "summary": "合成第 3 大陆节点 事实-3-32：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 16,
+            "lastTurn": 16,
+            "rings": [
+              16
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              16
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0079",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-3-33",
+            "summary": "合成第 3 大陆节点 问题-3-33：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 16,
+            "lastTurn": 16,
+            "rings": [
+              16
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              16
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0080",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-3-34",
+            "summary": "合成第 3 大陆节点 转变-3-34：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 16,
+            "lastTurn": 16,
+            "rings": [
+              16
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              16
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0081",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-3-40",
+            "summary": "合成第 3 大陆节点 论点-3-40：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 17,
+            "lastTurn": 17,
+            "rings": [
+              17
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              17
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0082",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-3-41",
+            "summary": "合成第 3 大陆节点 AI观点-3-41：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 17,
+            "lastTurn": 17,
+            "rings": [
+              17
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              17
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0083",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-3-42",
+            "summary": "合成第 3 大陆节点 事实-3-42：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 17,
+            "lastTurn": 17,
+            "rings": [
+              17
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              17
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0084",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-3-43",
+            "summary": "合成第 3 大陆节点 问题-3-43：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 17,
+            "lastTurn": 17,
+            "rings": [
+              17
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              17
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0085",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-3-44",
+            "summary": "合成第 3 大陆节点 转变-3-44：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 17,
+            "lastTurn": 17,
+            "rings": [
+              17
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              17
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0086",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-3-50",
+            "summary": "合成第 3 大陆节点 论点-3-50：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 18,
+            "lastTurn": 18,
+            "rings": [
+              18
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              18
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0087",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-3-51",
+            "summary": "合成第 3 大陆节点 AI观点-3-51：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 18,
+            "lastTurn": 18,
+            "rings": [
+              18
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              18
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0088",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-3-52",
+            "summary": "合成第 3 大陆节点 事实-3-52：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 18,
+            "lastTurn": 18,
+            "rings": [
+              18
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              18
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0089",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-3-53",
+            "summary": "合成第 3 大陆节点 问题-3-53：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 18,
+            "lastTurn": 18,
+            "rings": [
+              18
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              18
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0090",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-3-54",
+            "summary": "合成第 3 大陆节点 转变-3-54：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 18,
+            "lastTurn": 18,
+            "rings": [
+              18
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              18
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0091",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-4-00",
+            "summary": "合成第 4 大陆节点 论点-4-00：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 19,
+            "lastTurn": 19,
+            "rings": [
+              19
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              19
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0092",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-4-01",
+            "summary": "合成第 4 大陆节点 AI观点-4-01：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 19,
+            "lastTurn": 19,
+            "rings": [
+              19
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              19
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0093",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-4-02",
+            "summary": "合成第 4 大陆节点 事实-4-02：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 19,
+            "lastTurn": 19,
+            "rings": [
+              19
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              19
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0094",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-4-03",
+            "summary": "合成第 4 大陆节点 问题-4-03：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 19,
+            "lastTurn": 19,
+            "rings": [
+              19
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              19
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0095",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-4-04",
+            "summary": "合成第 4 大陆节点 转变-4-04：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 19,
+            "lastTurn": 19,
+            "rings": [
+              19
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              19
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0096",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-4-10",
+            "summary": "合成第 4 大陆节点 论点-4-10：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 20,
+            "lastTurn": 20,
+            "rings": [
+              20
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              20
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0097",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-4-11",
+            "summary": "合成第 4 大陆节点 AI观点-4-11：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 20,
+            "lastTurn": 20,
+            "rings": [
+              20
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              20
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0098",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-4-12",
+            "summary": "合成第 4 大陆节点 事实-4-12：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 20,
+            "lastTurn": 20,
+            "rings": [
+              20
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              20
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0099",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-4-13",
+            "summary": "合成第 4 大陆节点 问题-4-13：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 20,
+            "lastTurn": 20,
+            "rings": [
+              20
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              20
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0100",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-4-14",
+            "summary": "合成第 4 大陆节点 转变-4-14：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 20,
+            "lastTurn": 20,
+            "rings": [
+              20
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              20
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0101",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-4-20",
+            "summary": "合成第 4 大陆节点 论点-4-20：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 21,
+            "lastTurn": 21,
+            "rings": [
+              21
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              21
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0102",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-4-21",
+            "summary": "合成第 4 大陆节点 AI观点-4-21：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 21,
+            "lastTurn": 21,
+            "rings": [
+              21
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              21
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0103",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-4-22",
+            "summary": "合成第 4 大陆节点 事实-4-22：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 21,
+            "lastTurn": 21,
+            "rings": [
+              21
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              21
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0104",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-4-23",
+            "summary": "合成第 4 大陆节点 问题-4-23：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 21,
+            "lastTurn": 21,
+            "rings": [
+              21
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              21
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0105",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-4-24",
+            "summary": "合成第 4 大陆节点 转变-4-24：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 21,
+            "lastTurn": 21,
+            "rings": [
+              21
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              21
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0106",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-4-30",
+            "summary": "合成第 4 大陆节点 论点-4-30：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 22,
+            "lastTurn": 22,
+            "rings": [
+              22
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              22
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0107",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-4-31",
+            "summary": "合成第 4 大陆节点 AI观点-4-31：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 22,
+            "lastTurn": 22,
+            "rings": [
+              22
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              22
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0108",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-4-32",
+            "summary": "合成第 4 大陆节点 事实-4-32：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 22,
+            "lastTurn": 22,
+            "rings": [
+              22
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              22
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0109",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-4-33",
+            "summary": "合成第 4 大陆节点 问题-4-33：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 22,
+            "lastTurn": 22,
+            "rings": [
+              22
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              22
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0110",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-4-34",
+            "summary": "合成第 4 大陆节点 转变-4-34：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 22,
+            "lastTurn": 22,
+            "rings": [
+              22
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              22
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0111",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-4-40",
+            "summary": "合成第 4 大陆节点 论点-4-40：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 23,
+            "lastTurn": 23,
+            "rings": [
+              23
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              23
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0112",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-4-41",
+            "summary": "合成第 4 大陆节点 AI观点-4-41：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 23,
+            "lastTurn": 23,
+            "rings": [
+              23
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              23
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0113",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-4-42",
+            "summary": "合成第 4 大陆节点 事实-4-42：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 23,
+            "lastTurn": 23,
+            "rings": [
+              23
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              23
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0114",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-4-43",
+            "summary": "合成第 4 大陆节点 问题-4-43：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 23,
+            "lastTurn": 23,
+            "rings": [
+              23
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              23
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0115",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-4-44",
+            "summary": "合成第 4 大陆节点 转变-4-44：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 23,
+            "lastTurn": 23,
+            "rings": [
+              23
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              23
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0116",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-4-50",
+            "summary": "合成第 4 大陆节点 论点-4-50：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 24,
+            "lastTurn": 24,
+            "rings": [
+              24
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              24
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0117",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-4-51",
+            "summary": "合成第 4 大陆节点 AI观点-4-51：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 24,
+            "lastTurn": 24,
+            "rings": [
+              24
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              24
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0118",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-4-52",
+            "summary": "合成第 4 大陆节点 事实-4-52：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 24,
+            "lastTurn": 24,
+            "rings": [
+              24
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              24
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0119",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-4-53",
+            "summary": "合成第 4 大陆节点 问题-4-53：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 24,
+            "lastTurn": 24,
+            "rings": [
+              24
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              24
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0120",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-4-54",
+            "summary": "合成第 4 大陆节点 转变-4-54：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 24,
+            "lastTurn": 24,
+            "rings": [
+              24
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              24
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0121",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-5-00",
+            "summary": "合成第 5 大陆节点 论点-5-00：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 25,
+            "lastTurn": 25,
+            "rings": [
+              25
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              25
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0122",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-5-01",
+            "summary": "合成第 5 大陆节点 AI观点-5-01：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 25,
+            "lastTurn": 25,
+            "rings": [
+              25
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              25
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0123",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-5-02",
+            "summary": "合成第 5 大陆节点 事实-5-02：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 25,
+            "lastTurn": 25,
+            "rings": [
+              25
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              25
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0124",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-5-03",
+            "summary": "合成第 5 大陆节点 问题-5-03：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 25,
+            "lastTurn": 25,
+            "rings": [
+              25
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              25
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0125",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-5-04",
+            "summary": "合成第 5 大陆节点 转变-5-04：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 25,
+            "lastTurn": 25,
+            "rings": [
+              25
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              25
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0126",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-5-10",
+            "summary": "合成第 5 大陆节点 论点-5-10：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 26,
+            "lastTurn": 26,
+            "rings": [
+              26
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              26
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0127",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-5-11",
+            "summary": "合成第 5 大陆节点 AI观点-5-11：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 26,
+            "lastTurn": 26,
+            "rings": [
+              26
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              26
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0128",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-5-12",
+            "summary": "合成第 5 大陆节点 事实-5-12：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 26,
+            "lastTurn": 26,
+            "rings": [
+              26
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              26
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0129",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-5-13",
+            "summary": "合成第 5 大陆节点 问题-5-13：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 26,
+            "lastTurn": 26,
+            "rings": [
+              26
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              26
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0130",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-5-14",
+            "summary": "合成第 5 大陆节点 转变-5-14：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 26,
+            "lastTurn": 26,
+            "rings": [
+              26
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              26
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0131",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-5-20",
+            "summary": "合成第 5 大陆节点 论点-5-20：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 27,
+            "lastTurn": 27,
+            "rings": [
+              27
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              27
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0132",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-5-21",
+            "summary": "合成第 5 大陆节点 AI观点-5-21：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 27,
+            "lastTurn": 27,
+            "rings": [
+              27
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              27
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0133",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-5-22",
+            "summary": "合成第 5 大陆节点 事实-5-22：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 27,
+            "lastTurn": 27,
+            "rings": [
+              27
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              27
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0134",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-5-23",
+            "summary": "合成第 5 大陆节点 问题-5-23：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 27,
+            "lastTurn": 27,
+            "rings": [
+              27
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              27
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0135",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-5-24",
+            "summary": "合成第 5 大陆节点 转变-5-24：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 27,
+            "lastTurn": 27,
+            "rings": [
+              27
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              27
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0136",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-5-30",
+            "summary": "合成第 5 大陆节点 论点-5-30：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 28,
+            "lastTurn": 28,
+            "rings": [
+              28
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              28
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0137",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-5-31",
+            "summary": "合成第 5 大陆节点 AI观点-5-31：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 28,
+            "lastTurn": 28,
+            "rings": [
+              28
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              28
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0138",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-5-32",
+            "summary": "合成第 5 大陆节点 事实-5-32：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 28,
+            "lastTurn": 28,
+            "rings": [
+              28
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              28
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0139",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-5-33",
+            "summary": "合成第 5 大陆节点 问题-5-33：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 28,
+            "lastTurn": 28,
+            "rings": [
+              28
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              28
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0140",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-5-34",
+            "summary": "合成第 5 大陆节点 转变-5-34：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 28,
+            "lastTurn": 28,
+            "rings": [
+              28
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              28
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0141",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-5-40",
+            "summary": "合成第 5 大陆节点 论点-5-40：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 29,
+            "lastTurn": 29,
+            "rings": [
+              29
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              29
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0142",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-5-41",
+            "summary": "合成第 5 大陆节点 AI观点-5-41：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 29,
+            "lastTurn": 29,
+            "rings": [
+              29
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              29
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0143",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-5-42",
+            "summary": "合成第 5 大陆节点 事实-5-42：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 29,
+            "lastTurn": 29,
+            "rings": [
+              29
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              29
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0144",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-5-43",
+            "summary": "合成第 5 大陆节点 问题-5-43：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 29,
+            "lastTurn": 29,
+            "rings": [
+              29
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              29
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0145",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-5-44",
+            "summary": "合成第 5 大陆节点 转变-5-44：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 29,
+            "lastTurn": 29,
+            "rings": [
+              29
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              29
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0146",
+            "type": "claim",
+            "owner": "user",
+            "label": "论点-5-50",
+            "summary": "合成第 5 大陆节点 论点-5-50：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 30,
+            "lastTurn": 30,
+            "rings": [
+              30
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              30
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0147",
+            "type": "ai-voice",
+            "owner": "ai",
+            "label": "AI观点-5-51",
+            "summary": "合成第 5 大陆节点 AI观点-5-51：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 30,
+            "lastTurn": 30,
+            "rings": [
+              30
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              30
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0148",
+            "type": "fact",
+            "owner": "user",
+            "label": "事实-5-52",
+            "summary": "合成第 5 大陆节点 事实-5-52：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 30,
+            "lastTurn": 30,
+            "rings": [
+              30
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              30
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0149",
+            "type": "question",
+            "owner": "user",
+            "label": "问题-5-53",
+            "summary": "合成第 5 大陆节点 问题-5-53：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 30,
+            "lastTurn": 30,
+            "rings": [
+              30
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              30
+            ],
+            "clusterId": null,
+            "manual": false
+          },
+          {
+            "id": "n_0150",
+            "type": "shift",
+            "owner": "user",
+            "label": "转变-5-54",
+            "summary": "合成第 5 大陆节点 转变-5-54：用于 D4 回放与大陆轮廓验收。",
+            "bornTurn": 30,
+            "lastTurn": 30,
+            "rings": [
+              30
+            ],
+            "status": "active",
+            "supersededBy": null,
+            "mergedInto": null,
+            "anchorTurns": [
+              30
+            ],
+            "clusterId": null,
+            "manual": false
+          }
+        ],
+        "edges": [
+          {
+            "from": "n_0001",
+            "to": "n_0002",
+            "kind": "related",
+            "bornTurn": 1
+          },
+          {
+            "from": "n_0002",
+            "to": "n_0003",
+            "kind": "related",
+            "bornTurn": 1
+          },
+          {
+            "from": "n_0003",
+            "to": "n_0004",
+            "kind": "related",
+            "bornTurn": 1
+          },
+          {
+            "from": "n_0004",
+            "to": "n_0005",
+            "kind": "related",
+            "bornTurn": 1
+          },
+          {
+            "from": "n_0005",
+            "to": "n_0006",
+            "kind": "related",
+            "bornTurn": 2
+          },
+          {
+            "from": "n_0006",
+            "to": "n_0007",
+            "kind": "related",
+            "bornTurn": 2
+          },
+          {
+            "from": "n_0007",
+            "to": "n_0008",
+            "kind": "related",
+            "bornTurn": 2
+          },
+          {
+            "from": "n_0008",
+            "to": "n_0009",
+            "kind": "related",
+            "bornTurn": 2
+          },
+          {
+            "from": "n_0009",
+            "to": "n_0010",
+            "kind": "related",
+            "bornTurn": 2
+          },
+          {
+            "from": "n_0010",
+            "to": "n_0011",
+            "kind": "related",
+            "bornTurn": 3
+          },
+          {
+            "from": "n_0011",
+            "to": "n_0012",
+            "kind": "related",
+            "bornTurn": 3
+          },
+          {
+            "from": "n_0012",
+            "to": "n_0013",
+            "kind": "related",
+            "bornTurn": 3
+          },
+          {
+            "from": "n_0013",
+            "to": "n_0014",
+            "kind": "related",
+            "bornTurn": 3
+          },
+          {
+            "from": "n_0014",
+            "to": "n_0015",
+            "kind": "related",
+            "bornTurn": 3
+          },
+          {
+            "from": "n_0015",
+            "to": "n_0016",
+            "kind": "related",
+            "bornTurn": 4
+          },
+          {
+            "from": "n_0016",
+            "to": "n_0017",
+            "kind": "related",
+            "bornTurn": 4
+          },
+          {
+            "from": "n_0017",
+            "to": "n_0018",
+            "kind": "related",
+            "bornTurn": 4
+          },
+          {
+            "from": "n_0018",
+            "to": "n_0019",
+            "kind": "related",
+            "bornTurn": 4
+          },
+          {
+            "from": "n_0019",
+            "to": "n_0020",
+            "kind": "related",
+            "bornTurn": 4
+          },
+          {
+            "from": "n_0020",
+            "to": "n_0021",
+            "kind": "related",
+            "bornTurn": 5
+          },
+          {
+            "from": "n_0021",
+            "to": "n_0022",
+            "kind": "related",
+            "bornTurn": 5
+          },
+          {
+            "from": "n_0022",
+            "to": "n_0023",
+            "kind": "related",
+            "bornTurn": 5
+          },
+          {
+            "from": "n_0023",
+            "to": "n_0024",
+            "kind": "related",
+            "bornTurn": 5
+          },
+          {
+            "from": "n_0024",
+            "to": "n_0025",
+            "kind": "related",
+            "bornTurn": 5
+          },
+          {
+            "from": "n_0025",
+            "to": "n_0026",
+            "kind": "related",
+            "bornTurn": 6
+          },
+          {
+            "from": "n_0026",
+            "to": "n_0027",
+            "kind": "related",
+            "bornTurn": 6
+          },
+          {
+            "from": "n_0027",
+            "to": "n_0028",
+            "kind": "related",
+            "bornTurn": 6
+          },
+          {
+            "from": "n_0028",
+            "to": "n_0029",
+            "kind": "related",
+            "bornTurn": 6
+          },
+          {
+            "from": "n_0029",
+            "to": "n_0030",
+            "kind": "related",
+            "bornTurn": 6
+          },
+          {
+            "from": "n_0031",
+            "to": "n_0032",
+            "kind": "related",
+            "bornTurn": 7
+          },
+          {
+            "from": "n_0032",
+            "to": "n_0033",
+            "kind": "related",
+            "bornTurn": 7
+          },
+          {
+            "from": "n_0033",
+            "to": "n_0034",
+            "kind": "related",
+            "bornTurn": 7
+          },
+          {
+            "from": "n_0034",
+            "to": "n_0035",
+            "kind": "related",
+            "bornTurn": 7
+          },
+          {
+            "from": "n_0035",
+            "to": "n_0036",
+            "kind": "related",
+            "bornTurn": 8
+          },
+          {
+            "from": "n_0036",
+            "to": "n_0037",
+            "kind": "related",
+            "bornTurn": 8
+          },
+          {
+            "from": "n_0037",
+            "to": "n_0038",
+            "kind": "related",
+            "bornTurn": 8
+          },
+          {
+            "from": "n_0038",
+            "to": "n_0039",
+            "kind": "related",
+            "bornTurn": 8
+          },
+          {
+            "from": "n_0039",
+            "to": "n_0040",
+            "kind": "related",
+            "bornTurn": 8
+          },
+          {
+            "from": "n_0040",
+            "to": "n_0041",
+            "kind": "related",
+            "bornTurn": 9
+          },
+          {
+            "from": "n_0041",
+            "to": "n_0042",
+            "kind": "related",
+            "bornTurn": 9
+          },
+          {
+            "from": "n_0042",
+            "to": "n_0043",
+            "kind": "related",
+            "bornTurn": 9
+          },
+          {
+            "from": "n_0043",
+            "to": "n_0044",
+            "kind": "related",
+            "bornTurn": 9
+          },
+          {
+            "from": "n_0044",
+            "to": "n_0045",
+            "kind": "related",
+            "bornTurn": 9
+          },
+          {
+            "from": "n_0045",
+            "to": "n_0046",
+            "kind": "related",
+            "bornTurn": 10
+          },
+          {
+            "from": "n_0046",
+            "to": "n_0047",
+            "kind": "related",
+            "bornTurn": 10
+          },
+          {
+            "from": "n_0047",
+            "to": "n_0048",
+            "kind": "related",
+            "bornTurn": 10
+          },
+          {
+            "from": "n_0048",
+            "to": "n_0049",
+            "kind": "related",
+            "bornTurn": 10
+          },
+          {
+            "from": "n_0049",
+            "to": "n_0050",
+            "kind": "related",
+            "bornTurn": 10
+          },
+          {
+            "from": "n_0050",
+            "to": "n_0051",
+            "kind": "related",
+            "bornTurn": 11
+          },
+          {
+            "from": "n_0051",
+            "to": "n_0052",
+            "kind": "related",
+            "bornTurn": 11
+          },
+          {
+            "from": "n_0052",
+            "to": "n_0053",
+            "kind": "related",
+            "bornTurn": 11
+          },
+          {
+            "from": "n_0053",
+            "to": "n_0054",
+            "kind": "related",
+            "bornTurn": 11
+          },
+          {
+            "from": "n_0054",
+            "to": "n_0055",
+            "kind": "related",
+            "bornTurn": 11
+          },
+          {
+            "from": "n_0055",
+            "to": "n_0056",
+            "kind": "related",
+            "bornTurn": 12
+          },
+          {
+            "from": "n_0056",
+            "to": "n_0057",
+            "kind": "related",
+            "bornTurn": 12
+          },
+          {
+            "from": "n_0057",
+            "to": "n_0058",
+            "kind": "related",
+            "bornTurn": 12
+          },
+          {
+            "from": "n_0058",
+            "to": "n_0059",
+            "kind": "related",
+            "bornTurn": 12
+          },
+          {
+            "from": "n_0059",
+            "to": "n_0060",
+            "kind": "related",
+            "bornTurn": 12
+          },
+          {
+            "from": "n_0061",
+            "to": "n_0062",
+            "kind": "related",
+            "bornTurn": 13
+          },
+          {
+            "from": "n_0062",
+            "to": "n_0063",
+            "kind": "related",
+            "bornTurn": 13
+          },
+          {
+            "from": "n_0063",
+            "to": "n_0064",
+            "kind": "related",
+            "bornTurn": 13
+          },
+          {
+            "from": "n_0064",
+            "to": "n_0065",
+            "kind": "related",
+            "bornTurn": 13
+          },
+          {
+            "from": "n_0065",
+            "to": "n_0066",
+            "kind": "related",
+            "bornTurn": 14
+          },
+          {
+            "from": "n_0066",
+            "to": "n_0067",
+            "kind": "related",
+            "bornTurn": 14
+          },
+          {
+            "from": "n_0067",
+            "to": "n_0068",
+            "kind": "related",
+            "bornTurn": 14
+          },
+          {
+            "from": "n_0068",
+            "to": "n_0069",
+            "kind": "related",
+            "bornTurn": 14
+          },
+          {
+            "from": "n_0069",
+            "to": "n_0070",
+            "kind": "related",
+            "bornTurn": 14
+          },
+          {
+            "from": "n_0070",
+            "to": "n_0071",
+            "kind": "related",
+            "bornTurn": 15
+          },
+          {
+            "from": "n_0071",
+            "to": "n_0072",
+            "kind": "related",
+            "bornTurn": 15
+          },
+          {
+            "from": "n_0072",
+            "to": "n_0073",
+            "kind": "related",
+            "bornTurn": 15
+          },
+          {
+            "from": "n_0073",
+            "to": "n_0074",
+            "kind": "related",
+            "bornTurn": 15
+          },
+          {
+            "from": "n_0074",
+            "to": "n_0075",
+            "kind": "related",
+            "bornTurn": 15
+          },
+          {
+            "from": "n_0075",
+            "to": "n_0076",
+            "kind": "related",
+            "bornTurn": 16
+          },
+          {
+            "from": "n_0076",
+            "to": "n_0077",
+            "kind": "related",
+            "bornTurn": 16
+          },
+          {
+            "from": "n_0077",
+            "to": "n_0078",
+            "kind": "related",
+            "bornTurn": 16
+          },
+          {
+            "from": "n_0078",
+            "to": "n_0079",
+            "kind": "related",
+            "bornTurn": 16
+          },
+          {
+            "from": "n_0079",
+            "to": "n_0080",
+            "kind": "related",
+            "bornTurn": 16
+          },
+          {
+            "from": "n_0080",
+            "to": "n_0081",
+            "kind": "related",
+            "bornTurn": 17
+          },
+          {
+            "from": "n_0081",
+            "to": "n_0082",
+            "kind": "related",
+            "bornTurn": 17
+          },
+          {
+            "from": "n_0082",
+            "to": "n_0083",
+            "kind": "related",
+            "bornTurn": 17
+          },
+          {
+            "from": "n_0083",
+            "to": "n_0084",
+            "kind": "related",
+            "bornTurn": 17
+          },
+          {
+            "from": "n_0084",
+            "to": "n_0085",
+            "kind": "related",
+            "bornTurn": 17
+          },
+          {
+            "from": "n_0085",
+            "to": "n_0086",
+            "kind": "related",
+            "bornTurn": 18
+          },
+          {
+            "from": "n_0086",
+            "to": "n_0087",
+            "kind": "related",
+            "bornTurn": 18
+          },
+          {
+            "from": "n_0087",
+            "to": "n_0088",
+            "kind": "related",
+            "bornTurn": 18
+          },
+          {
+            "from": "n_0088",
+            "to": "n_0089",
+            "kind": "related",
+            "bornTurn": 18
+          },
+          {
+            "from": "n_0089",
+            "to": "n_0090",
+            "kind": "related",
+            "bornTurn": 18
+          },
+          {
+            "from": "n_0091",
+            "to": "n_0092",
+            "kind": "related",
+            "bornTurn": 19
+          },
+          {
+            "from": "n_0092",
+            "to": "n_0093",
+            "kind": "related",
+            "bornTurn": 19
+          },
+          {
+            "from": "n_0093",
+            "to": "n_0094",
+            "kind": "related",
+            "bornTurn": 19
+          },
+          {
+            "from": "n_0094",
+            "to": "n_0095",
+            "kind": "related",
+            "bornTurn": 19
+          },
+          {
+            "from": "n_0095",
+            "to": "n_0096",
+            "kind": "related",
+            "bornTurn": 20
+          },
+          {
+            "from": "n_0096",
+            "to": "n_0097",
+            "kind": "related",
+            "bornTurn": 20
+          },
+          {
+            "from": "n_0097",
+            "to": "n_0098",
+            "kind": "related",
+            "bornTurn": 20
+          },
+          {
+            "from": "n_0098",
+            "to": "n_0099",
+            "kind": "related",
+            "bornTurn": 20
+          },
+          {
+            "from": "n_0099",
+            "to": "n_0100",
+            "kind": "related",
+            "bornTurn": 20
+          },
+          {
+            "from": "n_0100",
+            "to": "n_0101",
+            "kind": "related",
+            "bornTurn": 21
+          },
+          {
+            "from": "n_0101",
+            "to": "n_0102",
+            "kind": "related",
+            "bornTurn": 21
+          },
+          {
+            "from": "n_0102",
+            "to": "n_0103",
+            "kind": "related",
+            "bornTurn": 21
+          },
+          {
+            "from": "n_0103",
+            "to": "n_0104",
+            "kind": "related",
+            "bornTurn": 21
+          },
+          {
+            "from": "n_0104",
+            "to": "n_0105",
+            "kind": "related",
+            "bornTurn": 21
+          },
+          {
+            "from": "n_0105",
+            "to": "n_0106",
+            "kind": "related",
+            "bornTurn": 22
+          },
+          {
+            "from": "n_0106",
+            "to": "n_0107",
+            "kind": "related",
+            "bornTurn": 22
+          },
+          {
+            "from": "n_0107",
+            "to": "n_0108",
+            "kind": "related",
+            "bornTurn": 22
+          },
+          {
+            "from": "n_0108",
+            "to": "n_0109",
+            "kind": "related",
+            "bornTurn": 22
+          },
+          {
+            "from": "n_0109",
+            "to": "n_0110",
+            "kind": "related",
+            "bornTurn": 22
+          },
+          {
+            "from": "n_0110",
+            "to": "n_0111",
+            "kind": "related",
+            "bornTurn": 23
+          },
+          {
+            "from": "n_0111",
+            "to": "n_0112",
+            "kind": "related",
+            "bornTurn": 23
+          },
+          {
+            "from": "n_0112",
+            "to": "n_0113",
+            "kind": "related",
+            "bornTurn": 23
+          },
+          {
+            "from": "n_0113",
+            "to": "n_0114",
+            "kind": "related",
+            "bornTurn": 23
+          },
+          {
+            "from": "n_0114",
+            "to": "n_0115",
+            "kind": "related",
+            "bornTurn": 23
+          },
+          {
+            "from": "n_0115",
+            "to": "n_0116",
+            "kind": "related",
+            "bornTurn": 24
+          },
+          {
+            "from": "n_0116",
+            "to": "n_0117",
+            "kind": "related",
+            "bornTurn": 24
+          },
+          {
+            "from": "n_0117",
+            "to": "n_0118",
+            "kind": "related",
+            "bornTurn": 24
+          },
+          {
+            "from": "n_0118",
+            "to": "n_0119",
+            "kind": "related",
+            "bornTurn": 24
+          },
+          {
+            "from": "n_0119",
+            "to": "n_0120",
+            "kind": "related",
+            "bornTurn": 24
+          },
+          {
+            "from": "n_0121",
+            "to": "n_0122",
+            "kind": "related",
+            "bornTurn": 25
+          },
+          {
+            "from": "n_0122",
+            "to": "n_0123",
+            "kind": "related",
+            "bornTurn": 25
+          },
+          {
+            "from": "n_0123",
+            "to": "n_0124",
+            "kind": "related",
+            "bornTurn": 25
+          },
+          {
+            "from": "n_0124",
+            "to": "n_0125",
+            "kind": "related",
+            "bornTurn": 25
+          },
+          {
+            "from": "n_0125",
+            "to": "n_0126",
+            "kind": "related",
+            "bornTurn": 26
+          },
+          {
+            "from": "n_0126",
+            "to": "n_0127",
+            "kind": "related",
+            "bornTurn": 26
+          },
+          {
+            "from": "n_0127",
+            "to": "n_0128",
+            "kind": "related",
+            "bornTurn": 26
+          },
+          {
+            "from": "n_0128",
+            "to": "n_0129",
+            "kind": "related",
+            "bornTurn": 26
+          },
+          {
+            "from": "n_0129",
+            "to": "n_0130",
+            "kind": "related",
+            "bornTurn": 26
+          },
+          {
+            "from": "n_0130",
+            "to": "n_0131",
+            "kind": "related",
+            "bornTurn": 27
+          },
+          {
+            "from": "n_0131",
+            "to": "n_0132",
+            "kind": "related",
+            "bornTurn": 27
+          },
+          {
+            "from": "n_0132",
+            "to": "n_0133",
+            "kind": "related",
+            "bornTurn": 27
+          },
+          {
+            "from": "n_0133",
+            "to": "n_0134",
+            "kind": "related",
+            "bornTurn": 27
+          },
+          {
+            "from": "n_0134",
+            "to": "n_0135",
+            "kind": "related",
+            "bornTurn": 27
+          },
+          {
+            "from": "n_0135",
+            "to": "n_0136",
+            "kind": "related",
+            "bornTurn": 28
+          },
+          {
+            "from": "n_0136",
+            "to": "n_0137",
+            "kind": "related",
+            "bornTurn": 28
+          },
+          {
+            "from": "n_0137",
+            "to": "n_0138",
+            "kind": "related",
+            "bornTurn": 28
+          },
+          {
+            "from": "n_0138",
+            "to": "n_0139",
+            "kind": "related",
+            "bornTurn": 28
+          },
+          {
+            "from": "n_0139",
+            "to": "n_0140",
+            "kind": "related",
+            "bornTurn": 28
+          },
+          {
+            "from": "n_0140",
+            "to": "n_0141",
+            "kind": "related",
+            "bornTurn": 29
+          },
+          {
+            "from": "n_0141",
+            "to": "n_0142",
+            "kind": "related",
+            "bornTurn": 29
+          },
+          {
+            "from": "n_0142",
+            "to": "n_0143",
+            "kind": "related",
+            "bornTurn": 29
+          },
+          {
+            "from": "n_0143",
+            "to": "n_0144",
+            "kind": "related",
+            "bornTurn": 29
+          },
+          {
+            "from": "n_0144",
+            "to": "n_0145",
+            "kind": "related",
+            "bornTurn": 29
+          },
+          {
+            "from": "n_0145",
+            "to": "n_0146",
+            "kind": "related",
+            "bornTurn": 30
+          },
+          {
+            "from": "n_0146",
+            "to": "n_0147",
+            "kind": "related",
+            "bornTurn": 30
+          },
+          {
+            "from": "n_0147",
+            "to": "n_0148",
+            "kind": "related",
+            "bornTurn": 30
+          },
+          {
+            "from": "n_0148",
+            "to": "n_0149",
+            "kind": "related",
+            "bornTurn": 30
+          },
+          {
+            "from": "n_0149",
+            "to": "n_0150",
+            "kind": "related",
+            "bornTurn": 30
+          }
+        ],
+        "lastTurn": 30
+      }
+    },
+    "drag60": {
+      "nodes": 300,
+      "edges": 290
+    }
+  },
+  "playback": {
+    "play1": {
+      "index": 3,
+      "total": 122,
+      "playing": true,
+      "speed": 3,
+      "mode": "replay",
+      "pendingLive": false,
+      "label": "回放 · 第 3 轮 · 5 op · 3/122"
+    },
+    "play2": {
+      "index": 5,
+      "total": 122,
+      "playing": true,
+      "speed": 3,
+      "mode": "replay",
+      "pendingLive": false,
+      "label": "回放 · 第 5 轮 · 5 op · 5/122"
+    },
+    "paused": {
+      "index": 5,
+      "total": 122,
+      "playing": false,
+      "speed": 3,
+      "mode": "replay",
+      "pendingLive": false,
+      "label": "回放 · 第 5 轮 · 5 op · 5/122"
+    }
+  },
+  "replayEnd": {
+    "nodes": 300,
+    "edges": 600,
+    "timeline": {
+      "index": 122,
+      "total": 122,
+      "playing": false,
+      "speed": 3,
+      "mode": "replay",
+      "pendingLive": false,
+      "label": "回放 · 第 122 轮 · 5 op · 122/122"
+    },
+    "replayShot": "evidence/d4-screenshots/replay-end-300-600.png"
+  },
+  "search": {
+    "stats": {
+      "fps": 20,
+      "frames": 390,
+      "nodes": 300,
+      "edges": 600,
+      "converged": true,
+      "zoom": 1.27,
+      "focused": false,
+      "selected": null,
+      "lastDrawAt": 367,
+      "tier": "near",
+      "clusters": 10,
+      "namedClusters": 10,
+      "pulsing": 0,
+      "searchMatches": 6
+    },
+    "ids": [
+      "n_0091",
+      "n_0096",
+      "n_0101",
+      "n_0106",
+      "n_0111",
+      "n_0116"
+    ],
+    "first": "n_0091",
+    "screen": {
+      "x": 640,
+      "y": 331.5
+    },
+    "center": {
+      "x": 640,
+      "y": 331.5
+    },
+    "dx": 0,
+    "dy": 0,
+    "searchShot": "evidence/d4-screenshots/search-centered.png"
+  },
+  "anchorPanel": {
+    "title": "论点-1-00",
+    "text": "关闭论点-1-00论点合成第 1 大陆节点 论点-1-00：用于 D4 回放与大陆轮廓验收。年轮 ×1 · 第 1 轮活跃 · 第 1 轮出现 · n_0001锚点原文仅读取本地 ~/.thought-atlas 记录，不上传共 1 轮原文第 1 轮用户：合成第 1 轮用户原话：我在梳理第 1 个主题大陆。助手：合成第 1 轮助手回答：已把本轮讨论挂到对应主题大陆上。标记为转变删除节点",
+    "turns": 1,
+    "images": 0,
+    "iframes": 0,
+    "hasMarkup": false,
+    "anchorShot": "evidence/d4-screenshots/anchor-panel-synthetic.png"
+  },
+  "xss": {
+    "fired": null,
+    "images": 0,
+    "scripts": 1,
+    "iframes": 0,
+    "panelText": "关闭<script>window._论点<img src=x onerror=\"window.__xssFired=2\">年轮 ×1 · 第 1 轮活跃 · 第 1 轮出现 · n_0001锚点原文仅读取本地 ~/.thought-atlas 记录，不上传共 1 轮原文第 1 轮用户：<img src=x onerror=\"window.__xssFired=6\">合成用户原文助手：<script>window.__xssFired=7</script>合成助手原文标记为转变删除节点",
+    "hasMarkup": false,
+    "xssShot": "evidence/d4-screenshots/anchor-xss-inert.png"
+  },
+  "manual": {
+    "manualBefore": {
+      "index": 3,
+      "total": 3,
+      "playing": false,
+      "speed": 1,
+      "mode": "live",
+      "pendingLive": false,
+      "label": "实时 · 第 3 轮 · 1 op · 3/3"
+    },
+    "marked": {
+      "timeline": {
+        "index": 4,
+        "total": 4,
+        "playing": false,
+        "speed": 1,
+        "mode": "live",
+        "pendingLive": false,
+        "label": "实时 · 手动操作 · 1 op · 4/4"
+      },
+      "type": "shift",
+      "manual": true,
+      "panelText": "关闭旧观点甲认知转变合成手动操作会话：旧观点甲。年轮 ×3 · 第 1、2、3 轮活跃 · 第 1 轮出现 · n_0001锚点原文仅读取本地 ~/.thought-atlas 记录，不上传共 3 轮原文第 1 轮用户：合成手动操作会话第 1 轮用户原话。助手：合成手动操作会话第 1 轮助手回答。第 2 轮用户：合成手动操作会话第 2 轮用户原话。助手：合成手动操作会话第 2 轮助手回答。第 3 轮用户：合成手动操作会话第 3 轮用户原话。助手：合成手动操作会话第 3 轮助手回答。标记为转变删除节点已标记为认知转变"
+    },
+    "deleted": {
+      "timeline": {
+        "index": 5,
+        "total": 5,
+        "playing": false,
+        "speed": 1,
+        "mode": "live",
+        "pendingLive": false,
+        "label": "实时 · 手动操作 · 1 op · 5/5"
+      },
+      "hasNode": false,
+      "panelHidden": true
+    },
+    "reflectedCount": 4,
+    "markShot": "evidence/d4-screenshots/manual-mark-shift.png",
+    "replayManualShot": "evidence/d4-screenshots/manual-replay-reflected.png"
+  },
+  "fps": {
+    "samples": [
+      {
+        "fps": 60,
+        "frames": 213,
+        "tier": "near"
+      },
+      {
+        "fps": 60,
+        "frames": 285,
+        "tier": "near"
+      },
+      {
+        "fps": 60,
+        "frames": 357,
+        "tier": "near"
+      }
+    ],
+    "min": 60,
+    "median": 60,
+    "tier": "near",
+    "note": "headless Chrome (SwiftShader) 回放末态 300 节点/600 边，近景档 rAF 实测",
+    "perfShot": "evidence/d4-screenshots/perf-replay-300-600.png"
+  },
+  "mobile": {
+    "mobile390": {
+      "innerWidth": 390,
+      "scrollWidth": 390,
+      "overflow": false,
+      "timelineBottom": 836,
+      "timelineWidth": 374
+    },
+    "mobile390Shot": "evidence/d4-screenshots/mobile-390-replay.png",
+    "mobilePanel": {
+      "width": 374,
+      "bottom": 770,
+      "innerWidth": 390,
+      "innerHeight": 844
+    },
+    "mobilePanelShot": "evidence/d4-screenshots/mobile-390-panel.png",
+    "mobile320": {
+      "innerWidth": 320,
+      "scrollWidth": 320,
+      "overflow": false,
+      "timelineVisible": true
+    },
+    "mobile320Shot": "evidence/d4-screenshots/mobile-320.png"
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}

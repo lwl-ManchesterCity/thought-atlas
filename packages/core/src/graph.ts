@@ -7,7 +7,7 @@ import type {
   ThoughtEdge,
   ThoughtNode,
 } from './types.ts';
-import { LABEL_MAX, SUMMARY_MAX } from './types.ts';
+import { LABEL_MAX, MANUAL_TURN_BASE, SUMMARY_MAX } from './types.ts';
 import type { Storage, Transport } from './ports.ts';
 import { validateOpsShape } from './schema.ts';
 
@@ -16,6 +16,7 @@ export interface ApplyResult {
   duplicate?: boolean;
   reason?: string;
   ops?: MapOp[];
+  turnIndex?: number;
 }
 
 interface SimState {
@@ -38,6 +39,12 @@ function allocId(sim: SimState): string {
     sim.nextId++;
   } while (sim.nodes.has(id));
   return id;
+}
+
+function bumpNextId(sim: SimState, id: string): void {
+  if (!id.startsWith('n_')) return;
+  const num = Number(id.slice(2));
+  if (Number.isInteger(num)) sim.nextId = Math.max(sim.nextId, num + 1);
 }
 
 function resolveRef(ref: string, currentNewId: string | null, lastCreated: string | null): string {
@@ -101,10 +108,12 @@ function applyOp(
   op: MapOp,
   turn: number,
   lastCreated: string | null,
+  replayId: string | null = null,
 ): { resolved: MapOp; created: string | null } {
   switch (op.op) {
     case 'ADD_NODE': {
-      const id = allocId(sim);
+      const id = replayId ?? allocId(sim);
+      if (replayId) bumpNextId(sim, replayId);
       const n = op.node;
       const shift = n.shift ? resolveShift(n.shift, lastCreated) : undefined;
       if (shift?.fromNodeId) {
@@ -180,14 +189,17 @@ function applyOp(
       if (op.nodeId !== null) {
         const id = resolveRef(op.nodeId, null, lastCreated);
         const node = requireActive(sim, id);
+        if (node.type === 'ai-voice') throw new OpError('MARK_SHIFT must not convert an ai-voice node');
         node.type = 'shift';
         node.shift = shift;
+        if (op.manual) node.manual = true;
         if (!node.rings.includes(turn)) node.rings.push(turn);
         if (!node.anchorTurns.includes(turn)) node.anchorTurns.push(turn);
         node.lastTurn = Math.max(node.lastTurn, turn);
         shiftId = id;
       } else {
-        shiftId = allocId(sim);
+        shiftId = replayId ?? allocId(sim);
+        if (replayId) bumpNextId(sim, replayId);
         created = shiftId;
         sim.nodes.set(shiftId, buildNode(shiftId, {
           type: 'shift',
@@ -202,7 +214,7 @@ function applyOp(
           mergedInto: null,
           anchorTurns: [turn],
           clusterId: null,
-          manual: false,
+          manual: op.manual ?? false,
           shift,
         }));
       }
@@ -215,7 +227,7 @@ function applyOp(
         old.supersededBy = shiftId;
         addEdge(sim, { from: old.id, to: shiftId, kind: 'supersede', bornTurn: turn });
       }
-      return { resolved: { op: 'MARK_SHIFT', nodeId: shiftId, shift }, created };
+      return { resolved: { op: 'MARK_SHIFT', nodeId: shiftId, shift, ...(op.manual ? { manual: true } : {}) }, created };
     }
     case 'SUPERSEDE': {
       const oldId = resolveRef(op.oldId, null, lastCreated);
@@ -277,6 +289,7 @@ export class ThoughtGraph {
   private nextId = 1;
   private processed = new Set<number>();
   private lastTurn = 0;
+  private manualTurn = 0;
 
   private sessionId: string;
   private storage: Storage;
@@ -305,7 +318,12 @@ export class ThoughtGraph {
       graph.lastTurn = map.lastTurn;
     }
     const events = await storage.loadEvents();
-    for (const event of events) graph.processed.add(event.turnIndex);
+    for (const event of events) {
+      graph.processed.add(event.turnIndex);
+      if (event.turnIndex >= MANUAL_TURN_BASE) {
+        graph.manualTurn = Math.max(graph.manualTurn, event.turnIndex);
+      }
+    }
     return graph;
   }
 
@@ -371,6 +389,109 @@ export class ThoughtGraph {
     const map = this.getMap();
     await this.storage.saveMap(map);
     this.transport?.publish({ sessionId: this.sessionId, turnIndex, map });
-    return { ok: true, ops: resolved };
+    return { ok: true, ops: resolved, turnIndex };
   }
+
+  /** 手动操作：以隔离序号追加事件（可回放、可审计），不推进对话轮次 */
+  async applyManual(ops: MapOp[], timestamp: string): Promise<ApplyResult> {
+    const shape = validateOpsShape({ ops });
+    if (!shape.ok) return { ok: false, reason: shape.error };
+
+    const sim: SimState = structuredClone({
+      nodes: this.nodes,
+      edges: this.edges,
+      nextId: this.nextId,
+    });
+    const resolved: MapOp[] = [];
+    let lastCreated: string | null = null;
+    const bookkeepingTurn = this.lastTurn || 1;
+    try {
+      for (const op of shape.ops) {
+        const result = applyOp(sim, op, bookkeepingTurn, lastCreated);
+        resolved.push(result.resolved);
+        if (result.created) lastCreated = result.created;
+      }
+    } catch (err) {
+      const reason = err instanceof OpError ? err.message : String(err);
+      return { ok: false, reason };
+    }
+
+    this.nodes = sim.nodes;
+    this.edges = sim.edges;
+    this.nextId = sim.nextId;
+    this.manualTurn = this.manualTurn >= MANUAL_TURN_BASE ? this.manualTurn + 1 : MANUAL_TURN_BASE;
+
+    const record: EventRecord = { turnIndex: this.manualTurn, timestamp, ops: resolved };
+    await this.storage.appendEvent(record);
+    const map = this.getMap();
+    await this.storage.saveMap(map);
+    this.transport?.publish({ sessionId: this.sessionId, turnIndex: this.manualTurn, map });
+    return { ok: true, ops: resolved, turnIndex: this.manualTurn };
+  }
+}
+
+export interface ReplayState {
+  sessionId: string;
+  nodes: Map<string, ThoughtNode>;
+  edges: ThoughtEdge[];
+  nextId: number;
+  lastTurn: number;
+}
+
+export function createReplayState(sessionId: string): ReplayState {
+  return { sessionId, nodes: new Map(), edges: [], nextId: 1, lastTurn: 0 };
+}
+
+function resolvedCreatedId(op: MapOp, state: ReplayState): string | null {
+  if (op.op === 'ADD_NODE') {
+    const id = (op.node as { id?: unknown }).id;
+    return typeof id === 'string' ? id : null;
+  }
+  if (op.op === 'MARK_SHIFT' && op.nodeId !== null && !state.nodes.has(op.nodeId)) {
+    return op.nodeId;
+  }
+  return null;
+}
+
+export function replayApply(state: ReplayState, event: EventRecord): void {
+  if (event.turnIndex < MANUAL_TURN_BASE) {
+    state.lastTurn = Math.max(state.lastTurn, event.turnIndex);
+  }
+  let lastCreated: string | null = null;
+  const bookkeepingTurn = event.turnIndex >= MANUAL_TURN_BASE ? state.lastTurn || 1 : event.turnIndex;
+  for (const op of event.ops) {
+    const replayId = resolvedCreatedId(op, state);
+    const effective: MapOp =
+      replayId && op.op === 'MARK_SHIFT' ? { ...op, nodeId: null } : op;
+    let result: { resolved: MapOp; created: string | null };
+    try {
+      result = applyOp(state, effective, bookkeepingTurn, lastCreated, replayId);
+    } catch (err) {
+      const reason = err instanceof Error ? err.message : String(err);
+      throw new Error(`replay event ${event.turnIndex} op ${op.op}: ${reason}`);
+    }
+    if (result.created) lastCreated = result.created;
+  }
+}
+
+export function replayMap(state: ReplayState): GraphMap {
+  return {
+    sessionId: state.sessionId,
+    nodes: [...state.nodes.values()],
+    edges: [...state.edges],
+    lastTurn: state.lastTurn,
+  };
+}
+
+export function foldEvents(
+  sessionId: string,
+  events: EventRecord[],
+  upToTurn: number = Number.POSITIVE_INFINITY,
+): GraphMap {
+  const state = createReplayState(sessionId);
+  for (const event of events) {
+    if (event.turnIndex > upToTurn) continue;
+    replayApply(state, event);
+  }
+  return replayMap(state);
 }

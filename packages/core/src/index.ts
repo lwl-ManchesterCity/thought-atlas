@@ -4,3 +4,4 @@ export * from './filter.ts';
 export * from './schema.ts';
 export * from './graph.ts';
 export * from './analyzer.ts';
+export * from './clusters.ts';

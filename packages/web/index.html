@@ -16,6 +16,10 @@
         <span>会话</span>
         <select id="session"></select>
       </label>
+      <label class="search">
+        <input id="search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" />
+      </label>
+      <button id="cluster-refresh" class="ghost-btn" type="button">命名簇</button>
       <div class="stats" id="stats">加载中</div>
       <div class="live" id="live-state" data-live="off">连接中</div>
     </header>
@@ -28,6 +32,21 @@
         <span class="legend-item"><i class="line line-influence"></i>影响</span>
         <span class="legend-item"><i class="line line-related"></i>相关</span>
         <span class="legend-item"><i class="dot dot-muted"></i>已被取代</span>
+      </div>
+      <div class="timeline" id="timeline">
+        <button id="replay-toggle" class="timeline-btn" type="button" disabled>播放</button>
+        <input id="replay-range" type="range" min="0" max="0" value="0" step="1" aria-label="回放进度" />
+        <span id="replay-label" class="timeline-label">回放 · 起点 · 0/0</span>
+        <label class="timeline-speed">
+          <span>倍速</span>
+          <select id="replay-speed">
+            <option value="0.5">0.5×</option>
+            <option value="1" selected>1×</option>
+            <option value="2">2×</option>
+            <option value="3">3×</option>
+          </select>
+        </label>
+        <button id="live-resume" class="timeline-btn" type="button">实时</button>
       </div>
       <div class="empty-hint" id="empty-hint" hidden>暂无星图数据 · 等待对话流入</div>
       <aside class="panel" id="panel" hidden></aside>
