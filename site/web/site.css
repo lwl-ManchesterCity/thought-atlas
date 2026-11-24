@@ -120,9 +120,10 @@ kbd {
 
 .brand {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   color: var(--site-fg);
+  font-size: 19px;
   font-weight: 650;
   letter-spacing: 0.04em;
   white-space: nowrap;
@@ -133,12 +134,10 @@ kbd {
 }
 
 .brand-mark {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  align-self: center;
-  background: radial-gradient(circle at 32% 30%, #dbeafe, var(--site-accent) 56%, #1e3a8a);
-  box-shadow: 0 0 12px rgba(37, 99, 235, 0.35);
+  width: 26px;
+  height: 26px;
+  flex: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cpath d='M4.5 18.5 L11.5 7.5 L20.5 10.5 L18.5 18.5' fill='none' stroke='%2394a3b8' stroke-width='1' stroke-dasharray='2.2 2.2'/%3E%3Ccircle cx='4.5' cy='18.5' r='2.2' fill='%232563eb'/%3E%3Ccircle cx='11.5' cy='7.5' r='2.6' fill='%232563eb'/%3E%3Ccircle cx='20.5' cy='10.5' r='1.8' fill='%2360a5fa'/%3E%3Crect x='15.9' y='15.9' width='5.2' height='5.2' transform='rotate(45 18.5 18.5)' fill='%23f59e0b'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .brand small {
