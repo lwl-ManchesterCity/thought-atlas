@@ -67,7 +67,7 @@ export class DbStorage implements Storage {
         .select('turn_index,event_ts,ops')
         .eq('session_id', this.sessionId)
         .order('turn_index', { ascending: true })
-        .limit(5000),
+        .limit(1000),
     );
     return found.map((row) => ({ turnIndex: row.turn_index, timestamp: row.event_ts, ops: row.ops }));
   }

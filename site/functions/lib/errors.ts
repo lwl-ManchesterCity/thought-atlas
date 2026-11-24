@@ -36,6 +36,7 @@ export function errorResponse(error: unknown): Response {
       { status: error.status },
     );
   }
+  console.error('internal_error', error instanceof Error ? `${error.name}: ${error.message}` : String(error));
   return Response.json(
     { error: 'internal_error', message: '服务暂时不可用' },
     { status: 500 },
