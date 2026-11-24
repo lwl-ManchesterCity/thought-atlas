@@ -34,11 +34,13 @@
 
       <div class="prose">
         <div class="command-block">
-          <span class="tag">发布版命令</span>
-          <code>npx thought-atlas@latest setup --codex --qoder</code>
+          <span class="tag">一键脚本 · 当前阶段</span>
+          <code>./setup.sh</code>
         </div>
         <p class="note">
-          这是随发布包提供的安装命令。当前仓库阶段以源码方式运行；D7 会用真实 agent 对话录制安装与“边聊边长图”的完整过程。
+          脚本完成依赖安装、前端构建，并生成 600 权限的配置模板（<code>~/.thought-atlas/config.json</code>）；
+          填上你自己的 Key 后启动守护进程即可。已有配置不会被覆盖。
+          npm 发布版（<code>npx thought-atlas setup</code>）赛后再提供；当前阶段以源码方式运行。
           如果你在评审当前仓库，请直接打开 <a href="/demo.html">回放样例</a> 与 <a href="/sandbox.html">实时沙箱</a>，它们使用同一份分析引擎。
         </p>
 
@@ -66,14 +68,14 @@
           其他 agent 只要实现一个解析器模块（<code>ParserModule</code>），watcher 与守护进程都不用改。
         </p>
 
-        <h2>源码方式（当前阶段）</h2>
+        <h2>脚本里做了什么（等价手动命令）</h2>
         <div class="command-block">
           <code>npm ci
 npm run build:web
 node packages/daemon/src/main.ts</code>
         </div>
         <p class="note">
-          需要 Node.js 24+ 与本机模型 Key。守护进程默认监听 <code>127.0.0.1:7788</code>，只绑定回环地址，不对局域网开放。
+          需要 Node.js 22.18+（推荐 24）与本机模型 Key。守护进程默认监听 <code>127.0.0.1:7788</code>，只绑定回环地址，不对局域网开放。
         </p>
 
         <h2>可选：手动标记与删除</h2>

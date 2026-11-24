@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.8.0 — 星图导出分享卡 + 安装脚本化（2026-11-24）
+
+### 变更
+- 渲染器新增 `exportPng()`（强制当帧重绘后 toDataURL）；common.ts 新增 `downloadMapCard`：标题栏 + 星图 + 统计栏 + 来源标注合成分享卡并触发下载
+- 回放页时间轴栏与沙箱地图栏各加「导出星图」按钮：回放卡标注「合成演示数据」，沙箱卡标注「只含节点级摘要，不含对话原文」；沙箱空图时提示聊一轮再导出；沙箱渲染同步启用 stepOrder 序号
+- 新增 `setup.sh`：Node 22.18+ 检查、npm ci、build:web、生成 600 权限配置模板（apiKey 留空待用户自填）；已有配置跳过不覆盖、不读不打印 Key
+- 安装页文案改回现实：命令块 `./setup.sh`（一键脚本 · 当前阶段），npm 发布版明确「赛后再提供」；Node 门槛 24+ 改 22.18+（推荐 24）；「源码方式」改「脚本里做了什么（等价手动命令）」
+
+### 验证
+- typecheck 干净；125/125；build:site 通过
+- headless 下载实测：回放卡 130328B、沙箱桩卡 92427B，PNG 落盘、Console/页面异常 0；卡片像素复核（标题/序号/起点/统计/标注齐全）
+- setup.sh 实跑：npm ci + build:web 成功、已有配置跳过（Key 未触碰），日志 `evidence/d7-install/setup-run.log`
+- 桩实例 7791 全量验收绿（health.stub=true 自标注）；发现并纠正一次取证失误：install 文案改动晚于上次 build:site，首张安装页截图为旧文案，重建后重取重验
+- 新证据：`evidence/d7-export/`（card-demo-focus.png、card-sandbox-stub.png、demo-export-ui-1280.png）、`evidence/d7-install/`（install-1280.png、setup-run.log）
+
 ## v0.7.4 — 沙箱限流收紧：每日 2 会话、单会话 15 轮（2026-11-24）
 
 ### 变更
