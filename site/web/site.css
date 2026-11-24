@@ -311,31 +311,6 @@ kbd {
   box-shadow: 0 0 14px rgba(217, 119, 6, 0.45);
 }
 
-.proof-strip {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: calc(12px * var(--site-space));
-  margin-bottom: calc(48px * var(--site-space));
-}
-
-.proof {
-  padding: calc(16px * var(--site-space));
-  border: 1px solid var(--site-border);
-  border-radius: var(--site-radius);
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
-}
-
-.proof strong {
-  display: block;
-  font-size: 15px;
-  margin-bottom: 4px;
-}
-
-.proof span {
-  color: var(--site-muted);
-  font-size: 13px;
-}
-
 .section {
   margin-bottom: calc(52px * var(--site-space));
 }
@@ -365,7 +340,7 @@ kbd {
 
 .route-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: calc(14px * var(--site-space));
   list-style: none;
   padding: 0;
@@ -450,6 +425,10 @@ kbd {
 
 .block-card a {
   font-size: 13px;
+}
+
+.entry-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .honesty-note {
@@ -1196,7 +1175,6 @@ input[type='range'] {
   .page { padding: 28px 14px 48px; }
   .hero h1 { font-size: clamp(1.9rem, calc(3.1rem * var(--site-type)), 3.2rem); }
   .page-head h1 { font-size: clamp(1.6rem, calc(2.4rem * var(--site-type)), 2.4rem); }
-  .proof-strip { grid-template-columns: 1fr; }
   .route-grid { grid-template-columns: 1fr; }
   .route-grid li { min-height: auto; }
   .block-grid { grid-template-columns: 1fr; }

@@ -26,11 +26,13 @@ export class DeepSeekModel implements HostedModel {
   private apiKey: string;
   private fetchImpl: typeof fetch;
   private baseUrl: string;
+  private model: string;
 
-  constructor(apiKey: string, fetchImpl: typeof fetch = fetch, baseUrl = DEEPSEEK_BASE) {
+  constructor(apiKey: string, fetchImpl: typeof fetch = fetch, baseUrl = DEEPSEEK_BASE, model = HOSTED_MODEL) {
     this.apiKey = apiKey;
     this.fetchImpl = fetchImpl;
     this.baseUrl = baseUrl;
+    this.model = model;
   }
 
   private async call(body: Record<string, unknown>, timeoutMs: number): Promise<{ data: ChatCompletion; latencyMs: number }> {
@@ -45,7 +47,7 @@ export class DeepSeekModel implements HostedModel {
           Authorization: `Bearer ${this.apiKey}`,
         },
         body: JSON.stringify({
-          model: HOSTED_MODEL,
+          model: this.model,
           ...body,
           thinking: { type: 'disabled' },
           stream: false,

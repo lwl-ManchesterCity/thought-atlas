@@ -1,9 +1,12 @@
 import { createServer } from 'node:http';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
+import { homedir } from 'node:os';
 import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { application } from '../functions/lib/routes.ts';
+import type { HostedModel } from '../functions/lib/model.ts';
+import { DeepSeekModel } from '../functions/lib/model.ts';
 import { MemoryDb } from './memory-db.ts';
 import { StubModel } from './stub-model.ts';
 
@@ -22,7 +25,25 @@ const TYPES: Record<string, string> = {
 };
 
 const db = new MemoryDb();
-const model = new StubModel();
+
+async function pickModel(): Promise<{ model: HostedModel; label: string }> {
+  if ((process.env.ATLAS_SITE_MODEL ?? '').trim() !== 'deepseek') {
+    return { model: new StubModel(), label: 'stub' };
+  }
+  // local preview only: reuse the daemon's BYOK config, never log the key
+  const home = process.env.THOUGHT_ATLAS_HOME?.trim() || join(homedir(), '.thought-atlas');
+  const raw = await readFile(join(home, 'config.json'), 'utf8');
+  const config = JSON.parse(raw) as { apiKey?: string; baseUrl?: string; model?: string };
+  if (!config.apiKey || !config.baseUrl || !config.model) {
+    throw new Error(`config.json at ${home} missing apiKey/baseUrl/model`);
+  }
+  return {
+    model: new DeepSeekModel(config.apiKey, fetch, config.baseUrl, config.model),
+    label: `deepseek (${config.model})`,
+  };
+}
+
+const { model, label: modelLabel } = await pickModel();
 const handler = application({ db, model, clientIp: (request) => request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1' });
 
 async function bodyOf(request: IncomingMessage): Promise<Buffer> {
@@ -107,5 +128,5 @@ const server = createServer((request, response) => {
 });
 
 server.listen(PORT, '127.0.0.1', () => {
-  console.log(`thought-atlas site: http://127.0.0.1:${PORT} (stub model, memory db)`);
+  console.log(`thought-atlas site: http://127.0.0.1:${PORT} (model: ${modelLabel}, memory db)`);
 });

@@ -27,93 +27,57 @@
         <span class="kicker">StudyHack · 与 AI 一起学习的现场记录</span>
         <h1>把对话，长成一张会复盘的星图。</h1>
         <p class="lead">
-          思维星图逐轮读取你与 AI 的对话，把论点、问题、事实与认知转变画成一张持续生长的星图。
-          它不是事后总结，而是你「哪一刻想通了」的现场记录。
+          逐轮读取你与 AI 的对话，把论点、问题、事实与认知转变画成持续生长的星图。
+          不是事后总结，而是你「哪一刻想通了」的现场记录。
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#route">评委 3 分钟路线</a>
-          <a class="btn" href="/demo.html?session=focus">打开回放样例</a>
-          <a class="btn btn-ghost" href="/sandbox.html">进沙箱聊几句</a>
+          <a class="btn btn-primary" href="/demo.html?session=focus">打开回放样例</a>
+          <a class="btn" href="/sandbox.html">进沙箱聊几句</a>
         </div>
-      </section>
-
-      <section class="proof-strip" aria-label="三个关键事实">
-        <div class="proof"><strong>逐轮增量，不是一次总结</strong><span>每一轮对话都经过结构化分析，节点按时间出现，改变可回放。</span></div>
-        <div class="proof"><strong>转变与影响边是核心</strong><span>当你的立场被自己或 AI 改写，星图会留下 shift 与 influence 的证据链。</span></div>
-        <div class="proof"><strong>原文只在本机</strong><span>本地插件不把对话上传；在线沙箱也不留存原文。详见边界与隐私页。</span></div>
       </section>
 
       <section class="section" id="route">
         <div class="section-head">
           <h2>评委 3 分钟路线</h2>
-          <span>建议按顺序走 · 全程无需登录</span>
+          <span>按顺序走 · 全程无需登录</span>
         </div>
         <ol class="route-grid">
           <li>
             <strong>拖时间轴，看星图生长</strong>
-            <p>打开回放样例，从 0 轮拖到最后一轮，观察节点如何在 30 秒内铺开。</p>
+            <p>打开回放样例，从 0 轮拖到最后一轮，看节点在 30 秒内铺开。</p>
             <a href="/demo.html?session=focus">进入回放 →</a>
           </li>
           <li>
-            <strong>点一个转变节点</strong>
-            <p>琥珀色菱形就是认知转变。点开它，读触发这一刻的 AI 原话和自己的原话。</p>
-            <a href="/demo.html?session=learning">看学习场景 →</a>
+            <strong>点一个琥珀菱形</strong>
+            <p>那是认知转变。点开它，读转变前的立场、触发的 AI 原话和自己的原话。</p>
+            <a href="/demo.html?session=learning">看一次转变 →</a>
           </li>
           <li>
             <strong>进沙箱聊 3–5 句</strong>
-            <p>网页聊天与星图分屏，同一个分析引擎。发送后看自己的节点实时长出。</p>
+            <p>真模型逐轮分析，聊天与星图同屏，节点随对话实时长出。</p>
             <a href="/sandbox.html">进实时沙箱 →</a>
-          </li>
-          <li>
-            <strong>扫一眼安装与边界</strong>
-            <p>一条命令安装本地插件；隐私边界、限流规则与当前限制全部公开。</p>
-            <a href="/boundary.html">读边界 →</a>
           </li>
         </ol>
       </section>
 
       <section class="section">
-        <div class="section-head">
-          <h2>站点五块</h2>
-          <span>回放零成本 · 沙箱限量开放</span>
-        </div>
-        <div class="block-grid">
+        <div class="block-grid entry-grid">
           <article class="block-card">
-            <h3>回放样例（主体验）</h3>
-            <p>预生成事件日志，拖动时间轴即可复现任意轮次的星图。当前公开样例全部为合成演示数据。</p>
+            <h3>回放样例</h3>
+            <p>零成本、无需登录。预生成事件日志，时间轴可回到任意轮次，转变与锚点原文都能点开。当前为合成演示数据。</p>
             <a href="/demo.html">打开回放 →</a>
           </article>
           <article class="block-card">
             <h3>实时沙箱</h3>
-            <p>聊天 + 星图同屏。每 IP 每日 3 次会话、单会话 20 轮、全站每日 100 轮分析，超限自动降级到回放。</p>
+            <p>真 DeepSeek 逐轮分析，原文不留存。每 IP 每日 3 次会话、单会话 20 轮，超限自动降级回放。</p>
             <a href="/sandbox.html">进入沙箱 →</a>
-          </article>
-          <article class="block-card">
-            <h3>本地插件</h3>
-            <p>读取 Codex / Qoder 的本地会话日志，边聊边长图；原文留在本机，不上传作者服务器。</p>
-            <a href="/install.html">看安装说明 →</a>
-          </article>
-          <article class="block-card">
-            <h3>同一个引擎</h3>
-            <p>本地守护进程与在线沙箱共用 core：同样的事件日志、折叠回放与 MapOp 校验。</p>
-            <a href="/boundary.html#engine">读技术边界 →</a>
-          </article>
-          <article class="block-card">
-            <h3>转变证据链</h3>
-            <p>shift 节点保存转变前立场、触发它的 AI 发言与触发轮次，influence 边把因果留在图上。</p>
-            <a href="/demo.html?session=learning">看一次转变 →</a>
-          </article>
-          <article class="block-card">
-            <h3>诚实的限制</h3>
-            <p>分析器可能 SKIP、可能失败，失败会标记但不会丢轮次；0 条边也是允许的诚实输出。</p>
-            <a href="/boundary.html#limits">读已知限制 →</a>
           </article>
         </div>
       </section>
 
       <p class="honesty-note">
-        <strong>公开样例状态：</strong>当前回放样例为脚本生成的合成演示数据，页面明确标注「合成」。
-        真实会话样例的管线已就绪，但必须经作者逐段批准并通过敏感扫描后才会替换；在此之前不会进入发布产物。
+        <strong>公开样例状态：</strong>当前回放样例为合成演示数据，页面明确标注「合成」；真实样例需作者逐段批准。
+        限流、技术边界与已知限制见 <a href="/boundary.html">边界与隐私</a>，本地安装见 <a href="/install.html">安装说明</a>。
       </p>
     </main>
 
