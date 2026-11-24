@@ -1,0 +1,29 @@
+{
+  "home": {
+    "kicker": true,
+    "h1": true,
+    "lead": true,
+    "module03": true,
+    "primaryInstall": true,
+    "oldGone": true,
+    "metaDesc": true
+  },
+  "homeOverflow1280": 0,
+  "homeOverflow390": 0,
+  "homeOverflow320": 0,
+  "homeErrors": [],
+  "demo": {
+    "purposeLine": true,
+    "kicker": true,
+    "oldGone": true
+  },
+  "demoOverflow1280": 0,
+  "demoErrors": [],
+  "sandbox": {
+    "purposeLine": true,
+    "kicker": true,
+    "oldGone": true
+  },
+  "sandboxOverflow1280": 0,
+  "sandboxErrors": []
+}
