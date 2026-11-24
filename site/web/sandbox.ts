@@ -258,12 +258,17 @@ function boot(): void {
   updateCounter();
   updateMap({ sessionId: '', nodes: [], edges: [], lastTurn: 0 });
 
-  void api<{ ok: boolean; configured: boolean; model: string }>('/api/health').then((res) => {
+  void api<{ ok: boolean; configured: boolean; model: string; stub?: boolean }>('/api/health').then((res) => {
     if (!res.ok) return;
-    const data = res.data as { configured: boolean };
+    const data = res.data as { configured: boolean; stub?: boolean };
     if (!data.configured) {
       bubble('system', '演示服务尚未配置模型密钥，聊天与星图暂不可用；回放样例不受影响。');
       setStatus('模型密钥未配置，沙箱暂停。', 'warn');
+      return;
+    }
+    if (data.stub) {
+      bubble('system', '当前预览跑的是本地演示桩模型（非真模型），只用于界面与限流验收；真模型请用 ATLAS_SITE_MODEL=deepseek 启动预览。');
+      setStatus('演示桩模型运行中（非真模型）。', 'warn');
     }
   }).catch(() => {});
   void restore();

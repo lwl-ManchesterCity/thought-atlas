@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v0.7.0 — D7（2026-11-24，真模型验收 + 模型标注诚实化）
+
+### 新增
+- 模型标注诚实化：`/api/health` 与 `/api/selfcheck` 返回注入的真实 label 与 `stub` 标记（此前无条件报 `deepseek-flash`，桩模型被误报成真模型）；沙箱页对桩模型明确提示「本地演示桩模型（非真模型）」
+- 本地预览默认走真 DeepSeek：`site/dev/server.ts` 读 `~/.thought-atlas/config.json`（不打印 key），有 key 即真模型；`ATLAS_SITE_MODEL=stub` 强制桩；无 key 自动降级桩；`ATLAS_SITE_MODEL=deepseek` 缺配置时 fail closed
+- 验收脚本按模式断言：不再硬断言 `deepseek-flash`；桩模式断言逐轮 +1 节点，真模式断言轮次状态与至少 1 节点；沙箱话术换成真实学习讨论（原测试话术被分析器真实判定 SKIP）
+- 单测 +1（health/selfcheck label 透传与默认值），全量 125 个
+
+### 验证
+- 真模型（deepseek-flash）：selfcheck reachable 858ms；沙箱 3 轮节点 1→2→3（第三轮为 XSS 载荷，字面显示不执行）；限额 17/20 与 97/100；数据库 3 条轮次仅 64 位哈希、原文 0 命中
+- 冷打开 2616ms（<3s）；回放 12 节点/5 边/2 转折/1 影响；五页 × 390/320 无横向溢出；Console 0、页面异常 0
+- 桩模式（7791 独立实例）：health `stub:true`、沙箱页提示与状态行均标注「非真模型」，Console 0
+- 分析器真实产出记录：两句元测试话术（「第一轮讨论浮点误差」等）被判定 SKIP，换成实质学习问句后正常长节点；未改 analyzer 凑节点
+- 证据：`evidence/d6-site.json`（真模型运行）与 `evidence/d6-screenshots/` 重拍
+
+### 安全与边界
+- 未发布、未读写 Secret 值、未创建云资源；key 仅本地 config 读取，不进日志/仓库/截图
+- 仓库已迁至 `~/Desktop/thought-atlas`；新增 `AGENTS.md` / `README.md` 交接文档（commit 8f932c3）
+
 ## v0.6.0 — D6（2026-11-23，开发会话模型 DeepSeek-Flash）
 
 ### 新增

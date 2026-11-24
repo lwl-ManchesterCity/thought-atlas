@@ -26,25 +26,34 @@ const TYPES: Record<string, string> = {
 
 const db = new MemoryDb();
 
-async function pickModel(): Promise<{ model: HostedModel; label: string }> {
-  if ((process.env.ATLAS_SITE_MODEL ?? '').trim() !== 'deepseek') {
-    return { model: new StubModel(), label: 'stub' };
-  }
+async function pickModel(): Promise<{ model: HostedModel; label: string; stub: boolean }> {
+  const mode = (process.env.ATLAS_SITE_MODEL ?? '').trim();
   // local preview only: reuse the daemon's BYOK config, never log the key
   const home = process.env.THOUGHT_ATLAS_HOME?.trim() || join(homedir(), '.thought-atlas');
-  const raw = await readFile(join(home, 'config.json'), 'utf8');
-  const config = JSON.parse(raw) as { apiKey?: string; baseUrl?: string; model?: string };
-  if (!config.apiKey || !config.baseUrl || !config.model) {
-    throw new Error(`config.json at ${home} missing apiKey/baseUrl/model`);
+  let config: { apiKey?: string; baseUrl?: string; model?: string } | null = null;
+  try {
+    config = JSON.parse(await readFile(join(home, 'config.json'), 'utf8')) as { apiKey?: string; baseUrl?: string; model?: string };
+  } catch {
+    config = null;
   }
-  return {
-    model: new DeepSeekModel(config.apiKey, fetch, config.baseUrl, config.model),
-    label: `deepseek (${config.model})`,
-  };
+  const key = config?.apiKey?.trim();
+  const baseUrl = config?.baseUrl?.trim();
+  const modelName = config?.model?.trim();
+  if (mode !== 'stub' && key && baseUrl && modelName) {
+    return {
+      model: new DeepSeekModel(key, fetch, baseUrl, modelName),
+      label: `deepseek (${modelName})`,
+      stub: false,
+    };
+  }
+  if (mode === 'deepseek') {
+    throw new Error(`ATLAS_SITE_MODEL=deepseek 但 ${home}/config.json 缺少 apiKey/baseUrl/model`);
+  }
+  return { model: new StubModel(), label: 'stub', stub: true };
 }
 
-const { model, label: modelLabel } = await pickModel();
-const handler = application({ db, model, clientIp: (request) => request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1' });
+const { model, label: modelLabel, stub: modelStub } = await pickModel();
+const handler = application({ db, model, label: modelLabel, stub: modelStub, clientIp: (request) => request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1' });
 
 async function bodyOf(request: IncomingMessage): Promise<Buffer> {
   const chunks: Buffer[] = [];

@@ -24,6 +24,8 @@ import { rebindTurnFields } from './ops.ts';
 export interface HostedDeps {
   db: DbClient;
   model: HostedModel | null;
+  label?: string;
+  stub?: boolean;
   now?: () => Date;
   clientIp?: (request: Request) => string;
 }
@@ -100,6 +102,8 @@ export function application(deps: HostedDeps): (request: Request) => Promise<Res
   const now = deps.now ?? (() => new Date());
   const ipOf = deps.clientIp ?? defaultIp;
   const db = deps.db;
+  const modelLabel = deps.label ?? HOSTED_MODEL;
+  const stub = deps.stub ?? false;
 
   async function loadSession(id: string, ipHash: string): Promise<SessionRow> {
     const found = await rows<SessionRow>(
@@ -309,18 +313,19 @@ export function application(deps: HostedDeps): (request: Request) => Promise<Res
 
   async function selfcheck(): Promise<Response> {
     if (!deps.model) {
-      return json({ configured: false, reachable: false, model: HOSTED_MODEL });
+      return json({ configured: false, reachable: false, model: modelLabel, stub });
     }
     const quota = await reserveDailyAnalysis(db, utcDay(now()), now());
     if (!quota.ok) {
-      return json({ configured: true, reachable: null, reason: 'quota_exhausted', model: HOSTED_MODEL });
+      return json({ configured: true, reachable: null, reason: 'quota_exhausted', model: modelLabel, stub });
     }
     const result = await deps.model.selfcheck();
     return json({
       configured: true,
       reachable: result.ok,
       latencyMs: result.latencyMs,
-      model: HOSTED_MODEL,
+      model: modelLabel,
+      stub,
     });
   }
 
@@ -332,7 +337,7 @@ export function application(deps: HostedDeps): (request: Request) => Promise<Res
       const path = match[1] || '/';
 
       if (path === '/api/health' && request.method === 'GET') {
-        return json({ ok: true, configured: deps.model !== null, model: HOSTED_MODEL });
+        return json({ ok: true, configured: deps.model !== null, model: modelLabel, stub });
       }
       if (path === '/api/selfcheck' && request.method === 'POST') {
         return await selfcheck();

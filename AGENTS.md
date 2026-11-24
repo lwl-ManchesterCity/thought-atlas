@@ -31,9 +31,9 @@
 ## 3. 当前状态（具体数字以 `git log`、CHANGELOG 最新一节、实际运行结果为准）
 
 - 阶段：D6 完成。站点五页、回放、沙箱、安装说明、边界页在本地可跑；**尚未发布**，未创建任何云资源。
-- 测试：`npm test` 124/124；三套 tsconfig typecheck 全绿；`npm run check:core` 8 文件一致。
+- 测试：`npm test` 125/125；三套 tsconfig typecheck 全绿；`npm run check:core` 8 文件一致。
 - 本地服务：7788 = 守护进程（按请求服务 `packages/web/dist`）；7790 = 站点 dev server（`site/dev/server.ts`，`Cache-Control: no-store`）。
-- 站点模型：7790 默认 StubModel；设置 `ATLAS_SITE_MODEL=deepseek` + `DEEPSEEK_API_KEY` 才走真模型。
+- 站点模型：7790 默认走真 DeepSeek（读 `~/.thought-atlas/config.json`，不打印 key）；`ATLAS_SITE_MODEL=stub` 强制桩模型；无 key 时自动降级桩。`/api/health` 与 `/api/selfcheck` 返回真实 label 与 `stub` 标记，沙箱页对桩模型明确提示「非真模型」。
 - 适配器：Codex、Qoder 已实现，共用 watcher 核心；Claude Code 只有 README 存根，**不得声称支持**。
 - 样例：`site/samples/` 全部为合成演示数据，页面必须标注「合成」；真实样例需作者逐段批准后放入。
 - 站点文案口径：只承诺 Codex / Qoder 两个适配器；解析器是注册制的，其他 agent 需实现 `ParserModule`。
@@ -46,7 +46,7 @@ npm run typecheck        # 根 + packages/web + site 三套 tsconfig
 npm run check:core       # site/functions/lib/core 与 packages/core 同步校验
 npm run build:web        # daemon 前端产物 -> packages/web/dist/app.js
 npm run build:site       # 站点静态产物 -> site/dist（样例闸门，gateReason 非空是预期）
-npm run dev:site         # 7790，StubModel；ATLAS_SITE_MODEL=deepseek 走真模型
+npm run dev:site         # 7790，默认真 DeepSeek（有 key 时）；ATLAS_SITE_MODEL=stub 强制桩模型
 npm run check:site       # headless Chrome 站点验收（冷开、回放、沙箱、限流、XSS、390/320）
 ```
 

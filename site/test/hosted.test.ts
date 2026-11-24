@@ -249,3 +249,20 @@ test('invalid JSON and oversized bodies are rejected', async () => {
   const big = await post(handler, '/api/sandbox/turn', { sessionId, text: 'x', padding: 'x'.repeat(9000) });
   assert.equal(big.status, 413);
 });
+
+test('health and selfcheck report the injected model label, never a hardcoded one', async () => {
+  const db = new MemoryDb();
+  const stubHandler = application({ db, model: new StubModel(), label: 'stub', stub: true, now: () => NOW });
+  const health = (await (await get(stubHandler, '/api/health')).json()) as { configured: boolean; model: string; stub: boolean };
+  assert.equal(health.configured, true);
+  assert.equal(health.model, 'stub');
+  assert.equal(health.stub, true);
+  const check = (await (await post(stubHandler, '/api/selfcheck', {})).json()) as { model: string; stub: boolean };
+  assert.equal(check.model, 'stub');
+  assert.equal(check.stub, true);
+
+  const hosted = application({ db: new MemoryDb(), model: new StubModel(), now: () => NOW });
+  const hostedHealth = (await (await get(hosted, '/api/health')).json()) as { model: string; stub: boolean };
+  assert.equal(hostedHealth.model, 'deepseek-flash');
+  assert.equal(hostedHealth.stub, false);
+});

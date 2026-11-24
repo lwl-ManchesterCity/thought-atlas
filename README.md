@@ -15,14 +15,14 @@
 ```bash
 npm ci
 
-npm test                # 124 个测试
+npm test                # 125 个测试
 npm run typecheck       # 根 + packages/web + site
 npm run build:web       # daemon 前端
 node packages/daemon/src/main.ts        # 守护进程 -> http://127.0.0.1:7788
 
 npm run build:site      # 站点静态产物 -> site/dist
-npm run dev:site        # 站点预览 -> http://127.0.0.1:7790（默认 StubModel）
-ATLAS_SITE_MODEL=deepseek DEEPSEEK_API_KEY=... npm run dev:site   # 真模型
+npm run dev:site        # 站点预览 -> http://127.0.0.1:7790（有 key 默认真 DeepSeek）
+ATLAS_SITE_MODEL=stub npm run dev:site  # 强制桩模型（沙箱页会标注「非真模型」）
 ```
 
 ## 仓库结构

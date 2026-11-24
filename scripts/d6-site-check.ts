@@ -324,14 +324,20 @@ try {
   await cdp.eval('sessionStorage.clear()');
   await navigate(cdp, `${BASE}/sandbox.html`);
   await waitFor(cdp, 'window.__atlasSite?.ready === true', 'sandbox ready');
-  const health = await fetchJson<{ ok: boolean; configured: boolean; model: string }>(`${BASE}/functions/v1/app/api/health`);
-  check(health.ok && health.configured && health.model === 'deepseek-flash', 'health must report configured flash model');
+  const health = await fetchJson<{ ok: boolean; configured: boolean; model: string; stub?: boolean }>(`${BASE}/functions/v1/app/api/health`);
+  check(health.ok && health.configured && typeof health.model === 'string' && health.model.length > 0, 'health must report a configured model label');
+  const stubMode = health.stub === true;
 
   const turns: SiteTurn[] = [];
   for (let i = 1; i <= 2; i++) {
-    const text = i === 1 ? `${MARKER} 第一轮讨论浮点误差` : '第二轮：那面试里应该怎么解释？';
+    const text = i === 1
+      ? `${MARKER} 我在想 JavaScript 里 0.1 + 0.2 为什么不等于 0.3，这算是语言的 bug 吗？`
+      : '那银行算钱为什么不用浮点数，而是用整数分或者 decimal 库？这两种做法的取舍是什么？';
     await submit(cdp, text);
-    await waitFor(cdp, `window.__atlasSite.nodes() === ${i} && window.__atlasSite.status().includes('第 ${i} 轮')`, `sandbox turn ${i}`, 20000);
+    const ready = stubMode
+      ? `window.__atlasSite.nodes() === ${i} && window.__atlasSite.status().includes('第 ${i} 轮')`
+      : `window.__atlasSite.status().includes('第 ${i} 轮')`;
+    await waitFor(cdp, ready, `sandbox turn ${i}`, 30000);
     turns.push(
       await cdp.eval<SiteTurn>(
         `({ turnIndex: ${i}, status: window.__atlasSite.status(), nodes: window.__atlasSite.nodes() })`,
@@ -340,12 +346,19 @@ try {
   }
   const sessionId = await cdp.eval<string | null>('window.__atlasSite.session()');
   check(typeof sessionId === 'string' && sessionId.length === 36, `sandbox session id ${sessionId}`);
+  if (!stubMode) {
+    const grown = await cdp.eval<number>('window.__atlasSite.nodes()');
+    check(grown >= 1, `real model should grow at least one node, got ${grown}`);
+  }
   await waitFor(cdp, 'window.__atlasSite.settled() === true', 'sandbox settle', 15000);
   await cdp.eval('window.__atlasSite.fit()');
   await sleep(150);
 
   await submit(cdp, XSS);
-  await waitFor(cdp, `window.__atlasSite.nodes() === 3 && window.__atlasSite.status().includes('第 3 轮')`, 'sandbox turn 3', 20000);
+  const thirdReady = stubMode
+    ? `window.__atlasSite.nodes() === 3 && window.__atlasSite.status().includes('第 3 轮')`
+    : `window.__atlasSite.status().includes('第 3 轮')`;
+  await waitFor(cdp, thirdReady, 'sandbox turn 3', 30000);
   const xssState = await cdp.eval<{ fired: unknown; images: number; markupNodes: number; literal: boolean; status: string; limits: string }>(
     `(() => { const log = document.querySelector('#chat-log'); return { fired: window.__xss, images: document.querySelectorAll('img').length, markupNodes: document.querySelectorAll('#chat-log img, #chat-log b, #chat-log script').length, literal: (log.innerText ?? '').includes('<img src=x onerror='), status: window.__atlasSite.status(), limits: document.querySelector('#limits')?.textContent ?? '' }; })()`,
   );
