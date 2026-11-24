@@ -17,7 +17,7 @@ await rm(DIST, { recursive: true, force: true });
 await mkdir(join(DIST, 'assets'), { recursive: true });
 await mkdir(join(DIST, 'samples'), { recursive: true });
 
-for (const file of ['index.html', 'demo.html', 'sandbox.html', 'install.html', 'boundary.html', 'site.css', 'favicon.svg']) {
+for (const file of ['index.html', 'demo.html', 'sandbox.html', 'install.html', 'boundary.html', 'site.css', 'favicon.svg', 'og.png']) {
   await copyFile(join(SITE, 'web', file), join(DIST, file));
 }
 
