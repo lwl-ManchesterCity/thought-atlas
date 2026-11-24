@@ -1,16 +1,16 @@
 {
-  "runAt": "2026-11-24T07:45:37.143Z",
+  "runAt": "2026-11-24T07:58:18.602Z",
   "base": "http://127.0.0.1:7791",
   "chrome": "headless=new",
   "screenshots": "evidence/d6-screenshots",
   "demo": {
-    "navMs": 78,
-    "readyMs": 90,
-    "coldWallMs": 2538,
+    "navMs": 70,
+    "readyMs": 95,
+    "coldWallMs": 2537,
     "perf": {
-      "readyAt": 91,
-      "domEnd": 65,
-      "loadEnd": 65
+      "readyAt": 85,
+      "domEnd": 61,
+      "loadEnd": 61
     },
     "focusState": {
       "title": "人生决策：毕业先工作还是读研",
@@ -39,22 +39,22 @@
     "home": {
       "title": "思维星图 · 把对话长成一张会复盘的星图",
       "marker": "把对话，长成一张会复盘的星图。",
-      "ms": 17
+      "ms": 19
     },
     "demo": {
       "title": "回放样例 · 思维星图",
       "marker": "回放：星图如何一轮一轮长出来",
-      "ms": 19
+      "ms": 17
     },
     "sandbox": {
       "title": "实时沙箱 · 思维星图",
       "marker": "实时沙箱：边聊，边看星图生长",
-      "ms": 23
+      "ms": 19
     },
     "install": {
       "title": "安装 · 思维星图",
-      "marker": "一条命令，把星图接到你的 agent",
-      "ms": 16
+      "marker": "一条脚本，把星图装到自己电脑上",
+      "ms": 15
     },
     "boundary": {
       "title": "边界与隐私 · 思维星图",
@@ -69,7 +69,7 @@
       "model": "stub",
       "stub": true
     },
-    "sessionId": "0bcd6bb6-1dc5-430b-907f-6104eece5c14",
+    "sessionId": "70fcc0fa-346f-4a07-896f-6b6f658f0b0f",
     "turns": [
       {
         "turnIndex": 1,
@@ -152,8 +152,8 @@
     },
     "sandboxShot-320": "evidence/d6-screenshots/mobile-320-sandbox.png",
     "install-320": {
-      "width": 320,
-      "scrollWidth": 320,
+      "width": 372,
+      "scrollWidth": 372,
       "overflow": false
     },
     "boundary-320": {

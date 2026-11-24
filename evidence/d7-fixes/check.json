@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "/": {
+      "icon": true,
+      "ogTitle": "思维星图 · 把对话长成一张会复盘的星图",
+      "ogDesc": true,
+      "twitter": "summary",
+      "iconOk": true
+    },
+    "/demo.html": {
+      "icon": true,
+      "ogTitle": "回放样例 · 思维星图",
+      "ogDesc": true,
+      "twitter": "summary",
+      "iconOk": true
+    },
+    "/sandbox.html": {
+      "icon": true,
+      "ogTitle": "实时沙箱 · 思维星图",
+      "ogDesc": true,
+      "twitter": "summary",
+      "iconOk": true
+    },
+    "/install.html": {
+      "icon": true,
+      "ogTitle": "安装 · 思维星图",
+      "ogDesc": true,
+      "twitter": "summary",
+      "iconOk": true
+    },
+    "/boundary.html": {
+      "icon": true,
+      "ogTitle": "边界与隐私 · 思维星图",
+      "ogDesc": true,
+      "twitter": "summary",
+      "iconOk": true
+    },
+    "installCopy": {
+      "h1": "一条脚本，把星图装到自己电脑上",
+      "watcherStep": true,
+      "noOld": true
+    },
+    "faviconHttp": 200
+  },
+  "staticErrors": [],
+  "demoExport": {
+    "at0": {
+      "turn": 0,
+      "disabled": true,
+      "title": "当前轮次还没有节点，先播放或拖动进度"
+    },
+    "at10": {
+      "turn": 10,
+      "disabled": false,
+      "nodes": 9
+    }
+  },
+  "demoErrors": [],
+  "sandboxRestore": {
+    "grew": true,
+    "before": 1,
+    "restored": {
+      "nodes": 1,
+      "systemBubbles": 1,
+      "status": "已恢复上次会话的星图，可继续聊。"
+    },
+    "panelAfterRestore": {
+      "hidden": false,
+      "hasAnchorTitle": false,
+      "hasLabel": true
+    },
+    "emptySession": {
+      "nodes": 0,
+      "restoreBubbles": 0
+    }
+  },
+  "sandboxErrors": []
+}

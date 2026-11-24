@@ -6,6 +6,12 @@
     <meta name="color-scheme" content="only light" />
     <title>边界与隐私 · 思维星图</title>
     <meta name="description" content="思维星图的数据边界、密钥安全、提示注入防护、失败隔离、样例授权与沙箱原文不留存策略。" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content="边界与隐私 · 思维星图" />
+    <meta property="og:description" content="思维星图的数据边界、密钥安全、提示注入防护、失败隔离、样例授权与沙箱原文不留存策略。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="思维星图 Thought Atlas" />
+    <meta name="twitter:card" content="summary" />
     <link rel="stylesheet" href="/site.css" />
   </head>
   <body data-page="boundary">
@@ -51,7 +57,7 @@
           <li>会话：随机 UUID、IP 哈希、日期、已用轮次与时间戳。</li>
           <li>每轮：输入文本哈希、图骨架哈希、状态与时间戳；<strong>没有原文列</strong>。</li>
           <li>分析结果：结构化 ops、星图快照与失败原因（不含用户原文）。</li>
-          <li>限流：每日全站模型调用计数与每 IP 会话计数。</li>
+          <li>限流：每日全站分析轮次计数与每 IP 会话计数；每轮含聊天与分析两次模型调用，自检接口也占 1 轮额度。</li>
         </ul>
 
         <h2 id="keys">密钥怎么放</h2>
@@ -70,7 +76,7 @@
 
         <h2 id="failure">失败时会怎样</h2>
         <ul>
-          <li>守护进程 / 适配器任何崩溃不影响 agent 本体；hook 脚本设超时（≤ 2 秒内必须返回，分析异步做）。</li>
+          <li>守护进程 / 适配器任何崩溃不影响 agent 本体；watcher 上报设超时（≤ 2 秒内必须返回，分析异步做）。</li>
           <li>分析失败不丢轮次：失败会记录，错过的轮次可以补跑；补跑仍失败时 UI 诚实标注「第 N 轮分析失败」。</li>
           <li>沙箱单轮分析失败时聊天回复仍保留，只是本轮不写入星图；用户可继续下一轮。</li>
         </ul>

@@ -10,7 +10,7 @@
 
 ## 快速开始
 
-需要 Node 24（原生跑 TS，无构建步骤依赖）。
+需要 Node 22.18+（推荐 24；原生跑 TS，无构建步骤依赖）。
 
 ```bash
 npm ci
@@ -19,6 +19,7 @@ npm test                # 125 个测试
 npm run typecheck       # 根 + packages/web + site
 npm run build:web       # daemon 前端
 node packages/daemon/src/main.ts        # 守护进程 -> http://127.0.0.1:7788
+node packages/adapters/watcher/src/main.ts  # 可选：Codex 会话只读轮询上报（独立进程）
 
 npm run build:site      # 站点静态产物 -> site/dist
 npm run dev:site        # 站点预览 -> http://127.0.0.1:7790（有 key 默认真 DeepSeek）

@@ -1,0 +1,30 @@
+(node:2442) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2443) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+==> 安装依赖（npm ci）
+(node:2444) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+added 16 packages in 997ms
+==> 构建本地星图前端（npm run build:web）
+(node:2487) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> thought-atlas@0.1.0 build:web
+> npm run build --workspace packages/web
+
+(node:2512) [UNDICI-EHPA] Warning: EnvHttpProxyAgent is experimental, expect them to change at any time.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+> @thought-atlas/web@0.1.0 build
+> esbuild src/main.ts --bundle --format=esm --target=es2022 --minify --outfile=dist/app.js && cp index.html styles.css dist/
+
+
+  dist/app.js  52.5kb
+
+⚡ Done in 8ms
+==> 配置已存在：/Users/lwl/.thought-atlas/config.json（跳过写入，不改动你的 Key）
+==> 完成。启动守护进程：
+    node packages/daemon/src/main.ts
+    然后浏览器打开 http://127.0.0.1:7788

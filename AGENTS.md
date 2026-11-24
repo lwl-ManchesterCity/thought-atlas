@@ -30,7 +30,7 @@
 
 ## 3. 当前状态（具体数字以 `git log`、CHANGELOG 最新一节、实际运行结果为准）
 
-- 阶段：D6 完成。站点五页、回放、沙箱、安装说明、边界页在本地可跑；**尚未发布**，未创建任何云资源。
+- 阶段：D7 完成（CHANGELOG v0.8.3）。站点五页、回放、沙箱、安装说明、边界页在本地可跑；**尚未发布**，未创建任何云资源。
 - 测试：`npm test` 125/125；三套 tsconfig typecheck 全绿；`npm run check:core` 8 文件一致。
 - 本地服务：7788 = 守护进程（按请求服务 `packages/web/dist`）；7790 = 站点 dev server（`site/dev/server.ts`，`Cache-Control: no-store`）。
 - 站点模型：7790 默认走真 DeepSeek（读 `~/.thought-atlas/config.json`，不打印 key）；`ATLAS_SITE_MODEL=stub` 强制桩模型；无 key 时自动降级桩。`/api/health` 与 `/api/selfcheck` 返回真实 label 与 `stub` 标记，沙箱页对桩模型明确提示「非真模型」。
@@ -41,7 +41,7 @@
 ## 4. 常用命令
 
 ```bash
-npm test                 # node --test，124 个
+npm test                 # node --test，125 个
 npm run typecheck        # 根 + packages/web + site 三套 tsconfig
 npm run check:core       # site/functions/lib/core 与 packages/core 同步校验
 npm run build:web        # daemon 前端产物 -> packages/web/dist/app.js

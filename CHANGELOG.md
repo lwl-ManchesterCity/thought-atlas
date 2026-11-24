@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## v0.8.3 — 审计修复：承诺对齐实现 + 分享 meta（2026-11-24）
+
+### 变更（A 组：公开承诺与代码对齐）
+- 补跑承诺生效：daemon 入口启用 `retryIntervalMs: 30_000`（此前重试只积压 retry.jsonl，「恢复后补跑」文案失实）；机制本身已有单测覆盖
+- 边界页「hook 脚本 ≤2 秒」改为 watcher 上报超时（全仓无 hook 脚本，2 秒实为 codex-watcher postTurn 超时）
+- 安装页「注册只读适配器 / 守护进程本地轮询」改为独立 watcher 可选步骤并给出启动命令；h1「一条命令接到 agent」改「一条脚本装到自己电脑上」；meta description 同步；README 快速开始补 watcher 可选行
+- 边界页额度口径改「分析轮次计数」，注明每轮聊天+分析两次模型调用、自检占 1 轮额度
+- `evidence/d7-install/setup-run.log` 强制入库（此前被 .gitignore 的 *.log 挡在库外，索引与 v0.8.0 均引用）
+
+### 变更（B 组：一致性与体验）
+- README Node 门槛 24 → 22.18+（推荐 24）；AGENTS.md「124 个」→125、阶段 D6 → D7（v0.8.3）
+- 回放页导出：第 0 轮空图禁用按钮并给 title 提示（与沙箱一致）；notice 改读 `doc.synthetic`，真实样例上线不再错标合成
+- 沙箱恢复：空会话不再弹「已恢复」气泡；节点面板无可用锚点时隐藏「锚点原文」标题（恢复后内存消息已失）
+- 新增 favicon.svg（品牌星座标）+ 五页 link icon 与 og:title/og:description/og:type/og:site_name/twitter:card；build 复制清单加入 favicon.svg；og:image/og:url 待公网发布 URL 确定后补
+
+### 验证
+- typecheck 干净；125/125；build:site 通过；daemon 重启后 /health ok
+- 桩实例 7791 全量验收绿（health.stub=true 自标，0 console/page 错误）
+- 修复探针 evidence/d7-fixes/check.json：五页 icon/og/twitter 齐全、favicon 200、安装新文案在旧文案清零；demo 第 0 轮导出禁用+提示、第 10 轮恢复可用；沙箱恢复有节点才弹气泡、恢复后锚点标题隐藏、空会话 0 恢复气泡
+- 截图刷新：install-1280、demo-export-ui-1280、boundary-1280/390（0 溢出 0 报错）
+- 未选做：B11 样例 notice 双口径、C 组（版本同步/空目录/赛后项）保持不动
+
 ## v0.8.2 — 边界页改访客视角：清内部备注、删「还差什么」（2026-11-24）
 
 ### 变更

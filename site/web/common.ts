@@ -175,8 +175,7 @@ export function renderNodePanel(
   }
 
   const anchors = node.anchorTurns.length ? node.anchorTurns : [node.bornTurn];
-  const anchorTitle = text('h3', '锚点原文', 'panel-section');
-  container.append(anchorTitle);
+  const blocks: HTMLElement[] = [];
   for (const turnIndex of anchors) {
     const turn = turnFor(doc, turnIndex);
     if (!turn) continue;
@@ -186,7 +185,10 @@ export function renderNodePanel(
     block.append(text('p', turn.userText, 'anchor-user'));
     block.append(text('span', 'AI', 'anchor-who'));
     block.append(text('p', turn.assistantText, 'anchor-ai'));
-    container.append(block);
+    blocks.push(block);
+  }
+  if (blocks.length) {
+    container.append(text('h3', '锚点原文', 'panel-section'), ...blocks);
   }
 
   if (node.type !== 'shift') {

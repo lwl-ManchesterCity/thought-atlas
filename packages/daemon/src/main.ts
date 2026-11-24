@@ -9,6 +9,7 @@ const daemon = new AtlasDaemon({
   model: new DeepSeekClient(config),
   home,
   port: config.port ?? 7788,
+  retryIntervalMs: 30_000,
   storageFactory: (sessionId) => new FsStorage(sessionId, home),
   webDir: process.env.ATLAS_WEB_DIR ?? fileURLToPath(new URL('../../web/dist', import.meta.url)),
 });

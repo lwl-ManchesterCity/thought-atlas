@@ -157,8 +157,10 @@ async function restore(): Promise<void> {
   sessionTurns = [];
   updateMap(data.map);
   setLimits(data.limits);
-  if (data.map.nodes.length > 0) setStatus('已恢复上次会话的星图，可继续聊。');
-  bubble('system', '已恢复本会话的星图（原文未保存，锚点原文仅本页新消息可见）。');
+  if (data.map.nodes.length > 0) {
+    setStatus('已恢复上次会话的星图，可继续聊。');
+    bubble('system', '已恢复本会话的星图（原文未保存，锚点原文仅本页新消息可见）。');
+  }
 }
 
 async function sendTurn(userText: string): Promise<void> {

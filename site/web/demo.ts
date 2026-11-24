@@ -100,6 +100,8 @@ function renderAt(turn: number, animate = false): void {
   range.value = String(turn);
   label.textContent = turn === 0 ? '起点 · 0 轮' : `第 ${turn} / ${doc.session.turns.length} 轮`;
   updateStats(map);
+  exportButton.disabled = map.nodes.length === 0;
+  exportButton.title = map.nodes.length === 0 ? '当前轮次还没有节点，先播放或拖动进度' : '';
   renderChat(turn);
   if (turn === 0) {
     panel.hidden = true;
@@ -172,7 +174,7 @@ async function boot(): Promise<void> {
     void downloadMapCard(renderer, {
       title: doc.session.title,
       stats: `${currentMap.nodes.length} 节点 · 第 ${currentTurn()} / ${doc.session.turns.length} 轮 · ${shifts} 次转折`,
-      notice: '合成演示数据 · 回放样例',
+      notice: doc.synthetic ? '合成演示数据 · 回放样例' : '真实会话样例 · 作者已授权公开',
       filename: `thought-atlas-${doc.session.id}.png`,
     });
   });
