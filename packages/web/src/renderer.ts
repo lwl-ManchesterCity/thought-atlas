@@ -55,6 +55,8 @@ export interface RendererStats {
 export interface RendererOptions {
   onSelect?: (node: ThoughtNode | null) => void;
   onStats?: (stats: RendererStats) => void;
+  stepOrder?: boolean;
+  rowWidth?: number;
 }
 
 const GROW_MS = 450;
@@ -326,7 +328,7 @@ export class StarMapRenderer {
     // serpentine spine so the project's stage progression reads as a single path
     const groups = this.relatedGroups(this.simNodes);
     this.layoutGroups.set(0, groups);
-    const ROW_WIDTH = 1000;
+    const ROW_WIDTH = this.options.rowWidth ?? 1000;
     const GROUP_GAP = 130;
     const ROW_GAP = 120;
     const innerOf = (n: number): number => (n === 1 ? 0 : 22 + Math.min(n, 10) * 9);
@@ -466,7 +468,7 @@ export class StarMapRenderer {
       if (half > labelHalf) labelHalf = half;
     }
     const padX = Math.max(28, labelHalf + 10);
-    const padY = 30;
+    const padY = this.options.stepOrder ? 44 : 30;
     this.k = Math.min(
       Math.max(
         Math.min((this.w - 2 * padX) / extentW, (this.h - padY - 24) / extentH),
@@ -608,9 +610,10 @@ export class StarMapRenderer {
     ctx.scale(this.k, this.k);
 
     {
-      ctx.strokeStyle = '#94a3b8';
-      ctx.lineWidth = 1.2 / this.k;
-      ctx.globalAlpha = overview ? 0.38 : 0.22;
+      const ordered = this.options.stepOrder === true;
+      ctx.strokeStyle = ordered ? '#64748b' : '#94a3b8';
+      ctx.lineWidth = (ordered ? 1.6 : 1.2) / this.k;
+      ctx.globalAlpha = overview ? (ordered ? 0.6 : 0.38) : ordered ? 0.45 : 0.22;
       ctx.setLineDash([5 / this.k, 4 / this.k]);
       const centroids: { x: number; y: number }[] = [];
       const routes: { x: number; y: number }[][] = [];
@@ -658,11 +661,11 @@ export class StarMapRenderer {
             }
           }
         }
-        ctx.globalAlpha = overview ? 0.6 : 0.5;
+        ctx.globalAlpha = overview ? (ordered ? 0.85 : 0.6) : ordered ? 0.75 : 0.5;
         ctx.lineWidth = 1.7 / this.k;
         ctx.stroke(chevrons);
       }
-      ctx.globalAlpha = overview ? 0.55 : 0.35;
+      ctx.globalAlpha = overview ? (ordered ? 0.75 : 0.55) : ordered ? 0.55 : 0.35;
       ctx.fillStyle = '#94a3b8';
       for (const c of centroids) {
         ctx.beginPath();
@@ -829,6 +832,32 @@ export class StarMapRenderer {
     }
 
     ctx.restore();
+
+    if (this.options.stepOrder) {
+      const indexOf = new Map(this.turnOrder(this.simNodes).map((sn, i) => [sn.id, i + 1]));
+      ctx.textAlign = 'center';
+      for (const sn of this.simNodes) {
+        if (sn.grow < 0.6) continue;
+        const visual = nodeVisual(sn.node);
+        const outside = this.focus !== null && !this.focus.has(sn.id);
+        const sx = (sn.x ?? 0) * this.k + this.tx;
+        const sy = (sn.y ?? 0) * this.k + this.ty - sn.r * this.k - 7;
+        ctx.globalAlpha = outside ? 0.1 : visual.dim ? 0.62 : 0.9;
+        ctx.font = '10px ui-monospace, SFMono-Regular, Menlo, monospace';
+        ctx.fillStyle = visual.strike ? '#6b7280' : sn.node.type === 'shift' ? '#92400e' : '#475569';
+        ctx.fillText(String(indexOf.get(sn.id)), sx, sy);
+        if (indexOf.get(sn.id) === 1) {
+          ctx.font = '10px ui-sans-serif, system-ui, sans-serif';
+          ctx.fillStyle = 'rgba(37,99,235,0.12)';
+          ctx.beginPath();
+          ctx.roundRect(sx - 17, sy - 24, 34, 14, 7);
+          ctx.fill();
+          ctx.fillStyle = '#2563eb';
+          ctx.fillText('起点', sx, sy - 13);
+        }
+      }
+      ctx.globalAlpha = 1;
+    }
 
     ctx.font = '12px ui-sans-serif, system-ui, sans-serif';
     ctx.textAlign = 'center';

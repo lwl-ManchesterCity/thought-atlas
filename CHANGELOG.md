@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.7.3 — 链路可读性：步序号 / 起点 / 首页生长回放（2026-11-24）
+
+### 变更
+- 渲染器新增站点专用开关 `stepOrder`：节点上方画步序号（出生序 1…N）、首节点「起点」徽标、脊柱推进线与箭头加深；默认关闭，本地产品渲染不变
+- 渲染器新增 `rowWidth` 选项（默认 1000 不变）：首页迷你星图用 520，蛇形排成 3 行、缩放接近 1，节点与标签回到可读尺寸
+- 首页迷你星图从静态完成图改为自动生长回放：每 900ms 长一轮、末轮停 3.2s 后循环；`prefers-reduced-motion` 时直接静态末轮；图例改「样例星图 · 自动生长回放 · 合成演示数据」
+- 首页暴露 `__atlasSite.setTurn/turn/nodes/settled/fit` 探针钩子（setTurn 冻结自动循环），供确定性取证
+- 回放页启用 `stepOrder`；fit 垂直留白随开关加到 44px，防起点徽标贴边裁剪
+
+### 验证
+- typecheck 干净；125/125；build:site 通过
+- 桩实例 7791 全量验收绿：focus 9/1、冷 2544ms、health.stub=true 自标注、五页 × 390/320 无溢出、Console/页面异常 0
+- headless 探针：首页生长中段 turn5=5 节点、末段 turn10=9 节点；回放 9/1；1280/390 溢出 0、错误 0
+- 新证据：`evidence/d7-layout/home-grow-mid-1280.png`、`home-grow-end-1280.png`、`demo-order-1280.png`、`demo-order-390.png`、`home-order-390.png`
+
 ## v0.7.2 — 单链样例替换（2026-11-24）
 
 ### 变更

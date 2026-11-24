@@ -153,6 +153,7 @@ async function loadSession(file: string): Promise<void> {
 
 async function boot(): Promise<void> {
   renderer = new StarMapRenderer(canvas, {
+    stepOrder: true,
     onSelect: (node) => {
       if (doc && currentMap) renderNodePanel(panel, doc, currentMap, node?.id ?? null);
     },
