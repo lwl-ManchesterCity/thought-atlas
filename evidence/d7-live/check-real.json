@@ -1,0 +1,36 @@
+{
+  "runAt": "2026-11-24T08:45:00Z",
+  "base": "https://thought-atlas-njl1tep74um.qoder.zone",
+  "channel": "in-app real browser (author watched); headless CDP blocked by platform anti-automation, see check-headless-blocked.json",
+  "health": { "ok": true, "configured": true, "model": "deepseek-flash", "stub": false },
+  "turn": {
+    "input": "合成冒烟输入：我原以为读研一定比工作好，现在想先工作两年再看。",
+    "nodes": 2,
+    "lastTurn": 1,
+    "status": "第 1 轮已写入星图。",
+    "limits": "本会话剩余 14 / 15 轮今日全站剩余分析 97 / 100 轮",
+    "bubbles": 3
+  },
+  "panel": {
+    "focused": true,
+    "panelHidden": false,
+    "panelHasAnchor": true,
+    "nodeLabel": "先工作两年再读研"
+  },
+  "static": { "root": 200, "ogPng": 200, "ogUrl": true, "ogImage": true },
+  "restore": {
+    "verifiedAt": "2026-11-24T08:47:59Z",
+    "afterCrossPageNavigation": true,
+    "nodes": 2,
+    "status": "已恢复上次会话的星图，可继续聊。",
+    "panelHasAnchorAfterRestore": false,
+    "note": "恢复与轮次写入均绿，说明线上 Function 已含 f773758（图事件查询 limit 1000）"
+  },
+  "screenshots": [
+    "sandbox-real-1280.png（聊天列+配额，星图未进画面）",
+    "sandbox-real-full.png（全页：星图+聚焦面板+恢复气泡+配额）",
+    "sandbox-real-map.png（全页：关面板后完整星图，起点蓝节点→琥珀 shift 菱形+influence 虚线箭头+步序号 1/2）"
+  ],
+  "publicImagery": "real 通道验收（合成冒烟输入），仅内部复核，不作帖子配图",
+  "errors": []
+}

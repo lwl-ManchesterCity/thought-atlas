@@ -1,0 +1,19 @@
+{
+  "runAt": "2026-11-24T08:40:59.414Z",
+  "base": "https://thought-atlas-njl1tep74um.qoder.zone",
+  "health": {
+    "ok": true,
+    "configured": true,
+    "model": "deepseek-flash",
+    "stub": false
+  },
+  "grew": false,
+  "state": {
+    "nodes": 0,
+    "turn": 0,
+    "status": "Access denied. Automated tools are not allowed.",
+    "limits": "等待第一条消息…",
+    "stubNotice": false
+  },
+  "errors": []
+}

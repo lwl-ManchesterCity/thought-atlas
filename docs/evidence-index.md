@@ -20,8 +20,9 @@
 | 12 | 窄屏可用 | evidence/d7-layout/*-390.png、demo-320.png | synthetic | 390/320px 截图 |
 | 13 | 测试与类型全绿 | npm test = 125 tests；npm run typecheck（3 tsconfigs） | — | 每个 commit 前实跑，计数记入 CHANGELOG |
 | 14 | 失败轮次可补跑（承诺已生效） | packages/daemon/src/main.ts retryIntervalMs=30_000；packages/daemon/test/server.test.ts:149 恢复重跑单测 | 单测 | v0.8.3 起入口启用重试定时器 |
-| 15 | 分享 meta 与 favicon 齐全 | evidence/d7-fixes/check.json（五页 icon/og/twitter 断言、favicon HTTP 200）；og:url/og:image 已按公网地址回填 | 实测 | 公网发布后复核线上 meta 与 og.png 200 |
+| 15 | 分享 meta 与 favicon 齐全 | evidence/d7-fixes/check.json（五页 icon/og/twitter 断言、favicon HTTP 200）；og:url/og:image 已按公网地址回填 | 实测 | 公网已发布并复核线上 meta 与 og.png 200（evidence/d7-live/check-real.json static） |
 | 16 | 沙箱恢复与空图导出守卫 | evidence/d7-fixes/check.json（demoExport at0 禁用、sandboxRestore 气泡/锚点条件） | stub 实测 | v0.8.3 探针 |
+| 17 | 公网站点真模型可用、跨页恢复成立 | evidence/d7-live/check-real.json + sandbox-real-map.png / sandbox-real-full.png | real（合成冒烟输入） | 内置真实浏览器作者全程目击；headless 被平台反自动化拦截见 check-headless-blocked.json；不作公开配图 |
 
 ## 版本对应
 

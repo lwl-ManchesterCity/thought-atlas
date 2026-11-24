@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v0.8.4 — 线上沙箱 500 修复 + 公网 live 验收归档（2026-11-24）
+
+### 修复（线上，f773758）
+- 沙箱 500：DbStorage 图事件查询 `limit 5000` 超平台 SDK 上限 → 降为 1000（site/functions/lib/db-storage.ts:70）；未知错误补安全日志（仅 name/message，不含原文与 Key）
+- 线上已含该修复：修复后公网恢复与轮次写入均绿（见下）
+
+### 验证与归档（公网 live，作者全程目击）
+- 公网地址 https://thought-atlas-njl1tep74um.qoder.zone/ ；验证通道为 Qoder 内置真实浏览器；headless CDP 被平台反自动化拦截（「Access denied. Automated tools are not allowed.」，非本项目代码），拦截记录诚实归档 check-headless-blocked.json
+- 真模型冒烟：/api/health `deepseek-flash / stub:false`；合成冒烟输入 1 轮写入 2 节点（起点蓝节点 → 琥珀 shift 菱形 + influence 虚线箭头 + 步序号 1/2）；配额 14/15 与 97/100；节点面板锚点原文可见
+- 跨页导航恢复：回沙箱页自动恢复 2 节点 + 恢复气泡；恢复后锚点标题隐藏（与 v0.8.3 修复一致，内存原文已失）
+- 五页 meta / favicon / og.png 线上复核 200（check-real.json static）
+- 新证据 `evidence/d7-live/`：check-real.json、sandbox-real-1280.png、sandbox-real-full.png（星图+聚焦面板）、sandbox-real-map.png（关面板完整星图）、check-headless-blocked.json、sandbox-headless-blocked.png
+- 索引新增 #17（公网真模型+恢复），#15 复核方式更新为已公网复核；d7-live 为 real 通道验收（合成冒烟输入），仅内部复核，不作帖子配图
+
+### 验证
+- typecheck 干净；125/125（HEAD f773758 复跑）；三张 live 截图像素复核：星图/面板/配额/恢复气泡/导出按钮齐全
+- 本 commit 仅证据与文档，无新产品代码改动
+
 ## v0.8.3 — 审计修复：承诺对齐实现 + 分享 meta（2026-11-24）
 
 ### 变更（A 组：公开承诺与代码对齐）
