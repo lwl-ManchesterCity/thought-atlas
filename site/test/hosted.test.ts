@@ -49,9 +49,9 @@ test('missing Secret fails closed without model calls or stored text', async () 
   assert.equal(db.dump('analysis_cache').length, 0);
 });
 
-test('per-IP daily session cap is three', async () => {
+test('per-IP daily session cap is two', async () => {
   const { handler } = setup();
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     const res = await post(handler, '/api/sandbox/session', {}, '198.51.100.4');
     assert.equal(res.status, 201);
   }
@@ -179,11 +179,11 @@ test('shift rule violation rejects the whole batch', async () => {
   assert.equal(body.map.nodes.length, 0);
 });
 
-test('per-session 20-turn cap', async () => {
+test('per-session 15-turn cap', async () => {
   const { db, handler } = setup();
   const sessionId = await newSession(handler);
   const row = db.tables.sandbox_sessions.find((entry) => entry.id === sessionId)!;
-  row.last_turn = 20;
+  row.last_turn = 15;
   const res = await post(handler, '/api/sandbox/turn', { sessionId, text: '超过单会话上限' });
   assert.equal(res.status, 429);
   assert.equal(((await res.json()) as { error: string }).error, 'session_turn_limit');

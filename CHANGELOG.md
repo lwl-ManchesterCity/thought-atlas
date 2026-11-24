@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.7.4 — 沙箱限流收紧：每日 2 会话、单会话 15 轮（2026-11-24）
+
+### 变更
+- `LIMITS` 真值：`sessionsPerIpPerDay` 3→2、`turnsPerSession` 20→15（全站每日 100 轮分析不变）；服务端 CAS 强制随之生效
+- 同步全部用户可见文案：错误提示（errors.ts）、沙箱页头/硬限制 callout/meta、沙箱系统气泡四条、边界页限流列表、首页模块 02、README
+- 单测同步：per-IP 会话上限改 2（第 3 次 429）、单会话上限改 15（last_turn=15 时 429）
+- 验收断言同步：边界页「最多 2 次」；历史 CHANGELOG 与 docs/verification-d6.md 保留旧值作为当时记录
+
+### 验证
+- typecheck 干净；125/125；build:site 通过
+- 桩实例 7791 全量验收绿（见 evidence/d6-site.json，health.stub=true 自标注）
+
 ## v0.7.3 — 链路可读性：步序号 / 起点 / 首页生长回放（2026-11-24）
 
 ### 变更

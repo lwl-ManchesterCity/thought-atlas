@@ -91,8 +91,8 @@
 
         <h2 id="limits">限流与额度</h2>
         <ul>
-          <li>每个 IP 每日最多 <strong>3 次</strong>体验会话。</li>
-          <li>单个会话最多 <strong>20 轮</strong>。</li>
+          <li>每个 IP 每日最多 <strong>2 次</strong>体验会话。</li>
+          <li>单个会话最多 <strong>15 轮</strong>。</li>
           <li>全站每日最多 <strong>100 轮</strong>模型分析；熔断后友好降级为「今日额度已用完，请看回放」。</li>
           <li>单轮输入 ≤ <strong>2000 字</strong>；请求体 ≤ 8 KiB。</li>
           <li>相同输入在图骨架未变时命中哈希缓存，<strong>不消耗模型额度</strong>；缓存只保存 ops，不保存回复原文。</li>

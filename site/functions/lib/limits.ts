@@ -4,8 +4,8 @@ import { insertRow, rows, updateRows } from './db.ts';
 import { AppError } from './errors.ts';
 
 export const LIMITS = {
-  sessionsPerIpPerDay: 3,
-  turnsPerSession: 20,
+  sessionsPerIpPerDay: 2,
+  turnsPerSession: 15,
   analysesPerDay: 100,
   maxInputChars: 2000,
   maxBodyBytes: 8192,

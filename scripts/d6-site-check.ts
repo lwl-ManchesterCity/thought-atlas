@@ -317,7 +317,7 @@ try {
   }
   const boundaryText = await cdp.eval<string>('document.body.innerText');
   check(boundaryText.includes('原文不留存'), 'boundary page must state no original text retention');
-  check(boundaryText.includes('最多 3 次'), 'boundary page must state session limits');
+  check(boundaryText.includes('最多 2 次'), 'boundary page must state session limits');
   check(boundaryText.includes('100 轮'), 'boundary page must state analysis limits');
   evidence.pages = pageChecks;
 

@@ -130,7 +130,7 @@ async function ensureSession(): Promise<string | null> {
     bubble('system', error.message || '无法创建沙箱会话');
     setStatus(error.message, 'error');
     if (error.error === 'session_limit') {
-      bubble('system', '每个 IP 每日最多 3 次体验会话。可以先去回放样例看完整星图。');
+      bubble('system', '每个 IP 每日最多 2 次体验会话。可以先去回放样例看完整星图。');
     }
     return null;
   }
@@ -197,7 +197,7 @@ async function sendTurn(userText: string): Promise<void> {
     };
     setStatus(messages[data.status], data.status === 'analysis_failed' ? 'warn' : 'info');
     if (data.limits.sessionTurnsRemaining <= 0) {
-      bubble('system', '本会话已达 20 轮上限。可以新开一个会话，或回到回放样例。');
+      bubble('system', '本会话已达 15 轮上限。可以新开一个会话，或回到回放样例。');
     }
   } catch (error) {
     typing.remove();
@@ -250,10 +250,10 @@ function boot(): void {
     updateMap({ sessionId: '', nodes: [], edges: [], lastTurn: 0 });
     setLimits(null);
     setStatus('新会话将在下一条消息时创建。');
-    bubble('system', '已清空本页视图。下一条消息会创建新的体验会话（计入每日 3 次限额）。');
+    bubble('system', '已清空本页视图。下一条消息会创建新的体验会话（计入每日 2 次限额）。');
   });
 
-  bubble('system', '这里是在线迷你沙箱：边聊边看星图生长。每个 IP 每日 3 次会话、单会话 20 轮、全站每日 100 轮分析；原文不留存。');
+  bubble('system', '这里是在线迷你沙箱：边聊边看星图生长。每个 IP 每日 2 次会话、单会话 15 轮、全站每日 100 轮分析；原文不留存。');
   setLimits(null);
   updateCounter();
   updateMap({ sessionId: '', nodes: [], edges: [], lastTurn: 0 });
