@@ -110,9 +110,9 @@ kbd {
 }
 
 .site-header-inner {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding: calc(12px * var(--site-space)) calc(20px * var(--site-space));
+  max-width: none;
+  margin: 0;
+  padding: calc(12px * var(--site-space)) calc(28px * var(--site-space));
   display: flex;
   align-items: center;
   gap: calc(20px * var(--site-space));
