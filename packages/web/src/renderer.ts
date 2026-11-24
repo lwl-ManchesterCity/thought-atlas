@@ -613,10 +613,11 @@ export class StarMapRenderer {
       ctx.globalAlpha = overview ? 0.38 : 0.22;
       ctx.setLineDash([5 / this.k, 4 / this.k]);
       const centroids: { x: number; y: number }[] = [];
+      const routes: { x: number; y: number }[][] = [];
       for (const groups of this.layoutGroups.values()) {
         if (groups.length < 2) continue;
-        ctx.beginPath();
-        groups.forEach((group, gi) => {
+        const route: { x: number; y: number }[] = [];
+        for (const group of groups) {
           let sx = 0;
           let sy = 0;
           for (const sn of group) {
@@ -625,13 +626,42 @@ export class StarMapRenderer {
           }
           const x = sx / group.length;
           const y = sy / group.length;
+          route.push({ x, y });
           centroids.push({ x, y });
-          if (gi === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        });
+        }
+        routes.push(route);
+        ctx.beginPath();
+        route.forEach((point, gi) => (gi === 0 ? ctx.moveTo(point.x, point.y) : ctx.lineTo(point.x, point.y)));
         ctx.stroke();
       }
       ctx.setLineDash([]);
+      if (this.tier !== 'far') {
+        const chevrons = new Path2D();
+        const gap = 140 / this.k;
+        const size = Math.min(8, Math.max(4, 6 * Math.sqrt(this.k))) / this.k;
+        for (const route of routes) {
+          for (let i = 1; i < route.length; i++) {
+            const a = route[i - 1];
+            const b = route[i];
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const len = Math.hypot(dx, dy);
+            if (len < gap * 0.6) continue;
+            const ux = dx / len;
+            const uy = dy / len;
+            for (let d = gap * 0.5; d <= len - gap * 0.4; d += gap) {
+              const px = a.x + ux * d;
+              const py = a.y + uy * d;
+              chevrons.moveTo(px - ux * size - uy * size, py - uy * size + ux * size);
+              chevrons.lineTo(px, py);
+              chevrons.lineTo(px - ux * size + uy * size, py - uy * size - ux * size);
+            }
+          }
+        }
+        ctx.globalAlpha = overview ? 0.6 : 0.5;
+        ctx.lineWidth = 1.7 / this.k;
+        ctx.stroke(chevrons);
+      }
       ctx.globalAlpha = overview ? 0.55 : 0.35;
       ctx.fillStyle = '#94a3b8';
       for (const c of centroids) {
@@ -698,6 +728,45 @@ export class StarMapRenderer {
       ctx.stroke(group.path);
     }
     ctx.setLineDash([]);
+
+    if (this.tier !== 'far') {
+      const arrows = new Map<number, Path2D>();
+      for (const link of this.simLinks) {
+        if (link.edge.kind !== 'influence') continue;
+        const source = link.source as SimNode;
+        const target = link.target as SimNode;
+        if (typeof source !== 'object' || typeof target !== 'object') continue;
+        if (this.focus !== null && (!this.focus.has(source.id) || !this.focus.has(target.id))) continue;
+        const sx = source.x ?? 0;
+        const sy = source.y ?? 0;
+        const tx = target.x ?? 0;
+        const ty = target.y ?? 0;
+        const dx = tx - sx;
+        const dy = ty - sy;
+        const len = Math.hypot(dx, dy);
+        if (len < 1e-3) continue;
+        const ux = dx / len;
+        const uy = dy / len;
+        const size = Math.min(9, Math.max(4, 8 * Math.sqrt(this.k))) / this.k;
+        const tipX = tx - ux * (target.r + 2 / this.k);
+        const tipY = ty - uy * (target.r + 2 / this.k);
+        const alpha = overview ? 1 : 0.9;
+        let path = arrows.get(alpha);
+        if (!path) {
+          path = new Path2D();
+          arrows.set(alpha, path);
+        }
+        path.moveTo(tipX, tipY);
+        path.lineTo(tipX - ux * size - uy * size * 0.5, tipY - uy * size + ux * size * 0.5);
+        path.lineTo(tipX - ux * size + uy * size * 0.5, tipY - uy * size - ux * size * 0.5);
+        path.closePath();
+      }
+      ctx.fillStyle = '#d97706';
+      for (const [alpha, path] of arrows) {
+        ctx.globalAlpha = alpha;
+        ctx.fill(path);
+      }
+    }
 
     for (const sn of this.simNodes) {
       const visual = nodeVisual(sn.node);

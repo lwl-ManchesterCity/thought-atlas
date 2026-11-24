@@ -173,6 +173,8 @@ async function boot(): Promise<void> {
     panelVisible: () => !panel.hidden && panel.textContent!.includes('锚点原文'),
     settled: () => renderer?.getStats().converged ?? false,
     fit: () => renderer?.fitView(),
+    zoom: () => renderer?.getStats().zoom ?? 0,
+    setZoom: (k: number) => renderer?.setZoom(k),
   };
   window.__atlasReadyAt = performance.now();
 }

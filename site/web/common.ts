@@ -201,6 +201,8 @@ export interface AtlasDiagnostics {
   focusFirstNode?: () => boolean;
   settled?: () => boolean;
   fit?: () => void;
+  zoom?: () => number;
+  setZoom?: (k: number) => number | undefined;
 }
 
 declare global {
