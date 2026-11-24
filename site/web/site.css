@@ -326,61 +326,11 @@ kbd {
   white-space: nowrap;
 }
 
-.route-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: calc(14px * var(--site-space));
-  list-style: none;
-  padding: 0;
-  counter-reset: route;
-}
-
-.route-grid li {
-  counter-increment: route;
-  border: 1px solid var(--site-border);
-  border-radius: var(--site-radius);
-  padding: calc(18px * var(--site-space));
-  background: var(--site-surface);
-  min-height: 168px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  position: relative;
-  overflow: hidden;
-}
-
-.route-grid li::before {
-  content: '0' counter(route);
+.module-step {
   font-family: ui-monospace, monospace;
   font-size: 11px;
   color: var(--site-accent);
   letter-spacing: 0.16em;
-}
-
-.route-grid li::after {
-  content: '';
-  position: absolute;
-  right: -30px;
-  bottom: -40px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 1px solid rgba(37, 99, 235, 0.16);
-}
-
-.route-grid strong {
-  font-size: 15px;
-}
-
-.route-grid p {
-  color: var(--site-muted);
-  font-size: 13px;
-  margin: 0;
-}
-
-.route-grid a {
-  margin-top: auto;
-  font-size: 13px;
 }
 
 .block-grid {
@@ -413,10 +363,6 @@ kbd {
 
 .block-card a {
   font-size: 13px;
-}
-
-.entry-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .honesty-note {
@@ -517,6 +463,31 @@ kbd {
 .session-tab.active {
   border-color: var(--site-accent);
   background: rgba(37, 99, 235, 0.06);
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+  gap: calc(14px * var(--site-space));
+  align-items: stretch;
+}
+
+.demo-chat {
+  min-height: 460px;
+}
+
+.demo-chat .chat-log {
+  max-height: 400px;
+}
+
+.chat-turn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chat-turn.latest .bubble {
+  border-color: rgba(37, 99, 235, 0.45);
 }
 
 .demo-stage {
@@ -1141,8 +1112,10 @@ input[type='range'] {
 @media (max-width: 960px) {
   .hero { grid-template-columns: minmax(0, 1fr); }
   .hero-map { display: none; }
-  .route-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .module-grid { grid-template-columns: 1fr; }
   .block-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .demo-grid { grid-template-columns: minmax(0, 1fr); }
+  .demo-chat .chat-log { max-height: 330px; }
   .demo-stage .node-panel {
     position: static;
     width: auto;
@@ -1161,8 +1134,6 @@ input[type='range'] {
   .page { padding: 28px 14px 48px; }
   .hero h1 { font-size: clamp(1.8rem, calc(2.8rem * var(--site-type)), 2.9rem); }
   .page-head h1 { font-size: clamp(1.6rem, calc(2.4rem * var(--site-type)), 2.4rem); }
-  .route-grid { grid-template-columns: 1fr; }
-  .route-grid li { min-height: auto; }
   .block-grid { grid-template-columns: 1fr; }
   .demo-stage { min-height: 380px; }
   #map, .canvas-wrap { min-height: 380px; }

@@ -24,6 +24,8 @@ const title = must<HTMLElement>('#sample-title');
 const summary = must<HTMLElement>('#sample-summary');
 const tabs = must<HTMLElement>('#session-tabs');
 const bannerSlot = must<HTMLElement>('#banner');
+const chatLog = must<HTMLElement>('#chat-log');
+const chatTurn = must<HTMLElement>('#chat-turn');
 
 let manifest: SampleManifest | null = null;
 let doc: SampleDoc | null = null;
@@ -60,6 +62,34 @@ function updateStats(map: GraphMap): void {
   }
 }
 
+function renderChat(turn: number): void {
+  if (!doc) return;
+  chatTurn.textContent = turn === 0 ? '起点 · 0 轮' : `第 ${turn} / ${doc.session.turns.length} 轮`;
+  clear(chatLog);
+  if (turn === 0) {
+    const hint = document.createElement('div');
+    hint.className = 'bubble bubble-system';
+    hint.append(text('p', '还没有对话。拖时间轴或点「从头播放」，这里会逐轮出现原文。'));
+    chatLog.append(hint);
+    return;
+  }
+  for (const entry of doc.session.turns) {
+    if (entry.turnIndex > turn) break;
+    const group = document.createElement('div');
+    group.className = 'chat-turn';
+    if (entry.turnIndex === turn) group.classList.add('latest');
+    const user = document.createElement('div');
+    user.className = 'bubble bubble-user';
+    user.append(text('span', `第 ${entry.turnIndex} 轮 · 你`, 'bubble-role'), text('p', entry.userText));
+    const ai = document.createElement('div');
+    ai.className = 'bubble bubble-assistant';
+    ai.append(text('span', `第 ${entry.turnIndex} 轮 · AI`, 'bubble-role'), text('p', entry.assistantText));
+    group.append(user, ai);
+    chatLog.append(group);
+  }
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
 function renderAt(turn: number, animate = false): void {
   if (!doc) return;
   const map = mapAt(doc, turn);
@@ -68,6 +98,7 @@ function renderAt(turn: number, animate = false): void {
   range.value = String(turn);
   label.textContent = turn === 0 ? '起点 · 0 轮' : `第 ${turn} / ${doc.session.turns.length} 轮`;
   updateStats(map);
+  renderChat(turn);
   if (turn === 0) {
     panel.hidden = true;
   }
@@ -163,6 +194,7 @@ async function boot(): Promise<void> {
     ready: true,
     turn: currentTurn,
     nodes: () => currentMap?.nodes.length ?? 0,
+    chatBubbles: () => chatLog.querySelectorAll('.bubble').length,
     shifts: () => currentMap?.nodes.filter((node) => node.type === 'shift').length ?? 0,
     selectFirstShift: () => {
       const shift = currentMap?.nodes.find((node) => node.type === 'shift');

@@ -40,11 +40,24 @@
         <div id="banner"></div>
         <div class="session-tabs" id="session-tabs" role="tablist" aria-label="回放样例"></div>
 
-        <div class="demo-stage">
-          <div class="canvas-wrap">
-            <canvas id="map" aria-label="思维星图回放画布"></canvas>
+        <div class="demo-grid">
+          <section class="chat-col demo-chat" aria-label="样例对话">
+            <div class="chat-head">
+              <div class="row">
+                <h2>对话</h2>
+                <span class="chat-status" id="chat-turn">起点 · 0 轮</span>
+              </div>
+              <p class="chat-status">拖时间轴或点「从头播放」，对话与星图同步推进。</p>
+            </div>
+            <div class="chat-log" id="chat-log" aria-live="polite"></div>
+          </section>
+
+          <div class="demo-stage">
+            <div class="canvas-wrap">
+              <canvas id="map" aria-label="思维星图回放画布"></canvas>
+            </div>
+            <aside class="node-panel" id="panel" aria-live="polite" hidden></aside>
           </div>
-          <aside class="node-panel" id="panel" aria-live="polite" hidden></aside>
         </div>
 
         <div class="timeline-bar">
@@ -70,7 +83,7 @@
         </div>
 
         <div class="callout">
-          <strong>评委路线小提示：</strong>先打开长对话样例「从通用导图工具到评委三分钟演示」，把时间轴从 0 拖到 12 轮；
+          <strong>小提示：</strong>先打开长对话样例，把时间轴从 0 拖到最后一轮，看讨论重心怎么迁移；
           再切到学习样例，点一个琥珀色菱形，读触发转变的两句话。
         </div>
       </div>

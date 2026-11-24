@@ -191,6 +191,7 @@ export function highlightNav(): void {
 export interface AtlasDiagnostics {
   ready: boolean;
   nodes: () => number;
+  chatBubbles?: () => number;
   turn?: () => number;
   shifts?: () => number;
   selectFirstShift?: () => boolean;
