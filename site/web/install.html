@@ -60,6 +60,10 @@
             浏览器打开 <code>http://127.0.0.1:7788</code>，节点随对话增长；断网不影响聊天，恢复后补跑。
           </li>
         </ol>
+        <p class="note">
+          适配层是注册制的：Codex 与 Qoder 解析器已内置，共用同一个 watcher 核心（字节游标、重放、去重都在核心里）。
+          其他 agent 只要实现一个解析器模块（<code>ParserModule</code>），watcher 与守护进程都不用改。
+        </p>
 
         <h2>源码方式（当前阶段）</h2>
         <div class="command-block">
