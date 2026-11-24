@@ -1043,16 +1043,17 @@ input[type='range'] {
   background: #f1f5f9;
   padding: 16px 18px;
   margin: 14px 0 18px;
-  overflow-x: auto;
 }
 
 .command-block code {
+  display: block;
   border: none;
   background: none;
   padding: 0;
   font-size: 13px;
   color: #1e3a8a;
   white-space: pre;
+  overflow-x: auto;
 }
 
 .command-block .tag {
