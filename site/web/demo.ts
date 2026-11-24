@@ -24,7 +24,6 @@ const title = must<HTMLElement>('#sample-title');
 const summary = must<HTMLElement>('#sample-summary');
 const tabs = must<HTMLElement>('#session-tabs');
 const bannerSlot = must<HTMLElement>('#banner');
-const emptyHint = must<HTMLElement>('#empty-hint');
 
 let manifest: SampleManifest | null = null;
 let doc: SampleDoc | null = null;
@@ -59,7 +58,6 @@ function updateStats(map: GraphMap): void {
     });
     shiftList.append(button);
   }
-  emptyHint.hidden = map.nodes.length > 0;
 }
 
 function renderAt(turn: number, animate = false): void {
