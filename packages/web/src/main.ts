@@ -59,7 +59,6 @@ const sessionSelect = must(document.querySelector<HTMLSelectElement>('#session')
 const statsEl = must(document.querySelector<HTMLElement>('#stats'), '#stats');
 const stateEl = must(document.querySelector<HTMLElement>('#live-state'), '#live-state');
 const searchEl = must(document.querySelector<HTMLInputElement>('#search'), '#search');
-const clusterBtn = must(document.querySelector<HTMLButtonElement>('#cluster-refresh'), '#cluster-refresh');
 const timelineToggle = must(document.querySelector<HTMLButtonElement>('#replay-toggle'), '#replay-toggle');
 const timelineRange = must(document.querySelector<HTMLInputElement>('#replay-range'), '#replay-range');
 const timelineLabel = must(document.querySelector<HTMLElement>('#replay-label'), '#replay-label');
@@ -352,8 +351,6 @@ async function resumeLive(): Promise<void> {
 
 async function refreshClusters(): Promise<void> {
   if (!currentSession) return;
-  clusterBtn.disabled = true;
-  clusterBtn.textContent = '命名中…';
   try {
     const res = await fetch('/clusters/refresh', {
       method: 'POST',
@@ -362,10 +359,7 @@ async function refreshClusters(): Promise<void> {
     });
     if (res.ok) applyClusters((await res.json()) as ClusterView);
   } catch {
-    /* 失败保持回退名 */
-  } finally {
-    clusterBtn.disabled = false;
-    clusterBtn.textContent = '命名簇';
+    /* 失败保持原标签 */
   }
 }
 
@@ -482,8 +476,6 @@ async function boot(): Promise<void> {
       applySearch(true);
     }, 120);
   });
-
-  clusterBtn.addEventListener('click', () => void refreshClusters());
 
   await loadSession(currentSession);
   Object.assign(window, { __atlasReadyAt: performance.now() });

@@ -1,0 +1,65 @@
+{
+  "runAt": "2026-11-24T01:20:45.572Z",
+  "screenshots": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/flat-ui",
+  "mobile390": {
+    "buttons": [],
+    "clusterButton": false,
+    "topbar": {
+      "background": "rgb(255, 255, 255)",
+      "shadow": "none",
+      "backdrop": "none"
+    },
+    "legend": {
+      "background": "rgb(255, 255, 255)",
+      "shadow": "none",
+      "backdrop": "none"
+    },
+    "timeline": {
+      "background": "rgb(255, 255, 255)",
+      "shadow": "none",
+      "backdrop": "none"
+    },
+    "panel": {
+      "background": "rgb(255, 255, 255)",
+      "shadow": "none",
+      "backdrop": "none"
+    },
+    "stageBg": "rgb(233, 238, 245)"
+  },
+  "mobileRestShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/flat-ui/daemon-7788-390-rest.png",
+  "desktop1280": {
+    "buttons": [],
+    "clusterButton": false,
+    "topbar": {
+      "background": "rgb(255, 255, 255)",
+      "shadow": "none",
+      "backdrop": "none"
+    },
+    "legend": {
+      "background": "rgb(255, 255, 255)",
+      "shadow": "none",
+      "backdrop": "none"
+    },
+    "timeline": {
+      "background": "rgb(255, 255, 255)",
+      "shadow": "none",
+      "backdrop": "none"
+    },
+    "panel": {
+      "background": "rgb(255, 255, 255)",
+      "shadow": "none",
+      "backdrop": "none"
+    },
+    "stageBg": "rgb(233, 238, 245)"
+  },
+  "desktopRestShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/flat-ui/daemon-7788-1280-rest.png",
+  "panel": {
+    "visible": true,
+    "background": "rgb(255, 255, 255)",
+    "shadow": "none",
+    "backdrop": "none"
+  },
+  "panelShot": "/Users/lwl/Documents/Qoder/2026-11-22/0583c66c/thought-atlas/evidence/flat-ui/daemon-7788-1280-panel.png",
+  "consoleErrors": [],
+  "pageErrors": []
+}
