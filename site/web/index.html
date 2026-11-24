@@ -24,17 +24,19 @@
 
     <main class="page">
       <section class="hero">
-        <div class="orbit" aria-hidden="true"></div>
-        <span class="kicker">StudyHack · 与 AI 一起学习的现场记录</span>
-        <h1>把对话，长成一张会复盘的星图。</h1>
-        <p class="lead">
-          逐轮读取你与 AI 的对话，把论点、问题、事实与认知转变画成持续生长的星图。
-          不是事后总结，而是你「哪一刻想通了」的现场记录。
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="/demo.html?session=focus">打开回放样例</a>
-          <a class="btn" href="/sandbox.html">进沙箱聊几句</a>
+        <div class="hero-copy">
+          <span class="kicker">StudyHack · 与 AI 一起学习的现场记录</span>
+          <h1>把对话，长成一张<br />会复盘的星图。</h1>
+          <p class="lead">逐轮读取你与 AI 的对话，把论点、问题与认知转变画成持续生长的星图。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/demo.html?session=focus">打开回放样例</a>
+            <a class="btn" href="/sandbox.html">进沙箱聊几句</a>
+          </div>
         </div>
+        <figure class="hero-map" hidden>
+          <canvas id="hero-map" aria-hidden="true"></canvas>
+          <figcaption>回放样例中的一张星图 · 合成演示数据</figcaption>
+        </figure>
       </section>
 
       <section class="section" id="route">
