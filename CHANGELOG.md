@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.8.6 — GitHub 公开推送 + 链接回填 + 过时状态纠正（2026-11-24）
+
+### 变更
+- git 全历史推送至 https://github.com/lwl-ManchesterCity/thought-atlas （作者批准）；推送前扫描 547 个历史 blob：精确 Key / sk- 模式 / 注册邮箱全 0 命中；origin/main 建立跟踪
+- 帖子草稿回填 GitHub 链接（状态行 + 用法段，占位符清除）；安装页加「源码公开在 GitHub…克隆后跑 ./setup.sh」一句
+- 过时公开状态纠正：README「本地可跑，尚未发布」→ 公网站点已发布 + 源码公开本仓库，intro 补日常开发用途句与公网 URL；AGENTS.md 阶段行同步（线上文案至 v0.8.3 + 500 修复，v0.8.5/0.8.6 待再发布）
+- 历史 CHANGELOG 与 verification-d* 的「未发布」为当时记录，不改
+
+### 验证
+- 125/125；build:site 通过；探针 evidence/d7-github/check.json：安装页 GitHub 链接 href/文本正确、克隆句在、溢出 0、错误 0；install-1280.png 存档
+- GitHub 公网页复核：Public、描述正确、推送时 main=4b5c6a7
+
+### 待办
+- 再发布批准：v0.8.5 用途叙事 + v0.8.6 安装页链接尚未上线
+
 ## v0.8.5 — 用途叙事：日常开发复盘插件，不是参赛 demo（2026-11-24）
 
 ### 变更（仅文案，无功能改动）

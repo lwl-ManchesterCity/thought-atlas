@@ -2,7 +2,7 @@
 
 > 状态：草稿，未发布。占位符以【】标出，需作者本人填写/确认：
 > 【论坛版块名（发帖时按论坛实际确认）】
-> 【GitHub 仓库链接（作者上传仓库后填；仓库名 thought-atlas）】
+> GitHub 已公开：https://github.com/lwl-ManchesterCity/thought-atlas （2026-11-24 推送，4b5c6a7）
 > 公网 URL 已发布并 live 验收：https://thought-atlas-njl1tep74um.qoder.zone/
 > 署名已定：lwl；标题已定：候选 1 加赛道前缀；参赛形式：团队；团队已定：MCN-ship（ID 1404510，3 人均已实名）；赛道已定：StudyHack（前缀【StudyHack】）
 > 发布动作（含 Sites 公网发布）一律等作者另行批准，本草稿不代表已发布。
@@ -29,7 +29,7 @@ lwl，团队参赛。
 - 长方案讨论里看清自己采纳了哪些观点、放弃了哪些、妥协落在哪一轮。
 - 隔一周再打开这张图：我对这个模块、这个问题的理解，已经和上周不一样了。
 
-用法：源码在 GitHub 自取（【GitHub 仓库链接（作者上传后填）】，仓库名 thought-atlas），一条 `./setup.sh` 装依赖、构建、生成 600 权限配置模板（Key 只存你本机，脚本不碰已有配置）；填上你自己的 Key 启动守护进程即可。只读轮询 Codex / Qoder 的会话文件，不修改 agent 的任何文件；原文只留本机，没有轮数限制。
+用法：源码在 GitHub 自取：https://github.com/lwl-ManchesterCity/thought-atlas ，克隆后一条 `./setup.sh` 装依赖、构建、生成 600 权限配置模板（Key 只存你本机，脚本不碰已有配置）；填上你自己的 Key 启动守护进程即可。只读轮询 Codex / Qoder 的会话文件，不修改 agent 的任何文件；原文只留本机，没有轮数限制。
 
 ### 想先看看它怎么长图（在线）
 
