@@ -260,7 +260,7 @@ try {
   const focusState = await cdp.eval<{ title: string; nodes: number; shifts: number; label: string; stats: string; banner: string; tabs: number }>(
     `({ title: document.querySelector('#sample-title')?.textContent ?? '', nodes: window.__atlasSite.nodes(), shifts: window.__atlasSite.shifts(), label: document.querySelector('#turn-label')?.textContent ?? '', stats: document.querySelector('#turn-stats')?.textContent ?? '', banner: document.querySelector('#banner')?.textContent ?? '', tabs: document.querySelectorAll('.session-tab').length })`,
   );
-  check(focusState.nodes === 12 && focusState.shifts === 2, `focus map expected 12/2, got ${focusState.nodes}/${focusState.shifts}`);
+  check(focusState.nodes === 9 && focusState.shifts === 1, `focus map expected 9/1, got ${focusState.nodes}/${focusState.shifts}`);
   check(focusState.tabs === 2, `expected 2 sample tabs, got ${focusState.tabs}`);
   check(focusState.banner.includes('合成演示数据'), 'sample banner must label synthetic data');
 
@@ -268,8 +268,8 @@ try {
   await waitFor(cdp, 'window.__atlasSite.nodes() === 0', 'replay zero');
   const zeroLabel = await cdp.eval<string>(`document.querySelector('#turn-label')?.textContent ?? ''`);
   check(zeroLabel.includes('起点'), `zero turn label: ${zeroLabel}`);
-  await cdp.eval(`(() => { const el = document.querySelector('#range'); el.value = '12'; el.dispatchEvent(new Event('input', { bubbles: true })); return true; })()`);
-  await waitFor(cdp, 'window.__atlasSite.nodes() === 12', 'replay end');
+  await cdp.eval(`(() => { const el = document.querySelector('#range'); el.value = '10'; el.dispatchEvent(new Event('input', { bubbles: true })); return true; })()`);
+  await waitFor(cdp, 'window.__atlasSite.nodes() === 9', 'replay end');
   await waitFor(cdp, 'window.__atlasSite.settled() === true', 'replay settle', 15000);
   await cdp.eval('window.__atlasSite.fit()');
   await sleep(150);

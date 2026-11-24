@@ -1,7 +1,7 @@
 {
   "synthetic": true,
   "notice": "合成演示数据：由脚本生成，不含任何真实用户会话内容。",
-  "generatedAt": "2026-11-23T04:25:34.088Z",
+  "generatedAt": "2026-11-24T06:54:06.185Z",
   "realSamplesApproved": false,
   "sessions": [
     {
@@ -27,20 +27,20 @@
     {
       "file": "focus.json",
       "id": "sample-focus",
-      "title": "长对话：从通用导图工具到评委三分钟演示",
-      "summary": "十二轮对话中产品重心两次迁移，展示长对话里观点被取代、重述加年轮与焦点漂移。",
+      "title": "人生决策：毕业先工作还是读研",
+      "summary": "十轮单链：纠结 → 顾虑 → 倾向 → 硬约束 → 立场转变 → 行动与兜底，每一步都由上一步引出。",
       "stats": {
-        "turns": 12,
-        "nodes": 12,
-        "edges": 5,
-        "shifts": 2,
+        "turns": 10,
+        "nodes": 9,
+        "edges": 2,
+        "shifts": 1,
         "influences": 1,
         "types": {
-          "claim": 4,
+          "claim": 3,
+          "fact": 1,
           "question": 3,
-          "fact": 2,
           "ai-voice": 1,
-          "shift": 2
+          "shift": 1
         }
       }
     }

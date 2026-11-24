@@ -184,110 +184,100 @@ const learning: SessionSpec = {
 
 const focus: SessionSpec = {
   id: 'sample-focus',
-  title: '长对话：从通用导图工具到评委三分钟演示',
-  summary: '十二轮对话中产品重心两次迁移，展示长对话里观点被取代、重述加年轮与焦点漂移。',
+  title: '人生决策：毕业先工作还是读研',
+  summary: '十轮单链：纠结 → 顾虑 → 倾向 → 硬约束 → 立场转变 → 行动与兜底，每一步都由上一步引出。',
   startedAt: '2026-11-19T14:00:00.000Z',
   turns: [
     {
-      user: '我想做一个把对话自动整理成思维导图的工具。',
-      assistant: '可以先确定输入来源和分析粒度，再决定导图的交互方式。',
-      ops: [{ op: 'ADD_NODE', node: { type: 'claim', label: '做思维导图工具', summary: '用户想自动把对话整理成思维导图' }, edges: [] }],
+      user: '毕业先工作还是先读研？我纠结了一个月了。',
+      assistant: '先把两条路各自给你什么、要你付什么摆出来，再看哪一条是你放不下的。',
+      ops: [{ op: 'ADD_NODE', node: { type: 'claim', label: '先工作还是读研', summary: '用户在毕业先工作与先读研之间纠结' }, edges: [] }],
     },
     {
-      user: '自动抽取观点是不是得靠大模型？怎么保证不出错？',
-      assistant: '可以让模型只输出结构化操作，再由本地规则校验与折叠，出错时整包丢弃。',
-      ops: [{ op: 'ADD_NODE', node: { type: 'question', label: '如何自动抽取观点', summary: '用户关心自动抽取观点的可靠性与校验方式' }, edges: [] }],
-    },
-    {
-      user: '比赛 11 月底截止，我只有两周时间。',
-      assistant: '时间有限时先做一条能演示的端到端链路，再补细节。',
-      ops: [{ op: 'ADD_NODE', node: { type: 'fact', label: '比赛11月底截止', summary: '用户距离比赛截止只剩约两周' }, edges: [] }],
-    },
-    {
-      user: '那我先做本地插件，不做网站，插件更容易演示。',
-      assistant: '本地插件能直接读会话，但要考虑安装门槛与隐私边界。',
-      ops: [{ op: 'ADD_NODE', node: { type: 'claim', label: '先做本地插件', summary: '用户决定优先做本地插件而不是网站' }, edges: [] }],
-    },
-    {
-      user: '朋友说评委只看三分钟，插件安装太慢了。我改主意了，应该先保证三分钟能看懂。',
-      assistant: '评委时间有限，首屏就要给出定义和一条可回放的样例，插件演示可以后置。',
-      ops: [
-        {
-          op: 'ADD_NODE',
-          node: { type: 'ai-voice', label: '评委只看三分钟', summary: 'AI 指出评委时间有限，首屏必须快速说明价值' },
-          edges: [],
-        },
-        {
-          op: 'MARK_SHIFT',
-          nodeId: null,
-          shift: {
-            fromNodeId: 'n_0004',
-            toSummary: '产品重心从通用插件转向评委三分钟演示',
-            triggerNodeId: '@prev',
-            triggerTurn: 5,
-            retro: false,
-          },
-        },
-      ],
-    },
-    {
-      user: '那在线沙箱怎么做才不会被刷？',
-      assistant: '按 IP 限制每日会话数，全站每日分析轮次设上限，相同输入走缓存，超限就给回放入口。',
+      user: '家里希望我读研，说本科出去起薪低。',
+      assistant: '家人的建议基于平均回报；但个体差异很大，值得把自己的情况单独算一遍。',
       ops: [{
         op: 'ADD_NODE',
-        node: { type: 'question', label: '沙箱怎么限流', summary: '用户关心在线沙箱如何防止滥用' },
-        edges: [{ from: 'n_0005', to: '@new', kind: 'related', bornTurn: 6 }],
+        node: { type: 'fact', label: '家里希望读研', summary: '家人以起薪为由希望用户读研' },
+        edges: [],
       }],
     },
     {
-      user: '公开样例用合成的就行，真实对话太敏感。',
-      assistant: '合成样例可以完整演示转变与长对话，但页面要明确标注合成，不能暗示是真实会话。',
-      ops: [{ op: 'ADD_NODE', node: { type: 'claim', label: '合成样例就够', summary: '用户倾向公开样例只用合成数据' }, edges: [] }],
+      user: '我怕先工作之后，就再也回不到读书的状态了。',
+      assistant: '先工作的成本主要是学习节奏中断；但也要看岗位本身有没有积累，有积累的经验会复利。',
+      ops: [{
+        op: 'ADD_NODE',
+        node: { type: 'question', label: '怕回不到读书状态', summary: '用户担心工作后无法再回到学习状态' },
+        edges: [],
+      }],
     },
     {
-      user: '但作者要求真实样例必须逐段批准才能用。',
-      assistant: '那就把批准做成硬闸：批准文件缺失或敏感扫描有命中时，只发布合成样例。',
-      ops: [{ op: 'ADD_NODE', node: { type: 'fact', label: '真实样例需逐段批准', summary: '真实会话样例必须经作者逐段批准后才能替换' }, edges: [] }],
+      user: '那我倾向先工作：三年能复利的经验，比一纸学历更实在。',
+      assistant: '这个推理对看重经验的岗位成立；但先确认你的目标岗位有没有硬门槛。',
+      ops: [{
+        op: 'ADD_NODE',
+        node: { type: 'claim', label: '倾向先工作', summary: '用户以经验复利为由倾向先工作' },
+        edges: [],
+      }],
     },
     {
-      user: '公网发布前还要验什么？',
-      assistant: '至少验出网、Secret 不泄露、限流计数、冷打开时间和移动端布局，发布后再复测一次。',
-      ops: [{ op: 'ADD_NODE', node: { type: 'question', label: '公网发布前验什么', summary: '用户询问发布前必须验证的项目' }, edges: [] }],
+      user: '我想做的是算法研究岗，硕士学历是简历关，绕不开。',
+      assistant: '那读研就是你目标岗位的入场券，不是可选项；这条硬约束会覆盖一般性的比较。',
+      ops: [{
+        op: 'ADD_NODE',
+        node: { type: 'ai-voice', label: '学历是入场券', summary: 'AI 指出目标岗位以学历为硬门槛，读研是入场券' },
+        edges: [],
+      }],
     },
     {
-      user: '所以还是先把本地验收跑完再谈发布，对吧？',
-      assistant: '对，本地全量测试与浏览器验收通过后再申请发布，避免把未验收的版本推上去。',
-      ops: [
-        {
-          op: 'ADD_NODE',
-          node: { type: 'claim', label: '先本地验收再发布', summary: '用户确认发布前必须先完成本地验收' },
-          edges: [{ from: 'n_0009', to: '@new', kind: 'related', bornTurn: 10 }],
-        },
-        { op: 'REINFORCE', nodeId: 'n_0006', turn: 10 },
-      ],
-    },
-    {
-      user: '公开样例的结论也改一下：先用合成数据，真实样例以后补。',
-      assistant: '这会把之前「合成就够」修正为可替换的流程：合成先行，真实样例经批准后替换。',
+      user: '那我之前的推理反了：拿「经验复利」论证先工作，可目标岗位根本不给我积累经验的机会。我改主意了，先读研。',
+      assistant: '对。之前的比较只在不设门槛的岗位里成立；约束清楚之后，结论就翻转了。',
       ops: [{
         op: 'MARK_SHIFT',
         nodeId: null,
         shift: {
-          fromNodeId: 'n_0008',
-          toSummary: '公开样例先用合成数据，真实样例经批准后替换',
-          triggerNodeId: null,
-          triggerTurn: 11,
+          fromNodeId: 'n_0004',
+          toSummary: '目标岗位有学历硬门槛，决定先读研',
+          triggerNodeId: 'n_0005',
+          triggerTurn: 5,
           retro: false,
         },
       }],
     },
     {
-      user: '好，那演示就先讲评委路线，插件安装放后面。',
-      assistant: '演示顺序可以是：一句话定义、三分钟路线、回放样例、沙箱，最后才是安装。',
+      user: '那读研期间怎么避免混学历？',
+      assistant: '把学历当入场券、把实习与项目积累当真正目标，两者不冲突。',
+      ops: [{
+        op: 'ADD_NODE',
+        node: { type: 'question', label: '读研怎么不混', summary: '用户追问读研期间如何避免只为混学历' },
+        edges: [],
+      }],
+    },
+    {
+      user: '明白了：学历解决门槛，积累解决天花板，读研期间我也会找实习。',
+      assistant: '这样「经验复利」没有被丢掉，只是被后置：先拿入场券，再复利。',
       ops: [
-        { op: 'REINFORCE', nodeId: 'n_0006', turn: 12 },
-        { op: 'REINFORCE', nodeId: 'n_0010', turn: 12 },
+        {
+          op: 'ADD_NODE',
+          node: { type: 'claim', label: '学历门槛积累天花板', summary: '用户把学历与积累分工：门槛与天花板各归其位' },
+          edges: [],
+        },
+        { op: 'REINFORCE', nodeId: 'n_0005', turn: 8 },
       ],
+    },
+    {
+      user: '再问一句：万一考研失败，先工作这条路还在吗？',
+      assistant: '在。入场券逻辑只说读研更稳，没说工作无价值；留兜底不影响主线。',
+      ops: [{
+        op: 'ADD_NODE',
+        node: { type: 'question', label: '考研失败的兜底', summary: '用户确认考研失败时先工作仍是兜底选项' },
+        edges: [],
+      }],
+    },
+    {
+      user: '好，我去查目标院校的考试科目和实习窗口了，谢谢。',
+      assistant: '祝顺利。需要时可以把 offer 与读研的取舍再拿来一起复盘。',
+      ops: [{ op: 'SKIP' }],
     },
   ],
 };
