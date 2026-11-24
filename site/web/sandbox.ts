@@ -5,6 +5,7 @@ import {
   must,
   renderNodePanel,
   text,
+  downloadMapCard,
   type SampleDoc,
   type SampleTurn,
 } from './common.ts';
@@ -220,9 +221,23 @@ function updateCounter(): void {
 
 function boot(): void {
   renderer = new StarMapRenderer(canvas, {
+    stepOrder: true,
     onSelect: (node) => renderNodePanel(panel, docFor(map), map, node?.id ?? null),
   });
   panel.addEventListener('panel-close', () => renderer.clearFocus());
+  must<HTMLButtonElement>('#export').addEventListener('click', () => {
+    if (!renderer || map.nodes.length === 0) {
+      setStatus('星图还是空的，聊一轮之后再导出。', 'warn');
+      return;
+    }
+    const shifts = map.nodes.filter((node) => node.type === 'shift').length;
+    void downloadMapCard(renderer, {
+      title: '我的思维星图',
+      stats: `${map.nodes.length} 节点 · ${map.lastTurn} 轮 · ${shifts} 次转折`,
+      notice: '在线沙箱生成 · 卡片只含节点级摘要，不含对话原文',
+      filename: 'thought-atlas-my-map.png',
+    });
+  });
   input.addEventListener('input', updateCounter);
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {

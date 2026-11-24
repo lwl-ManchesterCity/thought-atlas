@@ -488,6 +488,11 @@ export class StarMapRenderer {
     return { x: (sn.x ?? 0) * this.k + this.tx, y: (sn.y ?? 0) * this.k + this.ty };
   }
 
+  exportPng(): string {
+    this.draw(performance.now());
+    return this.canvas.toDataURL('image/png');
+  }
+
   getStats(): RendererStats {
     return {
       fps: this.currentFps(),

@@ -1,6 +1,7 @@
 import type { EventRecord, GraphMap, ThoughtNode } from '../functions/lib/core/types.ts';
 import { foldEvents } from '../functions/lib/core/index.ts';
 import { nodeTypeLabel } from '../../packages/web/src/graph-model.ts';
+import type { StarMapRenderer } from '../../packages/web/src/renderer.ts';
 
 export interface SampleTurn {
   turnIndex: number;
@@ -70,6 +71,44 @@ export function emptyMap(sessionId: string): GraphMap {
 export function mapAt(doc: SampleDoc, turn: number): GraphMap {
   if (turn <= 0) return emptyMap(doc.session.id);
   return foldEvents(doc.session.id, doc.session.events as EventRecord[], turn);
+}
+
+export async function downloadMapCard(
+  renderer: StarMapRenderer,
+  meta: { title: string; stats: string; notice: string; filename: string },
+): Promise<void> {
+  const img = new Image();
+  img.src = renderer.exportPng();
+  await img.decode();
+  const w = img.width;
+  const u = w / 1200;
+  const headH = Math.round(110 * u);
+  const footH = Math.round(76 * u);
+  const card = document.createElement('canvas');
+  card.width = w;
+  card.height = img.height + headH + footH;
+  const ctx = card.getContext('2d');
+  if (!ctx) return;
+  ctx.fillStyle = '#f7f9fc';
+  ctx.fillRect(0, 0, card.width, card.height);
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#0f172a';
+  ctx.font = `600 ${Math.round(30 * u)}px ui-sans-serif, system-ui, sans-serif`;
+  ctx.fillText(meta.title, Math.round(36 * u), Math.round(52 * u));
+  ctx.fillStyle = '#64748b';
+  ctx.font = `${Math.round(16 * u)}px ui-monospace, SFMono-Regular, Menlo, monospace`;
+  ctx.fillText('思维星图 · THOUGHT ATLAS', Math.round(36 * u), Math.round(84 * u));
+  ctx.drawImage(img, 0, headH);
+  ctx.fillStyle = '#334155';
+  ctx.font = `${Math.round(18 * u)}px ui-sans-serif, system-ui, sans-serif`;
+  ctx.fillText(meta.stats, Math.round(36 * u), headH + img.height + Math.round(32 * u));
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = `${Math.round(14 * u)}px ui-sans-serif, system-ui, sans-serif`;
+  ctx.fillText(meta.notice, Math.round(36 * u), headH + img.height + Math.round(58 * u));
+  const link = document.createElement('a');
+  link.href = card.toDataURL('image/png');
+  link.download = meta.filename;
+  link.click();
 }
 
 export function nodeStatusLabel(node: ThoughtNode): string {

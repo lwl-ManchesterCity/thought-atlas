@@ -934,6 +934,12 @@ input[type='range'] {
     #f4f7fc;
 }
 
+.map-tools {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 10px 0;
+}
+
 .map-col .canvas-wrap {
   flex: 1;
   min-height: 480px;

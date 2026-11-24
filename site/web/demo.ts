@@ -8,6 +8,7 @@ import {
   syntheticBanner,
   text,
   clear,
+  downloadMapCard,
   type SampleDoc,
   type SampleManifest,
 } from './common.ts';
@@ -17,6 +18,7 @@ const panel = must<HTMLElement>('#panel');
 const range = must<HTMLInputElement>('#range');
 const playButton = must<HTMLButtonElement>('#play');
 const restartButton = must<HTMLButtonElement>('#restart');
+const exportButton = must<HTMLButtonElement>('#export');
 const label = must<HTMLElement>('#turn-label');
 const stats = must<HTMLElement>('#turn-stats');
 const shiftList = must<HTMLElement>('#shift-list');
@@ -163,6 +165,16 @@ async function boot(): Promise<void> {
   restartButton.addEventListener('click', () => {
     stopPlay();
     renderAt(0);
+  });
+  exportButton.addEventListener('click', () => {
+    if (!doc || !renderer || !currentMap) return;
+    const shifts = currentMap.nodes.filter((node) => node.type === 'shift').length;
+    void downloadMapCard(renderer, {
+      title: doc.session.title,
+      stats: `${currentMap.nodes.length} 节点 · 第 ${currentTurn()} / ${doc.session.turns.length} 轮 · ${shifts} 次转折`,
+      notice: '合成演示数据 · 回放样例',
+      filename: `thought-atlas-${doc.session.id}.png`,
+    });
   });
   range.addEventListener('input', () => {
     stopPlay();
