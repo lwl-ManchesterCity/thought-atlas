@@ -17,11 +17,17 @@ interface SessionInfo {
   updatedAt: string;
 }
 
-function sessionLabel(sessionId: string, nodes: number, title?: string): string {
-  return `${title ?? `${sessionId.slice(0, 26)}…`} · ${nodes} 节点`;
+function sessionLabel(sessionId: string, nodes: number, title?: string, segment?: string): string {
+  const name = title ?? `${sessionId.slice(0, 26)}…`;
+  return `${name}${segment ? ` · ${segment}` : ''} · ${nodes} 节点`;
 }
 
 const sessionTitles = new Map<string, string>();
+const sessionSegments = new Map<string, string>();
+
+function threadKeyOf(sessionId: string): string {
+  return sessionId.replace(/^\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-/, '').split('_')[0];
+}
 
 interface ReplayStep {
   turnIndex: number;
@@ -411,7 +417,7 @@ function connectEvents(): void {
     }
     if (!update.map || update.sessionId !== currentSession) return;
     const option = Array.from(sessionSelect.options).find((o) => o.value === update.sessionId);
-    if (option) option.textContent = sessionLabel(update.sessionId, update.map.nodes.length, sessionTitles.get(update.sessionId));
+    if (option) option.textContent = sessionLabel(update.sessionId, update.map.nodes.length, sessionTitles.get(update.sessionId), sessionSegments.get(update.sessionId));
     if (mode === 'live') {
       lastMap = update.map;
       renderer.setMap(update.map, { animate: true });
@@ -444,10 +450,19 @@ async function boot(): Promise<void> {
     if (emptyEl) emptyEl.hidden = false;
     return;
   }
+  const threadCounts = new Map<string, number>();
+  for (const session of sessions) {
+    if (!session.title) continue;
+    const key = threadKeyOf(session.sessionId);
+    threadCounts.set(key, (threadCounts.get(key) ?? 0) + 1);
+  }
   for (const session of sessions) {
     const option = document.createElement('option');
     option.value = session.sessionId;
-    option.textContent = sessionLabel(session.sessionId, session.nodes, session.title);
+    if (session.title && (threadCounts.get(threadKeyOf(session.sessionId)) ?? 0) > 1) {
+      sessionSegments.set(session.sessionId, `${session.sessionId.slice(5, 10)} 段`);
+    }
+    option.textContent = sessionLabel(session.sessionId, session.nodes, session.title, sessionSegments.get(session.sessionId));
     if (session.title) sessionTitles.set(session.sessionId, session.title);
     sessionSelect.append(option);
   }

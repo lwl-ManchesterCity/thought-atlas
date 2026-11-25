@@ -1,0 +1,18 @@
+{
+  "real": {
+    "multiSegmentSessions": 2,
+    "multiAllHaveDateSuffix": true,
+    "singleNoSuffix": true,
+    "untitledNoSuffix": true,
+    "errors": []
+  },
+  "synthetic": {
+    "daemonUp": true,
+    "options": [
+      "合成同线程标题 · 11-19 段 · 1 节点",
+      "合成同线程标题 · 11-17 段 · 1 节点"
+    ],
+    "current": "合成同线程标题 · 11-19 段 · 1 节点",
+    "errors": []
+  }
+}
