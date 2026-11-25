@@ -7,7 +7,7 @@
 
 - 适配器：当前指引以 Codex 为准；Qoder 解析器已内置，接入指引后续补充（共用同一 watcher 核心；其他 agent 按 `ParserModule` 注册扩展）
 - 公开演示：同一引擎的站点五页——首屏 / 回放样例 / 实时沙箱 / 安装 / 边界与隐私（https://thought-atlas-njl1tep74um.qoder.zone/ ）
-- 当前状态：**公网站点已发布，源码公开在本仓库**；演示样例全部为合成数据，真实样例需作者逐段批准
+- 当前状态：**公网站点已发布，源码公开在本仓库**；演示样例含合成数据与经作者批准的真实节选（明确标注）
 
 ## 快速开始
 
@@ -35,7 +35,7 @@ ATLAS_SITE_MODEL=stub npm run dev:site  # 强制桩模型（沙箱页会标注�
 | `packages/adapters` | `codex` / `qoder` / `watcher`；`claude-code` 仅存根 |
 | `packages/daemon` | 本地守护进程、SSE 传输、BYOK 模型调用 |
 | `packages/web` | 共享星图渲染器（daemon 与站点 demo 共用）+ daemon UI |
-| `site` | 站点五页、Sites Function、dev server、迁移、合成样例 |
+| `site` | 站点五页、Sites Function、dev server、迁移、合成与经批准真实样例 |
 | `scripts` | d1–d6 构建 / 同步 / 验收脚本 |
 | `docs` | 开发计划（唯一事实来源）与逐日验证记录 |
 | `evidence` | 聚合证据（数值、测量，不含真实对话） |
@@ -50,6 +50,6 @@ ATLAS_SITE_MODEL=stub npm run dev:site  # 强制桩模型（沙箱页会标注�
 ## 边界与隐私
 
 - 原文只存用户本地；发给模型的只有当轮文本 + 图骨架（label/summary 级）
-- 仓库与 `evidence/` 不放真实会话内容、真实人名与密钥；公开样例为合成数据并明确标注
+- 仓库与 `evidence/` 不放未经批准的真实会话内容、真实人名与密钥；公开样例含合成与经作者批准的真实节选，来源明确标注
 - 演示沙箱有每 IP 每日 2 会话、单会话 15 轮、全站每日 100 轮的限额，超限降级回放
 - 详见站点的「边界与隐私」页（`site/web/boundary.html`）

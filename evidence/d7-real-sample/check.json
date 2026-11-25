@@ -1,0 +1,21 @@
+{
+  "ready": true,
+  "tabs": 3,
+  "realTabText": "真实场景：客观与主观（Codex 会话节选 · 作者授权）2 轮 · 3 节点 · 1 次转折",
+  "banner": "合成演示数据与经作者批准的真实样例并存；未批准内容不在发布产物中。",
+  "title": "真实场景：客观与主观（Codex 会话节选 · 作者授权）",
+  "nodes": 3,
+  "shifts": 1,
+  "chatBubbles": 4,
+  "turnLabel": "第 2 / 2 轮",
+  "statsText": "3 节点1 边1 次转折0 条影响",
+  "chatHasOriginal": true,
+  "shiftSelected": true,
+  "panelVisible": true,
+  "panelHasAnchor": true,
+  "panelHasOriginal": true,
+  "summaryMentionsExcerpt": true,
+  "manifestRealApproved": true,
+  "manifestSessions": 3,
+  "manifestNotice": "合成演示数据与经作者批准的真实样例并存；未批准内容不在发布产物中。"
+}

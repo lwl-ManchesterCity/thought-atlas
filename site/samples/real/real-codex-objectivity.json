@@ -1,0 +1,226 @@
+{
+  "synthetic": false,
+  "notice": "真实会话样例 · 作者已授权公开 · 两轮节选，仅去除 Markdown 强调符",
+  "session": {
+    "id": "real-codex-objectivity",
+    "title": "真实场景：客观与主观（Codex 会话节选 · 作者授权）",
+    "summary": "节选自作者 2026-11-25 的真实 Codex 会话（原第 16–17 轮，展示编号 1–2）：观察必带主观性 → 沟通只为肯定自己 → 追问如何更接近真相。节点、边与末尾的手动转变标记均取自真实事件日志，未增删。",
+    "turns": [
+      {
+        "turnIndex": 1,
+        "timestamp": "2026-11-25T03:08:54.771Z",
+        "userText": "只要是通过人的眼睛看到的，就不可避免地带着人的处境、情绪和偏见\n",
+        "assistantText": "我也倾向于这么想。我们的眼睛并不是一台单纯记录世界的摄像机：我们会注意什么、忽略什么，以及如何理解看到的东西，都受到经验和处境的影响。\n\n但这引出了一个有趣的区分：看见一件事带有主观性，不等于关于它的所有判断都同样正确。\n\n比如两个人看同一场雨，一个感到安静，一个感到压抑，这两种感受都是真实的；但如果一个人说“外面正在下雨”，另一个说“外面没有下雨”，我们仍然可以走出去、触摸、测量，借助更多人的观察来检验。我们也许无法彻底摆脱自己的视角，却可以让不同视角相互纠正。\n\n所以我会把客观看成一种努力，而不是一种可以完全抵达的状态：知道自己站在哪里，也愿意让事实和他人挑战自己。\n\n不过这样想还有一个更难的问题：如果我们永远只能透过自己的视角认识世界，那我们怎么知道自己离“世界本来的样子”更近了，而不是只是找到了更多同意自己的人？"
+      },
+      {
+        "turnIndex": 2,
+        "timestamp": "2026-11-25T03:11:54.631Z",
+        "userText": "是的，彼此之间的沟通只是为了肯定自己的观点\n",
+        "assistantText": "很多时候确实是这样。我们表面上在交换观点，心里却在寻找证据：“你看，我原来想得没错。”遇到赞同的人，感到被理解；遇到反对的人，就急着反驳，甚至还没听完，脑中已经开始准备答案。\n\n但我想稍微追问一下：“为了肯定自己”是沟通不可避免的结果，还是我们进入沟通时常有的一种倾向？\n\n我觉得两种情况都可能发生。一个人告诉你他的经历，你未必因此放弃自己的观点，但可能发现：原来同一件事，在另一个人的处境里会有完全不同的意义。这样的沟通未必让双方达成一致，却让自己的看法变得不那么简单了。\n\n不过，反过来说，即使我们愿意理解别人，也可能是因为我们重视“开放”“理性”这样的自我形象。似乎绕来绕去，最终还是回到自己。\n\n那我好奇的是：如果一次沟通让你改变了原本的想法，你会觉得这是走出了自我，还是说，你只是接受了一个更能说服自己的观点？"
+      }
+    ],
+    "events": [
+      {
+        "turnIndex": 1,
+        "timestamp": "2026-11-25T03:08:54.771Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0001",
+              "type": "claim",
+              "owner": "user",
+              "label": "观察必带主观性",
+              "summary": "用户认为凡是通过人眼看到的，都不可避免带着人的处境、情绪和偏见",
+              "bornTurn": 1,
+              "lastTurn": 1,
+              "rings": [
+                1
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                1
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          },
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0002",
+              "type": "question",
+              "owner": "user",
+              "label": "如何知道更接近真相",
+              "summary": "若只能透过自身视角认识世界，如何判断自己更接近世界本来的样子而非只找到同见者",
+              "bornTurn": 1,
+              "lastTurn": 1,
+              "rings": [
+                1
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                1
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": []
+          }
+        ]
+      },
+      {
+        "turnIndex": 2,
+        "timestamp": "2026-11-25T03:11:54.631Z",
+        "ops": [
+          {
+            "op": "ADD_NODE",
+            "node": {
+              "id": "n_0003",
+              "type": "claim",
+              "owner": "user",
+              "label": "沟通只为肯定自己",
+              "summary": "用户认为人与人之间的沟通本质上只是为了让对方肯定自己已有的观点",
+              "bornTurn": 2,
+              "lastTurn": 2,
+              "rings": [
+                2
+              ],
+              "status": "active",
+              "supersededBy": null,
+              "mergedInto": null,
+              "anchorTurns": [
+                2
+              ],
+              "clusterId": null,
+              "manual": false
+            },
+            "edges": [
+              {
+                "from": "n_0001",
+                "to": "n_0003",
+                "kind": "related",
+                "bornTurn": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "turnIndex": 2,
+        "timestamp": "2026-11-25T03:16:21.407Z",
+        "ops": [
+          {
+            "op": "MARK_SHIFT",
+            "nodeId": "n_0002",
+            "shift": {
+              "toSummary": "若只能透过自身视角认识世界，如何判断自己更接近世界本来的样子而非只找到同见者",
+              "fromNodeId": null,
+              "triggerNodeId": null,
+              "retro": false
+            },
+            "manual": true
+          }
+        ]
+      }
+    ],
+    "map": {
+      "sessionId": "real-codex-objectivity",
+      "nodes": [
+        {
+          "id": "n_0001",
+          "type": "claim",
+          "owner": "user",
+          "label": "观察必带主观性",
+          "summary": "用户认为凡是通过人眼看到的，都不可避免带着人的处境、情绪和偏见",
+          "bornTurn": 1,
+          "lastTurn": 1,
+          "rings": [
+            1
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            1
+          ],
+          "clusterId": null,
+          "manual": false
+        },
+        {
+          "id": "n_0002",
+          "type": "shift",
+          "owner": "user",
+          "label": "如何知道更接近真相",
+          "summary": "若只能透过自身视角认识世界，如何判断自己更接近世界本来的样子而非只找到同见者",
+          "bornTurn": 1,
+          "lastTurn": 2,
+          "rings": [
+            1,
+            2
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            1,
+            2
+          ],
+          "clusterId": null,
+          "manual": true,
+          "shift": {
+            "toSummary": "若只能透过自身视角认识世界，如何判断自己更接近世界本来的样子而非只找到同见者",
+            "fromNodeId": null,
+            "triggerNodeId": null,
+            "retro": false
+          }
+        },
+        {
+          "id": "n_0003",
+          "type": "claim",
+          "owner": "user",
+          "label": "沟通只为肯定自己",
+          "summary": "用户认为人与人之间的沟通本质上只是为了让对方肯定自己已有的观点",
+          "bornTurn": 2,
+          "lastTurn": 2,
+          "rings": [
+            2
+          ],
+          "status": "active",
+          "supersededBy": null,
+          "mergedInto": null,
+          "anchorTurns": [
+            2
+          ],
+          "clusterId": null,
+          "manual": false
+        }
+      ],
+      "edges": [
+        {
+          "from": "n_0001",
+          "to": "n_0003",
+          "kind": "related",
+          "bornTurn": 2
+        }
+      ],
+      "lastTurn": 2
+    },
+    "stats": {
+      "turns": 2,
+      "nodes": 3,
+      "edges": 1,
+      "shifts": 1,
+      "influences": 0,
+      "types": {
+        "claim": 2,
+        "shift": 1
+      }
+    }
+  }
+}

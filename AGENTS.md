@@ -16,7 +16,7 @@
 展开：
 
 - 不做任何 Sites 云操作（prepare / publish / backend / 迁移 / Secret），除非作者在当轮明确批准；默认只做本地改动 + 本地 git 提交，不 push、不建 PR。
-- 仓库、`evidence/`、样例、发布产物里只允许出现**合成数据**。真实对话、真实人名、密钥、截图中的原文一律不进。
+- 仓库、`evidence/`、样例、发布产物默认只允许**合成数据**；唯一例外是经作者逐段批准 + 敏感扫描 0 命中的真实样例（批准文件不入库）。未经批准的真实对话、真实人名、密钥、截图中的原文一律不进。
 - 密钥只在 `~/.thought-atlas/config.json`（600）或环境变量里；文档、代码、日志、截图都不得出现值。
 - 不为「图更好看」去改 analyzer 的判定逻辑。分析器的真实输出差也要如实呈现。
 - `~/.codex`、`~/.qoder-cn` 只读：不修改 hooks、config、会话文件，不往里写任何东西。
@@ -30,12 +30,12 @@
 
 ## 3. 当前状态（具体数字以 `git log`、CHANGELOG 最新一节、实际运行结果为准）
 
-- 阶段：D7 完成（CHANGELOG v0.8.10）。公网站点已发布 https://thought-atlas-njl1tep74um.qoder.zone/ （线上文案至 v0.8.3 + 线上 500 修复；v0.8.5–v0.8.10 文案待再发布批准）；源码公开在 https://github.com/lwl-ManchesterCity/thought-atlas 。
+- 阶段：D7 完成（CHANGELOG v0.8.11）。公网站点已发布 https://thought-atlas-njl1tep74um.qoder.zone/ （线上文案至 v0.8.3 + 线上 500 修复；v0.8.5–v0.8.11 文案待再发布批准）；源码公开在 https://github.com/lwl-ManchesterCity/thought-atlas 。
 - 测试：`npm test` 130/130；三套 tsconfig typecheck 全绿；`npm run check:core` 8 文件一致。
 - 本地服务：7788 = 守护进程（按请求服务 `packages/web/dist`）；7790 = 站点 dev server（`site/dev/server.ts`，`Cache-Control: no-store`）。
 - 站点模型：7790 默认走真 DeepSeek（读 `~/.thought-atlas/config.json`，不打印 key）；`ATLAS_SITE_MODEL=stub` 强制桩模型；无 key 时自动降级桩。`/api/health` 与 `/api/selfcheck` 返回真实 label 与 `stub` 标记，沙箱页对桩模型明确提示「非真模型」。
 - 适配器：Codex、Qoder 已实现，共用 watcher 核心；当前安装指引以 Codex 为准，Qoder 接入指引后续补充；Claude Code 只有 README 存根，**不得声称支持**。
-- 样例：`site/samples/` 全部为合成演示数据，页面必须标注「合成」；真实样例需作者逐段批准后放入。
+- 样例：`site/samples/` 合成为主，页面按 synthetic 标志分别标注；`site/samples/real/` 首份经批准真实节选 real-codex-objectivity（2026-11-25 作者授权，敏感扫描 0 命中）。
 - 站点文案口径：安装指引以 Codex 为准，Qoder 解析器已内置但接入指引后续补充；解析器是注册制的，其他 agent 需实现 `ParserModule`。
 
 ## 4. 常用命令
@@ -59,7 +59,7 @@ npm run check:site       # headless Chrome 站点验收（冷开、回放、沙�
 - `packages/daemon/` — 本地守护进程 + SSE 传输 + BYOK 模型调用
 - `packages/web/` — 共享渲染器 `src/renderer.ts`（daemon 与站点 demo 共用）+ daemon UI
 - `site/` — 站点五页（`web/`）、Sites Function（`functions/`，core 为逐字节同步产物）、dev server、migrations
-- `site/samples/` — 合成样例与 manifest（构建时经闸门拷到 `site/dist/samples/`）；真实样例批准文件在 `~/.thought-atlas/sample-approvals.json`，不入库
+- `site/samples/` — 合成样例与 manifest（构建时经闸门拷到 `site/dist/samples/`）；真实样例批准文件在 `~/.thought-atlas/sample-approvals.json`，不入库；2026-11-25 首份批准 real-codex-objectivity
 - `scripts/` — d1…d6 构建/同步/验收脚本；`docs/` — 开发计划与逐日验证；`evidence/` — 聚合证据
 
 ## 6. 验收与证据规范

@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v0.8.11 — 真实 Codex 哲学对话节选进回放样例（作者授权）（2026-11-25）
+
+### 变更
+- 作者追问确认执行授权真实样例（覆盖上一轮 hold）：新增 `site/samples/real/real-codex-objectivity.json`——作者真实 Codex 会话第 16–17 轮节选（展示编号 1–2），原文取自 rollout（仅去 Markdown 强调符），节点/边/手动 MARK_SHIFT 取自 daemon 真实事件（未增删、不改 analyzer）；3 节点 1 边 1 转折
+- 批准文件 `~/.thought-atlas/sample-approvals.json` 首份写入（非 config 值、专用批准机制、不入库）；闸门 gateReason approved、realSamplesApproved true；敏感扫描 0 命中
+- 手动转变放在节选末轮（真实操作时间戳保留）；summary 明示节选、重编号与手动标记来源
+- 文案同步（声明匹配现实）：首屏模块 01/03、公开样例状态、footer；回放页 meta/intro/样例来源；安装页边界提醒；边界页一句话+当前状态；README 三处；AGENTS 铁律例外条款+样例行；帖子草稿用法/Known limits/配图注意。首屏 hero 取节点最多者（focus 9 节点）不受影响，合成 figcaption 保留
+
+### 验证
+- 130/130；typecheck 三套全绿；build:site gateReason approved、realSessionsApproved 1
+- headless 探针 evidence/d7-real-sample/check.json：3 tab、真实 tab 文案、并存 banner、3 节点 1 转折、4 对话气泡、面板锚点原文、manifest realSamplesApproved true，全真
+- 像素复核 demo-real-1280.png（聚焦态+面板锚点）与 demo-real-map-1280.png（无聚焦 fit：步序号/起点徽标/琥珀菱形，与作者真机截图一致）
+
+### 待办
+- 再发布批准（站点文案 v0.8.5–v0.8.11 未上线）；push 待批准（本地已至 v0.8.11）
+
 ## v0.8.10 — 安装指引以 Codex 为准，Qoder 口径改「后续补充」（2026-11-25）
 
 ### 变更
