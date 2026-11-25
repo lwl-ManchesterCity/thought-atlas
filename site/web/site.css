@@ -377,6 +377,59 @@ kbd {
   color: var(--shift);
 }
 
+.real-shots {
+  margin-top: calc(20px * var(--site-space));
+  border: 1px solid var(--site-border);
+  border-radius: var(--site-radius);
+  padding: calc(16px * var(--site-space));
+  background: var(--site-surface);
+}
+
+.real-shots h2 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.real-shots > p {
+  margin: 0 0 14px;
+  color: var(--site-muted);
+  font-size: 13px;
+}
+
+.real-shots-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(14px * var(--site-space));
+}
+
+.real-shots figure {
+  margin: 0;
+}
+
+.real-shots img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--site-border);
+  border-radius: calc(var(--site-radius) * 0.7);
+  background: var(--site-bg);
+}
+
+.real-shots figcaption {
+  margin-top: 6px;
+  color: var(--site-muted);
+  font-size: 12px;
+}
+
+.real-shots-map {
+  margin-top: calc(14px * var(--site-space));
+}
+
+@media (max-width: 760px) {
+  .real-shots-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .page-head {
   margin-bottom: calc(24px * var(--site-space));
 }

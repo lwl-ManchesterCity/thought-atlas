@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.8.13 — 真实来源截图上回放页（真实样例 tab 专属）（2026-11-25）
+
+### 变更
+- 作者反馈「截图放去哪里了，没看到呀」（在回放页找）：v0.8.12 只进了帖子草稿/evidence，站点没有。本轮把三张授权截图放上站点：`site/web/real-shots/`，build:site 仅在闸门 approved 时复制到 `dist/real-shots/`（未批准不进发布产物）
+- demo.html 新增「真实来源截图」section（两张 Codex 客户端对话并排 + 本机琥珀星图，figcaption 标明展示/原轮次）；demo.ts renderSession 按 `doc.synthetic` 显隐——合成 tab 隐藏、真实 tab 显示；site.css 新增 .real-shots 样式（760px 以下单列）
+- 文案同步：demo 样例来源注记「页面附作者客户端与本机截图」；boundary 当前状态 callout 同补；帖子草稿「看一段回放」条补截图句
+
+### 验证
+- 130/130；typecheck 三套全绿；build:site gateReason approved
+- headless 探针 evidence/d7-real-shots-page/check.json：真实 tab section 可见、3 图 naturalWidth>0、合成 tab 隐藏、切回真实再现，全真
+- 像素复核 real-shots-section-1280.png：标题/双客户端截图/琥珀星图/ captions 均在
+
+### 待办
+- push 待批准（本地已至 v0.8.13）；再发布批准（站点文案 v0.8.5–v0.8.13）；发帖待批准
+
 ## v0.8.12 — 帖子配图换用作者真实 Codex 截图（2026-11-25）
 
 ### 变更

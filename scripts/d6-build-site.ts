@@ -71,6 +71,10 @@ manifest.notice = gate.realApproved
 const realSessions: typeof manifest.sessions = [];
 if (gate.approved.length) {
   await mkdir(join(DIST, 'samples', 'real'), { recursive: true });
+  await mkdir(join(DIST, 'real-shots'), { recursive: true });
+  for (const shot of await readdir(join(SITE, 'web', 'real-shots'))) {
+    await copyFile(join(SITE, 'web', 'real-shots', shot), join(DIST, 'real-shots', shot));
+  }
   for (const sample of gate.approved) {
     await writeFile(join(DIST, 'samples', 'real', sample.file), sample.text);
     const parsed = JSON.parse(sample.text) as { session?: { id?: string; title?: string; summary?: string; stats?: unknown } };

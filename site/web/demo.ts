@@ -28,6 +28,7 @@ const tabs = must<HTMLElement>('#session-tabs');
 const bannerSlot = must<HTMLElement>('#banner');
 const chatLog = must<HTMLElement>('#chat-log');
 const chatTurn = must<HTMLElement>('#chat-turn');
+const realShots = must<HTMLElement>('#real-shots');
 
 let manifest: SampleManifest | null = null;
 let doc: SampleDoc | null = null;
@@ -135,6 +136,7 @@ function startPlay(): void {
 
 function renderSession(docValue: SampleDoc): void {
   doc = docValue;
+  realShots.hidden = doc.synthetic;
   title.textContent = doc.session.title;
   summary.textContent = doc.session.summary;
   range.max = String(doc.session.turns.length);
