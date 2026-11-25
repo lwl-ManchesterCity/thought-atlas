@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v0.8.10 — 安装指引以 Codex 为准，Qoder 口径改「后续补充」（2026-11-25）
+
+### 变更
+- 作者点选：先做 Codex 兼容，Qoder 等其他 agent 后面补充。安装页第 2 步只写 Codex watcher 上报 + 「Qoder 等其他 agent 的接入指引后续补充」；第 4 步选择器文案改「各条会话」；注册制 note 补「当前安装指引以 Codex 为准」；meta/og description 去掉 Qoder 并列
+- README：intro 与适配器行改「当前指引以 Codex 为准；Qoder 解析器已内置，接入指引后续补充」；测试数 125→130 纠正
+- AGENTS.md：阶段行 v0.8.10、待再发布范围 v0.8.5–v0.8.10、测试数 130、适配器与文案口径行同步
+- 真实样例授权记录：作者批准其 Codex 哲学对话做第二个回放示例（标注「真实 Codex 会话 · 作者授权」、文案用原话、入库前敏感扫描）；按约定等节点更丰满再截取，当前 3 节点 1 边，本轮 hold 不入库
+
+### 验证
+- 130/130；typecheck 三套全绿；build:site 通过（gateReason approval-invalid 为预期）
+- fingerprint evidence/d7-qoder-copy/fingerprint.txt：重建后 dist/install.html 新口径在、旧并列句 0 命中；README/AGENTS 口径与 130 在
+
+### 待办
+- 再发布批准（站点文案 v0.8.5–v0.8.10 未上线）；push 待批准（本地已至 v0.8.10）
+- 真实哲学示例 hold：等会话丰满后整理（watcher 持续在跑）
+
 ## v0.8.9 — 同线程多续段下拉加日期后缀（2026-11-25）
 
 ### 变更

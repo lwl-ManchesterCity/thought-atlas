@@ -2,10 +2,10 @@
 
 长在 AI agent 旁边的本地插件：每轮对话结束做一次轻量分析，把值得记的论点、问题、事实与
 认知转变挂到一张持续生长的「思维星图」上。不是事后总结，是思路变化的现场记录。
-它接的是你日常开发的对话：只读接 Codex / Qoder，debug、讨论方案之后，回看自己的思路是哪一轮变的。
+它接的是你日常开发的对话：只读接 Codex（Qoder 等其他 agent 后续补充），debug、讨论方案之后，回看自己的思路是哪一轮变的。
 2026 Qoder 高校创造力大赛 · StudyHack 赛道参赛作品（提交截止 2026-11-30 18:00）。
 
-- 适配器：Codex、Qoder（共用同一 watcher 核心；其他 agent 按 `ParserModule` 注册扩展）
+- 适配器：当前指引以 Codex 为准；Qoder 解析器已内置，接入指引后续补充（共用同一 watcher 核心；其他 agent 按 `ParserModule` 注册扩展）
 - 公开演示：同一引擎的站点五页——首屏 / 回放样例 / 实时沙箱 / 安装 / 边界与隐私（https://thought-atlas-njl1tep74um.qoder.zone/ ）
 - 当前状态：**公网站点已发布，源码公开在本仓库**；演示样例全部为合成数据，真实样例需作者逐段批准
 
@@ -16,7 +16,7 @@
 ```bash
 npm ci
 
-npm test                # 125 个测试
+npm test                # 130 个测试
 npm run typecheck       # 根 + packages/web + site
 npm run build:web       # daemon 前端
 node packages/daemon/src/main.ts        # 守护进程 -> http://127.0.0.1:7788

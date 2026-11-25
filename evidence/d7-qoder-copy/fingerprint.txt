@@ -1,0 +1,16 @@
+== dist/install.html 新口径（期望≥1）
+Qoder 等其他 agent 的接入指引后续补充: 1
+当前安装指引以 Codex 为准: 1
+顶部会话选择器可切换各条会话: 1
+== dist/install.html 旧并列句（期望0）
+Codex 与 Qoder 的会话文件: 0
+Codex / Qoder 只读 watcher: 0
+各条 Codex / Qoder 会话: 0
+== README/AGENTS（期望≥1）
+README 后续补充: 1
+README 130: 1
+AGENTS 130/130: 1
+AGENTS v0.8.10: 1
+== 125 残留（期望0）
+README.md:0
+AGENTS.md:0

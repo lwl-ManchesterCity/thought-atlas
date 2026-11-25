@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="only light" />
     <title>安装 · 思维星图</title>
-    <meta name="description" content="一条脚本装好本地版：依赖、构建、600 配置模板；原文不出本机，Codex / Qoder 只读 watcher 可选启动。" />
+    <meta name="description" content="一条脚本装好本地版：依赖、构建、600 配置模板；原文不出本机，Codex 只读 watcher 可选启动。" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:title" content="安装 · 思维星图" />
-    <meta property="og:description" content="一条脚本装好本地版：依赖、构建、600 配置模板；原文不出本机，Codex / Qoder 只读 watcher 可选启动。" />
+    <meta property="og:description" content="一条脚本装好本地版：依赖、构建、600 配置模板；原文不出本机，Codex 只读 watcher 可选启动。" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="思维星图 Thought Atlas" />
     <meta name="twitter:card" content="summary" />
@@ -62,8 +62,8 @@
           </li>
           <li>
             <strong>只读接入（可选步骤）。</strong>
-            Codex 与 Qoder 的会话文件由独立 watcher 进程只读轮询上报，setup.sh 不自动启动；需要时运行
-            <code>node packages/adapters/watcher/src/main.ts</code>。不修改 agent 的任何文件。
+            Codex 会话文件由独立 watcher 进程只读轮询上报，setup.sh 不自动启动；需要时运行
+            <code>node packages/adapters/watcher/src/main.ts</code>。不修改 agent 的任何文件。Qoder 等其他 agent 的接入指引后续补充。
           </li>
           <li>
             <strong>逐轮增量分析。</strong>
@@ -72,12 +72,13 @@
           <li>
             <strong>本机看星图。</strong>
             浏览器打开 <code>http://127.0.0.1:7788</code>，节点随对话增长；断网不影响聊天，恢复后补跑。
-            顶部会话选择器可切换各条 Codex / Qoder 会话；已分析过的历史会话不起 watcher 也能直接回看。
+            顶部会话选择器可切换各条会话；已分析过的历史会话不起 watcher 也能直接回看。
           </li>
         </ol>
         <p class="note">
           适配层是注册制的：Codex 与 Qoder 解析器已内置，共用同一个 watcher 核心（字节游标、重放、去重都在核心里）。
           其他 agent 只要实现一个解析器模块（<code>ParserModule</code>），watcher 与守护进程都不用改。
+          当前安装指引以 Codex 为准，Qoder 等接入命令后续补充。
         </p>
 
         <h2>脚本里做了什么（等价手动命令）</h2>

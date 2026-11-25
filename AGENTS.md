@@ -30,18 +30,18 @@
 
 ## 3. 当前状态（具体数字以 `git log`、CHANGELOG 最新一节、实际运行结果为准）
 
-- 阶段：D7 完成（CHANGELOG v0.8.9）。公网站点已发布 https://thought-atlas-njl1tep74um.qoder.zone/ （线上文案至 v0.8.3 + 线上 500 修复；v0.8.5–v0.8.7 文案待再发布批准）；源码公开在 https://github.com/lwl-ManchesterCity/thought-atlas 。
-- 测试：`npm test` 125/125；三套 tsconfig typecheck 全绿；`npm run check:core` 8 文件一致。
+- 阶段：D7 完成（CHANGELOG v0.8.10）。公网站点已发布 https://thought-atlas-njl1tep74um.qoder.zone/ （线上文案至 v0.8.3 + 线上 500 修复；v0.8.5–v0.8.10 文案待再发布批准）；源码公开在 https://github.com/lwl-ManchesterCity/thought-atlas 。
+- 测试：`npm test` 130/130；三套 tsconfig typecheck 全绿；`npm run check:core` 8 文件一致。
 - 本地服务：7788 = 守护进程（按请求服务 `packages/web/dist`）；7790 = 站点 dev server（`site/dev/server.ts`，`Cache-Control: no-store`）。
 - 站点模型：7790 默认走真 DeepSeek（读 `~/.thought-atlas/config.json`，不打印 key）；`ATLAS_SITE_MODEL=stub` 强制桩模型；无 key 时自动降级桩。`/api/health` 与 `/api/selfcheck` 返回真实 label 与 `stub` 标记，沙箱页对桩模型明确提示「非真模型」。
-- 适配器：Codex、Qoder 已实现，共用 watcher 核心；Claude Code 只有 README 存根，**不得声称支持**。
+- 适配器：Codex、Qoder 已实现，共用 watcher 核心；当前安装指引以 Codex 为准，Qoder 接入指引后续补充；Claude Code 只有 README 存根，**不得声称支持**。
 - 样例：`site/samples/` 全部为合成演示数据，页面必须标注「合成」；真实样例需作者逐段批准后放入。
-- 站点文案口径：只承诺 Codex / Qoder 两个适配器；解析器是注册制的，其他 agent 需实现 `ParserModule`。
+- 站点文案口径：安装指引以 Codex 为准，Qoder 解析器已内置但接入指引后续补充；解析器是注册制的，其他 agent 需实现 `ParserModule`。
 
 ## 4. 常用命令
 
 ```bash
-npm test                 # node --test，125 个
+npm test                 # node --test，130 个
 npm run typecheck        # 根 + packages/web + site 三套 tsconfig
 npm run check:core       # site/functions/lib/core 与 packages/core 同步校验
 npm run build:web        # daemon 前端产物 -> packages/web/dist/app.js
