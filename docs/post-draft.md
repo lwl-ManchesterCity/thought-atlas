@@ -63,10 +63,12 @@ lwl，团队参赛。
 
 | 位置 | 图 | 说明 |
 | --- | --- | --- |
-| 开头钩子后 | evidence/d7-layout/home-grow-end-1280.png | 首页生长回放终态，一眼看懂产品 |
-| 三件事-1 | evidence/d7-layout/demo-order-1280.png | 步序号+起点徽标+脊柱箭头 |
+| 开头钩子后 | evidence/d7-real-codex-shots/codex-client-turn1-1108.png | 作者真实 Codex 客户端对话截图（11:08 轮），先立「这是真实对话」 |
+| 真实星图 | evidence/d7-real-codex-shots/local-map-real-shift.png | 同一段真实会话长出的星图，琥珀菱形=认知转变（作者真机截图） |
+| 三件事-1（回放交互） | evidence/d7-real-sample/demo-real-1280.png | 站点回放页真实样例 tab：时间轴/步序号/起点徽标；备选 evidence/d7-layout/demo-order-1280.png |
 | 三件事-2 | evidence/d7-export/card-sandbox-stub.png | 导出分享卡实物（stub 数据，合成标注在卡上） |
 | 三件事-3 | evidence/d7-install/install-1280.png | 安装页一键脚本 |
 | 移动端（可选） | evidence/d7-layout/demo-order-390.png | 390px 窄屏 |
+| 备选（真实第二轮） | evidence/d7-real-codex-shots/codex-client-turn2-1111.png | 11:11 轮「沟通只为肯定自己」，可与真实星图并排 |
 
-注意：未授权真实内容（如 evidence/d7-real-acceptance/ 的真实会话摘要）**不用于公开帖子**；公开配图用合成/stub 来源或经授权真实样例截图（evidence/d7-real-sample/）。
+注意：未授权真实内容（如 evidence/d7-real-acceptance/ 的真实会话摘要）**不用于公开帖子**；公开配图用合成/stub 来源、经授权真实样例截图（evidence/d7-real-sample/），或作者提供并明确授权发帖的真实 Codex 客户端/真机截图（evidence/d7-real-codex-shots/，2026-11-25 作者指示换用，目视敏感复核 0 命中）。含其他会话标题/编号的截图（会话选择器下拉、Codex 侧栏）**不用于公开帖子**。
