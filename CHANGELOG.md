@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.8.7 — 安装页第 4 步补会话切换说明（2026-11-25）
+
+### 变更
+- 第 4 步「本机看星图」补两句：顶部会话选择器可切换各条 Codex / Qoder 会话；已分析过的历史会话不起 watcher 也能直接回看（作者批准，对应其 Codex 实测路径）
+
+### 验证
+- 125/125；typecheck 三套全绿；build:site 通过（gateReason approval-invalid 为预期）
+- 探针 evidence/d7-install-step4/check.json：第 4 步两句在、watcher 命令与 GitHub 链接仍在、1280/390 溢出 0、错误 0；install-1280.png 像素复核
+
+### 待办
+- 再发布批准（v0.8.5–v0.8.7 文案未上线）；本提交 push 待批准
+
 ## v0.8.6 — GitHub 公开推送 + 链接回填 + 过时状态纠正（2026-11-24）
 
 ### 变更

@@ -1,0 +1,11 @@
+{
+  "install": {
+    "selectorLine": true,
+    "historyLine": true,
+    "watcherCmd": true,
+    "githubLink": "lwl-ManchesterCity/thought-atlas",
+    "overflow": 0
+  },
+  "overflow390": 0,
+  "errors": []
+}
