@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v0.8.8 — 会话下拉同步 Codex 重命名标题（2026-11-25）
+
+### 变更
+- 新增 `packages/adapters/codex/src/session-titles.ts`：只读解析 `~/.codex/session_index.jsonl`（尊重 `CODEX_HOME`），同 id 末行胜出（重命名语义），坏行/空名跳过，缺文件空映射，mtime 缓存
+- `threadIdFromSessionId`：rollout 型 sessionId 提取线程 uuid；Qoder/合成会话不匹配→无标题
+- daemon `/sessions` 每条附 `title`（daemon 新增 workspace 依赖 adapter-codex）；web 下拉与 SSE 更新文案统一走 `sessionLabel`：标题优先「标题 · N 节点」，无标题保持截断 id 兜底
+- 不改 analyzer、不改 watcher；真实标题只在本机 UI 出现，不进仓库/证据
+
+### 验证
+- 130/130（新增 5：末行胜出/坏行空名/缺文件/mtime 缓存刷新/threadId 匹配）；typecheck 三套全绿；build:web 重建
+- 真机探针（布尔-only，无真实标题入证据）evidence/d7-titles/check.json：9 会话 4 有标题，下拉文案与索引末行逐字一致，无标题兜底正确，错误 0
+- 合成实例（CODEX_HOME/THOUGHT_ATLAS_HOME 指向 /tmp 合成目录，7793）：重命名末行胜出显示「合成重命名后的标题 · 2 节点」，synthetic-1280.png 像素复核
+- daemon 7788 已重启生效（服务端代码变更）
+
+### 待办
+- 再发布批准（v0.8.5–v0.8.7 站点文案未上线；本轮为本地 daemon/UI，不影响站点）；push 待批准
+- 未点不做：新会话实时进下拉（SSE 补选项）仍搁置
+
 ## v0.8.7 — 安装页第 4 步补会话切换说明（2026-11-25）
 
 ### 变更

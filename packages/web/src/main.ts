@@ -10,11 +10,18 @@ import { createPanel, type AnchorPayload, type ManualAction } from './panel.ts';
 
 interface SessionInfo {
   sessionId: string;
+  title?: string;
   lastTurn: number;
   nodes: number;
   edges: number;
   updatedAt: string;
 }
+
+function sessionLabel(sessionId: string, nodes: number, title?: string): string {
+  return `${title ?? `${sessionId.slice(0, 26)}…`} · ${nodes} 节点`;
+}
+
+const sessionTitles = new Map<string, string>();
 
 interface ReplayStep {
   turnIndex: number;
@@ -404,7 +411,7 @@ function connectEvents(): void {
     }
     if (!update.map || update.sessionId !== currentSession) return;
     const option = Array.from(sessionSelect.options).find((o) => o.value === update.sessionId);
-    if (option) option.textContent = `${update.sessionId.slice(0, 26)}… · ${update.map.nodes.length} 节点`;
+    if (option) option.textContent = sessionLabel(update.sessionId, update.map.nodes.length, sessionTitles.get(update.sessionId));
     if (mode === 'live') {
       lastMap = update.map;
       renderer.setMap(update.map, { animate: true });
@@ -440,7 +447,8 @@ async function boot(): Promise<void> {
   for (const session of sessions) {
     const option = document.createElement('option');
     option.value = session.sessionId;
-    option.textContent = `${session.sessionId.slice(0, 26)}… · ${session.nodes} 节点`;
+    option.textContent = sessionLabel(session.sessionId, session.nodes, session.title);
+    if (session.title) sessionTitles.set(session.sessionId, session.title);
     sessionSelect.append(option);
   }
   const fromUrl = new URLSearchParams(location.search).get('session');

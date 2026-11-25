@@ -1,0 +1,75 @@
+{
+  "real": {
+    "sessionsCount": 9,
+    "titledCount": 4,
+    "optionCount": 9,
+    "allTitledOptionsMatchIndex": true,
+    "allUntitledFallbackOk": true,
+    "perSession": [
+      {
+        "id": "2026-11-05",
+        "hasTitleField": true,
+        "optionMatchesIndex": true,
+        "fallbackOk": null
+      },
+      {
+        "id": "qoder-15f0",
+        "hasTitleField": false,
+        "optionMatchesIndex": null,
+        "fallbackOk": true
+      },
+      {
+        "id": "2026-10-19",
+        "hasTitleField": true,
+        "optionMatchesIndex": true,
+        "fallbackOk": null
+      },
+      {
+        "id": "2026-11-17",
+        "hasTitleField": true,
+        "optionMatchesIndex": true,
+        "fallbackOk": null
+      },
+      {
+        "id": "2026-11-19",
+        "hasTitleField": true,
+        "optionMatchesIndex": true,
+        "fallbackOk": null
+      },
+      {
+        "id": "d2-synthet",
+        "hasTitleField": false,
+        "optionMatchesIndex": null,
+        "fallbackOk": true
+      },
+      {
+        "id": "d1-synthet",
+        "hasTitleField": false,
+        "optionMatchesIndex": null,
+        "fallbackOk": true
+      },
+      {
+        "id": "d1-synthet",
+        "hasTitleField": false,
+        "optionMatchesIndex": null,
+        "fallbackOk": true
+      },
+      {
+        "id": "d1-synthet",
+        "hasTitleField": false,
+        "optionMatchesIndex": null,
+        "fallbackOk": true
+      }
+    ],
+    "errors": []
+  },
+  "synthetic": {
+    "daemonUp": true,
+    "options": [
+      "合成重命名后的标题 · 2 节点"
+    ],
+    "current": "合成重命名后的标题 · 2 节点",
+    "nodes": 2,
+    "errors": []
+  }
+}

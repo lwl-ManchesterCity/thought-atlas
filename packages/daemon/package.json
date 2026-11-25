@@ -4,6 +4,7 @@
   "type": "module",
   "main": "src/index.ts",
   "dependencies": {
-    "@thought-atlas/core": "0.1.0"
+    "@thought-atlas/core": "0.1.0",
+    "@thought-atlas/adapter-codex": "0.1.0"
   }
 }

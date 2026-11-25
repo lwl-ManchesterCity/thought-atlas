@@ -22,6 +22,7 @@ import type {
 } from '@thought-atlas/core';
 import { FsStorage, atlasHome } from './fs-storage.ts';
 import { nameClusters, type ClusterNamingGroup } from './cluster-namer.ts';
+import { readSessionTitles, threadIdFromSessionId } from '@thought-atlas/adapter-codex';
 
 export interface DaemonOptions {
   model: ModelClient;
@@ -761,7 +762,7 @@ export class AtlasDaemon {
   }
 
   private async listSessions(): Promise<
-    { sessionId: string; lastTurn: number; nodes: number; edges: number; updatedAt: string }[]
+    { sessionId: string; title?: string; lastTurn: number; nodes: number; edges: number; updatedAt: string }[]
   > {
     const dir = join(this.home, 'sessions');
     let ids: string[] = [];
@@ -770,8 +771,10 @@ export class AtlasDaemon {
     } catch {
       return [];
     }
+    const titles = await readSessionTitles();
     const sessions: {
       sessionId: string;
+      title?: string;
       lastTurn: number;
       nodes: number;
       edges: number;
@@ -783,8 +786,10 @@ export class AtlasDaemon {
         const path = join(dir, id, 'map.json');
         const [raw, info] = await Promise.all([readFile(path, 'utf8'), stat(path)]);
         const map = JSON.parse(raw) as GraphMap;
+        const threadId = threadIdFromSessionId(id);
         sessions.push({
           sessionId: id,
+          title: threadId ? titles.get(threadId) : undefined,
           lastTurn: map.lastTurn ?? 0,
           nodes: map.nodes?.length ?? 0,
           edges: map.edges?.length ?? 0,
