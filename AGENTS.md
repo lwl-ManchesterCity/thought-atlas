@@ -30,7 +30,7 @@
 
 ## 3. 当前状态（具体数字以 `git log`、CHANGELOG 最新一节、实际运行结果为准）
 
-- 阶段：D7 完成（CHANGELOG v0.8.13）。公网站点已发布 https://thought-atlas-njl1tep74um.qoder.zone/ （线上文案至 v0.8.3 + 线上 500 修复；v0.8.5–v0.8.13 文案待再发布批准）；源码公开在 https://github.com/lwl-ManchesterCity/thought-atlas 。
+- 阶段：D7 完成（CHANGELOG v0.8.14）。公网站点已发布且再发布验收通过 https://thought-atlas-njl1tep74um.qoder.zone/ （线上文案至 v0.8.13，2026-11-25）；源码公开在 https://github.com/lwl-ManchesterCity/thought-atlas （2026-11-25 同步至本地 head）。
 - 测试：`npm test` 130/130；三套 tsconfig typecheck 全绿；`npm run check:core` 8 文件一致。
 - 本地服务：7788 = 守护进程（按请求服务 `packages/web/dist`）；7790 = 站点 dev server（`site/dev/server.ts`，`Cache-Control: no-store`）。
 - 站点模型：7790 默认走真 DeepSeek（读 `~/.thought-atlas/config.json`，不打印 key）；`ATLAS_SITE_MODEL=stub` 强制桩模型；无 key 时自动降级桩。`/api/health` 与 `/api/selfcheck` 返回真实 label 与 `stub` 标记，沙箱页对桩模型明确提示「非真模型」。

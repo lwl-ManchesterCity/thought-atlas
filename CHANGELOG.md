@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.8.14 — push GitHub + 再发布验收通过（2026-11-25）
+
+### 变更
+- 作者批准①再发布②push：推送前扫描 608 blob 全 0 命中后 push `971c85c..c5c0ae5`（v0.8.7–v0.8.13），远端 main 复核一致
+- 再发布派单仓库所属会话执行（复用原 Project/Site，未新建；Secret 未动；源码零改动）：published true，operation 01a210ed-a67c-73d9-9135-c349f9062092
+- 主会话独立 live 验收 8 项全过：demo「真实来源截图」、manifest realSamplesApproved true+并存 notice、boundary 截图口径、real-shots PNG 200、真实样例 JSON 200、install「后续补充」、首屏并存口径、health 真模型 stub false
+- 帖子草稿版块名填定 StudyHack 学习科研（f08071b）；发帖作者自理
+
+### 验证
+- evidence/d7-republish/check.json（扫描计数+operation ID+live 指纹）
+- 130/130（无代码改动）
+
+### 待办
+- 作者发帖收尾；赛后旧 Key 轮换等 deferred 项不变
+
 ## v0.8.13 — 真实来源截图上回放页（真实样例 tab 专属）（2026-11-25）
 
 ### 变更

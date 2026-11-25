@@ -1,0 +1,31 @@
+{
+  "round": "v0.8.14 push + republish acceptance",
+  "date": "2026-11-25",
+  "approval": "作者 2026-11-25 主会话批准 ① 再发布 ② push；发帖作者自理",
+  "github": {
+    "pushedRange": "971c85c..c5c0ae5 (v0.8.7–v0.8.13)",
+    "prePushScan": { "blobsScanned": 608, "exactKey": 0, "skPattern": 0, "regEmail": 0, "regEmailLocal": 0, "worktreeHits": 0 }
+  },
+  "republish": {
+    "executedIn": "repo-owned session 570820a6 (准备思维星图发布草稿)",
+    "publishOperationId": "01a210ed-a67c-73d9-9135-c349f9062092",
+    "actionId": "70010271-b595-46c8-8f8f-f1ca28e27c28",
+    "published": true,
+    "accessMode": "public",
+    "siteReused": true,
+    "secretUntouched": true,
+    "gate": { "gateReason": "approved", "realSessionsApproved": 1, "realSamplesApproved": true }
+  },
+  "liveAcceptance": {
+    "url": "https://thought-atlas-njl1tep74um.qoder.zone/",
+    "demoHtmlRealShotsHeadingHits": 1,
+    "manifestRealSamplesApproved": true,
+    "manifestNotice": "合成演示数据与经作者批准的真实样例并存；未批准内容不在发布产物中。",
+    "boundaryHtmlShotsLineHits": 1,
+    "realShotPngStatus": 200,
+    "realSampleJsonStatus": 200,
+    "installHtmlQoderDeferredHits": 2,
+    "indexHtmlCoexistenceHits": 1,
+    "health": { "ok": true, "configured": true, "model": "deepseek-flash", "stub": false }
+  }
+}
